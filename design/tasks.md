@@ -83,9 +83,9 @@ Done when: each agreed Must or Should requirement without a SPEC has an acceptan
 the remaining Could requirements have conditional checks, and `06_verif_plan.md` lists methods per level.
 
 ### TASK-009 — Benchmark suite for architecture evaluation
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: REQ-FLEX-001, REQ-GOAL-001
+- Works on: REQ-FLEX-001, REQ-GOAL-001, REQ-PROTO-001, REQ-PROTO-002, REQ-PROTO-003, REQ-PROTO-004
 - Blocked by: G1
 Done when: `models/benchmarks/` lists each benchmark protocol (targets + non-targets) with its
 timing numbers at 60 MHz, ready for stage G3 EVALs.

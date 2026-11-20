@@ -287,7 +287,7 @@ Pass if the payload and pin timing match and the hardware and programming model 
 - Level: system
 - Verifies: SPEC-PROG-003
 - Run: test_non_target_benchmarks
-Run the WS2812, 1-Wire, and RC5 benchmarks at 60 MHz on the same RTL revision. Load each program through the documented host interface. Use the TASK-009 profiles as the source for stimulus and limits.
+Run the WS2812, 1-Wire, and RC5 benchmarks at 60 MHz on the same RTL revision. Load each program through the documented host interface. Use the [TASK-009 benchmark profiles](../models/benchmarks/README.md) as the source for stimulus and limits.
 Pass if independent fixtures check the two RGB values and latch interval, the 1-Wire presence and full ROM value, and the RC5 address, command, and toggle for both frames. All three benchmarks must meet their timing limits.
 
 ## Integration tests

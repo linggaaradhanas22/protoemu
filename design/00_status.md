@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (TASK-008 acceptance coverage complete)
+**Last updated:** 2026-11-20 (TASK-009 benchmark profiles complete)
 **Current stage:** G2 (Specification)
 
 ## Gates
@@ -36,7 +36,7 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-009: Define benchmark stimuli and timing limits at 60 MHz for comparing architectures.
+1. Lingga reviews the 13 G2 draft specs and associated test limits. Keep G3 closed until G2 is approved.
 2. TASK-004: Run local hardening and gate-level simulation on the unchanged template. This can proceed in parallel with G2.
 
 ## Open questions for Lingga
@@ -44,3 +44,4 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 - Review the TASK-006 protocol specs at G2, especially the UART baud list and error limits, the 100 kHz and 1 MHz SPI targets, and the 10 µs I2C stretch limit.
 - Review the proposed 1 s limit for each RP2350 program load and the plan to choose one new protocol after freezing the RTL for verification. The three named benchmarks do not count as that new protocol.
 - Review the proposed acceptance cases for concurrent UART reception with SPI and for SPI and I2C target roles (`TEST-ACC-008` and `TEST-ACC-009`). The Could items remain optional.
+- The benchmark profiles pin the WS2812B-2020 V1.0 timing, DS2401 standard-speed 1-Wire, and legacy 14-bit RC5. If G2 review changes any limits, update the profiles before comparing architectures.
