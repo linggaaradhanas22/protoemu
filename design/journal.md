@@ -79,3 +79,10 @@ Results: Specified load and start behavior, baseline toolchain outputs, three no
 AI vs human: Lingga asked to proceed with TASK-007. OpenCode drafted the contract and proposed the 1 s load limit and the benchmark list. No spec was marked agreed.
 Problems: Pin assignments, transfer format, and exact benchmark timings remain open. The benchmark profiles belong to TASK-009.
 Next: Draft the remaining acceptance tests and review coverage (TASK-008). Local template hardening (TASK-004) remains open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-008)
+Did: Added nine planned acceptance tests (`TEST-ACC-008` through `TEST-ACC-016`). Recorded conditional checks for all six Could requirements without registering them as G7 tests.
+Results: All 20 Must and 6 Should requirements now have a specification or acceptance test. The G2 checker found 0 errors and 0 warnings. Only the 13 draft specs remain on its open-point list. No design tests ran.
+AI vs human: Lingga asked to proceed with the next task. OpenCode proposed the acceptance scenarios. No requirement priority or spec approval changed.
+Problems: None in the trace check. The checker requires all registered acceptance tests to pass at G7, so the optional checks stay conditional until selected.
+Next: Prepare the benchmark profiles at 60 MHz (TASK-009). Local template hardening (TASK-004) remains open.

@@ -6,10 +6,10 @@ How each level of the V is checked. TEST items live in this file.
 
 | V-level (left) | Test level (right) | Test ID | Typical tools |
 |---|---|---|---|
-| REQ | acceptance | `TEST-ACC-NNN` | precheck result, review of docs, end-to-end demo, FPGA |
-| SPEC | system | `TEST-SYS-NNN` | cocotb on the full chip, protocol models, reference model |
-| ARCH / DEC | integration | `TEST-INT-NNN` | cocotb on groups of blocks, program-level tests |
-| BLK | unit | `TEST-UNIT-NNN` | cocotb on one block, SymbiYosys formal |
+| REQ | acceptance | `TEST-ACC-NNN` | Check the submission artifacts and demonstrate required behavior. Save review records, simulation results, or precheck reports. |
+| SPEC | system | `TEST-SYS-NNN` | Run the full chip with a host and independent protocol models. Record decoded data and timing. Use static timing reports and formal proofs where specified. |
+| ARCH / DEC | integration | `TEST-INT-NNN` | Use cocotb to check interactions between blocks during program load and execution. Compare observable behavior with the reference model. |
+| BLK | unit | `TEST-UNIT-NNN` | Use cocotb and SymbiYosys to check block behavior, boundary cases, and invariants. |
 
 ## Methods we plan to use
 - **Reference model comparison**: the chosen architecture's Python model and the RTL run the
@@ -24,8 +24,8 @@ How each level of the V is checked. TEST items live in this file.
 ## How to write a TEST
 - `- Level:` unit / integration / system / acceptance.
 - `- Verifies:` the SPEC, BLK, REQ, ARCH or DEC it checks.
-- `- Run:` the cocotb test function name(s) once written (the checker matches these with
-  `test/results.xml`).
+- `- Run:` the cocotb test function name(s) for simulation (the checker matches these with
+  `test/results.xml`). For a review or external tool, record the procedure and evidence in the item text.
 - Status: `planned` → `written` → `passing` / `failing`. Only set `passing` after running it.
 - Text: what is stimulated, what is checked, pass criterion.
 
@@ -99,6 +99,87 @@ Pass if anyone can retrieve all design files from the public repository under th
 - Verifies: REQ-RULE-010
 Check the organizer's submission confirmation for the complete entry.
 Pass if the recorded submission time meets the organizer's cutoff for January 18, 2027.
+
+### TEST-ACC-008 — Concurrent UART and SPI
+- Status: planned
+- Level: acceptance
+- Verifies: REQ-PROTO-004
+- Run: test_concurrent_uart_spi
+On one loaded configuration at 60 MHz, receive consecutive UART frames at 115200 baud while the chip runs two-byte mode-0 SPI exchanges at 1 MHz. Use independent UART and SPI fixtures on distinct pins. Place at least two complete SPI exchanges within the UART stream, each overlapping a UART data-bit transition.
+Pass if the UART receives the full byte sequence exactly once and in order, both SPI directions exchange the expected bytes, and the SPI timing and UART stimulus remain within their baseline limits. Do not pause a protocol or reload the chip to switch between them.
+
+### TEST-ACC-009 — Controller and target roles
+- Status: planned
+- Level: acceptance
+- Verifies: REQ-PROTO-005
+- Run: test_spi_i2c_target_roles
+Use the SPI and I2C baseline controller tests as evidence for the outgoing roles. In separate runs, use independent external controllers to exercise the chip as a target.
+- SPI: Exchange two distinct bytes in each direction under one chip-select assertion. Use modes 0 through 3 at 100 kHz and 1 MHz. Check that the chip releases MISO when it is not selected.
+- I2C: Use 100 and 400 kHz. Write and read multiple bytes at the chip's 7-bit address, including a repeated-START read. Check that the chip ACKs its address, ignores an unmatched address, and releases SDA after the controller NACKs the final read byte.
+
+Pass if the baseline controller tests pass and the target cases match the expected data, timing, and bus ownership. UART transmit and receive are already covered by their system tests and do not have separate controller and target roles.
+
+### TEST-ACC-010 — Submission repository contents
+- Status: planned
+- Level: acceptance
+- Verifies: REQ-DEL-001
+Check out the candidate submission commit. Resolve any versioned artifacts using the repository's documented retrieval steps.
+Pass if the checkout contains the RTL and test sources, and the repository supplies the final Tiny Tapeout GDS and passing precheck report. Verify that the report refers to the delivered GDS using the artifact hash or recorded build ID. Reuse the build and precheck evidence from `TEST-ACC-005` when it matches the candidate.
+
+### TEST-ACC-011 — Architecture and programming documentation
+- Status: planned
+- Level: acceptance
+- Verifies: REQ-DEL-002
+Compare the documentation with the release RTL and toolchain. Check the architecture overview, visible resources, instruction set or equivalent programming model, pin behavior, and loader interface.
+Pass if a reviewer can follow the documented steps to build, load, and run a baseline example with the expected result without undocumented commands or settings.
+
+### TEST-ACC-012 — Design and verification write-up
+- Status: planned
+- Level: acceptance
+- Verifies: REQ-DEL-003
+Review `WRITEUP.md` against the architecture decisions, verification plan, and reports. Check that it explains the design choices, how the checks were run, their results and limitations, and any new techniques or flows used.
+Pass if the write-up covers those topics and each claimed verification result points to evidence for the stated revision.
+
+### TEST-ACC-013 — AI use disclosure
+- Status: planned
+- Level: acceptance
+- Verifies: REQ-DEL-004
+Compare the AI use section in `WRITEUP.md` with the project journal. Ask Lingga to check the account of the work and decisions.
+Pass if the section identifies the AI tools used, describes what they produced or checked, and distinguishes AI work from human decisions and review.
+
+### TEST-ACC-014 — Final gate-level regression
+- Status: planned
+- Level: acceptance
+- Verifies: REQ-DEL-005
+Run `bash scripts/gl_sim.sh` with the final gate-level netlist from the submitted hardening run. Exercise host load and reload and the UART, SPI, and I2C baseline functional cases. Run the reset simulation without the formal proof. Use the same external fixtures and pass criteria as for the corresponding RTL simulations.
+Pass if every required case runs and passes on the final netlist, with no skipped required case. Save the netlist identifier, command, log, and results. This check does not replace the routed static timing review in `TEST-SYS-001`.
+
+### TEST-ACC-015 — Traceability audit
+- Status: planned
+- Level: acceptance
+- Verifies: REQ-GOAL-002
+Regenerate `design/trace.md` for the candidate submission. Compare the RTL files and runnable tests with the `BLK` and `TEST` records. Review the traceability explanation in `WRITEUP.md`.
+Pass if every RTL block and each project test has a valid path to an agreed requirement, the checker finds no errors or suspect items, and the write-up shows a real trace from requirement to result.
+
+### TEST-ACC-016 — RTL freeze date
+- Status: planned
+- Level: acceptance
+- Verifies: REQ-GOAL-005
+Check the dated freeze record for the final RTL revision and compare that revision's RTL with the submitted RTL. Use the freeze record date, not the date of an earlier test snapshot used for `SPEC-PROG-002`.
+Pass if Lingga recorded the final RTL freeze no later than January 10, 2027, and the submission uses that RTL unchanged.
+
+## Conditional acceptance checks for Could items
+
+These checks apply only to features selected for submission. The G7 checker requires every registered acceptance test to pass, so add a numbered test when Lingga selects a feature and approves its scope. A deferred feature is not verified.
+
+| Requirement | Acceptance check if selected |
+|---|---|
+| `REQ-PROTO-006` | Complete the agreed low-speed USB transaction with an independent peer. Match the expected packets and timing. Document which parts of line coding, CRC, and clock recovery run on-chip. |
+| `REQ-PROTO-007` | Exchange the agreed 10BASE-T test frames with a reference peer through the documented Pmod. Check payload, frame integrity, and timing. |
+| `REQ-PROTO-008` | Run the agreed transaction for each selected protocol from JTAG, SWD, PS/2, and CAN. Check both decoded data and pin timing against an independent peer or monitor. Record any options not selected. |
+| `REQ-DEL-006` | Open the submitted demo video and check that it shows what runs on the chip or in simulation and labels the setup correctly. |
+| `REQ-GOAL-003` | Build the release design for the selected FPGA and run the documented demo with real peripherals. Check expected input and output on the board. |
+| `REQ-GOAL-004` | Use the documented host interface to inspect named state and issue one step in a known program. Check that the step advances the documented unit of execution and that the chip is paused again afterward. |
 
 ## System tests
 

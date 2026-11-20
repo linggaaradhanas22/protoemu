@@ -75,12 +75,12 @@ Done when: SPECs say how "unplanned protocol" support is judged (benchmark list)
 toolchain must provide, and how programs are loaded/reloaded; each has a planned TEST.
 
 ### TASK-008 — Acceptance tests and verification plan
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: REQ-DEL-001, REQ-DEL-002, REQ-DEL-003, REQ-DEL-004, REQ-DEL-005
+- Works on: REQ-PROTO-004, REQ-PROTO-005, REQ-DEL-001, REQ-DEL-002, REQ-DEL-003, REQ-DEL-004, REQ-DEL-005, REQ-GOAL-002, REQ-GOAL-005
 - Blocked by: G1
-Done when: every agreed REQ without a SPEC has an acceptance TEST, and `06_verif_plan.md`
-lists methods per level.
+Done when: each agreed Must or Should requirement without a SPEC has an acceptance TEST,
+the remaining Could requirements have conditional checks, and `06_verif_plan.md` lists methods per level.
 
 ### TASK-009 — Benchmark suite for architecture evaluation
 - Status: todo
