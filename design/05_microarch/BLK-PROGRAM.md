@@ -6,6 +6,12 @@
 
 Hold one program image for both execution contexts. Keep uncommitted and uninitialized contents outside the fetch path.
 
+## Block diagram
+
+![The loader writes words through a write port into the 128 × 24-bit array; a fetch check gates a read mux into a registered fetch response for the core.](diagrams/blk-program_v1.svg)
+
+[Editable draw.io source](diagrams/blk-program_v1.drawio). Solid arrows carry data, dashed arrows control and status; blue blocks are clocked at 60 MHz, grey blocks are combinational, white blocks are neighbours.
+
 ## Interface
 
 | Signal group | Dir | Width | Meaning |

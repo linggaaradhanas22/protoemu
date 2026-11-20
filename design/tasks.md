@@ -369,8 +369,22 @@ Done when: run the EVAL-017 plan: model software polling, a timed wait and a per
 Done when: Lingga approves `wait_to` (C2) or keeps host `STOP` as the only recovery. After approval, apply CHG-013 to the ISA draft, BLK-CORE, BLK-CAPTURE and the tests.
 
 ### TASK-049 — Prepare the G4 block review
-- Status: todo
+- Status: done
 - Owner: agent
 - Works on: BLK-CORE, BLK-CAPTURE, BLK-DRIVE, BLK-HOST, BLK-PADS, BLK-PROGRAM, BLK-TIMER
 - Blocked by: TASK-048
 Done when: for each block, check that its record is consistent after CHG-005 to CHG-013, lists its interface, behavior and open items, and has at least one unit TEST that covers it. Produce a short review sheet per block for Lingga (g4-review step 2). Change no agreed record.
+
+### TASK-050 — Review and agree the seven blocks
+- Status: todo
+- Owner: Lingga
+- Works on: BLK-CORE, BLK-CAPTURE, BLK-DRIVE, BLK-HOST, BLK-PADS, BLK-PROGRAM, BLK-TIMER
+- Blocked by: TASK-049
+Done when: Lingga has read the [block review sheets](05_microarch/g4-block-review.md) and agreed each block or recorded what to change. When all seven are agreed, run the G4 gate check and ask Lingga to pass G4.
+
+### TASK-051 — Full-core timing probe
+- Status: todo
+- Owner: agent
+- Works on: BLK-CORE, BLK-PROGRAM, BLK-DRIVE, BLK-CAPTURE
+- Blocked by: TASK-049
+Done when: synthesize and place a probe of the core with the saved-request path, the real register file and the timed-I/O interfaces, and report setup, hold and area against 60 MHz (g4-review step 3). Tracked separately from G4 agreement.

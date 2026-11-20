@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (guarded timed wait approved and applied, CHG-013)
+**Last updated:** 2026-11-20 (G4 block review sheets and block diagrams ready)
 **Current stage:** G4 (Micro-architecture)
 
 ## Gates
@@ -13,7 +13,7 @@ every session. Only Lingga marks a gate ✅.
 | G1 | Requirements agreed | ✅ Approved by Lingga | `g1-req` | `check_trace.py --gate G1` |
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
 | G3 | Architecture decided | ✅ Approved by Lingga; ARCH-B selected in DEC-001 | `g3-arch` | `--gate G3` |
-| G4 | Micro-architecture agreed | 🔄 ISA corner cases and payload/loader settled (CHG-007 to CHG-011); block approvals pending | `g4-uarch` | `--gate G4` |
+| G4 | Micro-architecture agreed | 🔄 Block review sheets and diagrams ready; only the seven block agreements remain (TASK-050) | `g4-uarch` | `--gate G4` |
 | G5 | RTL + unit tests | ⏳ | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
 | G7 | Sign-off: precheck + write-up | ⏳ | `g7-submit` | `--gate G7` |
@@ -36,12 +36,14 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-049: Prepare the G4 block review sheets (g4-review step 2).
+1. TASK-050 (Lingga): Review the [block review sheets](05_microarch/g4-block-review.md) and agree each block. G4 then only needs the gate check.
+2. TASK-051: Full-core timing probe (g4-review step 3, tracked separately from G4).
 2. Then G4 block review: each block with its unit test (g4-review step 2), and the full-core timing check (step 3).
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
+- **Agree the seven blocks?** The [G4 block review sheets](05_microarch/g4-block-review.md) recommend agreeing all seven; each has a unit test and a diagram. Open items are listed per block as "before RTL" or "tracked separately"; none blocks agreement in the sheets' assessment.
 - Lingga approved [CHG-012](changes/CHG-012-shift-lsb.md) (LSB-first `shift_pin`). Its area is not measured.
 - Lingga approved the guarded timed wait [CHG-013](changes/CHG-013-timed-wait.md) after the unguarded version failed in the model (EVAL-017 corrected). It costs 5,479 µm² in the capture slots; the core-side adder operand is not measured.
 - Lingga approved [CHG-010](changes/CHG-010-payload-fifo.md) (no pass-through, depth 8) and the 1 MHz loader with four-word transfers ([CHG-011](changes/CHG-011-loader-rate.md), [DEC-005](04_decisions/DEC-005-loader-rate.md) replacing DEC-002). 1 MHz SPI must be checked on the board; the fallback is 500 kHz. `READN`/`WRITEN` framing area is not measured.

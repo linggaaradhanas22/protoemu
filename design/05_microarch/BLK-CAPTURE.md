@@ -6,13 +6,19 @@
 
 Capture synchronized input levels or edges independently of the issue path. Retain a result until its owning context consumes it.
 
+## Block diagram
+
+![Pin select and match logic feed two capture slots; a deadline compare and timeout reload handle guards and expiry; the core arms and consumes; the host flushes.](diagrams/blk-capture_v1.svg)
+
+[Editable draw.io source](diagrams/blk-capture_v1.drawio). Solid arrows carry data, dashed arrows control and status; blue blocks are clocked at 60 MHz, grey blocks are combinational, white blocks are neighbours.
+
 ## Interface
 
 | Signal group | Dir | Width | Meaning |
 |---|---|---|---|
 | `cycle`, `pin_sample` | In | `W`, `P` | Cycle timebase and second-stage pad samples |
-| `capture_req` | In | `valid`, 1-bit context, pin index, mode, `W`-bit deadline | Arm a timed level sample or selected edge/level condition, or request consume |
-| `capture_status` | Out | `ready`, `reject`, 2 result-ready bits; result bit and `W`-bit timestamp for selected owner | No result is returned from the other context's slot |
+| `capture_req` | In | `valid`, 1-bit context, pin index, mode, `W`-bit deadline, guard flag, 16-bit timeout `Rt` | Arm a timed level sample, a selected edge or a (guarded, optionally timed) level condition, or request consume |
+| `capture_status` | Out | `ready`, `reject`, 2 result-ready bits; result bit, `expired` flag and `W`-bit timestamp for selected owner | No result is returned from the other context's slot |
 | `flush` | In | 1 | Clear slots and suppress captures on that edge |
 
 Draft contract: one slot per context (`EMPTY`, `ARMED`, `RESULT`). Arm only from `EMPTY`; a second arm to an occupied slot is a programming fault, not an overwrite. Consume only from `RESULT`; a premature consume waits without issuing repeatedly. Neither context can modify or consume the other's slot. The pad-to-owner restriction applies to output writes, not reads.
@@ -23,11 +29,11 @@ At consume, return the original observation timestamp even if the result waited 
 
 A guarded level arm may be timed ([CHG-013](../changes/CHG-013-timed-wait.md)). The slot keeps the timeout (`Rt`). When the guard opens, it reloads its deadline register with target + `Rt × 64`. It ends the wait as expired on that edge unless the level matches on the same edge, in which case the match wins. Reset and flush clear the timed state.
 
-For `edge_save` and `edge_delta`, arm for falling, rising or either polarity. Neither instruction consumes an edge observed on the arm edge. Return the same observation timestamp and sampled level for both. The core computes intervals. The capture slot does not add a timeout, buffer extra edges, or allow one context to read the other slot.
+For `edge_save` and `edge_delta`, arm for falling, rising or either polarity. Neither instruction consumes an edge observed on the arm edge. Return the same observation timestamp and sampled level for both. The core computes intervals. Edge arms have no timeout. The capture slot does not buffer extra edges or allow one context to read the other slot.
 
 ## Implementation options and budget
 
-Evaluate fixed mailboxes against a tagged shared FIFO. Fixed ownership prevents a slow consumer from using both slots. Measure observation-to-consume latency and check whether rearm gaps lose UART/RC5 edges at the required rates. Planning allowance: 0.040 mm² of cell area; not measured for this block.
+Use fixed per-context slots ([EVAL-003](../evals/EVAL-003-g4-timed-io.md)); fixed ownership prevents a slow consumer from using both slots. The UART and RC5 replays (EVAL-010, EVAL-016) lost no edges at the benchmark rates. The [EVAL-017 probe](../evals/EVAL-017-wait-timeout.md) maps two slots to 9,395 µm² without timeouts and 14,874 µm² with them. Planning allowance: 0.040 mm² of cell area; not measured for this block.
 
 ## Unit-test plan and RTL
 

@@ -6,12 +6,18 @@
 
 Provide a common cycle number for scheduling output changes and timestamping input observations. The counter does not stop when execution or either context stalls.
 
+## Block diagram
+
+![24-bit cycle register with an incrementer, feeding issue time to the core, deadline compare to the drive queue and observation time to capture.](diagrams/blk-timer_v1.svg)
+
+[Editable draw.io source](diagrams/blk-timer_v1.drawio). Solid arrows carry data, dashed arrows control and status; blue blocks are clocked at 60 MHz, grey blocks are combinational, white blocks are neighbours.
+
 ## Interface
 
 | Signal | Dir | Width | Meaning |
 |---|---|---:|---|
 | `clk`, `rst_n` | In | 1 each | Single 60 MHz domain, synchronous active-low reset |
-| `cycle` | Out | 24 proposed | Current cycle for issue, output deadlines and capture timestamps |
+| `cycle` | Out | 24 | Current cycle for issue, output deadlines and capture timestamps ([DEC-003](../04_decisions/DEC-003-isa-timestamps.md)) |
 
 All consumers use the value of `cycle` immediately **before** the sampling edge. It equals zero before the first edge after reset release and increments on that edge. Start, halt and fault do not rewind time. An event with `deadline == cycle` acts on that edge.
 
@@ -25,7 +31,7 @@ Time guards (`fence`, guarded `wait_save`) use the same `delta`, but differently
 
 ## Implementation options and budget
 
-Compare 24 bits with 16 bits or a split coarse/fine counter. At 60 MHz the proposed 24-bit half range is about 140 ms; 16 bits gives about 546 µs, less than a 1-Wire reset followed by recovery. Check the carry path and fanout in the next timing probe. Planning allowance: 0.025 mm² of cell area; not measured for this block.
+Use 24 bits: timestamps (DEC-003), guards (CHG-007), elapsed time and timed waits (CHG-013) all assume it. The half range is about 140 ms at 60 MHz; 16 bits would give only 546 µs, less than a 1-Wire reset and recovery. A split coarse/fine counter is an RTL option only if the carry path or fanout fails timing. Planning allowance: 0.025 mm² of cell area; not measured for this block.
 
 ## Unit-test plan and RTL
 

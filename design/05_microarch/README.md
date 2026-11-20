@@ -8,7 +8,7 @@ G4 draft for review. [DEC-001](../04_decisions/DEC-001-architecture.md) chooses 
 
 ![ARCH-B overview: solid data arrows and dashed control arrows connect the loader, program store, shared core, and timed I/O.](diagrams/arch-b_v2.svg)
 
-The arrows show logical paths, not physical pin assignments.
+The arrows show logical paths, not physical pin assignments. Each block record has its own internal diagram in the same style; the [G4 block review sheets](g4-block-review.md) collect them.
 
 ```text
 RP2350 <-> pad adapter <-> loader -> shared program store <-> shared issue core

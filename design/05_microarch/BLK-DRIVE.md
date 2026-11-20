@@ -6,6 +6,12 @@
 
 Hold accepted masked pad updates until their deadlines. Retire updates without using a core issue slot or waiting for a context to become runnable.
 
+## Block diagram
+
+![Admission check feeds four deadline slots; a due compare and merge send pad values and output enables to the pads; the host supplies ownership and flush.](diagrams/blk-drive_v1.svg)
+
+[Editable draw.io source](diagrams/blk-drive_v1.drawio). Solid arrows carry data, dashed arrows control and status; blue blocks are clocked at 60 MHz, grey blocks are combinational, white blocks are neighbours.
+
 ## Interface
 
 | Signal group | Dir | Width | Meaning |
@@ -27,7 +33,7 @@ One accepted request occupies one entry, regardless of how many pads its mask se
 
 ## Implementation options and budget
 
-Evaluate an unordered due scan against ordered insertion. A plain FIFO could hide an earlier event behind a later one; ordering alone would not solve simultaneous retirement. Test scan, merge and OE timing together. Planning allowance: 0.075 mm² of cell area; not measured for this block.
+Use unordered slots with a due scan, as replayed in [EVAL-003](../evals/EVAL-003-g4-timed-io.md); a plain FIFO could hide an earlier event behind a later one, and ordering alone would not solve simultaneous retirement. Test scan, merge and OE timing together: the [EVAL-008 slice](../evals/EVAL-008-eight-pad-timing.md) met placed setup but missed fast hold. Planning allowance: 0.075 mm² of cell area; not measured for this block.
 
 ## Unit-test plan and RTL
 

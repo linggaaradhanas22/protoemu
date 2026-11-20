@@ -6,6 +6,12 @@
 
 Synchronize external inputs and drive protocol pads from registers. Map logical protocol pins and host signals onto the Tiny Tapeout ports. This block includes the wrapper boundary; it does not interpret host commands.
 
+## Block diagram
+
+![Protocol and host input synchronizers, pad output registers with an open-drain and safe override, and host pin registers between the blocks and the Tiny Tapeout pins.](diagrams/blk-pads_v1.svg)
+
+[Editable draw.io source](diagrams/blk-pads_v1.drawio). Solid arrows carry data, dashed arrows control and status; blue blocks are clocked at 60 MHz, grey blocks are combinational, white blocks are neighbours.
+
 ## Interface
 
 | Signal group | Dir | Width | Meaning |
