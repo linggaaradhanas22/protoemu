@@ -1,0 +1,342 @@
+{
+ "rc5": [
+  {
+   "case": "rc5-50673",
+   "wrap": false,
+   "option": "one-edge",
+   "pass": true,
+   "errors": [],
+   "min_margin": [
+    25336,
+    286684,
+    "RC5 sample window"
+   ],
+   "sample_slack": 25308,
+   "issued": [
+    946
+   ],
+   "host_output": [
+    12661,
+    16012
+   ]
+  },
+  {
+   "case": "rc5-50673",
+   "wrap": true,
+   "option": "one-edge",
+   "pass": true,
+   "errors": [],
+   "min_margin": [
+    25336,
+    286684,
+    "RC5 sample window"
+   ],
+   "sample_slack": 25308,
+   "issued": [
+    946
+   ],
+   "host_output": [
+    12661,
+    16012
+   ]
+  },
+  {
+   "case": "rc5-53340",
+   "wrap": false,
+   "option": "one-edge",
+   "pass": true,
+   "errors": [],
+   "min_margin": [
+    26669,
+    293352,
+    "RC5 sample window"
+   ],
+   "sample_slack": 26642,
+   "issued": [
+    946
+   ],
+   "host_output": [
+    12661,
+    16012
+   ]
+  },
+  {
+   "case": "rc5-53340",
+   "wrap": true,
+   "option": "one-edge",
+   "pass": true,
+   "errors": [],
+   "min_margin": [
+    26669,
+    293352,
+    "RC5 sample window"
+   ],
+   "sample_slack": 26642,
+   "issued": [
+    946
+   ],
+   "host_output": [
+    12661,
+    16012
+   ]
+  },
+  {
+   "case": "rc5-56007",
+   "wrap": false,
+   "option": "one-edge",
+   "pass": true,
+   "errors": [],
+   "min_margin": [
+    28003,
+    300019,
+    "RC5 sample window"
+   ],
+   "sample_slack": 27975,
+   "issued": [
+    946
+   ],
+   "host_output": [
+    12661,
+    16012
+   ]
+  },
+  {
+   "case": "rc5-56007",
+   "wrap": true,
+   "option": "one-edge",
+   "pass": true,
+   "errors": [],
+   "min_margin": [
+    28003,
+    300019,
+    "RC5 sample window"
+   ],
+   "sample_slack": 27975,
+   "issued": [
+    946
+   ],
+   "host_output": [
+    12661,
+    16012
+   ]
+  },
+  {
+   "case": "rc5-50673",
+   "wrap": false,
+   "option": "held",
+   "pass": true,
+   "errors": [],
+   "min_margin": [
+    25336,
+    286684,
+    "RC5 sample window"
+   ],
+   "sample_slack": 25307,
+   "issued": [
+    948
+   ],
+   "host_output": [
+    12661,
+    16012
+   ]
+  },
+  {
+   "case": "rc5-50673",
+   "wrap": true,
+   "option": "held",
+   "pass": true,
+   "errors": [],
+   "min_margin": [
+    25336,
+    286684,
+    "RC5 sample window"
+   ],
+   "sample_slack": 25307,
+   "issued": [
+    948
+   ],
+   "host_output": [
+    12661,
+    16012
+   ]
+  },
+  {
+   "case": "rc5-53340",
+   "wrap": false,
+   "option": "held",
+   "pass": true,
+   "errors": [],
+   "min_margin": [
+    26669,
+    293352,
+    "RC5 sample window"
+   ],
+   "sample_slack": 26641,
+   "issued": [
+    948
+   ],
+   "host_output": [
+    12661,
+    16012
+   ]
+  },
+  {
+   "case": "rc5-53340",
+   "wrap": true,
+   "option": "held",
+   "pass": true,
+   "errors": [],
+   "min_margin": [
+    26669,
+    293352,
+    "RC5 sample window"
+   ],
+   "sample_slack": 26641,
+   "issued": [
+    948
+   ],
+   "host_output": [
+    12661,
+    16012
+   ]
+  },
+  {
+   "case": "rc5-56007",
+   "wrap": false,
+   "option": "held",
+   "pass": true,
+   "errors": [],
+   "min_margin": [
+    28003,
+    300019,
+    "RC5 sample window"
+   ],
+   "sample_slack": 27974,
+   "issued": [
+    948
+   ],
+   "host_output": [
+    12661,
+    16012
+   ]
+  },
+  {
+   "case": "rc5-56007",
+   "wrap": true,
+   "option": "held",
+   "pass": true,
+   "errors": [],
+   "min_margin": [
+    28003,
+    300019,
+    "RC5 sample window"
+   ],
+   "sample_slack": 27974,
+   "issued": [
+    948
+   ],
+   "host_output": [
+    12661,
+    16012
+   ]
+  }
+ ],
+ "contention": [
+  {
+   "gap": 30,
+   "option": "one-edge",
+   "pass": true,
+   "end": 6017,
+   "deltas": 199,
+   "issued": [
+    1200,
+    2062
+   ],
+   "max_issue_wait": [
+    3,
+    3
+   ],
+   "drive_slack": 14
+  },
+  {
+   "gap": 30,
+   "option": "held",
+   "pass": true,
+   "end": 6018,
+   "deltas": 199,
+   "issued": [
+    1399,
+    2062
+   ],
+   "max_issue_wait": [
+    3,
+    3
+   ],
+   "drive_slack": 14
+  },
+  {
+   "gap": 40,
+   "option": "one-edge",
+   "pass": true,
+   "end": 8007,
+   "deltas": 199,
+   "issued": [
+    1200,
+    2755
+   ],
+   "max_issue_wait": [
+    2,
+    2
+   ],
+   "drive_slack": 14
+  },
+  {
+   "gap": 40,
+   "option": "held",
+   "pass": true,
+   "end": 8008,
+   "deltas": 199,
+   "issued": [
+    1399,
+    2755
+   ],
+   "max_issue_wait": [
+    2,
+    2
+   ],
+   "drive_slack": 14
+  },
+  {
+   "gap": 60,
+   "option": "one-edge",
+   "pass": true,
+   "end": 12007,
+   "deltas": 199,
+   "issued": [
+    1200,
+    4130
+   ],
+   "max_issue_wait": [
+    2,
+    3
+   ],
+   "drive_slack": 14
+  },
+  {
+   "gap": 60,
+   "option": "held",
+   "pass": true,
+   "end": 12007,
+   "deltas": 199,
+   "issued": [
+    1399,
+    4130
+   ],
+   "max_issue_wait": [
+    3,
+    3
+   ],
+   "drive_slack": 14
+  }
+ ]
+}

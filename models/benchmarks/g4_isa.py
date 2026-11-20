@@ -72,7 +72,7 @@ def decode(image, pc, *, table=DECODE):
     return op, unpack(word >> 5, widths)
 
 
-def execute(code, pc, pins, open_drain, epoch, *, table=DECODE):
+def execute(code, pc, pins, open_drain, epoch, *, table=DECODE, delta_writeback=False):
     regs = [0] * 8
     stack = []
     stamp = None
@@ -128,6 +128,9 @@ def execute(code, pc, pins, open_drain, epoch, *, table=DECODE):
                     raise ModelError("edge interval outside the future half range")
                 dest = args[2]
                 regs[dest], regs[dest + 1] = elapsed & 0xFFFF, elapsed >> 16
+                if delta_writeback:
+                    # EVAL-013 held-word option: the high word takes one more issue slot.
+                    yield Issue("writeback")
             stamp = observed
             regs[T] = regs[OFFSET_HI] = 0
         elif op in ("addoff", "addoff_r"):
@@ -243,6 +246,7 @@ class ISAProbe(ModularGuards, TimingProbe):
     """Draft-ISA probe. Fence and wait_save guards use the CHG-007 rule."""
 
     decode_table = DECODE
+    delta_writeback = False
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -254,7 +258,8 @@ class ISAProbe(ModularGuards, TimingProbe):
             raise ValueError("the ISA probe only models ARCH-B")
         image.validate(arch)
         code, = image.programs
-        programs = [execute(code, pc, tuple(bus.idle), bus.open_drain, epoch, table=cls.decode_table)
+        programs = [execute(code, pc, tuple(bus.idle), bus.open_drain, epoch, table=cls.decode_table,
+                            delta_writeback=cls.delta_writeback)
                     for pc in image.entries]
         writable = {name for name in bus.idle if name not in {"uart_rx", "miso"} and not name.startswith("unused")}
         owners = ((), writable) if len(programs) == 2 else (writable,)

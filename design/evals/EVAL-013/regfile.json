@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "held-word": {
+      "cells": 1526,
+      "flops": 267,
+      "area_um2": 25098.7,
+      "core_fraction": 0.02077,
+      "delta_vs_held_um2": 0.0
+    },
+    "narrow-port": {
+      "cells": 1497,
+      "flops": 256,
+      "area_um2": 24437.4,
+      "core_fraction": 0.02023,
+      "delta_vs_held_um2": -661.3
+    },
+    "second-port": {
+      "cells": 1876,
+      "flops": 256,
+      "area_um2": 27647.2,
+      "core_fraction": 0.02288,
+      "delta_vs_held_um2": 2548.5
+    }
+  },
+  "core_um2": 1208172.7,
+  "corner": "typ_1p20V_25C",
+  "liberty_sha256": "34163f3e7de9f854afac57332ba06f1739b78e7ac35660a8a5ddd39c570124ad",
+  "source_sha256": "b8af91773eae0d7b158a760a9a2d70475e1fac81580319f49bd2d94b398f8243",
+  "yosys": "Yosys 0.71+52 (git sha1 e4a169b8f, Release, Clang /usr/bin/clang++ 21.1.8)"
+}

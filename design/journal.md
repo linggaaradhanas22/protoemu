@@ -312,3 +312,10 @@ Did: Recorded approval of CHG-008. Added the fault, stop and halt ordering and t
 Results: Traceability reported no errors or warnings. Block interfaces and SPECs did not change apart from the run state and fault record in `run_status`. No model code, production RTL or registered verification tests changed.
 AI vs human: Lingga approved the ordering and both proposed choices: `DONE` holds the pads, and `DONE`/`FAULTED` keep payload FIFOs until `STOP`. Claude applied the change and reviewed the linked records. No block or gate was approved.
 Next: TASK-041, settle the two-word `edge_delta` writeback.
+
+## 2026-11-20: Lingga + Claude (TASK-041)
+Did: Built a two-context register-file probe (`models/physical/regfile_probe.v`) with three ways to write the `edge_delta` high word, plus a random testbench and an IHP mapping runner. Added an optional extra writeback slot to the ISA model and an issue-cost study (`g4_writeback.py`) with 4 checks. Wrote EVAL-013 and applied CHG-009 (small) to BLK-CORE and TEST-UNIT-001. Added TASK-042 and TASK-043.
+Results: All variants matched the reference over 4,000 random instructions; a seeded address bug gave 7,931 errors. Mapped areas: held word 25,098.7 µm², narrow port 24,437.4 µm², full second port 27,647.2 µm². The held word cost one extra issue per `edge_delta` and 1 cycle of RC5 sample slack, with no change to the other context's drive slack. All 68 Python model checks passed. EVAL-003 through EVAL-012 regenerate byte-identical results. Traceability reported no errors or warnings. No production RTL changed and no registered verification tests ran.
+AI vs human: Lingga asked Claude to do TASK-041. Claude chose the options, built the probes and applied CHG-009 as a small change under AGENTS.md §7, without asking first; Lingga has not reviewed it yet. No block or gate was approved.
+Problems: The generic Yosys cell count ranked the options differently from the mapped IHP area; the EVAL uses the mapped result. Register-file timing is not measured.
+Next: TASK-042, payload FIFO depth and same-edge host/core access. Lingga to review CHG-009.

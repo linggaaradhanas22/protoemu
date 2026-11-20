@@ -313,8 +313,22 @@ Done when: propose what happens on the edge where one context faults, halts or i
 Done when: Lingga approves the proposed ordering and run states for the draft ISA, including the two listed choices, or records what to revise. After approval, apply CHG-008 to the block and test records.
 
 ### TASK-041 — Settle the two-word elapsed-time writeback
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: BLK-CORE, TEST-UNIT-001
+- Works on: BLK-CORE, TEST-UNIT-001, EVAL-013, CHG-009
 - Blocked by: TASK-040
 Done when: compare register-file write options for `edge_delta` (one write port over two retirement cycles against two write ports in one) by issue cost in the RC5 and overlap replays and by synthesized area. Propose one. Keep opcodes and production RTL unchanged.
+
+### TASK-042 — Settle payload FIFO depth and same-edge host/core access
+- Status: todo
+- Owner: agent
+- Works on: BLK-HOST, BLK-CORE, TEST-UNIT-007
+- Blocked by: TASK-041
+Done when: define what happens when the host and a context access the same payload FIFO on one edge, including full and empty boundaries. Size the FIFO depth from the baseline and non-target replays and from synthesized area. Propose one rule and depth. Keep opcodes and production RTL unchanged.
+
+### TASK-043 — Replay all baseline and non-target programs on the draft ISA
+- Status: todo
+- Owner: agent
+- Works on: SPEC-PROG-001, SPEC-PROG-003, BLK-CORE
+- Blocked by: TASK-042
+Done when: assemble UART TX/RX, every baseline SPI and I2C case and the non-target examples with only draft-ISA operations and host payload. Replay them under the CHG-007 and CHG-008 rules and report pass/fail, words and timing margins.

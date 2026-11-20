@@ -331,6 +331,7 @@ Run `host_get` on empty ingress and `host_put` on full egress. Check that the ot
 Check `edge_delta` across wrap and with an interval greater than 65,535 cycles. Check both destination words, timestamp replacement and offset clear. Inject an invalid saved time or destination and confirm no arm request. Reject an out-of-range interval without a partial register write. Confirm that one context cannot replace the other's timestamp.
 Arm a `fence` with `delta` = 0, 1, `2^23−1`, `2^23` and `2^24−1` (CHG-007). Pass if only 1 and `2^23−1` wait, each retires on `cycle == target`, and no case faults. Repeat across counter wrap. Stall the context after its guard opens and check it still retires. Check that both contexts classify their own targets.
 Fault an operation on edge F with the other context runnable (CHG-008). Pass if the faulting operation does not retire, nothing issues on F or later, the fault record names the context, PC and cause, and `halt` in one context does not stop the other or cancel its accepted updates.
+On a successful `edge_delta`, check that `Rd`, `Rd+1` and the cleared offset pair all change on the retirement edge and no other register changes, for each `Rd` from R1 to R4 (CHG-009).
 
 ### TEST-UNIT-002 — Registered fetch and image bounds
 - Status: planned
