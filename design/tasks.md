@@ -89,3 +89,25 @@ the remaining Could requirements have conditional checks, and `06_verif_plan.md`
 - Blocked by: G1
 Done when: `models/benchmarks/` lists each benchmark protocol (targets + non-targets) with its
 timing numbers at 60 MHz, ready for stage G3 EVALs.
+
+## Stage G3: Architecture
+
+### TASK-010 — Draft architecture candidates and comparison plans
+- Status: done
+- Owner: agent
+- Works on: ARCH-A, ARCH-B, ARCH-C, EVAL-001, EVAL-002
+Done when: three candidates cover all benchmark profiles and the evaluation plans define comparable evidence for protocol fit, physical risk and toolchain effort.
+
+### TASK-011 — Build and run the shared protocol benchmark models
+- Status: todo
+- Owner: agent
+- Works on: EVAL-001
+- Blocked by: TASK-010
+Done when: each candidate has reproducible per-case results, starting with SPI, I2C stretching and concurrency.
+
+### TASK-012 — Compare mapped area, timing risk and image tooling
+- Status: todo
+- Owner: agent
+- Works on: EVAL-002
+- Blocked by: TASK-011
+Done when: mapped size and timing evidence, input assumptions and image build steps are recorded for each viable design point.

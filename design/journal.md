@@ -107,3 +107,9 @@ Results: `GATE G2: MET`. All 13 specs are agreed, and all 26 Must and Should req
 AI vs human: Lingga approved closing G2 and requested a push. OpenCode verified the gate and updated the project records.
 Problems: None in the trace check.
 Next: Draft architecture candidates and plan their benchmark evaluations. Template hardening (TASK-004) remains open.
+
+## 2026-11-20: OpenCode (TASK-010)
+Did: Drafted ARCH-A (independent engines), ARCH-B (one core with timed I/O), and ARCH-C (sequencer with configurable lanes). Planned the common pin-level protocol comparison (EVAL-001) and the area, timing and toolchain comparison (EVAL-002).
+Results: Three candidates and two planned evaluations. The trace check found no errors or warnings. No candidate benchmark ran, and G3 remains open.
+AI vs human: Lingga requested G3 work in parallel with the template smoke test. OpenCode drafted the options and methods; Lingga has not selected an architecture.
+Next: Build the shared benchmark fixtures and candidate cycle models in TASK-011.
