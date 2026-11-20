@@ -10,12 +10,14 @@ Hold one program image for both execution contexts. Keep uncommitted and uniniti
 
 | Signal group | Dir | Width | Meaning |
 |---|---|---|---|
-| `prog_write` | In | `valid`, 7-bit index, 24-bit word | One complete word from the halted loader |
+| `prog_write` | In | `valid`, 7-bit index, 24-bit word | One complete word, assembled little-endian from the host `DATA` frame |
 | `image_state` | In | `load_active`, `image_valid`, `running`, 8-bit word count | Loader owns image visibility and excludes simultaneous load and run |
 | `fetch_req` | In | `valid`, 7-bit PC | One request from BLK-CORE |
 | `fetch_rsp` | Out | `valid`, `fault`, 24-bit instruction | Registered result; no instruction for an out-of-image request |
 
 Draft contract: 128 × 24-bit flop store, with registered read. A legal fetch sampled on edge `n` returns an instruction in the cycle following that edge, for execute on edge `n+1`; an out-of-image running fetch returns a fault instead. Fetch is disabled before a committed start. Reset clears response validity but not the storage array. The loader writes exactly the declared contiguous range before exposing it, so the previous contents of unwritten words are never executable. Reject writes outside halt/load; illegal overlap of read and write cannot expose partially updated data.
+
+Write tentative words as the halted loader receives them, with `image_valid` low. Keep them hidden even if a late CRC or length failure leaves tentative writes in the array. A fresh `BEGIN` and valid full `DATA` frame are required before a new `COMMIT`; no duplicate array or storage clear is needed. Fetch remains disabled until `START`.
 
 ## Implementation options and budget
 

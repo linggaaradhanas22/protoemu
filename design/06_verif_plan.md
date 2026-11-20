@@ -260,7 +260,7 @@ Pass if the controller waits for each delayed SCL rising edge, preserves the req
 - Level: system
 - Verifies: SPEC-HOST-001
 - Run: test_host_load_start_reload
-Drive the documented RP2350 loader transactions at a 60 MHz chip clock. For each baseline image, measure from its first load transfer to the successful load indication. Start the image and check for its expected result.
+Drive the documented RP2350 SPI0 transactions at a 60 MHz chip clock. For each baseline image, measure from its first load transfer to the complete-image reply after `COMMIT`. Confirm that `READY` alone is not a complete-image indication. Issue a separate `START` and check the expected result.
 In a separate trial, send only part of an image and stop before completion. Check that the host observes no successful load indication and that the image does not execute. Reset and load a full image.
 Repeat the full load and start after a cold restart that models deselection and reselection. Use two images with different pin behavior to check that the second run uses the new image.
 Pass if each full load reports success within 1 s, starts on request, and runs the expected image without relying on prior state.
@@ -298,13 +298,14 @@ Pass if independent fixtures check the two RGB values and latch interval, the 1-
 - Verifies: ARCH-B, DEC-001, BLK-CORE, BLK-DRIVE, BLK-CAPTURE, BLK-PADS, BLK-TIMER
 - Run: test_shared_issue_deadlines
 Replay concurrent UART RX and 1 MHz SPI, and 10 µs stretched Fast-mode I2C, with the G4 issue and pad-observation timing. Sweep relative start phase and repeat near timestamp wrap. Force queue-full, same-cycle due events, and simultaneous captures in directed cases. Pass if independent monitors match payload and pin timing, every accepted nonflushed update hits its deadline exactly once, and neither context loses its capture. Record peak queue occupancy, longest runnable-to-issue wait, and minimum slack from acceptance to deadline. In an intentional overcommit case require a reported fault and no late pad update.
+Use the BLK-PADS overlap pin map. Preload host payload, then run without host service during the transactions; check preserved result order for each context.
 
 ### TEST-INT-002 — Load, run and stop across the pad boundary
 - Status: planned
 - Level: integration
 - Verifies: ARCH-B, BLK-HOST, BLK-PROGRAM, BLK-PADS, BLK-CORE, BLK-DRIVE, BLK-CAPTURE
 - Run: test_load_run_stop_boundary
-Load a short program through the pad-facing loader, run it, then stop or deselect with an update due and a capture pending. Repeat with reset, a core fault and malformed or truncated reloads. Pass if partial images cannot fetch, the first accepted start fetches only committed words, and safe/flush wins on the specified stop edge. A subsequent shorter image must not execute residual words or complete old operations.
+Load a short program over the dedicated SPI pins, check the `READY`-gated reply, then start it. Stop with a pad update due on the edge after the validated `STOP` frame closes. Repeat around synchronized deselect, reset and core fault with a capture pending. Also try malformed and truncated reloads. Pass if partial images cannot fetch, accepted starts fetch only committed words, and safe/flush wins on each specified safe edge. A subsequent shorter image must not execute residual words or complete old operations.
 
 ## Unit tests
 
@@ -321,6 +322,7 @@ Stub the program and timed-I/O endpoints. Check issue slots with both contexts r
 - Verifies: BLK-PROGRAM
 - Run: test_program_store_visibility
 Write 1-word and 128-word images, read endpoints and reload a shorter image over a longer one. Present reads before commit and writes during run; perturb unwritten memory across resets. Pass if fetch latency is one registered slot, only committed in-range words become instructions, invalid running PCs return fault, and illegal writes cannot alter live code.
+Include a CRC failure after tentative words reached the array. Keep `image_valid` low for that trial; no fetch may return those words.
 
 ### TEST-UNIT-003 — Exact due cycles and queue backpressure
 - Status: planned
@@ -349,10 +351,11 @@ Start from reset, run a reduced-width instance through wrap, and exercise the sh
 - Verifies: BLK-PADS
 - Run: test_pad_sync_and_safe_drive
 Change inputs away from clock edges and check the two-flop path. Apply partial pin updates, open-drain low and release, and coincident reset or safe assertion. Pass if pad outputs change only on sampling edges, open drain never drives high, unmasked pins retain state, and reset or safe overrides any competing update. This logic test does not measure metastability or pad timing.
+Check dedicated host pin mapping and registered `MISO`/`READY`. Toggle host inputs without changing the protocol pad ownership or enables.
 
 ### TEST-UNIT-007 — Complete image before run
 - Status: planned
 - Level: unit
 - Verifies: BLK-HOST
 - Run: test_loader_commit_and_start
-Drive host frames with exact, truncated, overlong and malformed images; try invalid entry PCs and overlapping write allocations. Attempt start before and after commit, loading while running, and deselection or fault while work is active. Pass if writes are qualified, completion precedes start, only validated settings become active, and stop clears timed work, mailboxes and image validity as specified. Check a clean reload after every stop path.
+Drive valid, truncated, overlong and bad-CRC SPI frames; try invalid entry PCs and overlapping write allocations. Check little-endian word writes and `READY` for a separate reply with the first bit preloaded. Attempt start before and after commit, loading while running, and deselection or fault while work is active. Check per-context FIFO order, full and empty handling, and a clean reload after each stop path. Pass if only validated settings become active, completion precedes start, and stop clears timed work, payload and image validity as specified.

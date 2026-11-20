@@ -202,3 +202,9 @@ Did: Compared nibble and dedicated SPI transports, checked the ETR RP2350 pin ta
 Results: All 192 modeled loads and 25 Python checks passed. The full 128-word image took 13.628 ms over modeled SPI, versus 6.050 ms on the nominal nibble link and 27.100 ms with delayed polling. Both layouts leave eight bidirectional pads for protocol use. No firmware, RTL or board test ran.
 AI vs human: Lingga requested the next task. OpenCode produced the probe and recommends SPI. Lingga has not approved the transport or block interfaces.
 Next: TASK-023, ask Lingga to approve or revise DEC-002 and CHG-001. The gate stays open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-023)
+Did: Recorded Lingga's approval of DEC-002 and CHG-001. Updated the loader, pad adapter, program store and affected test plans. No blocks were approved.
+Results: EVAL-004 reproduced all 192 modeled loads and all 25 Python checks passed. Traceability was clean. No RTL or firmware changed, and no board or project verification tests ran.
+AI vs human: Lingga approved the SPI transport, pin map and proposed interface. OpenCode applied the change and rechecked the affected records.
+Next: TASK-024, draft timeout and recovery behavior. G4 remains open.

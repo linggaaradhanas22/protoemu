@@ -10,18 +10,34 @@ Accept an image and configuration from the RP2350 while halted. Publish completi
 
 | Signal group | Dir | Width | Meaning |
 |---|---|---|---|
-| `host_link`, `selected` | In/Out, In | Transport TBD, 1 | Physical link via BLK-PADS; synchronized selection |
+| `host_link` | In/Out | 3 in, 2 out | Synchronized `host_cs_n`, `host_sck`, `host_mosi`; registered `host_miso`, `host_ready` |
+| `selected` | In | 1 | Synchronized `ena` from BLK-PADS |
 | `prog_write`, `image_state` | Out | See BLK-PROGRAM | Write complete words; own committed word count and validity |
 | `start_cfg`, `run_ctl`, `run_status` | Out, Out, In | See BLK-CORE | Start both enabled contexts atomically; latch stop/fault status |
 | `write_owner`, `pad_mode` | Out | Two `P`-bit masks, `P` bits | Committed output ownership and electrical modes, stable during a run |
-| `payload` | In/Out | See BLK-CORE | Buffered ingress and egress; framing/depth TBD |
+| `payload` | In/Out | 16-bit word plus context and ready/valid, each direction | Separate ingress and egress FIFO per context; eight words each for the initial sizing trial |
 | `flush`, `safe` | Out | 1 each | Clear pending I/O and release protocol outputs on global stop/fault/reset |
 
-Draft sequencing: reset/deselect disarms execution, invalidates the image and clears payload and timed work. `BEGIN` while halted clears validity before replacing any data. `COMMIT` succeeds only after exactly the declared 1–128 complete words arrive and enabled entry PCs and pin configuration validate, including disjoint write masks. A malformed frame or incomplete commit leaves the image invalid. While running, load commands have no effect; no start is accepted without a valid image. Starting uses the committed config and a clean execution/timed-I/O state. On the edge that samples `safe` and `flush`, no pad update takes effect and all timed work is discarded. For the first implementation, require a fresh load after a global stop/fault; the latency from deselect or fault detection to that safe edge is still open.
+## SPI and load sequence
+
+Use RP2350 SPI0, mode 0 at 250 kHz. SCK is idle low; bits go most-significant first, with sampling on rising SCK. The ASIC samples synchronized host inputs on its 60 MHz clock. Hold `CS` high between frames. Issue one command per request frame. When `READY` is high between frames, the next frame reads the pending reply and the loader ignores MOSI. Preload the first reply bit before the first rising SCK. Keep the pending reply until the host clocks a complete reply. EVAL-004 modeled 2 µs lead and lag guards on `CS` and a further 20 µs inter-frame budget; confirm the settings in firmware.
+
+A request contains an opcode byte, a 16-bit little-endian body length, the body, then CRC-16/CCITT-FALSE over the preceding bytes (initial `0xFFFF`; CRC bytes little-endian). Replies use the same framing with a status byte instead of the opcode. Numeric opcode and status values are still draft. Timeout, abort and retry behavior must be resolved before this block is agreed.
+
+| Command | Contract |
+|---|---|
+| `BEGIN` | While halted, invalidate the old image. Accept byte fields for word count (1–128), context enable mask, two entry PCs, two output ownership masks and open-drain mask. Enabled PCs must address the declared image. Ownership masks must be disjoint; open-drain bits must belong to a write mask. |
+| `DATA` | Send exactly the declared number of 24-bit words, little-endian. Write tentative words into the halted store at consecutive indices starting from zero. A bad length, truncated load, or bad CRC leaves the image invalid. |
+| `COMMIT` | Mark a fully received, validated image complete and report completion. Do not run it. |
+| `START` | Start enabled contexts together from the committed PCs with clean execution and timed-I/O state. Preloaded payload remains in the ingress FIFOs. Reject start without a committed image. |
+| `STOP` | On the ASIC edge after the validated frame close, make the pads safe, invalidate the image and clear pending work. Acknowledge after the safe edge. |
+| Payload write/read | Select the context. Writes enqueue ingress or report full without overwriting; reads dequeue egress or report empty. A full core result FIFO blocks only the reporting context. Plan to preload inputs and drain results outside timing-critical transactions. |
+
+Load commands have no effect while running. Reset makes the device safe on the first edge sampling reset low. Deselect makes it safe on the edge that sees synchronized `ena` low, if the ASIC is still clocked. Reset, stop and deselect invalidate the image and clear payload and timed work. `safe` and `flush` win over a coincident pad update. Reset and reload after reselection; require a fresh load after a global stop or fault. Core fault propagation to the safe edge still needs integration review.
 
 ## Implementation options and budget
 
-Compare dedicated nibble handshake versus a framed serial link. Check synchronization, acknowledgements, input stability and the 1 s load bound with an RP2350 driver model. Decide framing/integrity, result buffering and host pin allocation together. Planning allowance: 0.090 mm² of cell area; not measured for this block.
+[DEC-002](../04_decisions/DEC-002-loader-transport.md) selects the dedicated SPI link over the nibble handshake. Stream words directly into BLK-PROGRAM; do not allocate a second image buffer. Measure FIFO and loader area and replay the baseline programs before locking the trial depth. Planning allowance: 0.090 mm² of cell area; not measured for this block.
 
 ## Unit-test plan and RTL
 

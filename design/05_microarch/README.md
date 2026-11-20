@@ -32,19 +32,9 @@ The area column partitions a provisional **0.600 mm² cell-area allowance**, not
 
 The [verification plan](../06_verif_plan.md) defines pass criteria. No new tests have run. In the overview all internal blocks use the same 60 MHz clock. The timebase carries cycle numbers, not a generated clock. The drawing shows its deadline path only; the endpoint tables describe all consumers, reset and status.
 
-## Pin split to review
+## Host and protocol pin split
 
-The [loader comparison](../evals/EVAL-004-g4-loader.md) recommends dedicated host SPI0 pins and a separate reply-ready signal. The original nibble split below remains a candidate until Lingga decides [DEC-002](../04_decisions/DEC-002-loader-transport.md). Neither map has been tested on the board.
-
-| Tiny Tapeout resource | Candidate use |
-|---|---|
-| `ui_in[3:0]`, `ui_in[4]` | Host transmit nibble and request toggle |
-| `uo_out[3:0]`, `uo_out[4]` | Host response nibble and acknowledgement toggle |
-| `ui_in[7:5]`, `uo_out[7:5]` | Unused inputs; drive unused dedicated outputs low |
-| `uio[3:0]` | SPI MOSI, MISO, SCLK and CS in the overlap example |
-| `uio[4]`, `uio[7:5]` | UART RX and three spare protocol pads in that image |
-
-Use software-selected pads for baseline I2C with external pull-ups. Validate the map on the demo board and test host signals crossing the two-flop synchronizers. Confirm the payload strategy can queue or return example data without host service on timing-critical edges.
+[DEC-002](../04_decisions/DEC-002-loader-transport.md) selects dedicated RP2350 SPI0 and a separate reply-ready signal. All eight `uio` pads remain available for protocol I/O. See [BLK-PADS](BLK-PADS.md#pin-allocation) for the pin map and [BLK-HOST](BLK-HOST.md#spi-and-load-sequence) for the load sequence. The map has not been tested on the board.
 
 ## Decisions before agreement
 
@@ -53,6 +43,6 @@ Use software-selected pads for baseline I2C with external pull-ups. Validate the
 | Output admission, collision rules and four-slot sizing | Replay the critical EVAL-001 cases with full/retry and same-edge retirement; report admission slack and test whether a reservation is needed. |
 | Capture ownership and wrap | Compare one slot per context with shared storage. Sweep rearm boundaries, simultaneous observations, and the proposed timestamp width. |
 | Shared issue and ISA | Fix fetch, branch, blocked retry and fault timing. Rerun the encoded cases with those costs and record which ISA operations the examples need. |
-| Host transport, payload, and pin allocation | Compare the nibble handshake with a serial alternative, validate pin mapping and stopped-state behavior, measure modeled load time, then freeze framing and configuration. |
+| Host recovery and payload depth | Define timeout, abort, and retry behavior. Check the FIFO area and depth against the baseline programs. SPI transport and pin allocation are approved. |
 
 The [G4 replay](../evals/EVAL-003-g4-timed-io.md) supports the draft timed-I/O contract on the tested cases. It does not freeze the ISA or verify RTL. Use the [G3 protocol runs](../evals/EVAL-001-protocol-comparison.md) and [physical probes](../evals/EVAL-002-area-timing.md) as baselines, not sign-off. Record decisions before agreeing the block records. Final routed setup, hold and tile fit remain open.

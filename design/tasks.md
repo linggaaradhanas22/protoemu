@@ -187,8 +187,15 @@ Done when: the transport comparison accounts for synchronized handshakes, image 
 Done when: the editable diagram and SVG distinguish solid data from dashed control, and the project records that convention for future revisions.
 
 ### TASK-023 — Review the loader transport proposal
-- Status: todo
+- Status: done
 - Owner: Lingga
 - Works on: DEC-002, CHG-001
 - Blocked by: TASK-021
 Done when: Lingga approves the SPI proposal or records which option or interfaces to revise.
+
+### TASK-024 — Specify loader recovery
+- Status: todo
+- Owner: agent
+- Works on: BLK-HOST, BLK-PADS, TEST-UNIT-007, TEST-INT-002
+- Blocked by: TASK-023
+Done when: the draft defines host timeouts and safe recovery from interrupted requests, interrupted or corrupted replies, and reset. The proposed checks cover these cases without assuming the host can safely repeat a command with side effects.

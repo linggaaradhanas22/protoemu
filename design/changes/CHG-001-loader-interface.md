@@ -1,5 +1,5 @@
 # CHG-001 — Define the RP2350 loader interface
-- Status: proposed
+- Status: done
 - Size: medium
 - Affects: BLK-HOST, BLK-PADS, BLK-PROGRAM, TEST-UNIT-007, TEST-INT-002
 
@@ -17,4 +17,8 @@ The block drafts leave transport and pin mapping open. [EVAL-004](../evals/EVAL-
 
 ## Impact and approval
 
-Lingga must approve before the draft block interfaces are updated. Recheck the affected records and downstream tests, including `TEST-SYS-010`; no project test has passed on the strength of this probe. Check measured loader/FIFO area and routed input timing before physical sign-off.
+Lingga approved DEC-002 and CHG-001 on 2026-11-20. Recheck the affected records and downstream tests, including `TEST-SYS-010`; no project test has passed on the strength of this probe. Check measured loader/FIFO area and routed input timing before physical sign-off.
+
+## Close-out
+
+Applied the approved interface to BLK-HOST, BLK-PADS and BLK-PROGRAM, then reviewed the affected verification records. The EVAL-004 rerun reproduced all 192 modeled loads; all 25 Python model checks passed. The block records remain draft and hardware tests remain planned. Timeout, abort and retry are tracked in TASK-024, not approved by this change.
