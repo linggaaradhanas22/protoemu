@@ -100,3 +100,10 @@ Results: The trace checker reported `GATE G2: MET`, with 0 errors and 0 warnings
 AI vs human: Lingga approved the specs. OpenCode recorded the approval and ran the checker.
 Problems: None in the trace check.
 Next: Ask Lingga to sign off on G2 before tagging `g2-spec` or starting G3.
+
+## 2026-11-20: Lingga + OpenCode (G2 sign-off)
+Did: Recorded G2 sign-off and set G3 as the current stage.
+Results: `GATE G2: MET`. All 13 specs are agreed, and all 26 Must and Should requirements have planned checks. No design tests ran.
+AI vs human: Lingga approved closing G2 and requested a push. OpenCode verified the gate and updated the project records.
+Problems: None in the trace check.
+Next: Draft architecture candidates and plan their benchmark evaluations. Template hardening (TASK-004) remains open.
