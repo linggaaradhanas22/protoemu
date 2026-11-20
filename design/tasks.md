@@ -174,9 +174,9 @@ Done when: WSL Git can reach the repository over SSH and a dry-run push succeeds
 Done when: a reproducible cycle-level replay reports issue wait, admission slack, slot use and wrap behavior, and supports a recommendation on queue, capture and issue rules.
 
 ### TASK-021 — Compare RP2350 transports and pin maps
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: BLK-HOST, BLK-PADS, BLK-PROGRAM, TEST-INT-002
+- Works on: BLK-HOST, BLK-PADS, BLK-PROGRAM, TEST-INT-002, EVAL-004, DEC-002, CHG-001
 - Blocked by: TASK-018
 Done when: the transport comparison accounts for synchronized handshakes, image loading within the specified limit, concurrent pin use, host payload buffering, and stop/reload timing.
 
@@ -185,3 +185,10 @@ Done when: the transport comparison accounts for synchronized handshakes, image 
 - Owner: agent
 - Works on: ARCH-B
 Done when: the editable diagram and SVG distinguish solid data from dashed control, and the project records that convention for future revisions.
+
+### TASK-023 — Review the loader transport proposal
+- Status: todo
+- Owner: Lingga
+- Works on: DEC-002, CHG-001
+- Blocked by: TASK-021
+Done when: Lingga approves the SPI proposal or records which option or interfaces to revise.

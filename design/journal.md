@@ -196,3 +196,9 @@ Did: Published version 2 of the ARCH-B overview with separate data and control a
 Results: The validator and visual review checked the revised drawing. No hardware contracts or gate status changed.
 AI vs human: Lingga chose solid for data and dashed for control. OpenCode updated the drawing and documented the convention.
 Next: TASK-021, compare loader transports and validate the pin split.
+
+## 2026-11-20: Lingga + OpenCode (TASK-021)
+Did: Compared nibble and dedicated SPI transports, checked the ETR RP2350 pin table, and modeled payload and stop/reload. Archived EVAL-004 and drafted DEC-002 and CHG-001.
+Results: All 192 modeled loads and 25 Python checks passed. The full 128-word image took 13.628 ms over modeled SPI, versus 6.050 ms on the nominal nibble link and 27.100 ms with delayed polling. Both layouts leave eight bidirectional pads for protocol use. No firmware, RTL or board test ran.
+AI vs human: Lingga requested the next task. OpenCode produced the probe and recommends SPI. Lingga has not approved the transport or block interfaces.
+Next: TASK-023, ask Lingga to approve or revise DEC-002 and CHG-001. The gate stays open.

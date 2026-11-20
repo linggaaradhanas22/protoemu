@@ -34,7 +34,7 @@ The [verification plan](../06_verif_plan.md) defines pass criteria. No new tests
 
 ## Pin split to review
 
-Candidate for a nibble handshake. This demonstrates a resource split, not a verified RP2350 transport or final board pinout.
+The [loader comparison](../evals/EVAL-004-g4-loader.md) recommends dedicated host SPI0 pins and a separate reply-ready signal. The original nibble split below remains a candidate until Lingga decides [DEC-002](../04_decisions/DEC-002-loader-transport.md). Neither map has been tested on the board.
 
 | Tiny Tapeout resource | Candidate use |
 |---|---|
