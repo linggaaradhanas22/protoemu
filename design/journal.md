@@ -30,3 +30,10 @@ Results: `test.test_project` passed on Icarus Verilog 12.0 with cocotb 2.0.1 (1 
 AI vs human: Lingga asked for help with setup. OpenCode installed the simulation dependencies and ran the test. No design decisions were made.
 Problems: `check_env.sh` can print `OK` for missing commands or packages because it checks the exit status of `head`. SymbiYosys and Docker remain unavailable in WSL.
 Next: Lingga reviews requirements (TASK-001) and decides when to finish TASK-002. LibreLane can wait until the hardening run (TASK-004).
+
+## 2026-11-20 — Lingga + OpenCode — TASK-002
+Did: Installed the OSS CAD Suite (2026-11-19) and LibreLane 3.1.0.dev4 in WSL. Installed Docker Desktop 4.99.0 in per-user mode with the WSL 2 backend. Fixed `check_env.sh` so a failed version command no longer prints `OK`.
+Results: SymbiYosys v0.71-7-gb21f778 passed a small Z3 proof. The RTL template passed again (1 passed, 0 failed). Docker Desktop opened its welcome window; Docker is not yet available from Ubuntu.
+AI vs human: Lingga approved installing the remaining tools. OpenCode installed and checked them. No design decisions were made.
+Problems: The suite's `vvp` wrapper overrides the Python home. `env.sh` now prefers system Icarus for cocotb when both system binaries are present.
+Next: Lingga completes Docker Desktop's first-run setup. Then verify `docker run --rm hello-world` from Ubuntu to finish TASK-002 before starting TASK-004.
