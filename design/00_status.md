@@ -37,7 +37,8 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 
 ## Next tasks
 1. TASK-011: Build and run shared benchmark fixtures and candidate models. Start with 1 MHz SPI, stretched Fast-mode I2C and concurrent UART/SPI.
-2. TASK-004: Run local hardening and gate-level simulation on the unchanged template. This can proceed in parallel with G3.
+2. TASK-004: Waiting for approval to fill three metadata fields in a WSL-only smoke-test copy. Then rerun hardening and gate-level simulation without changing template RTL or the testbench.
 
 ## Open questions for Lingga
+- TASK-004: May the local smoke-test copy use `Protoemu template smoke test` as title, `Protoemu` as author, and `Unchanged Tiny Tapeout RTL hardening smoke test` as description? The repository's `info.yaml` stays untouched.
 - No architecture has been selected. The comparison needs protocol, area and timing evidence before a decision.

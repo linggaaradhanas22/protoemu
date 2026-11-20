@@ -113,3 +113,10 @@ Did: Drafted ARCH-A (independent engines), ARCH-B (one core with timed I/O), and
 Results: Three candidates and two planned evaluations. The trace check found no errors or warnings. No candidate benchmark ran, and G3 remains open.
 AI vs human: Lingga requested G3 work in parallel with the template smoke test. OpenCode drafted the options and methods; Lingga has not selected an architecture.
 Next: Build the shared benchmark fixtures and candidate cycle models in TASK-011.
+
+## 2026-11-20: OpenCode (TASK-004)
+Did: Confirmed Docker was already running. Ran `/usr/bin/time -p bash scripts/harden.sh --setup` on the unchanged Tiny Tapeout template using LibreLane `3.1.0.dev4` and Tiny Tapeout support tools `0922544`.
+Results: The setup attempt stopped after 32.08 s (wall time), exit 1. No hardening started, no gate-level netlist was produced, and gate-level simulation did not run. This does not verify REQ-RULE-008.
+AI vs human: Lingga requested this smoke test in parallel with G3. OpenCode ran the setup and left the template files unchanged.
+Problems: `tt_tool.py --create-user-config` rejects the empty title, author and description in the stock `info.yaml`.
+Next: Ask Lingga to approve a metadata-only override in the WSL smoke-test copy, then rerun hardening and simulate the generated netlist.
