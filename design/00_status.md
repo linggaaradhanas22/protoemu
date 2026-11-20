@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (edge_delta writeback settled, CHG-009)
+**Last updated:** 2026-11-20 (payload FIFO rule and depth proposed in CHG-010)
 **Current stage:** G4 (Micro-architecture)
 
 ## Gates
@@ -36,12 +36,14 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-042: Settle payload FIFO depth and same-edge host/core access.
+1. TASK-044 (Lingga): Review [CHG-010](changes/CHG-010-payload-fifo.md), the payload FIFO rule and depth. Then apply it.
 2. TASK-043: Replay all baseline and non-target programs on the draft ISA.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
+- **Approve [CHG-010](changes/CHG-010-payload-fifo.md)?** [EVAL-014](evals/EVAL-014-payload-fifo.md): decide FIFO acceptance from the count before the edge (no pass-through), and keep depth 8 (45,197 µm², 3.7 % of the tile, half of BLK-HOST's allowance).
+- **UART burst limit.** The 250 kHz loader drains about 2,100 words/s. Continuous UART RX works up to 19,200 baud. At depth 8, bursts of 17 / 13 / 10 bytes fit at 38,400 / 57,600 / 115,200 baud. The agreed 6-byte test fits. Should we document the limit, or raise it with a faster loader clock (DEC-002) or a multi-word `READ` (BLK-HOST)?
 - **Review [CHG-009](changes/CHG-009-delta-writeback.md) (small, already applied).** [EVAL-013](evals/EVAL-013-delta-writeback.md): a narrow second write port (R2–R5 only) writes both `edge_delta` words on one edge. It is the smallest option (24,437 µm², 2.0 % of the tile) and needs no extra issue slot. Say if you want it reverted or widened to a full second port (+3,210 µm²).
 - Lingga approved [CHG-008](changes/CHG-008-stop-ordering.md) with both proposed choices: `DONE` holds the pads, and `DONE`/`FAULTED` keep payload FIFOs until `STOP`. Fault-to-pad timing is not measured.
 - Lingga approved [CHG-007](changes/CHG-007-modular-guards.md) (24-bit guard rule). Guard area is not measured; check it in the BLK-CORE timing probe.

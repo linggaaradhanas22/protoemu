@@ -1,0 +1,91 @@
+{
+  "queues": 4,
+  "word_bits": 16,
+  "rows": [
+    {
+      "depth": 2,
+      "bypass": 0,
+      "cells": 428,
+      "flops": 148,
+      "area_um2": 11523.3,
+      "core_fraction": 0.00954
+    },
+    {
+      "depth": 4,
+      "bypass": 0,
+      "cells": 764,
+      "flops": 292,
+      "area_um2": 22810.5,
+      "core_fraction": 0.01888
+    },
+    {
+      "depth": 6,
+      "bypass": 0,
+      "cells": 1238,
+      "flops": 436,
+      "area_um2": 35157.3,
+      "core_fraction": 0.0291
+    },
+    {
+      "depth": 8,
+      "bypass": 0,
+      "cells": 1524,
+      "flops": 564,
+      "area_um2": 45196.7,
+      "core_fraction": 0.03741
+    },
+    {
+      "depth": 16,
+      "bypass": 0,
+      "cells": 2845,
+      "flops": 1092,
+      "area_um2": 87620.9,
+      "core_fraction": 0.07252
+    },
+    {
+      "depth": 2,
+      "bypass": 1,
+      "cells": 630,
+      "flops": 148,
+      "area_um2": 12689.8,
+      "core_fraction": 0.0105
+    },
+    {
+      "depth": 4,
+      "bypass": 1,
+      "cells": 858,
+      "flops": 292,
+      "area_um2": 24158.7,
+      "core_fraction": 0.02
+    },
+    {
+      "depth": 6,
+      "bypass": 1,
+      "cells": 1835,
+      "flops": 436,
+      "area_um2": 35672.2,
+      "core_fraction": 0.02953
+    },
+    {
+      "depth": 8,
+      "bypass": 1,
+      "cells": 1726,
+      "flops": 564,
+      "area_um2": 46381.5,
+      "core_fraction": 0.03839
+    },
+    {
+      "depth": 16,
+      "bypass": 1,
+      "cells": 3591,
+      "flops": 1092,
+      "area_um2": 90732.4,
+      "core_fraction": 0.0751
+    }
+  ],
+  "core_um2": 1208172.7,
+  "corner": "typ_1p20V_25C",
+  "liberty_sha256": "34163f3e7de9f854afac57332ba06f1739b78e7ac35660a8a5ddd39c570124ad",
+  "source_sha256": "c3af8c47a5a9e008243f760fdc5ba333b4e25b15b8c3ba83b1ec258c22c9c1b5",
+  "yosys": "Yosys 0.71+52 (git sha1 e4a169b8f, Release, Clang /usr/bin/clang++ 21.1.8)"
+}

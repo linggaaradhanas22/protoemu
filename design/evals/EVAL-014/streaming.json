@@ -1,0 +1,197 @@
+{
+ "host_timing": {
+  "read": {
+   "status": 0,
+   "period_us": 468.0,
+   "pop_us": 196.03333333333333
+  },
+  "read_empty": {
+   "status": 5,
+   "period_us": 404.0,
+   "pop_us": 196.03333333333333
+  },
+  "write": {
+   "status": 0,
+   "period_us": 468.0,
+   "pop_us": 260.03333333333336
+  }
+ },
+ "demand": [
+  {
+   "test": "TEST-SYS-005 UART RX",
+   "direction": "egress",
+   "unpacked": 6,
+   "packed": 3,
+   "note": "six back-to-back frames at up to 115200 baud"
+  },
+  {
+   "test": "TEST-SYS-006 SPI",
+   "direction": "ingress",
+   "unpacked": 2,
+   "packed": 1,
+   "note": "two bytes per CS"
+  },
+  {
+   "test": "TEST-SYS-006 SPI",
+   "direction": "egress",
+   "unpacked": 2,
+   "packed": 1,
+   "note": "two bytes per CS"
+  },
+  {
+   "test": "EVAL-009 overlap, UART context",
+   "direction": "egress",
+   "unpacked": 3,
+   "packed": 2,
+   "note": "measured: three bytes, one per word"
+  },
+  {
+   "test": "EVAL-009 overlap, SPI context",
+   "direction": "ingress",
+   "unpacked": 4,
+   "packed": 2,
+   "note": "measured: two 16-bit words"
+  },
+  {
+   "test": "EVAL-009 overlap, SPI context",
+   "direction": "egress",
+   "unpacked": 4,
+   "packed": 2,
+   "note": "measured: two 16-bit words"
+  },
+  {
+   "test": "TEST-SYS-013 WS2812",
+   "direction": "ingress",
+   "unpacked": 6,
+   "packed": 3,
+   "note": "two RGB values, if the host supplies them"
+  },
+  {
+   "test": "TEST-SYS-013 1-Wire",
+   "direction": "egress",
+   "unpacked": 9,
+   "packed": 5,
+   "note": "presence + 64-bit ROM; slow enough for the host to drain during the read"
+  },
+  {
+   "test": "TEST-SYS-013 RC5",
+   "direction": "egress",
+   "unpacked": 2,
+   "packed": 2,
+   "note": "measured: two 14-bit frames"
+  }
+ ],
+ "uart_bursts": [
+  {
+   "rate": 9600,
+   "bytes_per_word": 1,
+   "max_burst_bytes": {
+    "2": null,
+    "4": null,
+    "6": null,
+    "8": null,
+    "16": null
+   }
+  },
+  {
+   "rate": 19200,
+   "bytes_per_word": 1,
+   "max_burst_bytes": {
+    "2": null,
+    "4": null,
+    "6": null,
+    "8": null,
+    "16": null
+   }
+  },
+  {
+   "rate": 38400,
+   "bytes_per_word": 1,
+   "max_burst_bytes": {
+    "2": 3,
+    "4": 8,
+    "6": 12,
+    "8": 17,
+    "16": 35
+   }
+  },
+  {
+   "rate": 57600,
+   "bytes_per_word": 1,
+   "max_burst_bytes": {
+    "2": 4,
+    "4": 7,
+    "6": 10,
+    "8": 13,
+    "16": 26
+   }
+  },
+  {
+   "rate": 115200,
+   "bytes_per_word": 1,
+   "max_burst_bytes": {
+    "2": 3,
+    "4": 5,
+    "6": 8,
+    "8": 10,
+    "16": 20
+   }
+  },
+  {
+   "rate": 9600,
+   "bytes_per_word": 2,
+   "max_burst_bytes": {
+    "2": null,
+    "4": null,
+    "6": null,
+    "8": null,
+    "16": null
+   }
+  },
+  {
+   "rate": 19200,
+   "bytes_per_word": 2,
+   "max_burst_bytes": {
+    "2": null,
+    "4": null,
+    "6": null,
+    "8": null,
+    "16": null
+   }
+  },
+  {
+   "rate": 38400,
+   "bytes_per_word": 2,
+   "max_burst_bytes": {
+    "2": null,
+    "4": null,
+    "6": null,
+    "8": null,
+    "16": null
+   }
+  },
+  {
+   "rate": 57600,
+   "bytes_per_word": 2,
+   "max_burst_bytes": {
+    "2": 12,
+    "4": 28,
+    "6": 44,
+    "8": 58,
+    "16": 120
+   }
+  },
+  {
+   "rate": 115200,
+   "bytes_per_word": 2,
+   "max_burst_bytes": {
+    "2": 8,
+    "4": 14,
+    "6": 20,
+    "8": 26,
+    "16": 52
+   }
+  }
+ ],
+ "unbounded_limit": 2000
+}
