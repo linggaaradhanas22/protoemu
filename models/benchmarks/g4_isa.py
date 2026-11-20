@@ -32,6 +32,13 @@ class SaveLevel(Level):
     guarded: bool = True
 
 
+@dataclass(frozen=True)
+class TimedLevel(SaveLevel):
+    """EVAL-017 prototype: a guarded level wait that expires ``timeout`` cycles after its guard."""
+
+    timeout: int = 0
+
+
 class SaveEdge(Edge):
     """Return the native timestamp from the context capture slot."""
 
@@ -115,6 +122,17 @@ def execute(code, pc, pins, open_drain, epoch, *, table=DECODE, delta_writeback=
             stamp = yield (SaveLevel(at(delay), pin(index), value) if stamp is not None
                            else SaveLevel(0, pin(index), value, guarded=False))
             regs[T] = regs[OFFSET_HI] = 0
+        elif op == "wait_to":
+            # EVAL-017 exploration only: wait_save with a timeout of R[treg] x 64 cycles.
+            index, value, delay, treg = args
+            if stamp is None:
+                raise ModelError("timestamp used before save")
+            observed = yield TimedLevel(at(delay), pin(index), value, timeout=regs[treg] << 6)
+            if observed is None:
+                regs[treg] = 0
+            else:
+                stamp = observed
+                regs[T] = regs[OFFSET_HI] = 0
         elif op in ("edge_save", "edge_delta"):
             index, polarity = args[:2]
             if polarity == 3:

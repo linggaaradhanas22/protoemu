@@ -355,8 +355,15 @@ Done when: sweep loader SCK rate, per-frame overhead, words per transaction and 
 Done when: Lingga approves the LSB-first `shift_pin` option or chooses documented host bit reversal. After approval, apply CHG-012 to the ISA draft, BLK-CORE and TEST-UNIT-001.
 
 ### TASK-047 — Evaluate a timeout for input waits (I2C clock stretching)
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: EVAL-017, SPEC-I2C-003, BLK-CORE, BLK-CAPTURE
+- Works on: EVAL-017, SPEC-I2C-003, BLK-CORE, BLK-CAPTURE, CHG-013
 - Blocked by: TASK-046
 Done when: run the EVAL-017 plan: model software polling, a timed wait and a per-context watchdog against all I2C cases plus stuck-SCL cases, with area for the hardware options. Recommend one option to Lingga; change no agreed record.
+
+### TASK-048 — Review the timed wait
+- Status: todo
+- Owner: Lingga
+- Works on: CHG-013, EVAL-017
+- Blocked by: TASK-047
+Done when: Lingga approves `wait_to` (C2) or keeps host `STOP` as the only recovery. After approval, apply CHG-013 to the ISA draft, BLK-CORE, BLK-CAPTURE and the tests.

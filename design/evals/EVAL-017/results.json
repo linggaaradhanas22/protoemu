@@ -1,0 +1,1403 @@
+{
+ "stop_delay_cycles": 2643,
+ "rows": [
+  {
+   "kind": "stuck",
+   "case": "100k-clock10-forever",
+   "option": "A",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 62643,
+   "other_context": "stopped after 5 of 6 exchanges",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock28-forever",
+   "option": "A",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 62643,
+   "other_context": "stopped after 5 of 6 exchanges",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock10-120000clk",
+   "option": "A",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 62643,
+   "other_context": "stopped after 5 of 6 exchanges",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock28-600clk",
+   "option": "A",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": null,
+   "other_context": "complete",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-forever",
+   "option": "A",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 62643,
+   "other_context": "stopped after 4 of 6 exchanges",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock28-forever",
+   "option": "A",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 62643,
+   "other_context": "stopped after 5 of 6 exchanges",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-120000clk",
+   "option": "A",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 62643,
+   "other_context": "stopped after 4 of 6 exchanges",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock28-600clk",
+   "option": "A",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": null,
+   "other_context": "complete",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-1800000clk",
+   "option": "A",
+   "interval": null,
+   "limit": 1500000,
+   "pass": true,
+   "errors": [],
+   "latency": 1502643,
+   "other_context": "stopped after 4 of 6 exchanges",
+   "words": 119
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-separate",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 82,
+   "end": 35123
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 34868
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-nack-address",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 6415
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-nack-data",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 11932
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-separate",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 82,
+   "end": 8813
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 8723
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-nack-address",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 1645
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-nack-data",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 3022
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-60clk",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 34996
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-300clk",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 35476
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-600clk",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 36084
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-60clk",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 8851
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-300clk",
+   "option": "B",
+   "interval": 16,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 9331
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-600clk",
+   "option": "B",
+   "interval": 16,
+   "pass": false,
+   "errors": [
+    "at 2347: SCL bit period of 161 clocks violates 150..157",
+    "at 4179: SCL bit period of 161 clocks violates 150..157"
+   ],
+   "words": 83,
+   "end": 9939
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock10-forever",
+   "option": "B",
+   "interval": 16,
+   "limit": 60000,
+   "pass": false,
+   "errors": [
+    "detection latency 11939 outside the limit window",
+    "expected a timeout status, got []"
+   ],
+   "latency": 11939,
+   "other_context": "stopped after 2 of 6 exchanges",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock28-forever",
+   "option": "B",
+   "interval": 16,
+   "limit": 60000,
+   "pass": false,
+   "errors": [
+    "detection latency 901 outside the limit window",
+    "expected a timeout status, got []"
+   ],
+   "latency": 901,
+   "other_context": "stopped after 2 of 6 exchanges",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock10-120000clk",
+   "option": "B",
+   "interval": 16,
+   "limit": 60000,
+   "pass": false,
+   "errors": [
+    "detection latency 11939 outside the limit window",
+    "expected a timeout status, got []"
+   ],
+   "latency": 11939,
+   "other_context": "stopped after 2 of 6 exchanges",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock28-600clk",
+   "option": "B",
+   "interval": 16,
+   "limit": 60000,
+   "pass": false,
+   "errors": [
+    "legitimate stretch did not complete: []"
+   ],
+   "latency": 906,
+   "other_context": "stopped after 2 of 6 exchanges",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-forever",
+   "option": "B",
+   "interval": 16,
+   "limit": 60000,
+   "pass": false,
+   "errors": [
+    "detection latency 501 outside the limit window",
+    "expected a timeout status, got []"
+   ],
+   "latency": 501,
+   "other_context": "stopped after 1 of 6 exchanges",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock28-forever",
+   "option": "B",
+   "interval": 16,
+   "limit": 60000,
+   "pass": false,
+   "errors": [
+    "detection latency 13747 outside the limit window",
+    "expected a timeout status, got []"
+   ],
+   "latency": 13747,
+   "other_context": "stopped after 2 of 6 exchanges",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-120000clk",
+   "option": "B",
+   "interval": 16,
+   "limit": 60000,
+   "pass": false,
+   "errors": [
+    "detection latency 501 outside the limit window",
+    "expected a timeout status, got []"
+   ],
+   "latency": 501,
+   "other_context": "stopped after 1 of 6 exchanges",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock28-600clk",
+   "option": "B",
+   "interval": 16,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": null,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-1800000clk",
+   "option": "B",
+   "interval": 16,
+   "limit": 1500000,
+   "pass": null,
+   "errors": [
+    "poll budget exceeds a 16-bit loop counter; needs a nested loop"
+   ],
+   "latency": null,
+   "other_context": null,
+   "words": null
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-separate",
+   "option": "B",
+   "interval": 32,
+   "pass": true,
+   "errors": [],
+   "words": 82,
+   "end": 35123
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined",
+   "option": "B",
+   "interval": 32,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 34868
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-nack-address",
+   "option": "B",
+   "interval": 32,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 6415
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-nack-data",
+   "option": "B",
+   "interval": 32,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 11932
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-separate",
+   "option": "B",
+   "interval": 32,
+   "pass": true,
+   "errors": [],
+   "words": 82,
+   "end": 8813
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined",
+   "option": "B",
+   "interval": 32,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 8723
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-nack-address",
+   "option": "B",
+   "interval": 32,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 1645
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-nack-data",
+   "option": "B",
+   "interval": 32,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 3022
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-60clk",
+   "option": "B",
+   "interval": 32,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 34996
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-300clk",
+   "option": "B",
+   "interval": 32,
+   "pass": false,
+   "errors": [
+    "at 7082: SCL bit period of 633 clocks violates 600..631",
+    "at 12306: SCL bit period of 633 clocks violates 600..631"
+   ],
+   "words": 83,
+   "end": 35508
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-600clk",
+   "option": "B",
+   "interval": 32,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 36084
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-60clk",
+   "option": "B",
+   "interval": 32,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 8851
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-300clk",
+   "option": "B",
+   "interval": 32,
+   "pass": false,
+   "errors": [
+    "at 2059: SCL bit period of 173 clocks violates 150..157",
+    "at 3603: SCL bit period of 173 clocks violates 150..157"
+   ],
+   "words": 83,
+   "end": 9363
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-600clk",
+   "option": "B",
+   "interval": 32,
+   "pass": false,
+   "errors": [
+    "at 2347: SCL bit period of 161 clocks violates 150..157",
+    "at 4179: SCL bit period of 161 clocks violates 150..157"
+   ],
+   "words": 83,
+   "end": 9939
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock10-forever",
+   "option": "B",
+   "interval": 32,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59989,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock28-forever",
+   "option": "B",
+   "interval": 32,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59989,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock10-120000clk",
+   "option": "B",
+   "interval": 32,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59989,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock28-600clk",
+   "option": "B",
+   "interval": 32,
+   "limit": 60000,
+   "pass": false,
+   "errors": [
+    "legitimate stretch did not complete: []"
+   ],
+   "latency": 906,
+   "other_context": "stopped after 2 of 6 exchanges",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-forever",
+   "option": "B",
+   "interval": 32,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59989,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock28-forever",
+   "option": "B",
+   "interval": 32,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59989,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-120000clk",
+   "option": "B",
+   "interval": 32,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59989,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock28-600clk",
+   "option": "B",
+   "interval": 32,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": null,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-1800000clk",
+   "option": "B",
+   "interval": 32,
+   "limit": 1500000,
+   "pass": true,
+   "errors": [],
+   "latency": 1499989,
+   "other_context": "complete",
+   "words": 125
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-separate",
+   "option": "B",
+   "interval": 64,
+   "pass": true,
+   "errors": [],
+   "words": 82,
+   "end": 35123
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined",
+   "option": "B",
+   "interval": 64,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 34868
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-nack-address",
+   "option": "B",
+   "interval": 64,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 6415
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-nack-data",
+   "option": "B",
+   "interval": 64,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 11932
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-separate",
+   "option": "B",
+   "interval": 64,
+   "pass": true,
+   "errors": [],
+   "words": 82,
+   "end": 8813
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined",
+   "option": "B",
+   "interval": 64,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 8723
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-nack-address",
+   "option": "B",
+   "interval": 64,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 1645
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-nack-data",
+   "option": "B",
+   "interval": 64,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 3022
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-60clk",
+   "option": "B",
+   "interval": 64,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 34996
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-300clk",
+   "option": "B",
+   "interval": 64,
+   "pass": false,
+   "errors": [
+    "at 7082: SCL bit period of 633 clocks violates 600..631",
+    "at 12306: SCL bit period of 633 clocks violates 600..631"
+   ],
+   "words": 83,
+   "end": 35508
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-600clk",
+   "option": "B",
+   "interval": 64,
+   "pass": false,
+   "errors": [
+    "at 7402: SCL bit period of 653 clocks violates 600..631",
+    "at 12946: SCL bit period of 653 clocks violates 600..631"
+   ],
+   "words": 83,
+   "end": 36148
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-60clk",
+   "option": "B",
+   "interval": 64,
+   "pass": true,
+   "errors": [],
+   "words": 83,
+   "end": 8851
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-300clk",
+   "option": "B",
+   "interval": 64,
+   "pass": false,
+   "errors": [
+    "at 2059: SCL bit period of 173 clocks violates 150..157",
+    "at 3603: SCL bit period of 173 clocks violates 150..157"
+   ],
+   "words": 83,
+   "end": 9363
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-600clk",
+   "option": "B",
+   "interval": 64,
+   "pass": false,
+   "errors": [
+    "at 2379: SCL bit period of 193 clocks violates 150..157",
+    "at 4243: SCL bit period of 193 clocks violates 150..157"
+   ],
+   "words": 83,
+   "end": 10003
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock10-forever",
+   "option": "B",
+   "interval": 64,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59925,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock28-forever",
+   "option": "B",
+   "interval": 64,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59925,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock10-120000clk",
+   "option": "B",
+   "interval": 64,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59925,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock28-600clk",
+   "option": "B",
+   "interval": 64,
+   "limit": 60000,
+   "pass": false,
+   "errors": [
+    "legitimate stretch did not complete: []"
+   ],
+   "latency": 906,
+   "other_context": "stopped after 2 of 6 exchanges",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-forever",
+   "option": "B",
+   "interval": 64,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59925,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock28-forever",
+   "option": "B",
+   "interval": 64,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59925,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-120000clk",
+   "option": "B",
+   "interval": 64,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59925,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock28-600clk",
+   "option": "B",
+   "interval": 64,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": null,
+   "other_context": "complete",
+   "words": 103
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-1800000clk",
+   "option": "B",
+   "interval": 64,
+   "limit": 1500000,
+   "pass": true,
+   "errors": [],
+   "latency": 1499925,
+   "other_context": "complete",
+   "words": 125
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-separate",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 79,
+   "end": 35123
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 80,
+   "end": 34868
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-nack-address",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 80,
+   "end": 6415
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-nack-data",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 80,
+   "end": 11932
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-separate",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 79,
+   "end": 8813
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 80,
+   "end": 8723
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-nack-address",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 80,
+   "end": 1645
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-nack-data",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 80,
+   "end": 3022
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-60clk",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 80,
+   "end": 34986
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-300clk",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 80,
+   "end": 35466
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-600clk",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 80,
+   "end": 36066
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-60clk",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 80,
+   "end": 8841
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-300clk",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 80,
+   "end": 9321
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-600clk",
+   "option": "C",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 80,
+   "end": 9921
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock10-forever",
+   "option": "C",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59982,
+   "other_context": "complete",
+   "words": 100
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock28-forever",
+   "option": "C",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59982,
+   "other_context": "complete",
+   "words": 100
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock10-120000clk",
+   "option": "C",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59982,
+   "other_context": "complete",
+   "words": 100
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock28-600clk",
+   "option": "C",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": null,
+   "other_context": "complete",
+   "words": 100
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-forever",
+   "option": "C",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59982,
+   "other_context": "complete",
+   "words": 100
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock28-forever",
+   "option": "C",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59982,
+   "other_context": "complete",
+   "words": 100
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-120000clk",
+   "option": "C",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59982,
+   "other_context": "complete",
+   "words": 100
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock28-600clk",
+   "option": "C",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": null,
+   "other_context": "complete",
+   "words": 100
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-1800000clk",
+   "option": "C",
+   "interval": null,
+   "limit": 1500000,
+   "pass": true,
+   "errors": [],
+   "latency": 1499982,
+   "other_context": "complete",
+   "words": 122
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-separate",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 76,
+   "end": 35123
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 77,
+   "end": 34868
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-nack-address",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 77,
+   "end": 6415
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-nack-data",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 77,
+   "end": 11932
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-separate",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 76,
+   "end": 8813
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 77,
+   "end": 8723
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-nack-address",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 77,
+   "end": 1645
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-nack-data",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 77,
+   "end": 3022
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-60clk",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 77,
+   "end": 34986
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-300clk",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 77,
+   "end": 35466
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-100k-combined-600clk",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 77,
+   "end": 36066
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-60clk",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 77,
+   "end": 8841
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-300clk",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 77,
+   "end": 9321
+  },
+  {
+   "kind": "regression",
+   "case": "i2c-400k-combined-600clk",
+   "option": "D",
+   "interval": null,
+   "pass": true,
+   "errors": [],
+   "words": 77,
+   "end": 9921
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock10-forever",
+   "option": "D",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59712,
+   "other_context": "stopped after 4 of 6 exchanges",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock28-forever",
+   "option": "D",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59712,
+   "other_context": "stopped after 5 of 6 exchanges",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock10-120000clk",
+   "option": "D",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59712,
+   "other_context": "stopped after 4 of 6 exchanges",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "100k-clock28-600clk",
+   "option": "D",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": null,
+   "other_context": "complete",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-forever",
+   "option": "D",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59928,
+   "other_context": "stopped after 4 of 6 exchanges",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock28-forever",
+   "option": "D",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59928,
+   "other_context": "stopped after 4 of 6 exchanges",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-120000clk",
+   "option": "D",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": 59928,
+   "other_context": "stopped after 4 of 6 exchanges",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock28-600clk",
+   "option": "D",
+   "interval": null,
+   "limit": 60000,
+   "pass": true,
+   "errors": [],
+   "latency": null,
+   "other_context": "complete",
+   "words": 97
+  },
+  {
+   "kind": "stuck",
+   "case": "400k-clock10-1800000clk",
+   "option": "D",
+   "interval": null,
+   "limit": 1500000,
+   "pass": true,
+   "errors": [],
+   "latency": 1499928,
+   "other_context": "stopped after 4 of 6 exchanges",
+   "words": 119
+  }
+ ]
+}

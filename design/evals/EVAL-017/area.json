@@ -1,0 +1,38 @@
+{
+  "rows": {
+    "wait_slots": {
+      "cells": 558,
+      "flops": 110,
+      "area_um2": 9394.6,
+      "core_fraction": 0.00778
+    },
+    "wait_slots_timeout": {
+      "cells": 958,
+      "flops": 144,
+      "area_um2": 14873.2,
+      "core_fraction": 0.01231
+    },
+    "wait_slots_unguarded_timeout": {
+      "cells": 498,
+      "flops": 114,
+      "area_um2": 9207.8,
+      "core_fraction": 0.00762
+    },
+    "watchdog": {
+      "cells": 388,
+      "flops": 72,
+      "area_um2": 6753.2,
+      "core_fraction": 0.00559
+    },
+    "timeout_extra_um2": 5478.6,
+    "unguarded_timeout_extra_um2": -186.8
+  },
+  "core_um2": 1208172.7,
+  "corner": "typ_1p20V_25C",
+  "liberty_sha256": "34163f3e7de9f854afac57332ba06f1739b78e7ac35660a8a5ddd39c570124ad",
+  "source_sha256": {
+    "wait_timeout_probe.v": "5ae85da2aacea1c5f013bb975f9794b717556c1d607b473b39643624b655cc02",
+    "watchdog_probe.v": "e1f182725e8675e7f0d63e91f7fd4bb38a96b44d9e2cb6160881b04cac906632"
+  },
+  "yosys": "Yosys 0.71+52 (git sha1 e4a169b8f, Release, Clang /usr/bin/clang++ 21.1.8)"
+}
