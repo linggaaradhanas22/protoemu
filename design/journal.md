@@ -141,3 +141,10 @@ Results: All 33 encoded cases and 12 model sanity tests passed. A and C used 62 
 AI vs human: Lingga authorized the encoded comparison. OpenCode wrote and ran the provisional images and model. Lingga has not selected an architecture or approved an ISA.
 Problems: These cases do not measure host loading, timestamp rollover, or the mapped area and timing of the actual hardware.
 Next: TASK-012 to map area and timing probes on IHP for each viable candidate.
+
+## 2026-11-20: OpenCode (TASK-012)
+Did: Mapped representative flop stores, datapaths, I/O timing logic and loader front ends for all three architectures. Ran unplaced timing at three IHP corners and slow-corner timing after placement and design repair using the 8×4 row geometry.
+Results: Placed area was 0.406, 0.316 and 0.266 mm² for A, B and C. All passed estimated slow-corner setup at 60 MHz; all showed about −0.23 ns hold slack at a synchronizer input. See EVAL-002. These are probe measurements, not final design sign-off.
+AI vs human: Lingga authorized the comparison. OpenCode built and ran the probes. No architecture or decision weights have been approved.
+Problems: Unbuffered control loads made unplaced timing much worse than placed timing. The probe does not include clock-tree synthesis, routed parasitics or the full host interface.
+Next: Ask Lingga which tradeoff should drive the draft architecture decision. Keep G3 open.

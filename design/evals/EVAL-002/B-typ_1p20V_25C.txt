@@ -1,0 +1,118 @@
+OpenROAD dcf36133a369abc8f3c5e5738cd4d82e4903c0e0
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0227] LEF file: /pdk/libs.ref/sg13cmos5l_stdcell/lef/sg13cmos5l_tech.lef, created 15 layers, 52 vias
+[INFO ODB-0227] LEF file: /pdk/libs.ref/sg13cmos5l_stdcell/lef/sg13cmos5l_stdcell.lef, created 84 library cells
+ALL SETUP
+Startpoint: shared.core.phase_sg13cmos5l_dfrbpq_1_Q_D_sg13cmos5l_a21o_1_A2_X_sg13cmos5l_dfrbpq_1_D
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a22oi_1_B1_1_Y_sg13cmos5l_inv_1_A_Y_sg13cmos5l_dfrbpq_1_D
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 ^ shared.core.phase_sg13cmos5l_dfrbpq_1_Q_D_sg13cmos5l_a21o_1_A2_X_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+   0.666    0.666 ^ shared.core.phase_sg13cmos5l_dfrbpq_1_Q_D_sg13cmos5l_a21o_1_A2_X_sg13cmos5l_dfrbpq_1_D/Q (sg13cmos5l_dfrbpq_1)
+   0.131    0.798 v shared.core.pc[0]_sg13cmos5l_nor2b_1_B_N_4/Y (sg13cmos5l_nor2b_1)
+  16.157   16.954 ^ shared.core.pc[0]_sg13cmos5l_nor2b_1_B_N_4_Y_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+  50.030   66.984 v shared.core.pc[0]_sg13cmos5l_nor2b_1_B_N_5_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_nor2_1_A_1/Y (sg13cmos5l_nor2_1)
+   2.755   69.739 ^ shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_xnor2_1_Y/Y (sg13cmos5l_xnor2_1)
+   0.322   70.061 v shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.186   70.247 v shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0/X (sg13cmos5l_mux2_1)
+   0.044   70.291 ^ shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B/Y (sg13cmos5l_nand2_1)
+   0.079   70.370 v shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.102   70.471 ^ shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a22oi_1_B1_1/Y (sg13cmos5l_a22oi_1)
+   0.044   70.516 v shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a22oi_1_B1_1_Y_sg13cmos5l_inv_1_A/Y (sg13cmos5l_inv_1)
+   0.000   70.516 v shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a22oi_1_B1_1_Y_sg13cmos5l_inv_1_A_Y_sg13cmos5l_dfrbpq_1_D/D (sg13cmos5l_dfrbpq_1)
+           70.516   data arrival time
+
+  16.667   16.667   clock clk (rise edge)
+   0.000   16.667   clock network delay (ideal)
+  -0.250   16.417   clock uncertainty
+   0.000   16.417   clock reconvergence pessimism
+           16.417 ^ shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a22oi_1_B1_1_Y_sg13cmos5l_inv_1_A_Y_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+  -0.083   16.334   library setup time
+           16.334   data required time
+-----------------------------------------------------------
+           16.334   data required time
+          -70.516   data arrival time
+-----------------------------------------------------------
+          -54.182   slack (VIOLATED)
+
+
+worst slack max -54.182
+ALL HOLD
+Startpoint: pin_in[4] (input port clocked by clk)
+Endpoint: pin_in_sg13cmos5l_dfrbpq_1_D
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 v input external delay
+   0.001    0.001 v pin_in[4] (in)
+   0.000    0.001 v pin_in_sg13cmos5l_dfrbpq_1_D/D (sg13cmos5l_dfrbpq_1)
+            0.001   data arrival time
+
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.250    0.250   clock uncertainty
+   0.000    0.250   clock reconvergence pessimism
+            0.250 ^ pin_in_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+  -0.006    0.244   library hold time
+            0.244   data required time
+-----------------------------------------------------------
+            0.244   data required time
+           -0.001   data arrival time
+-----------------------------------------------------------
+           -0.243   slack (VIOLATED)
+
+
+worst slack min -0.243
+REGISTER SETUP
+Startpoint: shared.core.phase_sg13cmos5l_dfrbpq_1_Q_D_sg13cmos5l_a21o_1_A2_X_sg13cmos5l_dfrbpq_1_D
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a22oi_1_B1_1_Y_sg13cmos5l_inv_1_A_Y_sg13cmos5l_dfrbpq_1_D
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 ^ shared.core.phase_sg13cmos5l_dfrbpq_1_Q_D_sg13cmos5l_a21o_1_A2_X_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+   0.666    0.666 ^ shared.core.phase_sg13cmos5l_dfrbpq_1_Q_D_sg13cmos5l_a21o_1_A2_X_sg13cmos5l_dfrbpq_1_D/Q (sg13cmos5l_dfrbpq_1)
+   0.131    0.798 v shared.core.pc[0]_sg13cmos5l_nor2b_1_B_N_4/Y (sg13cmos5l_nor2b_1)
+  16.157   16.954 ^ shared.core.pc[0]_sg13cmos5l_nor2b_1_B_N_4_Y_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+  50.030   66.984 v shared.core.pc[0]_sg13cmos5l_nor2b_1_B_N_5_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_nor2_1_A_1/Y (sg13cmos5l_nor2_1)
+   2.755   69.739 ^ shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_xnor2_1_Y/Y (sg13cmos5l_xnor2_1)
+   0.322   70.061 v shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.186   70.247 v shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0/X (sg13cmos5l_mux2_1)
+   0.044   70.291 ^ shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B/Y (sg13cmos5l_nand2_1)
+   0.079   70.370 v shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.102   70.471 ^ shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a22oi_1_B1_1/Y (sg13cmos5l_a22oi_1)
+   0.044   70.516 v shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a22oi_1_B1_1_Y_sg13cmos5l_inv_1_A/Y (sg13cmos5l_inv_1)
+   0.000   70.516 v shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a22oi_1_B1_1_Y_sg13cmos5l_inv_1_A_Y_sg13cmos5l_dfrbpq_1_D/D (sg13cmos5l_dfrbpq_1)
+           70.516   data arrival time
+
+  16.667   16.667   clock clk (rise edge)
+   0.000   16.667   clock network delay (ideal)
+  -0.250   16.417   clock uncertainty
+   0.000   16.417   clock reconvergence pessimism
+           16.417 ^ shared.core.phase_sg13cmos5l_inv_1_A_Y_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor3_1_C_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_o21ai_1_A1_3_A2_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a22oi_1_B1_1_Y_sg13cmos5l_inv_1_A_Y_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+  -0.083   16.334   library setup time
+           16.334   data required time
+-----------------------------------------------------------
+           16.334   data required time
+          -70.516   data arrival time
+-----------------------------------------------------------
+          -54.182   slack (VIOLATED)

@@ -106,7 +106,7 @@ Done when: three candidates cover all benchmark profiles and the evaluation plan
 Done when: each candidate has reproducible per-case results, starting with SPI, I2C stretching and concurrency. The exploratory models and traces are in EVAL-001; image and latency checks remain open.
 
 ### TASK-012 — Compare mapped area, timing risk and image tooling
-- Status: todo
+- Status: done
 - Owner: agent
 - Works on: EVAL-002
 - Blocked by: TASK-013

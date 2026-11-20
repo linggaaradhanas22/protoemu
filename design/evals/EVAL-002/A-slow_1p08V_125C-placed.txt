@@ -1,0 +1,327 @@
+OpenROAD dcf36133a369abc8f3c5e5738cd4d82e4903c0e0
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0227] LEF file: /pdk/libs.ref/sg13cmos5l_stdcell/lef/sg13cmos5l_tech.lef, created 15 layers, 52 vias
+[INFO ODB-0227] LEF file: /pdk/libs.ref/sg13cmos5l_stdcell/lef/sg13cmos5l_stdcell.lef, created 84 library cells
+[INFO IFP-0001] Added 186 rows of 3580 site CoreSite.
+[INFO IFP-0100] Die BBox:  (  0.000  0.000 ) ( 1724.160 710.640 ) um
+[INFO IFP-0101] Core BBox: (  2.880  3.780 ) ( 1721.280 706.860 ) um
+[INFO IFP-0102] Core area:                      1208172.672 um^2
+[INFO IFP-0103] Total instances area:            377792.554 um^2
+[INFO IFP-0104] Effective utilization:                0.313
+[INFO IFP-0105] Number of instances:                  16371
+Found 0 macro blocks.
+Using 2 tracks default min distance between IO pins.
+[INFO PPL-0001] Number of available slots 5268
+[INFO PPL-0002] Number of I/O             51
+[INFO PPL-0003] Number of I/O w/sink      51
+[INFO PPL-0004] Number of I/O w/o sink    0
+[INFO PPL-0005] Slots per section         200
+[INFO PPL-0008] Successfully assigned pins to sections.
+[INFO PPL-0012] I/O nets HPWL: 18745.80 um.
+[INFO GPL-0001] ---- Initialize GPL Main Data Structures
+[INFO GPL-0002] DBU: 1000
+[INFO GPL-0003] SiteSize: (  0.480  3.780 ) um
+[INFO GPL-0004] CoreBBox: (  2.880  3.780 ) ( 1721.280 706.860 ) um
+[INFO GPL-0036] Movable instances area:     377792.554 um^2
+[INFO GPL-0037] Total instances area:       377792.554 um^2
+[INFO GPL-0035] Pin density area adjust:     28284.920 um^2
+[INFO GPL-0032] ---- Initialize Region: Top-level
+[INFO GPL-0006] Number of instances:             16371
+[INFO GPL-0007] Movable instances:               16371
+[INFO GPL-0008] Fixed instances:                     0
+[INFO GPL-0009] Dummy instances:                     0
+[INFO GPL-0010] Number of nets:                  16424
+[INFO GPL-0011] Number of pins:                  60740
+[INFO GPL-0012] Die BBox:  (  0.000  0.000 ) ( 1724.160 710.640 ) um
+[INFO GPL-0013] Core BBox: (  2.880  3.780 ) ( 1721.280 706.860 ) um
+[INFO GPL-0016] Core area:                  1208172.672 um^2
+[INFO GPL-0014] Region name: top-level.
+[INFO GPL-0015] Region area:                1208172.672 um^2
+[INFO GPL-0017] Fixed instances area:            0.000 um^2
+[INFO GPL-0018] Movable instances area:     406077.474 um^2
+[INFO GPL-0019] Utilization:                    33.611 %
+[INFO GPL-0020] Standard cells area:        406077.474 um^2
+[INFO GPL-0021] Large instances area:            0.000 um^2
+[INFO GPL-0005] ---- Execute Conjugate Gradient Initial Placement.
+[INFO GPL-0051] Source of initial instance position counters:
+	Odb location = 0	Core center = 16371	Region center = 0
+[InitialPlace]  Iter: 1 conjugate gradient residual: 0.00438839 HPWL: 248825820
+[InitialPlace]  Iter: 2 conjugate gradient residual: 0.00494991 HPWL: 220951465
+[InitialPlace]  Iter: 3 conjugate gradient residual: 0.00003842 HPWL: 218158525
+[InitialPlace]  Iter: 4 conjugate gradient residual: 0.00003842 HPWL: 218504082
+[InitialPlace]  Iter: 5 conjugate gradient residual: 0.00003842 HPWL: 218584295
+[InitialPlace]  Iter: 6 conjugate gradient residual: 0.00003842 HPWL: 218747081
+[InitialPlace]  Iter: 7 conjugate gradient residual: 0.00003842 HPWL: 218708710
+[InitialPlace]  Iter: 8 conjugate gradient residual: 0.00003842 HPWL: 218810857
+[InitialPlace]  Iter: 9 conjugate gradient residual: 0.00003842 HPWL: 218785422
+[InitialPlace]  Iter: 10 conjugate gradient residual: 0.00003842 HPWL: 218864363
+[InitialPlace]  Iter: 11 conjugate gradient residual: 0.00003842 HPWL: 218836012
+[InitialPlace]  Iter: 12 conjugate gradient residual: 0.00003842 HPWL: 218928253
+[InitialPlace]  Iter: 13 conjugate gradient residual: 0.00003842 HPWL: 218899560
+[InitialPlace]  Iter: 14 conjugate gradient residual: 0.00003842 HPWL: 218949066
+[InitialPlace]  Iter: 15 conjugate gradient residual: 0.00003842 HPWL: 218967286
+[InitialPlace]  Iter: 16 conjugate gradient residual: 0.00003842 HPWL: 218997797
+[InitialPlace]  Iter: 17 conjugate gradient residual: 0.00003842 HPWL: 219017228
+[InitialPlace]  Iter: 18 conjugate gradient residual: 0.00003842 HPWL: 219041796
+[InitialPlace]  Iter: 19 conjugate gradient residual: 0.00003842 HPWL: 219035812
+[InitialPlace]  Iter: 20 conjugate gradient residual: 0.00003842 HPWL: 219054639
+[INFO GPL-0033] ---- Initialize Nesterov Region: Top-level
+[INFO GPL-0023] Placement target density:       0.3500
+[INFO GPL-0024] Movable insts average area:     24.805 um^2
+[INFO GPL-0025] Ideal bin area:                 70.871 um^2
+[INFO GPL-0026] Ideal bin count:                 17047
+[INFO GPL-0027] Total bin area:             1208172.672 um^2
+[INFO GPL-0028] Bin count (X, Y):         128 ,     64
+[INFO GPL-0029] Bin size (W * H):      13.425 * 10.986 um
+[INFO GPL-0030] Number of bins:                   8192
+[INFO GPL-0007] ---- Execute Nesterov Global Placement.
+[INFO GPL-0031] HPWL: Half-Perimeter Wirelength
+Iteration | Overflow |     HPWL (um) |  HPWL(%) |   Penalty | Group
+---------------------------------------------------------------
+        0 |   0.9988 |  7.918495e+04 |   +0.00% |  1.62e-17 |
+       10 |   0.9986 |  7.611164e+04 |   -3.88% |  2.64e-17 |
+       20 |   0.9987 |  7.487173e+04 |   -1.63% |  4.30e-17 |
+       30 |   0.9987 |  7.390145e+04 |   -1.30% |  7.00e-17 |
+       40 |   0.9987 |  7.341143e+04 |   -0.66% |  1.14e-16 |
+       50 |   0.9988 |  7.321093e+04 |   -0.27% |  1.86e-16 |
+       60 |   0.9988 |  7.319377e+04 |   -0.02% |  3.03e-16 |
+       70 |   0.9988 |  7.319008e+04 |   -0.01% |  4.93e-16 |
+       80 |   0.9988 |  7.320510e+04 |   +0.02% |  8.03e-16 |
+       90 |   0.9988 |  7.323890e+04 |   +0.05% |  1.31e-15 |
+      100 |   0.9988 |  7.329879e+04 |   +0.08% |  2.13e-15 |
+      110 |   0.9988 |  7.340647e+04 |   +0.15% |  3.47e-15 |
+      120 |   0.9988 |  7.359685e+04 |   +0.26% |  5.65e-15 |
+      130 |   0.9988 |  7.393940e+04 |   +0.47% |  9.21e-15 |
+      140 |   0.9983 |  7.453338e+04 |   +0.80% |  1.50e-14 |
+      150 |   0.9982 |  7.561045e+04 |   +1.45% |  2.44e-14 |
+      160 |   0.9977 |  7.769766e+04 |   +2.76% |  3.98e-14 |
+      170 |   0.9974 |  8.201491e+04 |   +5.56% |  6.48e-14 |
+      180 |   0.9959 |  9.036613e+04 |  +10.18% |  1.05e-13 |
+      190 |   0.9937 |  1.062848e+05 |  +17.62% |  1.71e-13 |
+      200 |   0.9893 |  1.254514e+05 |  +18.03% |  2.79e-13 |
+      210 |   0.9833 |  1.404217e+05 |  +11.93% |  4.53e-13 |
+      220 |   0.9781 |  1.526324e+05 |   +8.70% |  7.37e-13 |
+      230 |   0.9718 |  1.682315e+05 |  +10.22% |  1.20e-12 |
+      240 |   0.9597 |  1.921969e+05 |  +14.25% |  1.95e-12 |
+      250 |   0.9416 |  2.232567e+05 |  +16.16% |  3.16e-12 |
+      260 |   0.9186 |  2.553286e+05 |  +14.37% |  5.13e-12 |
+      270 |   0.8957 |  2.856843e+05 |  +11.89% |  8.33e-12 |
+      280 |   0.8683 |  3.168008e+05 |  +10.89% |  1.35e-11 |
+      290 |   0.8326 |  3.495456e+05 |  +10.34% |  2.20e-11 |
+      300 |   0.7939 |  3.864223e+05 |  +10.55% |  3.56e-11 |
+      310 |   0.7544 |  4.347577e+05 |  +12.51% |  5.77e-11 |
+      320 |   0.7043 |  4.823295e+05 |  +10.94% |  9.35e-11 |
+      330 |   0.6502 |  5.202907e+05 |   +7.87% |  1.52e-10 |
+      340 |   0.6055 |  5.642276e+05 |   +8.44% |  2.46e-10 |
+      350 |   0.5645 |  5.841033e+05 |   +3.52% |  4.00e-10 |
+      360 |   0.5160 |  5.891449e+05 |   +0.86% |  6.51e-10 |
+      370 |   0.4894 |  5.859237e+05 |   -0.55% |  1.06e-09 |
+      380 |   0.4387 |  5.775716e+05 |   -1.43% |  1.73e-09 |
+      390 |   0.4032 |  5.866245e+05 |   +1.57% |  2.81e-09 |
+      400 |   0.3643 |  5.827388e+05 |   -0.66% |  4.57e-09 |
+      410 |   0.3300 |  5.724571e+05 |   -1.76% |  7.01e-09 |
+      420 |   0.2974 |  5.692783e+05 |   -0.56% |  1.03e-08 |
+      430 |   0.2660 |  5.635098e+05 |   -1.01% |  1.52e-08 |
+      440 |   0.2392 |  5.600387e+05 |   -0.62% |  2.24e-08 |
+      450 |   0.2111 |  5.573590e+05 |   -0.48% |  3.30e-08 |
+      460 |   0.1848 |  5.557843e+05 |   -0.28% |  4.86e-08 |
+      470 |   0.1608 |  5.550746e+05 |   -0.13% |  7.17e-08 |
+      480 |   0.1405 |  5.542642e+05 |   -0.15% |  1.06e-07 |
+      490 |   0.1203 |  5.545195e+05 |   +0.05% |  1.55e-07 |
+      500 |   0.1071 |  5.554069e+05 |   +0.16% |  2.29e-07 |
+      504 |   0.0999 |  5.559686e+05 |          |  2.78e-07 |
+---------------------------------------------------------------
+[INFO GPL-1001] Global placement finished at iteration 504
+[INFO GPL-1002] Placed Cell Area            406077.4740
+[INFO GPL-1003] Available Free Area         1208172.6720
+[INFO GPL-1004] Minimum Feasible Density        0.3400 (cell_area / free_area)
+[INFO GPL-1006]   Suggested Target Densities:
+[INFO GPL-1007]     - For 90% usage of free space: 0.3735
+[INFO GPL-1008]     - For 80% usage of free space: 0.4201
+[INFO GPL-1009]     - For 50% usage of free space: 0.6722
+[INFO GPL-1014] Final placement area: 406077.47 (+0.00%)
+[WARNING RSZ-0065] max wire length less than 4153u increases wire delays.
+Iteration |   Area    | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------------------
+        0 |     +0.0% |       0 |       0 |             0 |     16396
+    final |     +7.3% |       0 |    3446 |           411 |         0
+---------------------------------------------------------------------
+[INFO RSZ-0034] Found 180 slew violations.
+[INFO RSZ-0035] Found 301 fanout violations.
+[INFO RSZ-0037] Found 166 long wires.
+[INFO RSZ-0038] Inserted 3446 buffers in 411 nets.
+Placement Analysis
+---------------------------------
+total displacement      62111.9 u
+average displacement        3.1 u
+max displacement           10.7 u
+original HPWL         1046228.9 u
+legalized HPWL        1098177.1 u
+delta HPWL                    5 %
+
+Design area 405518 um^2 34% utilization.
+ALL SETUP
+Startpoint: rst_n (input port clocked by clk)
+Endpoint: dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_5_Y_sg13cmos5l_dfrbpq_1_D
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   3.333    3.333 ^ input external delay
+   0.014    3.347 ^ rst_n (in)
+   0.254    3.602 ^ fanout3446/X (sg13cmos5l_buf_1)
+   0.375    3.977 ^ run_sg13cmos5l_and2_1_B/X (sg13cmos5l_and2_1)
+   0.390    4.367 ^ fanout1636/X (sg13cmos5l_buf_1)
+   0.370    4.737 ^ fanout1635/X (sg13cmos5l_buf_1)
+   0.178    4.915 v dedicated.engine[0].core.phase_sg13cmos5l_nand2_1_A/Y (sg13cmos5l_nand2_1)
+   0.233    5.148 v fanout1378/X (sg13cmos5l_buf_1)
+   0.160    5.308 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nand2_1_A_B_sg13cmos5l_nor2_1_Y/Y (sg13cmos5l_nor2_1)
+   0.117    5.425 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nand2_1_A/Y (sg13cmos5l_nand2_1)
+   0.158    5.583 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nand2_1_A_Y_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.306    5.889 ^ fanout239/X (sg13cmos5l_buf_1)
+   0.200    6.090 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_nor2_1_A/Y (sg13cmos5l_nor2_1)
+   0.283    6.373 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_mux2_1_S_2/X (sg13cmos5l_mux2_1)
+   0.299    6.672 ^ fanout130/X (sg13cmos5l_buf_1)
+   0.601    7.273 ^ fanout129/X (sg13cmos5l_buf_1)
+   0.626    7.899 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_nand2_1_B_3_Y_sg13cmos5l_xor2_1_B_A_sg13cmos5l_mux2_1_X_A0_sg13cmos5l_mux4_1_X/X (sg13cmos5l_mux4_1)
+   0.419    8.317 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_nand2_1_B_3_Y_sg13cmos5l_xor2_1_B_A_sg13cmos5l_mux2_1_X/X (sg13cmos5l_mux2_1)
+   0.256    8.574 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y/Y (sg13cmos5l_xnor2_1)
+   0.284    8.857 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_o21ai_1_Y/Y (sg13cmos5l_o21ai_1)
+   0.211    9.068 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_a221oi_1_C1/Y (sg13cmos5l_a221oi_1)
+   0.254    9.322 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nand3b_1_A_N/Y (sg13cmos5l_nand3b_1)
+   0.136    9.459 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nand3b_1_A_N_Y_sg13cmos5l_nand3_1_C/Y (sg13cmos5l_nand3_1)
+   0.222    9.680 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nand3b_1_A_N_Y_sg13cmos5l_nand3_1_C_Y_sg13cmos5l_nand3_1_C/Y (sg13cmos5l_nand3_1)
+   0.189    9.870 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand3_1_B/Y (sg13cmos5l_nand3_1)
+   0.212   10.082 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_or2_1_A_X_sg13cmos5l_nand2_1_A_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_a22oi_1_B2_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_nand3b_1_C/Y (sg13cmos5l_nand3b_1)
+   0.137   10.219 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_or2_1_A_X_sg13cmos5l_nand2_1_A_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_a22oi_1_B2_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_nand3b_1_C_Y_sg13cmos5l_nand3b_1_C/Y (sg13cmos5l_nand3b_1)
+   0.252   10.471 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_or2_1_A_X_sg13cmos5l_nand2_1_A_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_a22oi_1_B2_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_nand3b_1_C_Y_sg13cmos5l_nand3b_1_C_Y_sg13cmos5l_nand3_1_C/Y (sg13cmos5l_nand3_1)
+   0.161   10.632 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_nand3_1_C_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a21o_1_X_A2_sg13cmos5l_nand3_1_Y/Y (sg13cmos5l_nand3_1)
+   0.226   10.858 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_nand3_1_C_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a21o_1_X_B1_sg13cmos5l_nand3_1_A/Y (sg13cmos5l_nand3_1)
+   0.149   11.007 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_A1_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_xor2_1_B_X_sg13cmos5l_a22oi_1_B1_A1_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_nand3_1_Y/Y (sg13cmos5l_nand3_1)
+   0.251   11.258 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_A1_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_xor2_1_B_X_sg13cmos5l_a22oi_1_B1_A1_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_and3_1_A/X (sg13cmos5l_and3_1)
+   0.142   11.400 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_A1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xor2_1_X_B_sg13cmos5l_nand3_1_Y_B_sg13cmos5l_or3_1_X/X (sg13cmos5l_or3_1)
+   0.144   11.544 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_A1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xor2_1_X_B_sg13cmos5l_nand3_1_Y/Y (sg13cmos5l_nand3_1)
+   0.193   11.737 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_A1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xor2_1_X/X (sg13cmos5l_xor2_1)
+   0.127   11.864 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_A1_sg13cmos5l_o21ai_1_Y/Y (sg13cmos5l_o21ai_1)
+   0.752   12.616 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.261   12.877 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_5/Y (sg13cmos5l_o21ai_1)
+   0.000   12.877 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_5_Y_sg13cmos5l_dfrbpq_1_D/D (sg13cmos5l_dfrbpq_1)
+           12.877   data arrival time
+
+  16.667   16.667   clock clk (rise edge)
+   0.000   16.667   clock network delay (ideal)
+  -0.250   16.417   clock uncertainty
+   0.000   16.417   clock reconvergence pessimism
+           16.417 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_5_Y_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+  -0.201   16.216   library setup time
+           16.216   data required time
+-----------------------------------------------------------
+           16.216   data required time
+          -12.877   data arrival time
+-----------------------------------------------------------
+            3.339   slack (MET)
+
+
+worst slack max 3.339
+ALL HOLD
+Startpoint: pin_in[1] (input port clocked by clk)
+Endpoint: pin_in_sg13cmos5l_dfrbpq_1_D_2
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 v input external delay
+   0.009    0.009 v pin_in[1] (in)
+   0.000    0.009 v pin_in_sg13cmos5l_dfrbpq_1_D_2/D (sg13cmos5l_dfrbpq_1)
+            0.009   data arrival time
+
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.250    0.250   clock uncertainty
+   0.000    0.250   clock reconvergence pessimism
+            0.250 ^ pin_in_sg13cmos5l_dfrbpq_1_D_2/CLK (sg13cmos5l_dfrbpq_1)
+  -0.017    0.233   library hold time
+            0.233   data required time
+-----------------------------------------------------------
+            0.233   data required time
+           -0.009   data arrival time
+-----------------------------------------------------------
+           -0.224   slack (VIOLATED)
+
+
+worst slack min -0.224
+REGISTER SETUP
+Startpoint: load_commit_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_5_Y_sg13cmos5l_dfrbpq_1_D
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 ^ load_commit_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+   0.457    0.457 ^ load_commit_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D/Q (sg13cmos5l_dfrbpq_1)
+   0.462    0.919 ^ fanout1821/X (sg13cmos5l_buf_1)
+   0.436    1.355 ^ run_sg13cmos5l_and2_1_B/X (sg13cmos5l_and2_1)
+   0.390    1.745 ^ fanout1636/X (sg13cmos5l_buf_1)
+   0.370    2.115 ^ fanout1635/X (sg13cmos5l_buf_1)
+   0.178    2.293 v dedicated.engine[0].core.phase_sg13cmos5l_nand2_1_A/Y (sg13cmos5l_nand2_1)
+   0.233    2.526 v fanout1378/X (sg13cmos5l_buf_1)
+   0.160    2.686 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nand2_1_A_B_sg13cmos5l_nor2_1_Y/Y (sg13cmos5l_nor2_1)
+   0.117    2.803 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nand2_1_A/Y (sg13cmos5l_nand2_1)
+   0.158    2.961 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nand2_1_A_Y_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.306    3.267 ^ fanout239/X (sg13cmos5l_buf_1)
+   0.200    3.468 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_nor2_1_A/Y (sg13cmos5l_nor2_1)
+   0.283    3.751 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_mux2_1_S_2/X (sg13cmos5l_mux2_1)
+   0.299    4.050 ^ fanout130/X (sg13cmos5l_buf_1)
+   0.601    4.651 ^ fanout129/X (sg13cmos5l_buf_1)
+   0.626    5.277 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_nand2_1_B_3_Y_sg13cmos5l_xor2_1_B_A_sg13cmos5l_mux2_1_X_A0_sg13cmos5l_mux4_1_X/X (sg13cmos5l_mux4_1)
+   0.419    5.696 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_nand2_1_B_3_Y_sg13cmos5l_xor2_1_B_A_sg13cmos5l_mux2_1_X/X (sg13cmos5l_mux2_1)
+   0.256    5.952 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y/Y (sg13cmos5l_xnor2_1)
+   0.284    6.236 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_o21ai_1_Y/Y (sg13cmos5l_o21ai_1)
+   0.211    6.447 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_a221oi_1_C1/Y (sg13cmos5l_a221oi_1)
+   0.254    6.701 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nand3b_1_A_N/Y (sg13cmos5l_nand3b_1)
+   0.136    6.837 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nand3b_1_A_N_Y_sg13cmos5l_nand3_1_C/Y (sg13cmos5l_nand3_1)
+   0.222    7.059 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nand3b_1_A_N_Y_sg13cmos5l_nand3_1_C_Y_sg13cmos5l_nand3_1_C/Y (sg13cmos5l_nand3_1)
+   0.189    7.248 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand3_1_B/Y (sg13cmos5l_nand3_1)
+   0.212    7.460 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_or2_1_A_X_sg13cmos5l_nand2_1_A_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_a22oi_1_B2_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_nand3b_1_C/Y (sg13cmos5l_nand3b_1)
+   0.137    7.597 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_or2_1_A_X_sg13cmos5l_nand2_1_A_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_a22oi_1_B2_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_nand3b_1_C_Y_sg13cmos5l_nand3b_1_C/Y (sg13cmos5l_nand3b_1)
+   0.252    7.849 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_X_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_or2_1_A_X_sg13cmos5l_nand2_1_A_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_a22oi_1_B2_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_nand3b_1_C_Y_sg13cmos5l_nand3b_1_C_Y_sg13cmos5l_nand3_1_C/Y (sg13cmos5l_nand3_1)
+   0.161    8.010 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_nand3_1_C_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a21o_1_X_A2_sg13cmos5l_nand3_1_Y/Y (sg13cmos5l_nand3_1)
+   0.226    8.236 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_nand3_1_C_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a21o_1_X_B1_sg13cmos5l_nand3_1_A/Y (sg13cmos5l_nand3_1)
+   0.149    8.385 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_A1_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_xor2_1_B_X_sg13cmos5l_a22oi_1_B1_A1_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_nand3_1_Y/Y (sg13cmos5l_nand3_1)
+   0.251    8.636 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_A1_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_xor2_1_B_X_sg13cmos5l_a22oi_1_B1_A1_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_and3_1_A/X (sg13cmos5l_and3_1)
+   0.142    8.778 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_A1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xor2_1_X_B_sg13cmos5l_nand3_1_Y_B_sg13cmos5l_or3_1_X/X (sg13cmos5l_or3_1)
+   0.144    8.922 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_A1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xor2_1_X_B_sg13cmos5l_nand3_1_Y/Y (sg13cmos5l_nand3_1)
+   0.193    9.115 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_A1_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xor2_1_X/X (sg13cmos5l_xor2_1)
+   0.127    9.243 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_A1_sg13cmos5l_o21ai_1_Y/Y (sg13cmos5l_o21ai_1)
+   0.752    9.995 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.261   10.256 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_5/Y (sg13cmos5l_o21ai_1)
+   0.000   10.256 v dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_5_Y_sg13cmos5l_dfrbpq_1_D/D (sg13cmos5l_dfrbpq_1)
+           10.256   data arrival time
+
+  16.667   16.667   clock clk (rise edge)
+   0.000   16.667   clock network delay (ideal)
+  -0.250   16.417   clock uncertainty
+   0.000   16.417   clock reconvergence pessimism
+           16.417 ^ dedicated.engine[0].io.sample_sg13cmos5l_nand2_1_A_1_Y_sg13cmos5l_o21ai_1_B1_A2_sg13cmos5l_nand2b_1_Y_B_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_or4_1_A_D_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_5_Y_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+  -0.201   16.216   library setup time
+           16.216   data required time
+-----------------------------------------------------------
+           16.216   data required time
+          -10.256   data arrival time
+-----------------------------------------------------------
+            5.960   slack (MET)

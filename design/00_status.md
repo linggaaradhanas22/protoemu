@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (encoded protocol reruns passed; G3 remains open)
+**Last updated:** 2026-11-20 (physical probes completed; G3 remains open)
 **Current stage:** G3 (Architecture)
 
 ## Gates
@@ -12,7 +12,7 @@ every session. Only Lingga marks a gate ✅.
 |---|---|---|---|---|
 | G1 | Requirements agreed | ✅ Approved by Lingga | `g1-req` | `check_trace.py --gate G1` |
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
-| G3 | Architecture decided | 🔄 critical encoded cases passed; area and timing comparison pending | `g3-arch` | `--gate G3` |
+| G3 | Architecture decided | 🔄 both evaluations complete; owner decision pending | `g3-arch` | `--gate G3` |
 | G4 | Micro-architecture agreed | ⏳ | `g4-uarch` | `--gate G4` |
 | G5 | RTL + unit tests | ⏳ | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
@@ -36,7 +36,8 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-012: Map representative area and timing probes using the program sizes and latency assumptions measured in TASK-013.
+1. Agree decision priorities with Lingga, then draft the architecture decision from EVAL-001 and EVAL-002.
 
 ## Open questions for Lingga
-- No architecture has been selected. Check the mapped cost of B's queue and C's lanes. A and C left two words free in their program stores in the Fast-mode I2C probe.
+- No architecture has been selected. B leaves more program space for new protocols; C uses less area. A isolates execution on two engines at a higher area cost. Which tradeoff should drive the decision?
+- All three placed probes met slow-corner setup at 60 MHz but missed input hold in the pre-CTS timing model. Routed setup and hold remain open for the selected design.
