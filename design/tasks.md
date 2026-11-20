@@ -299,8 +299,15 @@ Done when: propose how timed waits and fences handle already-reached targets, fu
 Done when: Lingga approves the proposed fence and wait guard behavior for the draft ISA or records what to revise. After approval, apply CHG-007 to the block, test and ISA records.
 
 ### TASK-039 — Specify global fault, flush and pending-operation ordering
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: BLK-CORE, BLK-DRIVE, BLK-CAPTURE, BLK-PADS, TEST-UNIT-001, TEST-UNIT-003, TEST-UNIT-004
+- Works on: BLK-CORE, BLK-DRIVE, BLK-CAPTURE, BLK-PADS, TEST-UNIT-001, TEST-UNIT-003, TEST-UNIT-004, EVAL-012, CHG-008
 - Blocked by: TASK-038
 Done when: propose what happens on the edge where one context faults, halts or is flushed while drives, captures, guards or payload transfers are pending. Settle the order against `safe` pad overrides. Check in the model that no operation commits twice or half-commits. Keep opcodes and production RTL unchanged.
+
+### TASK-040 — Review the fault, stop and halt ordering
+- Status: todo
+- Owner: Lingga
+- Works on: CHG-008, EVAL-012
+- Blocked by: TASK-039
+Done when: Lingga approves the proposed ordering and run states for the draft ISA, including the two listed choices, or records what to revise. After approval, apply CHG-008 to the block and test records.

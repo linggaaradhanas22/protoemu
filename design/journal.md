@@ -299,3 +299,10 @@ Did: Recorded approval of CHG-007. Added the guard rule to BLK-CORE, BLK-CAPTURE
 Results: All 59 Python model checks passed. EVAL-003 through EVAL-011 regenerate byte-identical results. Traceability reported no errors or warnings. Block interfaces and SPECs did not change. No production RTL changed and no registered verification tests ran.
 AI vs human: Lingga approved the `sticky` guard rule for the draft ISA. Claude applied it and reviewed the linked records. No block or gate was approved.
 Next: TASK-039, specify global fault, flush and pending-operation ordering.
+
+## 2026-11-20: Lingga + Claude (TASK-039)
+Did: Added an inert safe-edge hook to `g4_timing.py`, the stop model `g4_stop.py` and 5 directed checks. Compared a fault safe edge on F + 1 against one on F in EVAL-012. Proposed the fault, stop and halt ordering and host run states in CHG-008. Added TASK-040.
+Results: 12,520 stopped runs (every issue point in three benchmarks under both rules, plus 6,096 host stop edges) met every check: no duplicate retirement, no lost update, no pad change after the safe edge, and matching traces before the stop. The two rules differ in 3 of 3,212 fault points. A stop can release a pad one cycle after its last change. All 64 Python model checks passed. EVAL-003 through EVAL-011 regenerate byte-identical results. Traceability reported no errors or warnings. No production RTL changed and no registered verification tests ran.
+AI vs human: Lingga asked Claude to continue with TASK-039. Claude chose the rules to compare, built the model, ran the sweep and drafted EVAL-012 and CHG-008, including the proposed `DONE` and `FAULTED` behavior. Lingga has not reviewed the proposal. No block, CHG or gate was approved.
+Problems: The first results file was 5.8 MB, so it now stores only summaries and failing rows. The timing benefit of the F + 1 rule is a guess; it is not measured.
+Next: TASK-040, Lingga reviews CHG-008.

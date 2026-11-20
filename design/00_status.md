@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (24-bit fence and wait guard rule approved and applied, CHG-007)
+**Last updated:** 2026-11-20 (fault, stop and halt ordering proposed in CHG-008)
 **Current stage:** G4 (Micro-architecture)
 
 ## Gates
@@ -13,7 +13,7 @@ every session. Only Lingga marks a gate ✅.
 | G1 | Requirements agreed | ✅ Approved by Lingga | `g1-req` | `check_trace.py --gate G1` |
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
 | G3 | Architecture decided | ✅ Approved by Lingga; ARCH-B selected in DEC-001 | `g3-arch` | `--gate G3` |
-| G4 | Micro-architecture agreed | 🔄 guard rule approved and applied (CHG-007); block approvals pending | `g4-uarch` | `--gate G4` |
+| G4 | Micro-architecture agreed | 🔄 stop ordering proposed (CHG-008), awaiting review; block approvals pending | `g4-uarch` | `--gate G4` |
 | G5 | RTL + unit tests | ⏳ | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
 | G7 | Sign-off: precheck + write-up | ⏳ | `g7-submit` | `--gate G7` |
@@ -36,11 +36,12 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-039: Specify global fault, flush and pending-operation ordering.
+1. TASK-040 (Lingga): Review [CHG-008](changes/CHG-008-stop-ordering.md), the fault, stop and halt ordering. Then apply it.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
+- **Approve [CHG-008](changes/CHG-008-stop-ordering.md)?** [EVAL-012](evals/EVAL-012-stop-ordering.md) checked 12,520 stopped runs with no duplicate, lost or late effect. Proposal: a fault takes effect on the next edge (F + 1), and the host sees `HALTED`/`RUNNING`/`DONE`/`FAULTED`. Two choices: `DONE` holds the pads (not safe), and `DONE`/`FAULTED` keep payload FIFOs until `STOP`. A stop can truncate a peer's frame; the host must reset peers.
 - Lingga approved [CHG-007](changes/CHG-007-modular-guards.md) (24-bit guard rule). Guard area is not measured; check it in the BLK-CORE timing probe.
 - Lingga approved [CHG-002](changes/CHG-002-loader-recovery.md). Recovery cases are planned. Timeout values remain provisional, and payload FIFO depth plus board and firmware timing remain open.
 - Lingga approved [CHG-006](changes/CHG-006-edge-interval.md) for the draft ISA. Two-register writeback, final opcodes and exact fault behavior remain open. No block is agreed yet.

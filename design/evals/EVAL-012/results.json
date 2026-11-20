@@ -1,0 +1,107 @@
+[
+ {
+  "scenario": "overlap",
+  "end_cycle": 15378,
+  "issues": 690,
+  "admitted": 70,
+  "captures": 62,
+  "transfers": 7,
+  "fault-next": {
+   "runs": 690,
+   "passed": 690,
+   "max_flushed": 3,
+   "max_flushed_lead": 4225,
+   "min_held": 2,
+   "runs_with_work_on_fault_edge": 2,
+   "failures": []
+  },
+  "fault-same": {
+   "runs": 690,
+   "passed": 690,
+   "max_flushed": 3,
+   "max_flushed_lead": 4226,
+   "min_held": 1,
+   "runs_with_work_on_fault_edge": 2,
+   "failures": []
+  },
+  "stop": {
+   "runs": 963,
+   "passed": 963,
+   "max_flushed": 3,
+   "max_flushed_lead": 4226,
+   "min_held": 1,
+   "runs_with_work_on_fault_edge": 0,
+   "failures": []
+  }
+ },
+ {
+  "scenario": "i2c",
+  "end_cycle": 8790,
+  "issues": 1576,
+  "admitted": 171,
+  "captures": 76,
+  "transfers": 0,
+  "fault-next": {
+   "runs": 1576,
+   "passed": 1576,
+   "max_flushed": 4,
+   "max_flushed_lead": 156,
+   "min_held": 1,
+   "runs_with_work_on_fault_edge": 1,
+   "failures": []
+  },
+  "fault-same": {
+   "runs": 1576,
+   "passed": 1576,
+   "max_flushed": 4,
+   "max_flushed_lead": 157,
+   "min_held": 1,
+   "runs_with_work_on_fault_edge": 1,
+   "failures": []
+  },
+  "stop": {
+   "runs": 2073,
+   "passed": 2073,
+   "max_flushed": 4,
+   "max_flushed_lead": 157,
+   "min_held": 1,
+   "runs_with_work_on_fault_edge": 0,
+   "failures": []
+  }
+ },
+ {
+  "scenario": "rc5",
+  "end_cycle": 13841714,
+  "issues": 946,
+  "admitted": 0,
+  "captures": 56,
+  "transfers": 2,
+  "fault-next": {
+   "runs": 946,
+   "passed": 946,
+   "max_flushed": 0,
+   "max_flushed_lead": null,
+   "min_held": null,
+   "runs_with_work_on_fault_edge": 0,
+   "failures": []
+  },
+  "fault-same": {
+   "runs": 946,
+   "passed": 946,
+   "max_flushed": 0,
+   "max_flushed_lead": null,
+   "min_held": null,
+   "runs_with_work_on_fault_edge": 0,
+   "failures": []
+  },
+  "stop": {
+   "runs": 3060,
+   "passed": 3060,
+   "max_flushed": 0,
+   "max_flushed_lead": null,
+   "min_held": null,
+   "runs_with_work_on_fault_edge": 0,
+   "failures": []
+  }
+ }
+]

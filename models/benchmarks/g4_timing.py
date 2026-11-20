@@ -30,6 +30,10 @@ class Capture:
 
 
 class TimingProbe(Machine):
+    # Global safe edge (EVAL-012): flush timed work and release owned pads on
+    # this elapsed cycle, before observation, issue or retirement. None = off.
+    safe_at = None
+
     def __init__(self, programs, bus, owners, *, epoch=0, width=24, slots=4):
         super().__init__("B", programs, bus)
         self.owners = tuple(map(frozenset, owners))
@@ -198,6 +202,8 @@ class TimingProbe(Machine):
             incoming = self.bus.level.copy()
             due = [event for event in self.outputs if event.deadline == self.timer(t)]
             self.outputs = [event for event in self.outputs if event.deadline != self.timer(t)]
+            if self.safe_at is not None and t >= self.safe_at:
+                return self._safe_stop(t, due)
             self._observe(t, ff2, previous)
             runnable = [self._runnable(i, t) for i in range(len(self.tasks))]
             if any(isinstance(self.tasks[i].op, Out) and not ready for i, ready in enumerate(runnable)):
@@ -225,14 +231,28 @@ class TimingProbe(Machine):
             quiet = skip_idle and not any(runnable) and choice is None and not due and not self.outputs
             next_cycle = (self._next_quiet_cycle(t, limit)
                           if quiet and incoming == ff1 == ff2 == previous else t + 1)
+            if self.safe_at is not None and t < self.safe_at:
+                next_cycle = min(next_cycle, self.safe_at)
             previous, ff2, ff1 = ff2, ff1, incoming
-            if not self.outputs and all(task.finished for task in self.tasks) and not self.bus.events:
+            if (self.safe_at is None and not self.outputs and all(task.finished for task in self.tasks)
+                    and not self.bus.events):
                 expected = sorted((t0 + self._delta(e.deadline, t0), e.seq) for t0, e in self.admitted)
                 if sorted((t1, e.seq) for t1, e in self.retired) != expected:
                     raise ModelError("accepted output did not retire exactly once at its deadline")
                 return t
             t = next_cycle
         raise ModelError(f"G4 probe timed out after {limit} clocks")
+
+    def _safe_stop(self, t, due):
+        """Suppress updates due now, discard queued work and release every owned pad."""
+        self.flushed = due + self.outputs
+        self.outputs = []
+        self.captures = [None] * len(self.captures)
+        pins = sorted(set().union(*self.owners))
+        if pins:
+            self.bus.apply(t, "dut", {pin: None for pin in pins})
+        self.stopped_at = t
+        return t
 
 
 class ModularGuards:
