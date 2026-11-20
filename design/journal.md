@@ -333,3 +333,9 @@ Results: At 115,200 baud and depth 8: 250 kHz single-word stops after 10 bytes; 
 AI vs human: Lingga asked Claude to model the options first. Claude chose the sweep ranges, designed the provisional commands, ran the models and recommended 1 MHz with 4-word transfers. The tight-overhead case is Claude's guess. Lingga has not chosen an option.
 Problems: The first multi-word testbench reported a count mismatch caused by a testbench race; quiescing the core before the final check fixed it, and a seeded bug still gives 5,879 errors. Board and pad delays are not modeled.
 Next: TASK-044, Lingga decides CHG-010 and the loader option.
+
+## 2026-11-20: Lingga + Claude (TASK-044)
+Did: Recorded Lingga's approval of CHG-010 and of option D from EVAL-015. Applied CHG-010 (registered-status FIFO rule, depth 8) to BLK-HOST, BLK-CORE, TEST-UNIT-001 and TEST-UNIT-007. Wrote CHG-011 and DEC-005, which replaces DEC-002: same SPI0 transport and pins, 1 MHz SCK, and `READN`/`WRITEN` with up to four words. Marked DEC-002 `replaced`. Updated BLK-HOST, BLK-PADS, the micro-architecture README, the G4 review list, the ISA draft, TEST-UNIT-007, TEST-SYS-005 and TEST-SYS-010.
+Results: Traceability reported 0 errors and 2 warnings: finished TASK-021 and TASK-023 still point to the replaced DEC-002, which is correct history. Re-checked BLK-PROGRAM, SPEC-HOST-001 and SPEC-RST-002; none depends on the clock rate. No model code, production RTL or registered verification tests changed.
+AI vs human: Lingga told Claude to follow its recommendations: approve CHG-010 and choose the 1 MHz, four-word option. Claude wrote DEC-005 and CHG-011 from EVAL-015 and applied both changes. No block or gate was approved.
+Next: TASK-043, replay all baseline and non-target programs on the draft ISA. Board check of 1 MHz SPI remains open.

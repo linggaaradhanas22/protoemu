@@ -1,5 +1,5 @@
 # CHG-010 — Payload FIFO same-edge rule and depth
-- Status: proposed
+- Status: done
 - Size: medium
 - Affects: BLK-HOST, BLK-CORE, TEST-UNIT-001, TEST-UNIT-007
 
@@ -37,8 +37,8 @@ Open for Lingga, not part of this change: raise the burst limit with a faster lo
 
 ## Approval
 
-medium: waiting for Lingga.
+Lingga approved the same-edge rule and depth 8 on 2026-11-20. For the burst limit, Lingga chose the 1 MHz loader with four-word transfers ([CHG-011](CHG-011-loader-rate.md), [DEC-005](../04_decisions/DEC-005-loader-rate.md)).
 
 ## Close-out
 
-Not started.
+Updated BLK-HOST, BLK-CORE, TEST-UNIT-001, TEST-UNIT-007, the ISA draft and the G4 review list. The documented burst limit in BLK-HOST uses the CHG-011 rates. Reviewed the items below them in `trace.md`; nothing stays `suspect`. Blocks remain draft and tests remain planned.

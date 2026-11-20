@@ -36,7 +36,7 @@ The [verification plan](../06_verif_plan.md) defines pass criteria. The register
 
 ## Host and protocol pin split
 
-[DEC-002](../04_decisions/DEC-002-loader-transport.md) selects dedicated RP2350 SPI0 and a separate reply-ready signal. All eight `uio` pads remain available for protocol I/O. See [BLK-PADS](BLK-PADS.md#pin-allocation) for the pin map and [BLK-HOST](BLK-HOST.md#spi-and-load-sequence) for the load sequence. The map has not been tested on the board.
+[DEC-005](../04_decisions/DEC-005-loader-rate.md) selects dedicated RP2350 SPI0 at 1 MHz and a separate reply-ready signal, replacing DEC-002. All eight `uio` pads remain available for protocol I/O. See [BLK-PADS](BLK-PADS.md#pin-allocation) for the pin map and [BLK-HOST](BLK-HOST.md#spi-and-load-sequence) for the load sequence. The map has not been tested on the board.
 
 ## Decisions before agreement
 

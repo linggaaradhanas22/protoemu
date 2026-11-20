@@ -334,9 +334,9 @@ Done when: define what happens when the host and a context access the same paylo
 Done when: assemble UART TX/RX, every baseline SPI and I2C case and the non-target examples with only draft-ISA operations and host payload. Replay them under the CHG-007 and CHG-008 rules and report pass/fail, words and timing margins.
 
 ### TASK-044 — Review the payload FIFO rule and depth
-- Status: todo
+- Status: done
 - Owner: Lingga
-- Works on: CHG-010, EVAL-014
+- Works on: CHG-010, EVAL-014, CHG-011, DEC-005, BLK-HOST, BLK-CORE, BLK-PADS, TEST-UNIT-001, TEST-UNIT-007, TEST-SYS-005, TEST-SYS-010
 - Blocked by: TASK-045
 Done when: Lingga approves the same-edge rule and depth 8 for the draft, or records what to revise, and decides whether to pursue a faster loader or multi-word `READ`. After approval, apply CHG-010 to the block and test records.
 

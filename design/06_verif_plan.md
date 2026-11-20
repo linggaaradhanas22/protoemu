@@ -224,6 +224,7 @@ Send `0x80` and `0x01` to check bit order. Pass if an independent UART monitor d
 At each listed rate, use an independent UART source to send `0x00`, `0xFF`, `0x55`, `0xAA`, `0x80`, and `0x01` without extra idle bits.
 Sweep peer baud error from −2% to +2% in 0.5 percentage point steps. Sweep the initial start edge in steps of one sixteenth of a `clk` period, including just before and after a clock edge.
 Pass if the receive output contains exactly the expected sequence for every case.
+At 115,200 baud, send a continuous 64-byte stream while the host drains with four-word `READN` at 1 MHz SCK (DEC-005). Pass if every byte arrives once and in order with no receive stall.
 
 ### TEST-SYS-006 — SPI mode and rate matrix
 - Status: planned
@@ -265,6 +266,7 @@ In a separate trial, send only part of an image and stop before completion. Chec
 Repeat the full load and start after a cold restart that models deselection and reselection. Use two images with different pin behavior to check that the second run uses the new image.
 Pass if each full load reports success within 1 s, starts on request, and runs the expected image without relying on prior state.
 Force the request-frame, reply-ready and reply-frame timeouts from BLK-HOST in separate runs. Check that the driver aborts without automatically replaying a command. Hold `READY` high through the reset recovery deadline and check that the driver reports recovery failure. With a qualified reset, check that a fresh load works and protocol traffic resumes only on an explicit `START`.
+Use 1 MHz SCK (DEC-005). Repeat the load once at 500 kHz as the fallback rate.
 
 ### TEST-SYS-011 — Toolchain clean build and load
 - Status: planned
@@ -332,6 +334,7 @@ Check `edge_delta` across wrap and with an interval greater than 65,535 cycles. 
 Arm a `fence` with `delta` = 0, 1, `2^23−1`, `2^23` and `2^24−1` (CHG-007). Pass if only 1 and `2^23−1` wait, each retires on `cycle == target`, and no case faults. Repeat across counter wrap. Stall the context after its guard opens and check it still retires. Check that both contexts classify their own targets.
 Fault an operation on edge F with the other context runnable (CHG-008). Pass if the faulting operation does not retire, nothing issues on F or later, the fault record names the context, PC and cause, and `halt` in one context does not stop the other or cancel its accepted updates.
 On a successful `edge_delta`, check that `Rd`, `Rd+1` and the cleared offset pair all change on the retirement edge and no other register changes, for each `Rd` from R1 to R4 (CHG-009).
+Run `host_get` on an empty ingress while the host commits a word on the same edge (CHG-010). The instruction must retire on a later edge, once, with that word.
 
 ### TEST-UNIT-002 — Registered fetch and image bounds
 - Status: planned
@@ -388,3 +391,5 @@ Drive valid, truncated, overlong and bad-CRC SPI frames; try invalid entry PCs a
 End requests one bit early, one byte early and one bit late. Stall SCK with `CS` low. Check that no command executes before exact frame validation. Interrupt or overclock a reply to a payload read, then start a new reply frame and check bit-zero restart with exactly one FIFO pop. Reset during a request and with a pending reply in separate runs. Check that no stale reply remains and that the next request needs a fresh `CS` falling edge after synchronized `CS` high.
 Check one word per core handshake and preserve FIFO order and context isolation under stalls. Check that host `READ` and `WRITE` still use their existing framing, including empty and full replies.
 Reach `DONE` and `FAULTED` with words in both payload FIFOs (CHG-008). Pass if the host can drain egress, `START` is rejected, the `STOP` reply carries the run state and fault record, and `STOP` then clears payload and image validity.
+Push and pop one FIFO on the same edge from both sides when empty, full and in between (CHG-010). Pass if order and count match a reference queue, a full push and an empty pop wait without a pass-through, and `FULL`/`EMPTY` replies leave the queue unchanged.
+Run `READN` with counts 1–4 against 0–8 queued words and `WRITEN` with 1–4 words against 0–8 free slots (CHG-011). Interrupt a `READN` reply and restart it: it must send the same words, and only an exact-length close may free them. Corrupt a `WRITEN` CRC: no word may be committed. Check the accepted count and that the core never pops a tentative word.

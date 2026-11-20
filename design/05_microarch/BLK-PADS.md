@@ -37,7 +37,7 @@ The RP2350 bidirectional GPIOs must not drive or pull the protocol pads when ext
 
 ## Implementation options and budget
 
-[DEC-002](../04_decisions/DEC-002-loader-transport.md) keeps host SPI on dedicated pins and leaves all eight bidirectional pads programmable. Check the first-stage input hold path after CTS and routing. Planning allowance: 0.040 mm² of cell area; not measured for this block.
+[DEC-005](../04_decisions/DEC-005-loader-rate.md) (replacing DEC-002) keeps host SPI on dedicated pins and leaves all eight bidirectional pads programmable. Check the first-stage input hold path after CTS and routing. Planning allowance: 0.040 mm² of cell area; not measured for this block.
 
 ## Unit-test plan and RTL
 

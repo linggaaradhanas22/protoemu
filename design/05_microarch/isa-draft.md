@@ -55,7 +55,7 @@ Opcode 12 (`report`) belongs to the earlier benchmark decoder and is invalid in 
 
 | Gap | Evidence needed |
 |---|---|
-| Payload FIFO and status | [EVAL-009](../evals/EVAL-009-host-payload.md) replays the approved operations through the host model. [CHG-010](../changes/CHG-010-payload-fifo.md) proposes the same-edge rule and depth 8, backed by [EVAL-014](../evals/EVAL-014-payload-fifo.md); it awaits review. |
+| Payload FIFO and status | [EVAL-009](../evals/EVAL-009-host-payload.md) replays the approved operations through the host model. [CHG-010](../changes/CHG-010-payload-fifo.md) settles the same-edge rule and depth 8 ([EVAL-014](../evals/EVAL-014-payload-fifo.md)). [CHG-011](../changes/CHG-011-loader-rate.md) adds four-word host transfers at 1 MHz. |
 | Edge capture and time inspection | [CHG-006](../changes/CHG-006-edge-interval.md) adopts edge and elapsed-time behavior for the draft. [EVAL-010](../evals/EVAL-010-edge-interval.md) covers RC5. [CHG-009](../changes/CHG-009-delta-writeback.md) writes both result words on one edge. Final opcodes and any separate timestamp inspection remain open. |
 | Arithmetic and offset register use | Check bit operations, register pressure and split offsets in real programs. The replay reserves `R0`/`R6` by convention, while the vector translator uses `R7` as scratch. The latter is not an architectural reservation. |
 | Execution corner cases | [CHG-007](../changes/CHG-007-modular-guards.md) settles the modular guard/fence rule ([EVAL-011](../evals/EVAL-011-modular-guards.md)). [CHG-008](../changes/CHG-008-stop-ordering.md) settles fault, stop and halt ordering ([EVAL-012](../evals/EVAL-012-stop-ordering.md)). Check isolated contexts and that no failed output, payload or shift operation commits twice. |

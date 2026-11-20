@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (loader rate options modeled in EVAL-015)
+**Last updated:** 2026-11-20 (payload FIFO and 1 MHz loader approved and applied, CHG-010, CHG-011, DEC-005)
 **Current stage:** G4 (Micro-architecture)
 
 ## Gates
@@ -13,7 +13,7 @@ every session. Only Lingga marks a gate ✅.
 | G1 | Requirements agreed | ✅ Approved by Lingga | `g1-req` | `check_trace.py --gate G1` |
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
 | G3 | Architecture decided | ✅ Approved by Lingga; ARCH-B selected in DEC-001 | `g3-arch` | `--gate G3` |
-| G4 | Micro-architecture agreed | 🔄 ISA execution corner cases settled (CHG-007 to CHG-009); block approvals pending | `g4-uarch` | `--gate G4` |
+| G4 | Micro-architecture agreed | 🔄 ISA corner cases and payload/loader settled (CHG-007 to CHG-011); block approvals pending | `g4-uarch` | `--gate G4` |
 | G5 | RTL + unit tests | ⏳ | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
 | G7 | Sign-off: precheck + write-up | ⏳ | `g7-submit` | `--gate G7` |
@@ -36,19 +36,18 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-044 (Lingga): Review [CHG-010](changes/CHG-010-payload-fifo.md), the payload FIFO rule and depth. Then apply it.
-2. TASK-043: Replay all baseline and non-target programs on the draft ISA.
+1. TASK-043: Replay all baseline and non-target programs on the draft ISA.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
-- **Approve [CHG-010](changes/CHG-010-payload-fifo.md)?** [EVAL-014](evals/EVAL-014-payload-fifo.md): decide FIFO acceptance from the count before the edge (no pass-through), and keep depth 8 (45,197 µm², 3.7 % of the tile, half of BLK-HOST's allowance).
-- **UART burst limit: choose an option from [EVAL-015](evals/EVAL-015-host-rate.md).** Today (250 kHz, single word) a stream stops after 10 bytes at 115,200 baud. Recommended: 1 MHz loader clock + 4-word `READN`/`WRITEN`, depth 8. It sustains every common baud rate in both directions, with a 434 ns reply-timing margin and +305 µm² FIFO area, and loads an image in 3.5 ms instead of 13.6 ms. Alternatives: 2 MHz single-word (47-byte bursts, clock change only), 4 MHz single-word (sustained, thin 59 ns margin), or document the limit. Board delays are not modeled.
+- Lingga approved [CHG-010](changes/CHG-010-payload-fifo.md) (no pass-through, depth 8) and the 1 MHz loader with four-word transfers ([CHG-011](changes/CHG-011-loader-rate.md), [DEC-005](04_decisions/DEC-005-loader-rate.md) replacing DEC-002). 1 MHz SPI must be checked on the board; the fallback is 500 kHz. `READN`/`WRITEN` framing area is not measured.
+- The trace checker warns that finished TASK-021 and TASK-023 point to the replaced DEC-002. This is correct history. Should the checker skip `done` tasks for this warning?
 - **Review [CHG-009](changes/CHG-009-delta-writeback.md) (small, already applied).** [EVAL-013](evals/EVAL-013-delta-writeback.md): a narrow second write port (R2–R5 only) writes both `edge_delta` words on one edge. It is the smallest option (24,437 µm², 2.0 % of the tile) and needs no extra issue slot. Say if you want it reverted or widened to a full second port (+3,210 µm²).
 - Lingga approved [CHG-008](changes/CHG-008-stop-ordering.md) with both proposed choices: `DONE` holds the pads, and `DONE`/`FAULTED` keep payload FIFOs until `STOP`. Fault-to-pad timing is not measured.
 - Lingga approved [CHG-007](changes/CHG-007-modular-guards.md) (24-bit guard rule). Guard area is not measured; check it in the BLK-CORE timing probe.
-- Lingga approved [CHG-002](changes/CHG-002-loader-recovery.md). Recovery cases are planned. Timeout values remain provisional, and payload FIFO depth plus board and firmware timing remain open.
+- Lingga approved [CHG-002](changes/CHG-002-loader-recovery.md). Recovery cases are planned. Timeout values remain provisional, and board and firmware timing remain open.
 - Lingga approved [CHG-006](changes/CHG-006-edge-interval.md) for the draft ISA. CHG-009 settled the writeback and CHG-008 the fault behavior; final opcodes remain open. No block is agreed yet.
-- Lingga approved [CHG-005](changes/CHG-005-host-payload.md) for the draft ISA. Simultaneous host/core FIFO access remains open.
+- Lingga approved [CHG-005](changes/CHG-005-host-payload.md) for the draft ISA; CHG-010 settled simultaneous host/core FIFO access.
 - [EVAL-003](evals/EVAL-003-g4-timed-io.md) supports keeping four output slots and one capture slot per context.
 - Final tile fit and routed 60 MHz timing remain unverified. The hybrid [timing slice](evals/EVAL-008-eight-pad-timing.md) met placed setup but missed fast hold, including on internal register paths.

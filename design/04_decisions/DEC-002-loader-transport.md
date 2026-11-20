@@ -1,8 +1,9 @@
 # DEC-002 — RP2350 loader transport
-- Status: agreed
+- Status: replaced
 - Traces to: BLK-HOST, BLK-PADS, BLK-PROGRAM, SPEC-HOST-001, SPEC-RST-002, REQ-PROTO-004
 - Chooses: Dedicated SPI0 with reply-ready
 - Evidence: EVAL-004
+- Replaced by: DEC-005
 
 ## Options and evidence
 
@@ -16,5 +17,7 @@
 ## Decision
 
 Use dedicated RP2350 SPI0 host wiring, mode 0 at 250 kHz, with a separate `READY` output. Keep host traffic off the protocol pads. Both candidates meet the modeled load-time target. SPI gives up nominal nibble speed for fewer pins and support from the RP2350 hardware SPI controller. No weighted scoring was used.
+
+[DEC-005](DEC-005-loader-rate.md) keeps this transport and its pins but raises SCK to 1 MHz and adds 4-word payload transfers.
 
 Lingga approved the transport and [interface change](../changes/CHG-001-loader-interface.md) on 2026-11-20. This approval does not freeze the pending details in BLK-HOST or close G4.
