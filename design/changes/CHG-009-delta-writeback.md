@@ -19,7 +19,7 @@ Inside BLK-CORE only. No change to block interfaces, SPECs, the ISA draft's beha
 
 ## Approval
 
-small: the agent may apply it under AGENTS.md §7. Applied on 2026-11-20 and reported to Lingga for review.
+small: the agent may apply it under AGENTS.md §7. Applied on 2026-11-20 and reported to Lingga for review. Lingga accepted it as applied on 2026-11-20.
 
 ## Close-out
 

@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (payload FIFO and 1 MHz loader approved and applied, CHG-010, CHG-011, DEC-005)
+**Last updated:** 2026-11-20 (all programs replayed on the draft ISA, EVAL-016; CHG-012 proposed)
 **Current stage:** G4 (Micro-architecture)
 
 ## Gates
@@ -36,14 +36,17 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-043: Replay all baseline and non-target programs on the draft ISA.
+1. TASK-046 (Lingga): Review [CHG-012](changes/CHG-012-shift-lsb.md), the LSB-first `shift_pin` option. Then apply it.
+2. Then G4 block review: each block with its unit test (g4-review step 2), and the full-core timing check (step 3).
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
+- **Approve [CHG-012](changes/CHG-012-shift-lsb.md)?** [EVAL-016](evals/EVAL-016-program-suite.md): all 914 baseline and non-target cases pass on the draft ISA, but UART TX needs the host to bit-reverse each byte. Proposal: bit 20 of `shift_pin` selects LSB-first (no new opcode). Alternative: document host bit reversal.
+- Waits have no timeout: an I2C target holding SCL low stalls its context until the host sends `STOP`. Document, or add a timeout later?
 - Lingga approved [CHG-010](changes/CHG-010-payload-fifo.md) (no pass-through, depth 8) and the 1 MHz loader with four-word transfers ([CHG-011](changes/CHG-011-loader-rate.md), [DEC-005](04_decisions/DEC-005-loader-rate.md) replacing DEC-002). 1 MHz SPI must be checked on the board; the fallback is 500 kHz. `READN`/`WRITEN` framing area is not measured.
-- The trace checker warns that finished TASK-021 and TASK-023 point to the replaced DEC-002. This is correct history. Should the checker skip `done` tasks for this warning?
-- **Review [CHG-009](changes/CHG-009-delta-writeback.md) (small, already applied).** [EVAL-013](evals/EVAL-013-delta-writeback.md): a narrow second write port (R2–R5 only) writes both `edge_delta` words on one edge. It is the smallest option (24,437 µm², 2.0 % of the tile) and needs no extra issue slot. Say if you want it reverted or widened to a full second port (+3,210 µm²).
+- The trace checker warns that finished TASK-021 and TASK-023 point to the replaced DEC-002. Accepted as correct history; the checker is unchanged.
+- Lingga accepted [CHG-009](changes/CHG-009-delta-writeback.md) (narrow second register write port) as applied.
 - Lingga approved [CHG-008](changes/CHG-008-stop-ordering.md) with both proposed choices: `DONE` holds the pads, and `DONE`/`FAULTED` keep payload FIFOs until `STOP`. Fault-to-pad timing is not measured.
 - Lingga approved [CHG-007](changes/CHG-007-modular-guards.md) (24-bit guard rule). Guard area is not measured; check it in the BLK-CORE timing probe.
 - Lingga approved [CHG-002](changes/CHG-002-loader-recovery.md). Recovery cases are planned. Timeout values remain provisional, and board and firmware timing remain open.

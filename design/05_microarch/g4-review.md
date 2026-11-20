@@ -30,6 +30,6 @@ The linked records define the interfaces. The checks below are planned, not pass
 
 ## Before asking for block approval
 
-1. [CHG-007](../changes/CHG-007-modular-guards.md) settled modular wait/fence behavior, [CHG-008](../changes/CHG-008-stop-ordering.md) fault, stop and halt ordering, and [CHG-009](../changes/CHG-009-delta-writeback.md) the elapsed-time writeback. Replay baseline and non-target programs, including ones that need these operations.
+1. [CHG-007](../changes/CHG-007-modular-guards.md) settled modular wait/fence behavior, [CHG-008](../changes/CHG-008-stop-ordering.md) fault, stop and halt ordering, and [CHG-009](../changes/CHG-009-delta-writeback.md) the elapsed-time writeback. [EVAL-016](../evals/EVAL-016-program-suite.md) replayed every baseline and non-target program; [CHG-012](../changes/CHG-012-shift-lsb.md) (LSB-first shift) awaits review.
 2. Review each block with its unit test. Keep provisional host timeout and FIFO sizing assumptions visible. If a draft interface changes, record the change before agreement.
 3. Check full-core timing with the saved-request path and actual register file. Track fast hold, routed setup and tile fit separately from G4 agreement. The slice does not substitute for sign-off.

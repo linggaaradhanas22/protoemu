@@ -192,6 +192,12 @@ def execute(code, pc, pins, open_drain, epoch, *, table=DECODE, delta_writeback=
                 changes.update(pad(extra, value))
             yield Out(at(args[-1]), changes)
             regs[reg] = (regs[reg] << 1) & 0xFFFF
+        elif op == "shift_lsb":
+            # TASK-043 exploration only: least-significant bit first, shift right.
+            reg, index, delay = args
+            changes = pad(index, regs[reg] & 1)
+            yield Out(at(delay), changes)
+            regs[reg] >>= 1
         elif op == "drivev":
             reg, oe, delay = args
             mask, values = regs[reg] & 0xFF, regs[reg] >> 8

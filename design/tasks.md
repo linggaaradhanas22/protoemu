@@ -327,9 +327,9 @@ Done when: compare register-file write options for `edge_delta` (one write port 
 Done when: define what happens when the host and a context access the same payload FIFO on one edge, including full and empty boundaries. Size the FIFO depth from the baseline and non-target replays and from synthesized area. Propose one rule and depth. Keep opcodes and production RTL unchanged.
 
 ### TASK-043 — Replay all baseline and non-target programs on the draft ISA
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: SPEC-PROG-001, SPEC-PROG-003, BLK-CORE
+- Works on: SPEC-PROG-001, SPEC-PROG-003, BLK-CORE, EVAL-016, CHG-012
 - Blocked by: TASK-044
 Done when: assemble UART TX/RX, every baseline SPI and I2C case and the non-target examples with only draft-ISA operations and host payload. Replay them under the CHG-007 and CHG-008 rules and report pass/fail, words and timing margins.
 
@@ -346,3 +346,10 @@ Done when: Lingga approves the same-edge rule and depth 8 for the draft, or reco
 - Works on: BLK-HOST, SPEC-UART-001, SPEC-UART-002, EVAL-015
 - Blocked by: TASK-042
 Done when: sweep loader SCK rate, per-frame overhead, words per transaction and FIFO depth for UART receive and transmit bursts at 38,400 to 115,200 baud. Check which SCK rates the synchronizer timing model allows, and measure the area of multi-word FIFO support. Report data for Lingga's TASK-044 decision; change no agreed record.
+
+### TASK-046 — Review the LSB-first shift option
+- Status: todo
+- Owner: Lingga
+- Works on: CHG-012, EVAL-016
+- Blocked by: TASK-043
+Done when: Lingga approves the LSB-first `shift_pin` option or chooses documented host bit reversal. After approval, apply CHG-012 to the ISA draft, BLK-CORE and TEST-UNIT-001.
