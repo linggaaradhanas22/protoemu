@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (architecture decision scored; G3 remains open)
+**Last updated:** 2026-11-20 (ARCH-B selected; G3 sign-off pending)
 **Current stage:** G3 (Architecture)
 
 ## Gates
@@ -12,7 +12,7 @@ every session. Only Lingga marks a gate ✅.
 |---|---|---|---|---|
 | G1 | Requirements agreed | ✅ Approved by Lingga | `g1-req` | `check_trace.py --gate G1` |
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
-| G3 | Architecture decided | 🔄 DEC-001 ranks B first; selection pending | `g3-arch` | `--gate G3` |
+| G3 | Architecture decided | 🔄 ARCH-B selected; checker MET; awaiting sign-off | `g3-arch` | `--gate G3` |
 | G4 | Micro-architecture agreed | ⏳ | `g4-uarch` | `--gate G4` |
 | G5 | RTL + unit tests | ⏳ | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
@@ -36,8 +36,8 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. Ask Lingga to approve ARCH-B in DEC-001. Keep all architecture statuses as `candidate` until Lingga approves the selection, then check G3 for sign-off.
+1. Obtain G3 sign-off from Lingga. Then tag `g3-arch` and start G4 by defining ARCH-B's blocks, interfaces and unit tests.
 
 ## Open questions for Lingga
-- Lingga approved the 50% program space, 30% area, and 20% setup slack weights. ARCH-B ranked first under those weights and all six sensitivity tests. Approve ARCH-B as the architecture?
+- ARCH-B is selected in DEC-001. Does Lingga approve closing G3 and opening G4?
 - All three placed probes met slow-corner setup at 60 MHz but missed input hold in the pre-CTS timing model. Routed setup and hold remain open for the selected design.

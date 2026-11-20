@@ -95,7 +95,8 @@ timing numbers at 60 MHz, ready for stage G3 EVALs.
 ### TASK-010 — Draft architecture candidates and comparison plans
 - Status: done
 - Owner: agent
-- Works on: ARCH-A, ARCH-B, ARCH-C, EVAL-001, EVAL-002
+- Works on: EVAL-001, EVAL-002
+Historical scope: drafted ARCH-A, ARCH-B, and ARCH-C before the selection.
 Done when: three candidates cover all benchmark profiles and the evaluation plans define comparable evidence for protocol fit, physical risk and toolchain effort.
 
 ### TASK-011 — Build and run the shared protocol benchmark models
@@ -132,3 +133,10 @@ Done when: the draft compares all three options using both evaluations, recommen
 - Works on: DEC-001
 - Blocked by: TASK-014
 Done when: DEC-001 records Lingga's approved weights, the scores from both evaluations, and the six sensitivity tests. The architecture remains unselected until Lingga approves it.
+
+### TASK-016 — Record the architecture selection
+- Status: done
+- Owner: agent
+- Works on: DEC-001, ARCH-B
+- Blocked by: TASK-015
+Done when: Lingga's selection is recorded in DEC-001 and the architecture options, and the G3 checker is run before asking for sign-off.

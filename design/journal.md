@@ -160,3 +160,9 @@ Did: Scored DEC-001 from the archived EVAL-001 and EVAL-002 data. Changed each a
 Results: B scored 4.264/5, C 2.200/5, and A 1.800/5. B ranked first in all six sensitivity tests. No architecture status changed, and no design tests ran.
 AI vs human: Lingga approved the 50% program space, 30% area, and 20% setup slack weights. OpenCode calculated and recorded the scores. Lingga has not yet approved the selection.
 Next: Ask Lingga to select ARCH-B. Leave G3 open until approval and the gate check.
+
+## 2026-11-20: Lingga + OpenCode (TASK-016)
+Did: Recorded ARCH-B as chosen in DEC-001 and retained A and C as rejected alternatives.
+Results: `check_trace.py --gate G3` reported MET with zero errors and zero warnings. No design tests ran; final fit and routed timing are unverified.
+AI vs human: Lingga approved selecting ARCH-B. OpenCode recorded the selection and ran the gate checker. G3 sign-off has not been requested or recorded yet.
+Next: Ask Lingga to sign off G3. After approval, tag the gate and start G4 block and unit-test planning.

@@ -1,10 +1,10 @@
 # DEC-001 — Select the protocol emulator architecture
-- Status: draft
+- Status: agreed
 - Traces to: REQ-FLEX-001, REQ-FLEX-002, REQ-RULE-002, REQ-RULE-003, REQ-PROTO-004, SPEC-HOST-001, SPEC-PHY-001, SPEC-PROG-002
 - Chooses: ARCH-B
 - Evidence: EVAL-001, EVAL-002
 
-This draft recommends B. It does not select an architecture or pass G3.
+Lingga selected B on 2026-11-20. G3 sign-off is separate from architecture selection.
 
 ## Options
 
@@ -51,12 +51,12 @@ Each row changes one weight by 10 percentage points and rescales the other two p
 
 B ranks first in every test. Its narrowest lead is 1.566 points over C when area rises to 40%. A hard requirement for independent issue paths would favor A. If B cannot preserve deadlines when one context is backpressured, revisit the recommendation before relying on its program-space advantage.
 
-## Recommendation
+## Decision
 
-Carry **B** into microarchitecture if Lingga approves. Its shared store leaves 66 of 128 instruction words free after the Fast-mode I²C exchange, and the placed probe used 26.1% of the row area. Compared with C, the probe costs about 0.050 mm² more. Compared with A, B gives up independent issue paths.
+Carry **B** into microarchitecture after G3 sign-off. Its shared store leaves 66 of 128 instruction words free after the Fast-mode I²C exchange, and the placed probe used 26.1% of the row area. Compared with C, the probe costs about 0.050 mm² more. Compared with A, B gives up independent issue paths. A and C were not selected on the approved scoring criteria; neither failed the encoded cases.
 
 Start from the evaluated design point: a 128×24-bit flop program store, two contexts, four timed output slots and two context-owned capture slots. These are starting parameters, not an approved ISA or a frozen block interface. The encoded tests used all four output entries in the 10 µs stretch case and both capture slots in the UART/SPI overlap case.
 
 Before implementation, specify what happens when the output queue fills, when a timestamp wraps, and when events in different contexts become due on the same cycle. Test that backpressure cannot lose a write or capture or make the other context miss a deadline. Separately define the RP2350 loader and pin allocation, verify reset/reload behavior, and check 60 MHz setup and hold after CTS and routing. The protocol chosen after RTL freeze remains a separate acceptance test.
 
-Approval: Lingga approved the score weights. Architecture selection and G3 sign-off are still pending.
+Approval: Lingga approved the weights and the selection of ARCH-B on 2026-11-20.
