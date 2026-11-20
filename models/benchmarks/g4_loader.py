@@ -30,22 +30,25 @@ def decode(frame):
 
 
 class Transport:
-    def __init__(self, kind, phase, poll_slip=0):
+    # Serial timing in ticks (1/16 of a 60 MHz clock). Defaults are the EVAL-004
+    # settings: 250 kHz SCK, 2 us lead guard, 2 us lag guard + inter-frame budget.
+    def __init__(self, kind, phase, poll_slip=0, *, half=2 * US, lead=2 * US, lag=2 * US, tail=24 * US):
         self.kind = kind
         self.t = phase
         self.poll_slip = poll_slip
+        self.half, self.lead, self.lag, self.tail = half, lead, lag, tail
 
     def frame(self, data, *, reply=False):
         opened = sample(self.t)
-        self.t += 2 * US
+        self.t += self.lead
         received = bytearray()
         for byte in data:
             if self.kind == "serial":
                 rx = 0
                 for shift in range(7, -1, -1):
                     launch = self.t
-                    rising = launch + 2 * US
-                    next_launch = rising + 2 * US
+                    rising = launch + self.half
+                    next_launch = rising + self.half
                     if reply:
                         # TX bit is registered after synchronized falling SCK.
                         assert sample(launch) + PHASES < rising
@@ -71,9 +74,9 @@ class Transport:
             else:
                 raise ValueError(self.kind)
             received.append(rx)
-        closed = sample(self.t + 2 * US)
+        closed = sample(self.t + self.lag)
         # Inter-frame budget covers response register/READY and host dispatch.
-        self.t += 24 * US
+        self.t += self.tail
         assert self.t > closed
         return bytes(received), closed
 

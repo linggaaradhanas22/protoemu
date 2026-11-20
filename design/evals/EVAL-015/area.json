@@ -1,0 +1,61 @@
+{
+  "queues": 4,
+  "rows": [
+    {
+      "depth": 4,
+      "single": {
+        "cells": 764,
+        "flops": 292,
+        "area_um2": 22810.5,
+        "core_fraction": 0.01888
+      },
+      "multi": {
+        "cells": 788,
+        "flops": 288,
+        "area_um2": 22946.7,
+        "core_fraction": 0.01899
+      },
+      "multi_extra_um2": 136.2
+    },
+    {
+      "depth": 8,
+      "single": {
+        "cells": 1524,
+        "flops": 564,
+        "area_um2": 45196.7,
+        "core_fraction": 0.03741
+      },
+      "multi": {
+        "cells": 1558,
+        "flops": 558,
+        "area_um2": 45501.5,
+        "core_fraction": 0.03766
+      },
+      "multi_extra_um2": 304.8
+    },
+    {
+      "depth": 16,
+      "single": {
+        "cells": 2845,
+        "flops": 1092,
+        "area_um2": 87620.9,
+        "core_fraction": 0.07252
+      },
+      "multi": {
+        "cells": 3037,
+        "flops": 1084,
+        "area_um2": 88687.9,
+        "core_fraction": 0.07341
+      },
+      "multi_extra_um2": 1067.0
+    }
+  ],
+  "core_um2": 1208172.7,
+  "corner": "typ_1p20V_25C",
+  "liberty_sha256": "34163f3e7de9f854afac57332ba06f1739b78e7ac35660a8a5ddd39c570124ad",
+  "source_sha256": {
+    "fifo_probe.v": "c3af8c47a5a9e008243f760fdc5ba333b4e25b15b8c3ba83b1ec258c22c9c1b5",
+    "fifo_multi_probe.v": "3655fcb67a0b5cbd9e057c5de43b0ea23de68e73825cf73d8778629468e20e15"
+  },
+  "yosys": "Yosys 0.71+52 (git sha1 e4a169b8f, Release, Clang /usr/bin/clang++ 21.1.8)"
+}

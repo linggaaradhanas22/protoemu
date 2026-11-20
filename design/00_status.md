@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (payload FIFO rule and depth proposed in CHG-010)
+**Last updated:** 2026-11-20 (loader rate options modeled in EVAL-015)
 **Current stage:** G4 (Micro-architecture)
 
 ## Gates
@@ -43,7 +43,7 @@ Use the [project diagram convention](05_microarch/diagrams/README.md): solid for
 
 ## Open questions for Lingga
 - **Approve [CHG-010](changes/CHG-010-payload-fifo.md)?** [EVAL-014](evals/EVAL-014-payload-fifo.md): decide FIFO acceptance from the count before the edge (no pass-through), and keep depth 8 (45,197 µm², 3.7 % of the tile, half of BLK-HOST's allowance).
-- **UART burst limit.** The 250 kHz loader drains about 2,100 words/s. Continuous UART RX works up to 19,200 baud. At depth 8, bursts of 17 / 13 / 10 bytes fit at 38,400 / 57,600 / 115,200 baud. The agreed 6-byte test fits. Should we document the limit, or raise it with a faster loader clock (DEC-002) or a multi-word `READ` (BLK-HOST)?
+- **UART burst limit: choose an option from [EVAL-015](evals/EVAL-015-host-rate.md).** Today (250 kHz, single word) a stream stops after 10 bytes at 115,200 baud. Recommended: 1 MHz loader clock + 4-word `READN`/`WRITEN`, depth 8. It sustains every common baud rate in both directions, with a 434 ns reply-timing margin and +305 µm² FIFO area, and loads an image in 3.5 ms instead of 13.6 ms. Alternatives: 2 MHz single-word (47-byte bursts, clock change only), 4 MHz single-word (sustained, thin 59 ns margin), or document the limit. Board delays are not modeled.
 - **Review [CHG-009](changes/CHG-009-delta-writeback.md) (small, already applied).** [EVAL-013](evals/EVAL-013-delta-writeback.md): a narrow second write port (R2–R5 only) writes both `edge_delta` words on one edge. It is the smallest option (24,437 µm², 2.0 % of the tile) and needs no extra issue slot. Say if you want it reverted or widened to a full second port (+3,210 µm²).
 - Lingga approved [CHG-008](changes/CHG-008-stop-ordering.md) with both proposed choices: `DONE` holds the pads, and `DONE`/`FAULTED` keep payload FIFOs until `STOP`. Fault-to-pad timing is not measured.
 - Lingga approved [CHG-007](changes/CHG-007-modular-guards.md) (24-bit guard rule). Guard area is not measured; check it in the BLK-CORE timing probe.

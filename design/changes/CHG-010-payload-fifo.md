@@ -33,7 +33,7 @@ No SPEC or REQ changes; SPEC-UART-002's six-frame test fits. The ready/valid sig
 
 Rejected alternatives: bypass (larger, couples host decode to issue, and saves at most one cycle on a 468 µs transaction). Depth 6 (saves 10,039 µm², but no spare word for WS2812 or the UART test, and 8-byte bursts at 115,200 baud).
 
-Open for Lingga, not part of this change: raise the burst limit with a faster loader clock (changes DEC-002) or a multi-word `READ` (changes BLK-HOST)?
+Open for Lingga, not part of this change: raise the burst limit with a faster loader clock (changes DEC-002) or a multi-word `READ` (changes BLK-HOST)? [EVAL-015](../evals/EVAL-015-host-rate.md) models both. A 1 MHz clock with 4-word transfers sustains 115,200 baud in both directions at depth 8.
 
 ## Approval
 

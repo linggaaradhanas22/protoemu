@@ -337,5 +337,12 @@ Done when: assemble UART TX/RX, every baseline SPI and I2C case and the non-targ
 - Status: todo
 - Owner: Lingga
 - Works on: CHG-010, EVAL-014
-- Blocked by: TASK-042
+- Blocked by: TASK-045
 Done when: Lingga approves the same-edge rule and depth 8 for the draft, or records what to revise, and decides whether to pursue a faster loader or multi-word `READ`. After approval, apply CHG-010 to the block and test records.
+
+### TASK-045 — Model faster loader clock and multi-word payload transfers
+- Status: done
+- Owner: agent
+- Works on: BLK-HOST, SPEC-UART-001, SPEC-UART-002, EVAL-015
+- Blocked by: TASK-042
+Done when: sweep loader SCK rate, per-frame overhead, words per transaction and FIFO depth for UART receive and transmit bursts at 38,400 to 115,200 baud. Check which SCK rates the synchronizer timing model allows, and measure the area of multi-word FIFO support. Report data for Lingga's TASK-044 decision; change no agreed record.
