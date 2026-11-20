@@ -262,3 +262,9 @@ Did: Recorded approval of DEC-004 and CHG-004. Updated the core, program store, 
 Results: Traceability was clean and all 38 Python model checks passed. Block interfaces and pin mapping did not change. No production RTL changed and no registered verification tests ran.
 AI vs human: Lingga approved keeping both timed pad formats in the draft ISA. OpenCode recorded the decision and applied the change. Neither the release opcodes nor G4 were approved.
 Next: TASK-033, prototype generic host payload instructions.
+
+## 2026-11-20: Lingga + OpenCode (TASK-033)
+Did: Ran EVAL-009 as an exploration. Replaced benchmark reports and the fixed SPI transmit word with FIFO instructions in the overlap program. Drafted CHG-005.
+Results: All 96 concurrent UART/SPI model cases and 41 Python checks passed. A directed check stalled one context on empty ingress and full egress without blocking the other. The program used 37 words with 13 cycles of minimum output admission slack. No production RTL changed.
+AI vs human: Lingga authorized the prototype. OpenCode wrote and ran it. Lingga has not approved the payload operations or G4.
+Next: TASK-034, review CHG-005.

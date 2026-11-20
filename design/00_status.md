@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (timed pad formats approved for the draft ISA)
+**Last updated:** 2026-11-20 (generic host payload replay)
 **Current stage:** G4 (Micro-architecture)
 
 ## Gates
@@ -13,7 +13,7 @@ every session. Only Lingga marks a gate ✅.
 | G1 | Requirements agreed | ✅ Approved by Lingga | `g1-req` | `check_trace.py --gate G1` |
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
 | G3 | Architecture decided | ✅ Approved by Lingga; ARCH-B selected in DEC-001 | `g3-arch` | `--gate G3` |
-| G4 | Micro-architecture agreed | 🔄 pad formats approved for the draft ISA; remaining ISA gaps and block approvals pending | `g4-uarch` | `--gate G4` |
+| G4 | Micro-architecture agreed | 🔄 generic payload replay complete; payload decision, remaining ISA gaps and block approvals pending | `g4-uarch` | `--gate G4` |
 | G5 | RTL + unit tests | ⏳ | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
 | G7 | Sign-off: precheck + write-up | ⏳ | `g7-submit` | `--gate G7` |
@@ -36,12 +36,12 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-033: Prototype generic host payload instructions to replace fixture-specific reports.
+1. TASK-034: Review the generic host payload operations in CHG-005.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
 - Lingga approved [CHG-002](changes/CHG-002-loader-recovery.md). Recovery cases are planned. Timeout values remain provisional, and payload FIFO depth plus board and firmware timing remain open.
-- Lingga approved [DEC-004](04_decisions/DEC-004-hybrid-pad-isa.md) and [CHG-004](changes/CHG-004-hybrid-pad-isa.md). The [ISA draft](05_microarch/isa-draft.md) still needs generic payload, edge/time access and exact fault behavior. No block is agreed yet.
+- Approve [CHG-005](changes/CHG-005-host-payload.md)? [EVAL-009](evals/EVAL-009-host-payload.md) supports context-local `host_get` and `host_put`. Edge/time access and exact fault behavior remain open. No block is agreed yet.
 - [EVAL-003](evals/EVAL-003-g4-timed-io.md) supports keeping four output slots and one capture slot per context.
 - Final tile fit and routed 60 MHz timing remain unverified. The hybrid [timing slice](evals/EVAL-008-eight-pad-timing.md) met placed setup but missed fast hold, including on internal register paths.

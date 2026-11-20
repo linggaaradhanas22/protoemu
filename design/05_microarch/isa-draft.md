@@ -41,7 +41,7 @@ The exploration also decodes opcode 12 (`report`) with a 3-bit fixture channel a
 
 | Gap | Evidence needed |
 |---|---|
-| Generic payload and status | Replace fixture reports with context-local FIFO operations and define their blocking and retirement behavior. Replay through the host contract rather than reading Python report channels. |
+| Generic payload and status | [EVAL-009](../evals/EVAL-009-host-payload.md) replays context-local FIFO operations through the host model. [CHG-005](../changes/CHG-005-host-payload.md) is pending. Final FIFO depth, same-edge host/core access and status behavior remain open. |
 | Edge capture and time inspection | Define an opcode or mode for edge capture, and how a program reads elapsed time or preserves an old timestamp. The tested `wait_save` waits for a level. It does not encode RC5 edge interval measurement. |
 | Arithmetic and offset register use | Check bit operations, register pressure and split offsets in real programs. The replay reserves `R0`/`R6` by convention, while the vector translator uses `R7` as scratch. The latter is not an architectural reservation. |
 | Execution corner cases | Define modular guard/fence behavior, exact fault and `safe`/`flush` ordering, and pending-operation state. Check isolated contexts and that no failed output, payload or shift operation commits twice. |

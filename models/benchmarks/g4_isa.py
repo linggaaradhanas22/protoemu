@@ -1,5 +1,7 @@
 """Exploratory ARCH-B encoding with native capture-derived deadlines."""
 
+from dataclasses import dataclass
+
 from .cycle import Emit, Level, ModelError, Out, Sample
 from .encoded import FORMATS as LEGACY_FORMATS
 from .encoded import NO_PIN, REPORTS, Image, Issue, pack, unpack
@@ -21,6 +23,11 @@ PAD_DECODE = {code: (op, widths) for op, (code, widths) in PAD_FORMATS.items()}
 
 class SaveLevel(Level):
     """Return the stored observation timestamp at consume, not elapsed time."""
+
+
+@dataclass(frozen=True)
+class PayloadWrite(Issue):
+    word: int = 0
 
 
 def assemble(lines, *, formats=FORMATS):
@@ -181,6 +188,12 @@ def execute(code, pc, pins, open_drain, epoch, *, table=DECODE):
             if channel >= len(REPORTS):
                 raise ModelError("invalid report channel")
             yield Emit(REPORTS[channel], regs[reg])
+        elif op == "host_get":
+            (dest,) = args
+            regs[dest] = yield Issue("host_get")
+        elif op == "host_put":
+            (source_reg,) = args
+            yield PayloadWrite("host_put", word=regs[source_reg])
         elif op == "fence":
             yield Issue("fence", at(args[0]))
 
@@ -193,7 +206,7 @@ class ISAProbe(TimingProbe):
         self.min_sample_slack = None
 
     @classmethod
-    def from_image(cls, arch, image, bus, *, epoch=0, slots=4):
+    def from_image(cls, arch, image, bus, *, epoch=0, slots=4, **kwargs):
         if arch != "B":
             raise ValueError("the ISA probe only models ARCH-B")
         image.validate(arch)
@@ -202,12 +215,12 @@ class ISAProbe(TimingProbe):
                     for pc in image.entries]
         writable = {name for name in bus.idle if name not in {"uart_rx", "miso"} and not name.startswith("unused")}
         owners = ((), writable) if len(programs) == 2 else (writable,)
-        return cls(programs, bus, owners, epoch=epoch, slots=slots)
+        return cls(programs, bus, owners, epoch=epoch, slots=slots, **kwargs)
 
     def _capture_result(self, capture):
         return capture.stamp if isinstance(capture.op, SaveLevel) else capture.value
 
-    def _issue_result(self, op, t):
+    def _issue_result(self, owner, op, t):
         return self.timer(t) if op.kind == "read_timer" else None
 
     def _issue(self, owner, t):

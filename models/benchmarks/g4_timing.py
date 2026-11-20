@@ -104,7 +104,7 @@ class TimingProbe(Machine):
             delta = self._delta(self.timer(op.at), t)
             return not self._valid_delta(delta) or self._bad_mask(owner, op)
         if isinstance(op, Issue):
-            return t >= op.at
+            return self._instruction_ready(owner, op, t)
         return not task.finished
 
     def _bad_mask(self, owner, op):
@@ -115,7 +115,10 @@ class TimingProbe(Machine):
     def _capture_result(self, capture):
         return capture.value
 
-    def _issue_result(self, op, t):
+    def _instruction_ready(self, owner, op, t):
+        return t >= op.at
+
+    def _issue_result(self, owner, op, t):
         return None
 
     def _issue(self, owner, t):
@@ -128,9 +131,9 @@ class TimingProbe(Machine):
             task.consume(self._capture_result(capture))
             kind = "consume"
         elif isinstance(op, Issue):
-            if t < op.at:
+            if not self._instruction_ready(owner, op, t):
                 return False
-            task.consume(self._issue_result(op, t))
+            task.consume(self._issue_result(owner, op, t))
             if op.kind == "fetch":
                 self.continuation = owner
             kind = op.kind

@@ -257,8 +257,15 @@ Done when: present the proposed instruction formats and block contracts for revi
 Done when: Lingga approves carrying both pad formats into the ISA draft or records what to revise. This is not G4 approval.
 
 ### TASK-033 — Prototype generic host payload instructions
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: BLK-CORE, BLK-HOST, TEST-UNIT-001, TEST-INT-001
+- Works on: BLK-CORE, BLK-HOST, TEST-UNIT-001, TEST-INT-001, EVAL-009, CHG-005
 - Blocked by: TASK-032
 Done when: propose context-local instructions for reading and writing payload. Replace fixture-specific reports in a replay of concurrent UART/SPI. Check that FIFO backpressure blocks only the requesting context and that each payload operation retires once.
+
+### TASK-034 — Review the generic host payload operations
+- Status: todo
+- Owner: Lingga
+- Works on: CHG-005, EVAL-009
+- Blocked by: TASK-033
+Done when: Lingga approves the proposed draft operations or records what to revise.
