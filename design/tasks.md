@@ -42,13 +42,12 @@ Done when: `bash scripts/sim.sh` runs the template's example test and it passes;
 in the journal.
 
 ### TASK-004 — Prove the hardening flow
-- Status: blocked
+- Status: done
 - Owner: agent
 - Works on: REQ-RULE-008
 - Blocked by: TASK-003
-Current blocker: `tt_tool.py` rejects the stock template's empty `project.title`, `project.author` and `project.description`. Ask Lingga to approve filling those fields in a local smoke-test copy only.
-Done when: `bash scripts/harden.sh --setup` hardens the unchanged template, `gl_sim.sh` passes,
-and the runtime + any problems are noted in the journal. (Ask Lingga before installing Docker.)
+Result: hardening and gate-level simulation passed. See the [smoke-test report](../reports/harden/20261120_1602/README.md) for the steps used to resume the setup wrapper in the WSL copy.
+Done when: the local flow started by `bash scripts/harden.sh --setup` hardens the stock RTL, `gl_sim.sh` passes on the resulting netlist, and the journal records the runtime and any workarounds. (Ask Lingga before installing Docker.)
 
 ## Stage G2 — Specification (start after G1)
 

@@ -120,3 +120,10 @@ Results: The setup attempt stopped after 32.08 s (wall time), exit 1. No hardeni
 AI vs human: Lingga requested this smoke test in parallel with G3. OpenCode ran the setup and left the template files unchanged.
 Problems: `tt_tool.py --create-user-config` rejects the empty title, author and description in the stock `info.yaml`.
 Next: Ask Lingga to approve a metadata-only override in the WSL smoke-test copy, then rerun hardening and simulate the generated netlist.
+
+## 2026-11-20: Lingga + OpenCode (TASK-004 complete)
+Did: Filled only the three approved metadata fields in the WSL copy, added local Git provenance for `tt_tool.py`, and finished hardening. Ran `gl_sim.sh` on the generated netlist using the exact Ciel PDK revision from the flow.
+Results: Hardening passed in 348.85 s wall time. Gate-level `test_project` passed (1/1, 1.65 s wall time). See the [smoke-test report](../reports/harden/20261120_1602/README.md). No project acceptance tests ran.
+AI vs human: Lingga approved the scratch-copy metadata. OpenCode ran the flow and verified that the repository template files were unchanged.
+Problems: The wrapper excludes Git metadata that `tt_tool.py --harden` needs. Gate-level simulation also needed `PDK_ROOT` pointed at Ciel's version directory. The report documents both workarounds and the warnings.
+Next: TASK-011, shared benchmark fixtures and candidate cycle models. G3 remains open.
