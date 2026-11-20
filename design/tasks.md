@@ -113,7 +113,7 @@ Done when: each candidate has reproducible per-case results, starting with SPI, 
 Done when: mapped size and timing evidence, input assumptions and image build steps are recorded for each viable design point.
 
 ### TASK-013 — Check encodings and rerun the critical protocol cases
-- Status: todo
+- Status: done
 - Owner: agent
 - Works on: EVAL-001, EVAL-002
 - Blocked by: TASK-011

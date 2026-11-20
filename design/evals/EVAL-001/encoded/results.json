@@ -1,0 +1,1716 @@
+[
+  {
+    "case": "spi-1mhz-mode0",
+    "arch": "A",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      108,
+      "SPI half-period"
+    ],
+    "end_cycle": 1025,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058
+      ]
+    },
+    "issued_ops": [
+      203
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "spi-mode0",
+    "program_words": [
+      18
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 72,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 93,
+      "branch_bubble": 17,
+      "execute": 40,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "spi-1mhz-mode1",
+    "arch": "A",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      108,
+      "SPI half-period"
+    ],
+    "end_cycle": 1055,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058
+      ]
+    },
+    "issued_ops": [
+      201
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "spi-mode1",
+    "program_words": [
+      17
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 68,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 92,
+      "branch_bubble": 17,
+      "execute": 40,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "spi-1mhz-mode2",
+    "arch": "A",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      108,
+      "SPI half-period"
+    ],
+    "end_cycle": 1025,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058
+      ]
+    },
+    "issued_ops": [
+      203
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "spi-mode2",
+    "program_words": [
+      18
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 72,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 93,
+      "branch_bubble": 17,
+      "execute": 40,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "spi-1mhz-mode3",
+    "arch": "A",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      108,
+      "SPI half-period"
+    ],
+    "end_cycle": 1055,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058
+      ]
+    },
+    "issued_ops": [
+      201
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "spi-mode3",
+    "program_words": [
+      17
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 68,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 92,
+      "branch_bubble": 17,
+      "execute": 40,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "uart-spi-overlap",
+    "arch": "A",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "end_cycle": 15377,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso",
+      "uart_rx"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058,
+        15058
+      ],
+      "uart_rx": [
+        85,
+        85,
+        163
+      ]
+    },
+    "issued_ops": [
+      222,
+      404
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "overlap",
+    "program_words": [
+      15,
+      20
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 140,
+    "lane_words": [
+      0,
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0,
+      0
+    ],
+    "slot_counts": {
+      "fetch": 283,
+      "branch_bubble": 60,
+      "execute": 144,
+      "fence": 2,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-combined",
+    "arch": "A",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      3,
+      311,
+      "SCL bit period"
+    ],
+    "end_cycle": 8673,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_rx_word": [
+        15058
+      ],
+      "i2c_nack": [
+        0
+      ]
+    },
+    "issued_ops": [
+      1498
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 248,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 609,
+      "branch_bubble": 280,
+      "execute": 359,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-combined-60clk",
+    "arch": "A",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      2,
+      1747,
+      "SCL bit period"
+    ],
+    "end_cycle": 8791,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_rx_word": [
+        15058
+      ],
+      "i2c_nack": [
+        0
+      ]
+    },
+    "issued_ops": [
+      1498
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 248,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 609,
+      "branch_bubble": 280,
+      "execute": 359,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-combined-300clk",
+    "arch": "A",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      2,
+      1987,
+      "SCL bit period"
+    ],
+    "end_cycle": 9271,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_rx_word": [
+        15058
+      ],
+      "i2c_nack": [
+        0
+      ]
+    },
+    "issued_ops": [
+      1498
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 248,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 609,
+      "branch_bubble": 280,
+      "execute": 359,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-combined-600clk",
+    "arch": "A",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      2,
+      2287,
+      "SCL bit period"
+    ],
+    "end_cycle": 9871,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_rx_word": [
+        15058
+      ],
+      "i2c_nack": [
+        0
+      ]
+    },
+    "issued_ops": [
+      1498
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 248,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 609,
+      "branch_bubble": 280,
+      "execute": 359,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-nack-address",
+    "arch": "A",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      3,
+      311,
+      "SCL bit period"
+    ],
+    "end_cycle": 1595,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_nack": [
+        1
+      ]
+    },
+    "issued_ops": [
+      276
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 248,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 112,
+      "branch_bubble": 52,
+      "execute": 67,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-nack-data",
+    "arch": "A",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      3,
+      311,
+      "SCL bit period"
+    ],
+    "end_cycle": 2972,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_nack": [
+        1
+      ]
+    },
+    "issued_ops": [
+      511
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 248,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 207,
+      "branch_bubble": 97,
+      "execute": 125,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "spi-1mhz-mode0",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      108,
+      "SPI half-period"
+    ],
+    "end_cycle": 1024,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058
+      ]
+    },
+    "issued_ops": [
+      203
+    ],
+    "resources_peak": {
+      "output_queue": 3,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "image": "spi-mode0",
+    "program_words": [
+      18
+    ],
+    "program_limit_words": 128,
+    "program_bytes": 54,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 93,
+      "branch_bubble": 17,
+      "execute": 40,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "spi-1mhz-mode1",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      108,
+      "SPI half-period"
+    ],
+    "end_cycle": 1054,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058
+      ]
+    },
+    "issued_ops": [
+      201
+    ],
+    "resources_peak": {
+      "output_queue": 3,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "image": "spi-mode1",
+    "program_words": [
+      17
+    ],
+    "program_limit_words": 128,
+    "program_bytes": 51,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 92,
+      "branch_bubble": 17,
+      "execute": 40,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "spi-1mhz-mode2",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      108,
+      "SPI half-period"
+    ],
+    "end_cycle": 1024,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058
+      ]
+    },
+    "issued_ops": [
+      203
+    ],
+    "resources_peak": {
+      "output_queue": 3,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "image": "spi-mode2",
+    "program_words": [
+      18
+    ],
+    "program_limit_words": 128,
+    "program_bytes": 54,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 93,
+      "branch_bubble": 17,
+      "execute": 40,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "spi-1mhz-mode3",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      108,
+      "SPI half-period"
+    ],
+    "end_cycle": 1054,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058
+      ]
+    },
+    "issued_ops": [
+      201
+    ],
+    "resources_peak": {
+      "output_queue": 3,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "image": "spi-mode3",
+    "program_words": [
+      17
+    ],
+    "program_limit_words": 128,
+    "program_bytes": 51,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 92,
+      "branch_bubble": 17,
+      "execute": 40,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "uart-spi-overlap",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "end_cycle": 15376,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso",
+      "uart_rx"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058,
+        15058
+      ],
+      "uart_rx": [
+        85,
+        85,
+        163
+      ]
+    },
+    "issued_ops": [
+      222,
+      404
+    ],
+    "resources_peak": {
+      "output_queue": 3,
+      "capture_slots": 2,
+      "lanes": 0
+    },
+    "image": "overlap",
+    "program_words": [
+      35
+    ],
+    "program_limit_words": 128,
+    "program_bytes": 105,
+    "lane_words": [
+      0,
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0,
+      15
+    ],
+    "slot_counts": {
+      "fetch": 283,
+      "branch_bubble": 60,
+      "execute": 144,
+      "fence": 2,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-combined",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      3,
+      311,
+      "SCL bit period"
+    ],
+    "end_cycle": 8672,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_rx_word": [
+        15058
+      ],
+      "i2c_nack": [
+        0
+      ]
+    },
+    "issued_ops": [
+      1498
+    ],
+    "resources_peak": {
+      "output_queue": 4,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 128,
+    "program_bytes": 186,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 609,
+      "branch_bubble": 280,
+      "execute": 359,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-combined-60clk",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      2,
+      1747,
+      "SCL bit period"
+    ],
+    "end_cycle": 8790,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_rx_word": [
+        15058
+      ],
+      "i2c_nack": [
+        0
+      ]
+    },
+    "issued_ops": [
+      1498
+    ],
+    "resources_peak": {
+      "output_queue": 4,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 128,
+    "program_bytes": 186,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 609,
+      "branch_bubble": 280,
+      "execute": 359,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-combined-300clk",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      2,
+      1987,
+      "SCL bit period"
+    ],
+    "end_cycle": 9270,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_rx_word": [
+        15058
+      ],
+      "i2c_nack": [
+        0
+      ]
+    },
+    "issued_ops": [
+      1498
+    ],
+    "resources_peak": {
+      "output_queue": 4,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 128,
+    "program_bytes": 186,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 609,
+      "branch_bubble": 280,
+      "execute": 359,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-combined-600clk",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      2,
+      2287,
+      "SCL bit period"
+    ],
+    "end_cycle": 9870,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_rx_word": [
+        15058
+      ],
+      "i2c_nack": [
+        0
+      ]
+    },
+    "issued_ops": [
+      1498
+    ],
+    "resources_peak": {
+      "output_queue": 4,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 128,
+    "program_bytes": 186,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 609,
+      "branch_bubble": 280,
+      "execute": 359,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-nack-address",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      3,
+      311,
+      "SCL bit period"
+    ],
+    "end_cycle": 1594,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_nack": [
+        1
+      ]
+    },
+    "issued_ops": [
+      276
+    ],
+    "resources_peak": {
+      "output_queue": 3,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 128,
+    "program_bytes": 186,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 112,
+      "branch_bubble": 52,
+      "execute": 67,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-nack-data",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      3,
+      311,
+      "SCL bit period"
+    ],
+    "end_cycle": 2971,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_nack": [
+        1
+      ]
+    },
+    "issued_ops": [
+      511
+    ],
+    "resources_peak": {
+      "output_queue": 3,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 128,
+    "program_bytes": 186,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 207,
+      "branch_bubble": 97,
+      "execute": 125,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "spi-1mhz-mode0",
+    "arch": "C",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      108,
+      "SPI half-period"
+    ],
+    "end_cycle": 1025,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058
+      ]
+    },
+    "issued_ops": [
+      34
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 1
+    },
+    "image": "spi-mode0",
+    "program_words": [
+      14
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 42,
+    "lane_words": [
+      4
+    ],
+    "descriptor_bytes": 12,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 14,
+      "branch_bubble": 2,
+      "execute": 8,
+      "fence": 1,
+      "descriptor_read": 4
+    }
+  },
+  {
+    "case": "spi-1mhz-mode1",
+    "arch": "C",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      108,
+      "SPI half-period"
+    ],
+    "end_cycle": 1055,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058
+      ]
+    },
+    "issued_ops": [
+      32
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 1
+    },
+    "image": "spi-mode1",
+    "program_words": [
+      13
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 39,
+    "lane_words": [
+      4
+    ],
+    "descriptor_bytes": 12,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 13,
+      "branch_bubble": 2,
+      "execute": 8,
+      "fence": 1,
+      "descriptor_read": 4
+    }
+  },
+  {
+    "case": "spi-1mhz-mode2",
+    "arch": "C",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      108,
+      "SPI half-period"
+    ],
+    "end_cycle": 1025,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058
+      ]
+    },
+    "issued_ops": [
+      34
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 1
+    },
+    "image": "spi-mode2",
+    "program_words": [
+      14
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 42,
+    "lane_words": [
+      4
+    ],
+    "descriptor_bytes": 12,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 14,
+      "branch_bubble": 2,
+      "execute": 8,
+      "fence": 1,
+      "descriptor_read": 4
+    }
+  },
+  {
+    "case": "spi-1mhz-mode3",
+    "arch": "C",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      108,
+      "SPI half-period"
+    ],
+    "end_cycle": 1055,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058
+      ]
+    },
+    "issued_ops": [
+      32
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 1
+    },
+    "image": "spi-mode3",
+    "program_words": [
+      13
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 39,
+    "lane_words": [
+      4
+    ],
+    "descriptor_bytes": 12,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 13,
+      "branch_bubble": 2,
+      "execute": 8,
+      "fence": 1,
+      "descriptor_read": 4
+    }
+  },
+  {
+    "case": "uart-spi-overlap",
+    "arch": "C",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "end_cycle": 15377,
+    "pins": [
+      "cs",
+      "sclk",
+      "mosi",
+      "miso",
+      "uart_rx"
+    ],
+    "payload": {
+      "spi_rx_word": [
+        15058,
+        15058
+      ],
+      "uart_rx": [
+        85,
+        85,
+        163
+      ]
+    },
+    "issued_ops": [
+      75,
+      66
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 2
+    },
+    "image": "overlap",
+    "program_words": [
+      29
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 87,
+    "lane_words": [
+      4,
+      4
+    ],
+    "descriptor_bytes": 24,
+    "entries": [
+      0,
+      13
+    ],
+    "slot_counts": {
+      "fetch": 56,
+      "branch_bubble": 9,
+      "execute": 32,
+      "fence": 2,
+      "descriptor_read": 20
+    }
+  },
+  {
+    "case": "i2c-400k-combined",
+    "arch": "C",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      3,
+      311,
+      "SCL bit period"
+    ],
+    "end_cycle": 8673,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_rx_word": [
+        15058
+      ],
+      "i2c_nack": [
+        0
+      ]
+    },
+    "issued_ops": [
+      1498
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 186,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 609,
+      "branch_bubble": 280,
+      "execute": 359,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-combined-60clk",
+    "arch": "C",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      2,
+      1747,
+      "SCL bit period"
+    ],
+    "end_cycle": 8791,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_rx_word": [
+        15058
+      ],
+      "i2c_nack": [
+        0
+      ]
+    },
+    "issued_ops": [
+      1498
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 186,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 609,
+      "branch_bubble": 280,
+      "execute": 359,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-combined-300clk",
+    "arch": "C",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      2,
+      1987,
+      "SCL bit period"
+    ],
+    "end_cycle": 9271,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_rx_word": [
+        15058
+      ],
+      "i2c_nack": [
+        0
+      ]
+    },
+    "issued_ops": [
+      1498
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 186,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 609,
+      "branch_bubble": 280,
+      "execute": 359,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-combined-600clk",
+    "arch": "C",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      2,
+      2287,
+      "SCL bit period"
+    ],
+    "end_cycle": 9871,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_rx_word": [
+        15058
+      ],
+      "i2c_nack": [
+        0
+      ]
+    },
+    "issued_ops": [
+      1498
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 186,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 609,
+      "branch_bubble": 280,
+      "execute": 359,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-nack-address",
+    "arch": "C",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      3,
+      311,
+      "SCL bit period"
+    ],
+    "end_cycle": 1595,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_nack": [
+        1
+      ]
+    },
+    "issued_ops": [
+      276
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 186,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 112,
+      "branch_bubble": 52,
+      "execute": 67,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  },
+  {
+    "case": "i2c-400k-nack-data",
+    "arch": "C",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      3,
+      311,
+      "SCL bit period"
+    ],
+    "end_cycle": 2972,
+    "pins": [
+      "scl",
+      "sda"
+    ],
+    "payload": {
+      "i2c_nack": [
+        1
+      ]
+    },
+    "issued_ops": [
+      511
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 0,
+      "lanes": 0
+    },
+    "image": "i2c",
+    "program_words": [
+      62
+    ],
+    "program_limit_words": 64,
+    "program_bytes": 186,
+    "lane_words": [
+      0
+    ],
+    "descriptor_bytes": 0,
+    "entries": [
+      0
+    ],
+    "slot_counts": {
+      "fetch": 207,
+      "branch_bubble": 97,
+      "execute": 125,
+      "fence": 1,
+      "descriptor_read": 0
+    }
+  }
+]

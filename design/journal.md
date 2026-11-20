@@ -134,3 +134,10 @@ Results: All 2,262 cases passed across the three candidates. Eight model sanity 
 AI vs human: Lingga authorized the benchmark work. OpenCode implemented and ran the comparison. Lingga has not selected an architecture.
 Problems: The first idle-skipping implementation skipped the cycle that made a synchronized input visible. Fixed it and checked sparse and dense traces for all three models on the stretched Fast-mode I2C case. The models do not yet measure binary image size or fetch and branch latency.
 Next: TASK-013 to encode programs and rerun the critical cases before sizing and timing probes in TASK-012.
+
+## 2026-11-20: OpenCode (TASK-013)
+Did: Built packed instruction and lane images and reran 1 MHz SPI modes 0–3, UART/SPI overlap, and Fast-mode I2C with clock stretching and NACKs. The interpreter enforces bank capacities and charges issue slots for fetch, execution, taken branches and descriptor reads.
+Results: All 33 encoded cases and 12 model sanity tests passed. A and C used 62 of 64 code words for the Fast-mode I2C exchange. B reached four output entries during the 10 µs I2C stretch case. Results, images and traces are under EVAL-001.
+AI vs human: Lingga authorized the encoded comparison. OpenCode wrote and ran the provisional images and model. Lingga has not selected an architecture or approved an ISA.
+Problems: These cases do not measure host loading, timestamp rollover, or the mapped area and timing of the actual hardware.
+Next: TASK-012 to map area and timing probes on IHP for each viable candidate.
