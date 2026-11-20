@@ -208,3 +208,9 @@ Did: Recorded Lingga's approval of DEC-002 and CHG-001. Updated the loader, pad 
 Results: EVAL-004 reproduced all 192 modeled loads and all 25 Python checks passed. Traceability was clean. No RTL or firmware changed, and no board or project verification tests ran.
 AI vs human: Lingga approved the SPI transport, pin map and proposed interface. OpenCode applied the change and rechecked the affected records.
 Next: TASK-024, draft timeout and recovery behavior. G4 remains open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-024)
+Did: Drafted CHG-002 for SPI timeouts, interrupted frames and corrupted replies. Added proposed cases for loader, integration and system checks.
+Results: The proposal keeps the approved pin map and frame format. It calls for reset and reload instead of automatically repeating an operation with unknown outcome. No recovery tests ran and no block contract changed.
+AI vs human: Lingga authorized drafting recovery. OpenCode proposed the behavior and provisional timeouts. Lingga has not approved CHG-002.
+Next: TASK-025, review CHG-002. G4 remains open.

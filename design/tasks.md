@@ -194,8 +194,15 @@ Done when: the editable diagram and SVG distinguish solid data from dashed contr
 Done when: Lingga approves the SPI proposal or records which option or interfaces to revise.
 
 ### TASK-024 — Specify loader recovery
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: BLK-HOST, BLK-PADS, TEST-UNIT-007, TEST-INT-002
+- Works on: CHG-002, BLK-HOST, BLK-PADS, TEST-UNIT-007, TEST-INT-002, TEST-SYS-010
 - Blocked by: TASK-023
 Done when: the draft defines host timeouts and safe recovery from interrupted requests, interrupted or corrupted replies, and reset. The proposed checks cover these cases without assuming the host can safely repeat a command with side effects.
+
+### TASK-025 — Review SPI loader recovery
+- Status: todo
+- Owner: Lingga
+- Works on: CHG-002
+- Blocked by: TASK-024
+Done when: Lingga approves the recovery proposal or records what to revise.

@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (SPI loader approved)
+**Last updated:** 2026-11-20 (SPI recovery proposal)
 **Current stage:** G4 (Micro-architecture)
 
 ## Gates
@@ -36,11 +36,11 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-024: Define how the SPI loader recovers from timeouts, interrupted frames and corrupted replies.
+1. TASK-025: Review the SPI recovery proposal in CHG-002.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
-- Lingga approved [DEC-002](04_decisions/DEC-002-loader-transport.md) and [CHG-001](changes/CHG-001-loader-interface.md). Loader recovery and payload FIFO depth remain open. Board and firmware timing remain unmeasured.
+- Approve [CHG-002](changes/CHG-002-loader-recovery.md)? It proposes host timeouts, reset and reload after an uncertain transfer, and no automatic command replay. Payload FIFO depth and board and firmware timing remain open.
 - [EVAL-003](evals/EVAL-003-g4-timed-io.md) supports keeping four output slots and one capture slot per context. Exact ISA/timestamp representation remains open. No block is agreed yet.
 - Final tile fit and routed 60 MHz timing remain unverified. The placed probes met slow-corner setup but missed input hold before clock-tree synthesis.
