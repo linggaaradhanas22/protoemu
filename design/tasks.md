@@ -167,9 +167,9 @@ Done when: WSL Git can reach the repository over SSH and a dry-run push succeeds
 ## Stage G4: Evidence and review
 
 ### TASK-020 — Check timed-I/O and issue contracts against the critical profiles
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: BLK-CORE, BLK-DRIVE, BLK-CAPTURE, BLK-TIMER, TEST-INT-001
+- Works on: BLK-CORE, BLK-DRIVE, BLK-CAPTURE, BLK-TIMER, TEST-INT-001, EVAL-003
 - Blocked by: TASK-018
 Done when: a reproducible cycle-level replay reports issue wait, admission slack, slot use and wrap behavior, and supports a recommendation on queue, capture and issue rules.
 

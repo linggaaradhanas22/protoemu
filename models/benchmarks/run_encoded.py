@@ -18,22 +18,23 @@ def words_to_bytes(values):
     return [[word >> 8, word & 255] for word in values]
 
 
-def spi_bench(arch, image, mode, concurrent):
+def spi_bench(arch, image, mode, concurrent, *, machine_factory=EncodedMachine,
+              uart_phase=0, spi_offset=0):
     pins = {"cs": 1, "sclk": mode // 2, "mosi": 0, "miso": 0}
     if concurrent:
         pins["uart_rx"] = 1
     bus = Pins(pins, peer=SPIPeer(mode, 30))
     starts = [32]
     if concurrent:
-        starts = [360, 5550]
+        starts = [360 + spi_offset, 5550 + spi_offset]
         period = Fraction(3125, 6)
-        uart_end, uart_edges = uart_stimulus(bus, 0, period, OVERLAP_RX)
+        uart_end, uart_edges = uart_stimulus(bus, uart_phase, period, OVERLAP_RX)
 
     def verify(machine, _):
         rx = words_to_bytes(machine.report.get("spi_rx_word", []))
         errors, margin, spans = spi_check(machine.bus, rx, mode, 30, starts)
         if concurrent:
-            rx_errors, rx_margin = uart_rx_check(machine, OVERLAP_RX, 0, period)
+            rx_errors, rx_margin = uart_rx_check(machine, OVERLAP_RX, uart_phase, period)
             errors.extend(rx_errors)
             margin = min(filter(None, (margin, rx_margin)), default=None)
             for start, end in spans:
@@ -42,10 +43,10 @@ def spi_bench(arch, image, mode, concurrent):
         return errors, margin
 
     name = "uart-spi-overlap" if concurrent else f"spi-1mhz-mode{mode}"
-    return name, EncodedMachine(arch, image, bus), 20_000, verify
+    return name, machine_factory(arch, image, bus), 20_000, verify
 
 
-def i2c_bench(arch, image, case):
+def i2c_bench(arch, image, case, *, machine_factory=EncodedMachine):
     bus = Pins({"scl": 1, "sda": 1}, open_drain=("scl", "sda"), peer=I2CPeer(case))
 
     def verify(machine, _):
@@ -54,7 +55,7 @@ def i2c_bench(arch, image, case):
                     "i2c_rx": words_to_bytes(report.get("i2c_rx_word", []))}
         return i2c_check(machine.bus, unpacked, case)
 
-    return case.name, EncodedMachine(arch, image, bus), 15_000, verify
+    return case.name, machine_factory(arch, image, bus), 15_000, verify
 
 
 def run_arch(arch, save=None):

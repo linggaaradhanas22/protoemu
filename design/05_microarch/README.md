@@ -53,4 +53,4 @@ Use software-selected pads for baseline I2C with external pull-ups. Validate the
 | Shared issue and ISA | Fix fetch, branch, blocked retry and fault timing. Rerun the encoded cases with those costs and record which ISA operations the examples need. |
 | Host transport, payload, and pin allocation | Compare the nibble handshake with a serial alternative, validate pin mapping and stopped-state behavior, measure modeled load time, then freeze framing and configuration. |
 
-Use the [G3 protocol runs](../evals/EVAL-001-protocol-comparison.md) and [physical probes](../evals/EVAL-002-area-timing.md) as baselines, not sign-off. Record evidence and decisions before agreeing the block records. Final routed setup, hold and tile fit remain open.
+The [G4 replay](../evals/EVAL-003-g4-timed-io.md) supports the draft timed-I/O contract on the tested cases. It does not freeze the ISA or verify RTL. Use the [G3 protocol runs](../evals/EVAL-001-protocol-comparison.md) and [physical probes](../evals/EVAL-002-area-timing.md) as baselines, not sign-off. Record decisions before agreeing the block records. Final routed setup, hold and tile fit remain open.

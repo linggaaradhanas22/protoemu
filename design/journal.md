@@ -184,3 +184,9 @@ Did: Drafted seven ARCH-B block contracts, provisional area allowances and a can
 Results: Trace checker found zero errors and warnings. G4 remains open with seven draft blocks. The draw.io validator found zero errors and warnings, and the PNG review checked routing and label placement. No hardware tests ran and no RTL changed.
 AI vs human: Lingga asked to proceed with G4 and asked about diagram rules. OpenCode drafted the interfaces and planned tests. Lingga has not approved the block contracts or the gate.
 Next: TASK-020 for deadline replay; TASK-021 for loader and pin allocation. Tile fit and routed timing remain open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-020)
+Did: Built a cycle-level exploration of G4 issue, capture and timed output. Reused the G3 programs and independent peer monitors. Archived the sweep in EVAL-003.
+Results: Four slots passed 58/58 cases at each of two counter starts, including wrap. Three slots passed 58/58 but had up to 16 queue-blocked cycles per case. All 19 Python checks and 33 G3 encoded cases passed. No RTL tests ran.
+AI vs human: Lingga authorized the replay. OpenCode wrote and ran the probe and recommends retaining four output slots and one capture slot per context. Lingga has not agreed any block or gate.
+Next: TASK-021, compare the loader transports and validate the pin split. Final timestamp/ISA encoding and routed timing remain open.

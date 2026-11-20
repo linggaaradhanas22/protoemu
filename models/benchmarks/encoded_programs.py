@@ -73,7 +73,7 @@ def i2c_code():
     return lines, b""
 
 
-def build(arch, profile, mode=0):
+def build(arch, profile, mode=0, *, spi_offset=0):
     if profile == "i2c":
         sources = [i2c_code()]
         names = ("i2c",)
@@ -81,7 +81,7 @@ def build(arch, profile, mode=0):
         sources = [spi_code(arch, mode, (32,))]
         names = ("spi",)
     elif profile == "overlap":
-        sources = [uart_code(arch), spi_code(arch, mode, (360, 5550))]
+        sources = [uart_code(arch), spi_code(arch, mode, (360 + spi_offset, 5550 + spi_offset))]
         names = ("uart", "spi")
     else:
         raise ValueError(f"unknown image profile {profile}")
