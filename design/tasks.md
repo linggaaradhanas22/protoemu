@@ -229,8 +229,15 @@ Done when: Lingga approves the proposed timestamp operand or records which optio
 Done when: a draft 24-bit encoding covers capture saves and timed operations, including a plan for offsets that do not fit one instruction. Re-encode and replay stretched I2C and concurrent UART/SPI programs. Report program size and deadline slack without changing RTL.
 
 ### TASK-029 — Compare timed drive encodings for eight pads
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: BLK-CORE, BLK-DRIVE, BLK-PADS, EVAL-006, TEST-INT-001
+- Works on: BLK-CORE, BLK-DRIVE, BLK-PADS, EVAL-006, EVAL-007, TEST-INT-001
 - Blocked by: TASK-028
 Done when: compare encodings that can address all eight pads and control output enable. Check instruction count and deadline slack for the critical programs, and identify the operations that need a 60 MHz timing probe before ISA sign-off.
+
+### TASK-030 — Probe eight-pad issue and retirement timing
+- Status: todo
+- Owner: agent
+- Works on: BLK-CORE, BLK-DRIVE, BLK-PADS, SPEC-PHY-001, EVAL-007
+- Blocked by: TASK-029
+Done when: an exploratory physical model compares the compact and vector issue paths and measures the deadline/admission and due-to-pad paths at 60 MHz. Report timing and area limits before proposing final opcodes. Do not change production RTL.

@@ -238,3 +238,9 @@ Did: Ran EVAL-006 as an exploration. Assembled 24-bit instruction words that use
 Results: All 116 modeled cases and 33 Python checks passed. I2C used 63 words with eight cycles of minimum drive and sample slack. The overlap used 36 words with 13 cycles of minimum drive slack. The prototype does not cover all eight pads or establish physical timing. No RTL changed.
 AI vs human: Lingga authorized the prototype. OpenCode wrote and ran the exploration. No final encodings or blocks were approved.
 Next: TASK-029, compare drive encodings for eight pads. G4 remains open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-029)
+Did: Ran EVAL-007 as an exploration. Compared compact one- and two-pad instructions with an eight-pad vector. Replayed the critical protocol fixtures on the approved pin map.
+Results: Each format passed 116 modeled cases. All 38 Python checks passed. Compact I2C used 63 words with 8 cycles of minimum drive slack, versus 74 words and 6 cycles for vector. An eight-pad edge used four queue entries with compact and one with vector. No production RTL changed.
+AI vs human: Lingga authorized the comparison. OpenCode wrote and ran it and recommends compact for routine updates and a vector timing probe for wide updates. No final encoding or block was approved.
+Next: TASK-030, probe issue and retirement timing at 60 MHz. G4 remains open.

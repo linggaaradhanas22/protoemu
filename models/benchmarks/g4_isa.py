@@ -13,13 +13,17 @@ FORMATS = {op: (code, widths) for code, (op, widths) in enumerate(LEGACY_FORMATS
            if op not in ("wait", "lane")}
 FORMATS.update(save_now=(15, ()), addoff=(16, (15,)), wait_save=(17, (3, 1, 9)))
 DECODE = {code: (op, widths) for op, (code, widths) in FORMATS.items()}
+PAD_FORMATS = dict(FORMATS, pad=(18, (3, 1, 1, 9)), pad2=(19, (3, 1, 1, 3, 1, 1, 9)),
+                   shift_pin=(20, (3, 3, 9)), shift_pair=(21, (3, 3, 3, 1, 9)),
+                   drivev=(22, (3, 8, 8)))
+PAD_DECODE = {code: (op, widths) for op, (code, widths) in PAD_FORMATS.items()}
 
 
 class SaveLevel(Level):
     """Return the stored observation timestamp at consume, not elapsed time."""
 
 
-def assemble(lines):
+def assemble(lines, *, formats=FORMATS):
     labels, words = {}, []
     for line in lines:
         if isinstance(line, str):
@@ -32,25 +36,25 @@ def assemble(lines):
         raise ValueError("ISA probe program must fit in 1–128 words")
     image = bytearray()
     for op, *operands in words:
-        opcode, widths = FORMATS[op]
+        opcode, widths = formats[op]
         args = [labels[arg] if isinstance(arg, str) else arg for arg in operands]
         image.extend((opcode | (pack(args, widths) << 5)).to_bytes(3, "little"))
     return bytes(image), labels
 
 
-def decode(image, pc):
+def decode(image, pc, *, table=DECODE):
     start = pc * 3
     if not 0 <= start <= len(image) - 3:
         raise ModelError(f"program counter outside loaded image: {pc}")
     word = int.from_bytes(image[start:start + 3], "little")
     try:
-        op, widths = DECODE[word & 31]
+        op, widths = table[word & 31]
     except KeyError as exc:
         raise ModelError("invalid ARCH-B probe opcode") from exc
     return op, unpack(word >> 5, widths)
 
 
-def execute(code, pc, pins, open_drain, epoch):
+def execute(code, pc, pins, open_drain, epoch, *, table=DECODE):
     regs = [0] * 8
     stack = []
     stamp = None
@@ -72,13 +76,13 @@ def execute(code, pc, pins, open_drain, epoch):
             raise ModelError("pin index outside image mapping")
         return pins[index]
 
-    def pad(index, value):
+    def pad(index, value, enable=1):
         name = pin(index)
-        return {name: None if value and name in open_drain else value}
+        return {name: None if not enable or (value and name in open_drain) else value}
 
     while True:
         yield Issue("fetch")
-        op, args = decode(code, pc)
+        op, args = decode(code, pc, table=table)
         pc += 1
         if op == "halt":
             yield Issue("execute")
@@ -120,6 +124,29 @@ def execute(code, pc, pins, open_drain, epoch):
                 changes.update(pad(extra, level))
             yield Out(at(delay), changes)
             regs[reg] = (regs[reg] << 1) & 0xFFFF
+        elif op in ("pad", "pad2"):
+            changes = pad(*args[:3])
+            if op == "pad2":
+                if args[0] == args[3]:
+                    raise ModelError("duplicate pad in pair")
+                changes.update(pad(*args[3:6]))
+            yield Out(at(args[-1]), changes)
+        elif op in ("shift_pin", "shift_pair"):
+            reg, index = args[:2]
+            changes = pad(index, regs[reg] >> 15)
+            if op == "shift_pair":
+                extra, value = args[2:4]
+                if index == extra:
+                    raise ModelError("duplicate pad in shift pair")
+                changes.update(pad(extra, value))
+            yield Out(at(args[-1]), changes)
+            regs[reg] = (regs[reg] << 1) & 0xFFFF
+        elif op == "drivev":
+            reg, oe, delay = args
+            mask, values = regs[reg] & 0xFF, regs[reg] >> 8
+            changes = {name: bit for i in range(8) if mask & (1 << i)
+                       for name, bit in pad(i, (values >> i) & 1, (oe >> i) & 1).items()}
+            yield Out(at(delay), changes)
         elif op == "cap":
             index, reg, mode, delay = args
             if mode > 2:
@@ -159,6 +186,8 @@ def execute(code, pc, pins, open_drain, epoch):
 
 
 class ISAProbe(TimingProbe):
+    decode_table = DECODE
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.min_sample_slack = None
@@ -169,8 +198,9 @@ class ISAProbe(TimingProbe):
             raise ValueError("the ISA probe only models ARCH-B")
         image.validate(arch)
         code, = image.programs
-        programs = [execute(code, pc, tuple(bus.idle), bus.open_drain, epoch) for pc in image.entries]
-        writable = set(bus.idle) - {"uart_rx", "miso"}
+        programs = [execute(code, pc, tuple(bus.idle), bus.open_drain, epoch, table=cls.decode_table)
+                    for pc in image.entries]
+        writable = {name for name in bus.idle if name not in {"uart_rx", "miso"} and not name.startswith("unused")}
         owners = ((), writable) if len(programs) == 2 else (writable,)
         return cls(programs, bus, owners, epoch=epoch, slots=slots)
 
@@ -202,7 +232,7 @@ def native(lines):
             yield line
 
 
-def build(profile, mode=0, *, spi_offset=0):
+def source(profile, mode=0, *, spi_offset=0):
     if profile == "i2c":
         lines, _ = i2c_code()
         lines[1:2] = [("save_now",), ("set", T, 15)]
@@ -221,5 +251,10 @@ def build(profile, mode=0, *, spi_offset=0):
             uart, _ = uart_code("B")
             lines = uart + lines
             entries = ("uart", "spi")
-    code, labels = assemble(native(lines))
+    return native(lines), entries
+
+
+def build(profile, mode=0, *, spi_offset=0):
+    lines, entries = source(profile, mode, spi_offset=spi_offset)
+    code, labels = assemble(lines)
     return Image((code,), tuple(labels[name] for name in entries), (b"",) * len(entries))

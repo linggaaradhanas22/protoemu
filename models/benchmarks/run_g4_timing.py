@@ -14,20 +14,23 @@ from .run_compare import measure
 from .run_encoded import i2c_bench, spi_bench
 
 
-def jobs(make, build_image=build):
+def jobs(make, build_image=build, *, pin_orders=None):
+    orders = pin_orders or {}
     for mode in range(4):
-        yield spi_bench("B", build_image("B", "spi", mode), mode, False, machine_factory=make), {}
+        yield spi_bench("B", build_image("B", "spi", mode), mode, False, machine_factory=make,
+                        pin_order=orders.get("spi")), {}
     image = build_image("B", "i2c")
     cases = [I2CCase("combined", True, stretch) for stretch in (0, 60, 300, 600)]
     cases += [I2CCase(variant, True) for variant in ("nack-address", "nack-data")]
     for case in cases:
-        yield i2c_bench("B", image, case, machine_factory=make), {}
+        yield i2c_bench("B", image, case, machine_factory=make, pin_order=orders.get("i2c")), {}
     for offset in (-4, 0, 4):
         image = build_image("B", "overlap", spi_offset=offset)
         for step in range(16):
             phase = Fraction(step, 16)
             yield spi_bench("B", image, 0, True, machine_factory=make, uart_phase=phase,
-                            spi_offset=offset), {"uart_phase": phase, "spi_offset": offset}
+                            spi_offset=offset, pin_order=orders.get("overlap")), {
+                                "uart_phase": phase, "spi_offset": offset}
 
 
 def replay(slots, epoch):

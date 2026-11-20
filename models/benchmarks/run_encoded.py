@@ -19,10 +19,12 @@ def words_to_bytes(values):
 
 
 def spi_bench(arch, image, mode, concurrent, *, machine_factory=EncodedMachine,
-              uart_phase=0, spi_offset=0):
+              uart_phase=0, spi_offset=0, pin_order=None):
     pins = {"cs": 1, "sclk": mode // 2, "mosi": 0, "miso": 0}
     if concurrent:
         pins["uart_rx"] = 1
+    if pin_order is not None:
+        pins = {pin: pins.get(pin, 0) for pin in pin_order}
     bus = Pins(pins, peer=SPIPeer(mode, 30))
     starts = [32]
     if concurrent:
@@ -46,8 +48,11 @@ def spi_bench(arch, image, mode, concurrent, *, machine_factory=EncodedMachine,
     return name, machine_factory(arch, image, bus), 20_000, verify
 
 
-def i2c_bench(arch, image, case, *, machine_factory=EncodedMachine):
-    bus = Pins({"scl": 1, "sda": 1}, open_drain=("scl", "sda"), peer=I2CPeer(case))
+def i2c_bench(arch, image, case, *, machine_factory=EncodedMachine, pin_order=None):
+    pins = {"scl": 1, "sda": 1}
+    if pin_order is not None:
+        pins = {pin: pins.get(pin, 0) for pin in pin_order}
+    bus = Pins(pins, open_drain=("scl", "sda"), peer=I2CPeer(case))
 
     def verify(machine, _):
         report = machine.report
