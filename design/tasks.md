@@ -59,7 +59,7 @@ and the runtime + any problems are noted in the journal. (Ask Lingga before inst
 Done when: each agreed REQ-RULE item has SPEC(s) or an acceptance TEST; all drafts proposed to Lingga.
 
 ### TASK-006 — Spec for UART, SPI and I2C
-- Status: todo
+- Status: done
 - Owner: agent
 - Works on: REQ-PROTO-001, REQ-PROTO-002, REQ-PROTO-003
 - Blocked by: G1

@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (TASK-005 drafts ready for review)
+**Last updated:** 2026-11-20 (TASK-006 protocol drafts ready for review)
 **Current stage:** G2 (Specification)
 
 ## Gates
@@ -36,8 +36,9 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-006: Draft the UART, SPI, and I2C specifications and system tests.
+1. TASK-007: Draft the host programming interface and how to demonstrate support for unplanned protocols.
 2. TASK-004: Run local hardening and gate-level simulation on the unchanged template. This can proceed in parallel with G2.
 
 ## Open questions for Lingga
-- Review `SPEC-RST-001`, `SPEC-RST-002`, and `SPEC-PHY-001`. Is four rising clock edges at 60 MHz an acceptable reset window? The draft uses four edges as a project choice, not a competition rule.
+- Review the TASK-005 specs at G2. Keep four rising edges as the provisional reset limit in `SPEC-RST-001`.
+- Review the TASK-006 protocol specs at G2, especially the UART baud list and error limits, the 100 kHz and 1 MHz SPI targets, and the 10 µs I2C stretch limit.

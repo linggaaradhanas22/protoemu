@@ -129,6 +129,51 @@ Start a fresh DUT to model power loss. Apply reset, then load and run program B 
 Pass if B loads without saved chip state and produces its expected pin output, which differs from A's.
 Toggling `ena` alone does not model this test's power loss.
 
+### TEST-SYS-004 — UART TX framing and bit periods
+- Status: planned
+- Level: system
+- Verifies: SPEC-UART-001
+Load the UART TX example and send consecutive `0x55` bytes at each listed rate. Measure the bit periods between transitions, including the stop-to-start transition.
+Send `0x80` and `0x01` to check bit order. Pass if an independent UART monitor decodes the expected bytes and all measured periods meet the tolerance.
+
+### TEST-SYS-005 — UART RX baud mismatch and start phase
+- Status: planned
+- Level: system
+- Verifies: SPEC-UART-002
+At each listed rate, use an independent UART source to send `0x00`, `0xFF`, `0x55`, `0xAA`, `0x80`, and `0x01` without extra idle bits.
+Sweep peer baud error from −2% to +2% in 0.5 percentage point steps. Sweep the initial start edge in steps of one sixteenth of a `clk` period, including just before and after a clock edge.
+Pass if the receive output contains exactly the expected sequence for every case.
+
+### TEST-SYS-006 — SPI mode and rate matrix
+- Status: planned
+- Level: system
+- Verifies: SPEC-SPI-001
+Run each of the four modes at both rates with an independent target model. Send two bytes in each direction under one chip-select assertion. Use different asymmetric data in the two directions.
+Pass if both directions receive the expected bytes and the pin trace meets the idle polarity, sample edge, clock timing, and chip-select criteria.
+
+### TEST-SYS-007 — I2C timing and open-drain drive
+- Status: planned
+- Level: system
+- Verifies: SPEC-I2C-001
+Connect an I2C target model and resolve SDA and SCL with ideal pull-ups. Run unstretched traffic in both modes.
+Include consecutive transactions and a repeated START. Measure every applicable interval in the timing table at the resolved signals.
+Pass if all measured intervals meet the limits and the chip never drives either line high.
+
+### TEST-SYS-008 — I2C read/write and ACK handling
+- Status: planned
+- Level: system
+- Verifies: SPEC-I2C-002
+At both rates, run a multibyte write, a multibyte read, and a write followed by a repeated-START read. Inject an address NACK and a nonfinal write-byte NACK in separate trials.
+Pass if successful transfers match the expected data and START/STOP sequence. Check that the controller ACKs each nonfinal read byte and NACKs the last one.
+In each injected NACK trial, require STOP and a reported failure before the controller sends any further byte.
+
+### TEST-SYS-009 — I2C clock stretch
+- Status: planned
+- Level: system
+- Verifies: SPEC-I2C-003
+At both rates, have the target stretch SCL during a data bit and an ACK bit. Repeat with 1 µs, 5 µs, and 10 µs holds after controller release.
+Pass if the controller waits for each delayed SCL rising edge, preserves the required high time, and finishes with the expected data and ACK sequence.
+
 ## Integration tests
 
 ## Unit tests

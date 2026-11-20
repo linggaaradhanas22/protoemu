@@ -65,3 +65,10 @@ Results: All ten `REQ-RULE-*` items now have a draft specification or a planned 
 AI vs human: OpenCode drafted the checks and proposed the four-edge reset window. Lingga approved the underlying requirements at G1. The specifications remain drafts.
 Problems: None in the trace check. G2 remains open pending the remaining coverage and specification review.
 Next: Draft UART, SPI, and I2C specifications and tests (TASK-006). Keep the template unchanged for TASK-004.
+
+## 2026-11-20: Lingga + OpenCode (TASK-006)
+Did: Drafted two UART, one SPI, and three I2C specifications for `REQ-PROTO-001` through `REQ-PROTO-003`. Added one planned system test per spec.
+Results: Checked the I2C timing values against NXP UM10204. The trace checker reported 0 errors and 0 warnings. No design tests ran.
+AI vs human: Lingga asked to proceed after discussing the reset window. OpenCode kept four edges as a provisional limit and drafted the protocol targets for review. No spec was marked agreed.
+Problems: None in the trace check. G2 still needs the remaining coverage and approval of the drafts.
+Next: Draft the programmability and host interface specifications (TASK-007). Local template hardening (TASK-004) remains open.
