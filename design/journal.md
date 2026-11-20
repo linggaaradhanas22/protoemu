@@ -286,3 +286,10 @@ Did: Recorded approval of CHG-006. Updated the draft ISA and the core, capture a
 Results: Traceability reported no errors or warnings. All 45 Python checks and all six RC5 model cases passed. The capture and timer interfaces did not change. The two-register writeback schedule and opcodes remain open. No production RTL changed and no registered verification tests ran.
 AI vs human: Lingga approved the edge capture and elapsed-time behavior for the draft ISA. OpenCode applied the change and reviewed the linked records. No block or gate was approved.
 Next: TASK-037, specify timed wait and fence behavior across wrap.
+
+## 2026-11-20: Lingga + Claude (TASK-037)
+Did: Added a 24-bit guard model (`g4_guards.py`) and 13 directed checks. Compared four rules for `fence` and `wait_save` targets in EVAL-011 and proposed the `sticky` rule in CHG-007. `wait_save` without a saved time is now marked as unguarded in the model. `g4_edges.run_case` accepts a probe class.
+Results: `sticky` passed 122/122 replays with cycle traces identical to the earlier model. `compare` also passed the replays but missed a level that arrived 2^23 + 1000 cycles after its guard opened. `strict` failed all 96 UART cases because the receiver arms a wait whose target has already passed. All 58 Python model checks passed. EVAL-006, EVAL-009 and EVAL-010 regenerate byte-identical results. Traceability reported no errors or warnings. No production RTL changed and no registered verification tests ran.
+AI vs human: Lingga asked Claude to start TASK-037. Claude chose the candidate rules, built the model, ran the replays and drafted EVAL-011 and CHG-007. Lingga has not yet reviewed the proposal. No block, CHG or gate was approved.
+Problems: The earlier model's fence and wait checks used unbounded elapsed time and would misbehave after 2^24 model cycles. Guard hardware cost is not measured.
+Next: TASK-038, Lingga reviews CHG-007.

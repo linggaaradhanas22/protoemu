@@ -55,7 +55,7 @@ def fields(word):
     return [(word >> 6) & 31, word & 63, (word >> 11) & 1]
 
 
-def run_case(half, wrap):
+def run_case(half, wrap, *, probe_cls=EdgeProbe):
     image = build()
     endpoint, link = prepare(image, ((),), enabled=1, owner1=0)
     code = b"".join(endpoint.fetch(pc) for pc in range(endpoint.cfg.count))
@@ -64,7 +64,7 @@ def run_case(half, wrap):
     starts = rc5_stimulus(bus, half)
     # In the wrap run the first falling edge is observed five cycles before wrap.
     epoch = (-(starts[0] + half + 2 + 5) & MASK) if wrap else 0
-    probe = EdgeProbe.from_image("B", Image((code,), image.entries, image.lanes), bus,
+    probe = probe_cls.from_image("B", Image((code,), image.entries, image.lanes), bus,
                                  epoch=epoch, endpoint=endpoint)
     results = []
     observation_end = starts[-1] + 128 * half

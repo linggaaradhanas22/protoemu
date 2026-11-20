@@ -285,8 +285,15 @@ Done when: propose how a program captures rising and falling edges and measures 
 Done when: Lingga approves the proposed behavior for the draft ISA or records what to revise.
 
 ### TASK-037 — Specify modular wait and fence behavior
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: BLK-CORE, BLK-CAPTURE, BLK-TIMER, TEST-UNIT-001, TEST-UNIT-004
+- Works on: BLK-CORE, BLK-CAPTURE, BLK-TIMER, TEST-UNIT-001, TEST-UNIT-004, EVAL-011, CHG-007
 - Blocked by: TASK-036
 Done when: propose how timed waits and fences handle already-reached targets, future targets and timer wrap. Check the boundaries in the model and keep final opcodes and production RTL unchanged.
+
+### TASK-038 — Review the modular guard rule
+- Status: todo
+- Owner: Lingga
+- Works on: CHG-007, EVAL-011
+- Blocked by: TASK-037
+Done when: Lingga approves the proposed fence and wait guard behavior for the draft ISA or records what to revise. After approval, apply CHG-007 to the block, test and ISA records.

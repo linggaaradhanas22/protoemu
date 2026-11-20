@@ -21,8 +21,15 @@ PAD_FORMATS = dict(FORMATS, pad=(18, (3, 1, 1, 9)), pad2=(19, (3, 1, 1, 3, 1, 1,
 PAD_DECODE = {code: (op, widths) for op, (code, widths) in PAD_FORMATS.items()}
 
 
+@dataclass(frozen=True)
 class SaveLevel(Level):
-    """Return the stored observation timestamp at consume, not elapsed time."""
+    """Return the stored observation timestamp at consume, not elapsed time.
+
+    ``guarded`` is false when ``wait_save`` runs without a saved time: there is
+    no earliest-observation target, not a target at the model epoch.
+    """
+
+    guarded: bool = True
 
 
 class SaveEdge(Edge):
@@ -105,7 +112,8 @@ def execute(code, pc, pins, open_drain, epoch, *, table=DECODE):
             index, value, delay = args
             if stamp is None and (offset() or delay):
                 raise ModelError("timestamp used before save")
-            stamp = yield SaveLevel(at(delay) if stamp is not None else 0, pin(index), value)
+            stamp = yield (SaveLevel(at(delay), pin(index), value) if stamp is not None
+                           else SaveLevel(0, pin(index), value, guarded=False))
             regs[T] = regs[OFFSET_HI] = 0
         elif op in ("edge_save", "edge_delta"):
             index, polarity = args[:2]
