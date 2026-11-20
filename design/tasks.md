@@ -151,7 +151,7 @@ Done when: Lingga approves closing G3, the gate check reports MET, the sign-off 
 ## Stage G4: Micro-architecture
 
 ### TASK-018 — Outline ARCH-B blocks and unit-test coverage
-- Status: todo
+- Status: done
 - Owner: agent
 - Works on: ARCH-B, DEC-001
 - Blocked by: G3
@@ -163,3 +163,19 @@ Done when: draft block records define responsibilities and interface boundaries.
 - Status: done
 - Owner: agent
 Done when: WSL Git can reach the repository over SSH and a dry-run push succeeds without a Windows credential helper.
+
+## Stage G4: Evidence and review
+
+### TASK-020 — Check timed-I/O and issue contracts against the critical profiles
+- Status: todo
+- Owner: agent
+- Works on: BLK-CORE, BLK-DRIVE, BLK-CAPTURE, BLK-TIMER, TEST-INT-001
+- Blocked by: TASK-018
+Done when: a reproducible cycle-level replay reports issue wait, admission slack, slot use and wrap behavior, and supports a recommendation on queue, capture and issue rules.
+
+### TASK-021 — Compare RP2350 transports and pin maps
+- Status: todo
+- Owner: agent
+- Works on: BLK-HOST, BLK-PADS, BLK-PROGRAM, TEST-INT-002
+- Blocked by: TASK-018
+Done when: the transport comparison accounts for synchronized handshakes, image loading within the specified limit, concurrent pin use, host payload buffering, and stop/reload timing.

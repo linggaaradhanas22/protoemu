@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio">
+  <diagram id="arch-b-overview" name="ARCH-B overview">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1540" pageHeight="660">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="ARCH-B microarchitecture" style="text;html=1;align=left;fontFamily=Helvetica;fontStyle=1;fontSize=24;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="540" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="boundary-label" value="ProtoEmu ASIC" style="text;html=1;align=left;fontFamily=Helvetica;fontStyle=1;fontSize=13;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="200" y="60" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="asic" style="rounded=0;container=1;pointerEvents=0;fillColor=none;strokeColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="200" y="90" width="1100" height="460" as="geometry"/>
+        </mxCell>
+        <mxCell id="loader" value="Loader and run control" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Helvetica;fontSize=14;fontColor=#202124;" vertex="1" parent="asic">
+          <mxGeometry x="50" y="60" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="program" value="Shared program store&lt;br&gt;128 × 24-bit words" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Helvetica;fontSize=14;fontColor=#202124;" vertex="1" parent="asic">
+          <mxGeometry x="350" y="60" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="core" value="Shared issue core&lt;br&gt;Two execution contexts" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Helvetica;fontSize=14;fontColor=#202124;" vertex="1" parent="asic">
+          <mxGeometry x="350" y="190" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="timer" value="Cycle timebase" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Helvetica;fontSize=14;fontColor=#202124;" vertex="1" parent="asic">
+          <mxGeometry x="650" y="60" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="drive" value="Timed output queue&lt;br&gt;Four deadline slots" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Helvetica;fontSize=14;fontColor=#202124;" vertex="1" parent="asic">
+          <mxGeometry x="650" y="170" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="capture" value="Input capture&lt;br&gt;One slot per context" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Helvetica;fontSize=14;fontColor=#202124;" vertex="1" parent="asic">
+          <mxGeometry x="650" y="330" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="pads" value="Pad adapter&lt;br&gt;2-flop inputs&lt;br&gt;Registered outputs" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Helvetica;fontSize=14;fontColor=#202124;" vertex="1" parent="asic">
+          <mxGeometry x="940" y="220" width="120" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="host" value="RP2350 host" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#000000;fontFamily=Helvetica;fontSize=14;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="280" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="peer" value="Protocol peers" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#000000;fontFamily=Helvetica;fontSize=14;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="370" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="host-link" value="Host link" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;endArrow=classic;labelBackgroundColor=#ffffff;exitX=0.5;exitY=0;entryX=0.583333;entryY=0;" edge="1" parent="1" source="loader" target="pads">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="330" y="120"/><mxPoint x="1210" y="120"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="load-program" value="Program write" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="loader" target="program">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="run-control" value="Run control&lt;br&gt;and payload" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;endArrow=classic;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="loader" target="core">
+          <mxGeometry relative="1" x="0.5" as="geometry"><Array as="points"><mxPoint x="330" y="320"/></Array><mxPoint x="0" y="-12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="fetch-bus" value="Fetch" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;endArrow=classic;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="program" target="core">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="cycle-bus" value="Cycle count" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="timer" target="drive">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="drive-bus" value="Drive request&lt;br&gt;and status" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;endArrow=classic;labelBackgroundColor=#ffffff;exitX=1;exitY=0.125;entryX=0;entryY=0.5;" edge="1" parent="1" source="core" target="drive">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="capture-bus" value="Capture request&lt;br&gt;and result" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;endArrow=classic;labelBackgroundColor=#ffffff;exitX=1;exitY=0.875;entryX=0;entryY=0.5;" edge="1" parent="1" source="core" target="capture">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="780" y="350"/><mxPoint x="780" y="450"/></Array><mxPoint x="-52" y="0" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="pad-update" value="Pad update" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.375;" edge="1" parent="1" source="drive" target="pads">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1070" y="290"/><mxPoint x="1070" y="340"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="pin-sample" value="Pin samples" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=1;entryY=0.5;" edge="1" parent="1" source="pads" target="capture">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1200" y="450"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="host-pins" value="Host pins" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;endArrow=classic;labelBackgroundColor=#ffffff;exitX=1;exitY=0.125;entryX=0;entryY=0.666667;" edge="1" parent="1" source="pads" target="host">
+          <mxGeometry relative="1" x="0.42" as="geometry"><mxPoint x="0" y="-12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="protocol-pins" value="Protocol pads" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;endArrow=classic;labelBackgroundColor=#ffffff;exitX=1;exitY=0.875;entryX=0;entryY=0.166667;" edge="1" parent="1" source="pads" target="peer">
+          <mxGeometry relative="1" x="0.42" as="geometry"><mxPoint x="0" y="-12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="legend-block" value="&lt;b&gt;Block color&lt;/b&gt;&lt;br&gt;Blue: clk (60 MHz)&lt;br&gt;White: external device" style="text;html=1;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="200" y="570" width="240" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-line" value="&lt;b&gt;Line style&lt;/b&gt;&lt;br&gt;Solid: data or control&lt;br&gt;Two arrowheads: bidirectional interface" style="text;html=1;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="450" y="570" width="300" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

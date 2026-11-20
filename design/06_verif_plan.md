@@ -292,4 +292,67 @@ Pass if independent fixtures check the two RGB values and latch interval, the 1-
 
 ## Integration tests
 
+### TEST-INT-001 — Shared issue under timed-I/O contention
+- Status: planned
+- Level: integration
+- Verifies: ARCH-B, DEC-001, BLK-CORE, BLK-DRIVE, BLK-CAPTURE, BLK-PADS, BLK-TIMER
+- Run: test_shared_issue_deadlines
+Replay concurrent UART RX and 1 MHz SPI, and 10 µs stretched Fast-mode I2C, with the G4 issue and pad-observation timing. Sweep relative start phase and repeat near timestamp wrap. Force queue-full, same-cycle due events, and simultaneous captures in directed cases. Pass if independent monitors match payload and pin timing, every accepted nonflushed update hits its deadline exactly once, and neither context loses its capture. Record peak queue occupancy, longest runnable-to-issue wait, and minimum slack from acceptance to deadline. In an intentional overcommit case require a reported fault and no late pad update.
+
+### TEST-INT-002 — Load, run and stop across the pad boundary
+- Status: planned
+- Level: integration
+- Verifies: ARCH-B, BLK-HOST, BLK-PROGRAM, BLK-PADS, BLK-CORE, BLK-DRIVE, BLK-CAPTURE
+- Run: test_load_run_stop_boundary
+Load a short program through the pad-facing loader, run it, then stop or deselect with an update due and a capture pending. Repeat with reset, a core fault and malformed or truncated reloads. Pass if partial images cannot fetch, the first accepted start fetches only committed words, and safe/flush wins on the specified stop edge. A subsequent shorter image must not execute residual words or complete old operations.
+
 ## Unit tests
+
+### TEST-UNIT-001 — Shared issue and context isolation
+- Status: planned
+- Level: unit
+- Verifies: BLK-CORE
+- Run: test_issue_context_isolation
+Stub the program and timed-I/O endpoints. Check issue slots with both contexts runnable, then block one context on drive credit, result availability and payload in separate runs. Pass if the other context issues at the next free selection boundary, context state stays isolated, and the blocked instruction retires once with its saved operands. A deadline that expires while blocked must fault even if credit never returns. Also check redirect cost and non-retirement on reject.
+
+### TEST-UNIT-002 — Registered fetch and image bounds
+- Status: planned
+- Level: unit
+- Verifies: BLK-PROGRAM
+- Run: test_program_store_visibility
+Write 1-word and 128-word images, read endpoints and reload a shorter image over a longer one. Present reads before commit and writes during run; perturb unwritten memory across resets. Pass if fetch latency is one registered slot, only committed in-range words become instructions, invalid running PCs return fault, and illegal writes cannot alter live code.
+
+### TEST-UNIT-003 — Exact due cycles and queue backpressure
+- Status: planned
+- Level: unit
+- Verifies: BLK-DRIVE
+- Run: test_timed_drive_queue
+Fill all four slots. Enqueue out of deadline order, retire disjoint masks together, and accept into a slot on its retirement edge. Try an overlapping mask, an unowned pin, a zero deadline delta and an expired retry. Cross wrap and assert flush on a due edge. Pass if the scoreboard sees each accepted, nonflushed masked update once on its programmed edge, no rejected update reaches a pad, and merged value/OE fields match the masks.
+
+### TEST-UNIT-004 — Context capture ownership and observation edge
+- Status: planned
+- Level: unit
+- Verifies: BLK-CAPTURE
+- Run: test_capture_slot_ownership
+Arm both contexts and arrange two results on one edge. Cover a transition on the arm edge, a subsequent edge, a level already present, a timed sample across wrap, stalled consumption and an attempted overwrite. Pass if captured values and pre-edge timestamps match the observation rule, only owners consume results, reads never bypass completion, and reset or flush discards all live slots.
+
+### TEST-UNIT-005 — Timebase, half range and wrap
+- Status: planned
+- Level: unit
+- Verifies: BLK-TIMER
+- Run: test_cycle_timer_wrap
+Start from reset, run a reduced-width instance through wrap, and exercise the shared deadline rule with deltas 0, 1, half-range minus one, half range and all ones. Pass if the counter advances exactly once per cycle regardless of run state, the first active edge sees zero, and the accepted deltas are exactly the valid future half range.
+
+### TEST-UNIT-006 — Pad synchronization and safe drive
+- Status: planned
+- Level: unit
+- Verifies: BLK-PADS
+- Run: test_pad_sync_and_safe_drive
+Change inputs away from clock edges and check the two-flop path. Apply partial pin updates, open-drain low and release, and coincident reset or safe assertion. Pass if pad outputs change only on sampling edges, open drain never drives high, unmasked pins retain state, and reset or safe overrides any competing update. This logic test does not measure metastability or pad timing.
+
+### TEST-UNIT-007 — Complete image before run
+- Status: planned
+- Level: unit
+- Verifies: BLK-HOST
+- Run: test_loader_commit_and_start
+Drive host frames with exact, truncated, overlong and malformed images; try invalid entry PCs and overlapping write allocations. Attempt start before and after commit, loading while running, and deselection or fault while work is active. Pass if writes are qualified, completion precedes start, only validated settings become active, and stop clears timed work, mailboxes and image validity as specified. Check a clean reload after every stop path.
