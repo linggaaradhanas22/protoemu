@@ -280,3 +280,9 @@ Did: Explored encoded edge save and interval arithmetic in EVAL-010. Replayed th
 Results: All six modeled RC5 cases passed, including wrap at each rate. The 39-word program returned both expected frames. All 45 Python model checks passed. No production RTL or registered tests changed.
 AI vs human: Lingga authorized the prototype. OpenCode modeled the instructions, wrote the RC5 program and proposed the behavior for review. Lingga has not approved the change or G4.
 Next: TASK-036, review CHG-006. Two-register writeback and opcode allocation are not frozen.
+
+## 2026-11-20: Lingga + OpenCode (TASK-036)
+Did: Recorded approval of CHG-006. Updated the draft ISA and the core, capture and timer records. Added planned checks for edge polarity, wrap, interval writeback and reset.
+Results: Traceability reported no errors or warnings. All 45 Python checks and all six RC5 model cases passed. The capture and timer interfaces did not change. The two-register writeback schedule and opcodes remain open. No production RTL changed and no registered verification tests ran.
+AI vs human: Lingga approved the edge capture and elapsed-time behavior for the draft ISA. OpenCode applied the change and reviewed the linked records. No block or gate was approved.
+Next: TASK-037, specify timed wait and fence behavior across wrap.

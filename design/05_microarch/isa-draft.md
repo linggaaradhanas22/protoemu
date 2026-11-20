@@ -28,6 +28,13 @@ Each instruction is one 24-bit word in little-endian byte order. Bits `[4:0]` ho
 | 22 | `drivev` | Source (3), output enable bits (8), offset (8) |
 | 23 | `host_get` | Destination (3) |
 | 24 | `host_put` | Source (3) |
+| 25 | `edge_save` | Pin (3), edge mode (2) |
+| 26 | `edge_delta` | Pin (3), edge mode (2), low destination (3) |
+| 27 | `shr` | Destination (3), shift count (4) |
+| 28 | `addoff_r` | Source (3) |
+| 29 | `xor` | Destination (3), source (3) |
+| 30 | `ult` | Destination (3), unsigned immediate (16) |
+| 31 | `mov` | Destination (3), source (3) |
 
 Opcode 12 (`report`) belongs to the earlier benchmark decoder and is invalid in this draft. The earlier five-pad `out` and sentinel-based `shift_out` (3 and 4) are superseded. Do not assign unlisted opcodes until the instruction gaps are resolved.
 
@@ -40,13 +47,15 @@ Opcode 12 (`report`) belongs to the earlier benchmark decoder and is invalid in 
 - **Driving:** `pad` and `pad2` carry explicit value and enable bits. `drivev` reads a mask from source bits `[7:0]` and values from `[15:8]`. Its instruction carries one enable per pad. A zero mask faults. `shift_pin` and `shift_pair` schedule the source MSB and shift the source left only after admission. They request enable for their pads. Use the explicit-enable instructions to release a push-pull pad. Open-drain mode converts high to release. A pair cannot repeat a pin. A request waiting for a queue slot retains its deadline and payload. The queue admits a vector as one event. Splitting a wide update into pairs does not guarantee admission of all pairs.
 
 - **Host payload:** `host_get Rd` pops one 16-bit word from the issuing context's ingress FIFO and writes `Rd`. `host_put Rs` appends the source word to that context's egress FIFO. Empty ingress or full egress stalls only the issuing context. Retain the destination or source word and retry without refetching. Transfer once when the instruction retires. See [CHG-005](../changes/CHG-005-host-payload.md). The opcodes shown are provisional.
+- **Edges and elapsed time:** `edge_save` and `edge_delta` wait for falling (`0`), rising (`1`) or either (`2`) edge. Mode `3` is invalid. On success, save the synchronized observation timestamp and clear the offset pair. `edge_delta` requires a valid previous timestamp and returns the modular difference in `Rd` (low 16 bits) and `Rd+1` (zero-extended high bits). `Rd` is `R1` through `R4` in the trial layout. A difference of zero or at least `2^23` faults. These operations have no built-in timeout. See [CHG-006](../changes/CHG-006-edge-interval.md).
+- **Arithmetic for measured intervals:** `shr` shifts right with zero fill. `addoff_r` adds an unsigned register value to the offset pair and faults if the result exceeds its range. `xor` updates the destination with its XOR against the source. `ult` replaces the destination with `1` if its previous value is less than the immediate, or `0` otherwise. `mov` copies a register. Opcodes 25–31 are provisional.
 
 ## Gaps before RTL or a release encoding
 
 | Gap | Evidence needed |
 |---|---|
 | Payload FIFO and status | [EVAL-009](../evals/EVAL-009-host-payload.md) replays the approved operations through the host model. Final FIFO depth, same-edge host/core access and status behavior remain open. |
-| Edge capture and time inspection | [EVAL-010](../evals/EVAL-010-edge-interval.md) measures RC5 intervals with `edge_save` and `edge_delta`. [CHG-006](../changes/CHG-006-edge-interval.md) awaits review. The two-register writeback schedule, final opcodes and any separate timestamp inspection remain open. |
+| Edge capture and time inspection | [CHG-006](../changes/CHG-006-edge-interval.md) adopts edge and elapsed-time behavior for the draft. [EVAL-010](../evals/EVAL-010-edge-interval.md) covers RC5. The two-register writeback schedule, final opcodes and any separate timestamp inspection remain open. |
 | Arithmetic and offset register use | Check bit operations, register pressure and split offsets in real programs. The replay reserves `R0`/`R6` by convention, while the vector translator uses `R7` as scratch. The latter is not an architectural reservation. |
 | Execution corner cases | Define modular guard/fence behavior, exact fault and `safe`/`flush` ordering, and pending-operation state. Check isolated contexts and that no failed output, payload or shift operation commits twice. |
 | Program coverage | Assemble UART TX/RX, all baseline SPI/I2C cases and the non-target examples using the proposed release operations. The current modeled replay does not verify the full program set or the post-freeze protocol. |

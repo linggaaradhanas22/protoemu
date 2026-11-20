@@ -21,6 +21,8 @@ Sample `pin_sample` as seen before the decision edge and timestamp it with the p
 
 At consume, return the original observation timestamp even if the result waited for issue. BLK-CORE can save it in the owning context's timestamp register. This does not change the slot format or ownership rules.
 
+For `edge_save` and `edge_delta`, arm for falling, rising or either polarity. Neither instruction consumes an edge observed on the arm edge. Return the same observation timestamp and sampled level for both. The core computes intervals. The capture slot does not add a timeout, buffer extra edges, or allow one context to read the other slot.
+
 ## Implementation options and budget
 
 Evaluate fixed mailboxes against a tagged shared FIFO. Fixed ownership prevents a slow consumer from using both slots. Measure observation-to-consume latency and check whether rearm gaps lose UART/RC5 edges at the required rates. Planning allowance: 0.040 mm² of cell area; not measured for this block.

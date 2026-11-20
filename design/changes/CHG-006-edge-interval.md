@@ -1,5 +1,5 @@
 # CHG-006 — Add edge capture and elapsed-time operations to the ISA draft
-- Status: proposed
+- Status: done
 - Size: medium
 - Affects: BLK-CORE, BLK-CAPTURE, BLK-TIMER, TEST-UNIT-001, TEST-UNIT-004, TEST-UNIT-005, TEST-SYS-013
 
@@ -20,4 +20,8 @@ The probe uses `shr`, `addoff_r`, `xor`, `ult` and `mov` to decode the RC5 wavef
 
 ## Impact and approval
 
-Lingga must approve before the draft blocks and test plan adopt the behavior. Check the two-register writeback schedule, half-range boundaries, rearm, reset/flush and context isolation before block approval. This does not change the requirements or pass G4.
+Lingga approved the edge and interval behavior for the draft ISA on 2026-11-20. This does not change the requirements or pass G4.
+
+## Close-out
+
+Updated the ISA, core, capture and timer drafts and the affected verification plans. Reviewed the linked decisions and evaluations. The capture slot and timebase interfaces are unchanged. Opcodes and the hardware writeback schedule remain open. The block records remain draft, and registered tests remain planned.

@@ -12,6 +12,7 @@ This is not a request to approve G4. The blocks below remain draft. This decisio
 - [EVAL-008](../evals/EVAL-008-eight-pad-timing.md): hybrid placed setup slack was +4.566 ns at 60 MHz at the slow corner. Fast hold missed by 0.199 ns overall and 0.037 ns on internal register paths. The slice excludes the full core and loader. No routed timing or tile fit claim follows.
 - [DEC-002](../04_decisions/DEC-002-loader-transport.md) and [CHG-002](../changes/CHG-002-loader-recovery.md) already approve the SPI loader pin split and reset/reload recovery policy. Board timing and final payload FIFO depth remain open.
 - [CHG-005](../changes/CHG-005-host-payload.md) approves generic `host_get` and `host_put` for the draft ISA. [EVAL-009](../evals/EVAL-009-host-payload.md) replayed 96 overlap cases with the host model.
+- [CHG-006](../changes/CHG-006-edge-interval.md) approves edge capture and elapsed-time behavior for the draft ISA. [EVAL-010](../evals/EVAL-010-edge-interval.md) replayed six RC5 cases, including wrap. The model does not settle two-register writeback timing.
 
 ## Block contracts for review
 
@@ -29,6 +30,6 @@ The linked records define the interfaces. The checks below are planned, not pass
 
 ## Before asking for block approval
 
-1. Specify the missing edge/time access. Resolve modular wait/fence behavior and global fault timing. Replay baseline and non-target programs, including ones that need these operations.
+1. Resolve modular wait/fence behavior, global fault timing and elapsed-time writeback. Replay baseline and non-target programs, including ones that need these operations.
 2. Review each block with its unit test. Keep provisional host timeout and FIFO sizing assumptions visible. If a draft interface changes, record the change before agreement.
 3. Check full-core timing with the saved-request path and actual register file. Track fast hold, routed setup and tile fit separately from G4 agreement. The slice does not substitute for sign-off.

@@ -19,6 +19,8 @@ For a new timed request, compute `(deadline - cycle) mod 2^W`. Accept only value
 
 The shared timebase does not change under DEC-003. BLK-CORE's saved timestamps are copies of observation times, not separate running counters. A deadline derived from one of those copies obeys the same admission rule.
 
+The timebase also supplies the timestamps for `edge_delta`. The core uses `(observation − saved) mod 2^24` and accepts intervals from 1 through `2^23−1` cycles. Crossing one wrap works within that interval. The counter does not report how many wraps occurred. Software must bound the time between observations to avoid aliasing an old time.
+
 ## Implementation options and budget
 
 Compare 24 bits with 16 bits or a split coarse/fine counter. At 60 MHz the proposed 24-bit half range is about 140 ms; 16 bits gives about 546 µs, less than a 1-Wire reset followed by recovery. Check the carry path and fanout in the next timing probe. Planning allowance: 0.025 mm² of cell area; not measured for this block.
