@@ -271,8 +271,15 @@ Done when: propose context-local instructions for reading and writing payload. R
 Done when: Lingga approves the proposed draft operations or records what to revise.
 
 ### TASK-035 — Prototype edge capture and elapsed-time instructions
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: BLK-CORE, BLK-CAPTURE, BLK-TIMER, SPEC-PROG-003, TEST-UNIT-004
+- Works on: BLK-CORE, BLK-CAPTURE, BLK-TIMER, SPEC-PROG-003, TEST-UNIT-004, EVAL-010, CHG-006
 - Blocked by: TASK-034
 Done when: propose how a program captures rising and falling edges and measures intervals across timer wrap. Replay a non-target input workload such as RC5 and report timing and program size. Do not freeze opcodes or change production RTL.
+
+### TASK-036 — Review the edge and elapsed-time operations
+- Status: todo
+- Owner: Lingga
+- Works on: CHG-006, EVAL-010
+- Blocked by: TASK-035
+Done when: Lingga approves the proposed behavior for the draft ISA or records what to revise.

@@ -274,3 +274,9 @@ Did: Recorded approval of CHG-005. Added `host_get` and `host_put` to the ISA, c
 Results: Traceability was clean and all 41 Python model checks passed. Host framing and pin mapping are unchanged. The opcodes, FIFO depth and simultaneous access rules are not frozen. No production RTL changed and no registered verification tests ran.
 AI vs human: Lingga approved the draft payload operations. OpenCode applied the change and reviewed the linked records. No block or gate was approved.
 Next: TASK-035, prototype edge capture and elapsed-time instructions. G4 remains open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-035)
+Did: Explored encoded edge save and interval arithmetic in EVAL-010. Replayed the RC5 benchmark and drafted CHG-006.
+Results: All six modeled RC5 cases passed, including wrap at each rate. The 39-word program returned both expected frames. All 45 Python model checks passed. No production RTL or registered tests changed.
+AI vs human: Lingga authorized the prototype. OpenCode modeled the instructions, wrote the RC5 program and proposed the behavior for review. Lingga has not approved the change or G4.
+Next: TASK-036, review CHG-006. Two-register writeback and opcode allocation are not frozen.

@@ -46,7 +46,7 @@ Opcode 12 (`report`) belongs to the earlier benchmark decoder and is invalid in 
 | Gap | Evidence needed |
 |---|---|
 | Payload FIFO and status | [EVAL-009](../evals/EVAL-009-host-payload.md) replays the approved operations through the host model. Final FIFO depth, same-edge host/core access and status behavior remain open. |
-| Edge capture and time inspection | Define an opcode or mode for edge capture, and how a program reads elapsed time or preserves an old timestamp. The tested `wait_save` waits for a level. It does not encode RC5 edge interval measurement. |
+| Edge capture and time inspection | [EVAL-010](../evals/EVAL-010-edge-interval.md) measures RC5 intervals with `edge_save` and `edge_delta`. [CHG-006](../changes/CHG-006-edge-interval.md) awaits review. The two-register writeback schedule, final opcodes and any separate timestamp inspection remain open. |
 | Arithmetic and offset register use | Check bit operations, register pressure and split offsets in real programs. The replay reserves `R0`/`R6` by convention, while the vector translator uses `R7` as scratch. The latter is not an architectural reservation. |
 | Execution corner cases | Define modular guard/fence behavior, exact fault and `safe`/`flush` ordering, and pending-operation state. Check isolated contexts and that no failed output, payload or shift operation commits twice. |
 | Program coverage | Assemble UART TX/RX, all baseline SPI/I2C cases and the non-target examples using the proposed release operations. The current modeled replay does not verify the full program set or the post-freeze protocol. |

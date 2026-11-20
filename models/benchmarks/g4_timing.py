@@ -1,6 +1,7 @@
 """Cycle-level exploration of ARCH-B's G4 issue and timed-I/O contracts."""
 
 from dataclasses import dataclass
+from math import ceil
 
 from .cycle import Emit, Level, Machine, ModelError, Out, Sample
 from .encoded import Issue, execute
@@ -17,7 +18,7 @@ class Drive:
 @dataclass(frozen=True)
 class Edge:
     pin: str
-    level: int
+    level: int | None
 
 
 @dataclass
@@ -82,7 +83,7 @@ class TimingProbe(Machine):
                 result = value
                 self.samples.append((t, op.pin, value))
             elif isinstance(op, Edge):
-                if value != op.level or previous[op.pin] == value:
+                if (op.level is not None and value != op.level) or previous[op.pin] == value:
                     continue
                 result = t
             else:
@@ -170,9 +171,29 @@ class TimingProbe(Machine):
         self.issue_log.append((t, owner, kind))
         return True
 
-    def run(self, limit):
+    def _next_quiet_cycle(self, t, limit):
+        candidates = [limit + 1]
+        if self.bus.events:
+            candidates.append(ceil(self.bus.events[0][0]))
+        for task, capture in zip(self.tasks, self.captures):
+            if task.finished:
+                continue
+            if capture is None:
+                if not isinstance(task.op, Issue) or task.op.kind != "fence":
+                    return t + 1
+                candidates.append(task.op.at)
+            elif capture.ready_at is not None:
+                candidates.append(capture.ready_at)
+            elif isinstance(capture.op, Sample):
+                candidates.append(t + self._delta(self.timer(capture.op.at), t))
+            elif isinstance(capture.op, Level) and capture.op.earliest > t:
+                candidates.append(capture.op.earliest)
+        return max(t + 1, min(candidates))
+
+    def run(self, limit, *, skip_idle=False):
         ff1 = ff2 = previous = self.bus.idle.copy()
-        for t in range(limit + 1):
+        t = 0
+        while t <= limit:
             self.bus.advance(t)
             incoming = self.bus.level.copy()
             due = [event for event in self.outputs if event.deadline == self.timer(t)]
@@ -201,10 +222,14 @@ class TimingProbe(Machine):
                 self.bus.apply(t, "dut", updates)
             self.hi["output_queue"] = max(self.hi["output_queue"], len(self.outputs))
             self.hi["capture_slots"] = max(self.hi["capture_slots"], sum(c is not None for c in self.captures))
+            quiet = skip_idle and not any(runnable) and choice is None and not due and not self.outputs
+            next_cycle = (self._next_quiet_cycle(t, limit)
+                          if quiet and incoming == ff1 == ff2 == previous else t + 1)
             previous, ff2, ff1 = ff2, ff1, incoming
             if not self.outputs and all(task.finished for task in self.tasks) and not self.bus.events:
                 expected = sorted((t0 + self._delta(e.deadline, t0), e.seq) for t0, e in self.admitted)
                 if sorted((t1, e.seq) for t1, e in self.retired) != expected:
                     raise ModelError("accepted output did not retire exactly once at its deadline")
                 return t
+            t = next_cycle
         raise ModelError(f"G4 probe timed out after {limit} clocks")

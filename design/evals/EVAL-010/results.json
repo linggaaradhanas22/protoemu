@@ -1,0 +1,506 @@
+[
+  {
+    "case": "rc5-50673",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      25336,
+      286684,
+      "RC5 sample window"
+    ],
+    "end_cycle": 13157628,
+    "pins": [
+      "unused0",
+      "unused1",
+      "unused2",
+      "unused3",
+      "unused4",
+      "unused5",
+      "rc5",
+      "unused7"
+    ],
+    "payload": {},
+    "issued_ops": [
+      946
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "epoch": 0,
+    "wrap": false,
+    "words": 39,
+    "host_output": [
+      12661,
+      16012
+    ],
+    "sample_slack": 25308,
+    "transfers": [
+      [
+        1553530,
+        0,
+        "host_put",
+        12661
+      ],
+      [
+        8039674,
+        0,
+        "host_put",
+        16012
+      ]
+    ],
+    "calibration": [
+      [
+        210675,
+        0,
+        "rc5",
+        0,
+        210675
+      ],
+      [
+        261348,
+        0,
+        "rc5",
+        1,
+        261348
+      ],
+      [
+        6696819,
+        0,
+        "rc5",
+        0,
+        6696819
+      ],
+      [
+        6747492,
+        0,
+        "rc5",
+        1,
+        6747492
+      ]
+    ],
+    "observation_end": 13132288
+  },
+  {
+    "case": "rc5-50673",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      25336,
+      286684,
+      "RC5 sample window"
+    ],
+    "end_cycle": 13157628,
+    "pins": [
+      "unused0",
+      "unused1",
+      "unused2",
+      "unused3",
+      "unused4",
+      "unused5",
+      "rc5",
+      "unused7"
+    ],
+    "payload": {},
+    "issued_ops": [
+      946
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "epoch": 16566536,
+    "wrap": true,
+    "words": 39,
+    "host_output": [
+      12661,
+      16012
+    ],
+    "sample_slack": 25308,
+    "transfers": [
+      [
+        1553530,
+        0,
+        "host_put",
+        12661
+      ],
+      [
+        8039674,
+        0,
+        "host_put",
+        16012
+      ]
+    ],
+    "calibration": [
+      [
+        210675,
+        0,
+        "rc5",
+        0,
+        16777211
+      ],
+      [
+        261348,
+        0,
+        "rc5",
+        1,
+        50668
+      ],
+      [
+        6696819,
+        0,
+        "rc5",
+        0,
+        6486139
+      ],
+      [
+        6747492,
+        0,
+        "rc5",
+        1,
+        6536812
+      ]
+    ],
+    "observation_end": 13132288
+  },
+  {
+    "case": "rc5-53340",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      26669,
+      293352,
+      "RC5 sample window"
+    ],
+    "end_cycle": 13841714,
+    "pins": [
+      "unused0",
+      "unused1",
+      "unused2",
+      "unused3",
+      "unused4",
+      "unused5",
+      "rc5",
+      "unused7"
+    ],
+    "payload": {},
+    "issued_ops": [
+      946
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "epoch": 0,
+    "wrap": false,
+    "words": 39,
+    "host_output": [
+      12661,
+      16012
+    ],
+    "sample_slack": 26642,
+    "transfers": [
+      [
+        1626873,
+        0,
+        "host_put",
+        12661
+      ],
+      [
+        8454393,
+        0,
+        "host_put",
+        16012
+      ]
+    ],
+    "calibration": [
+      [
+        213342,
+        0,
+        "rc5",
+        0,
+        213342
+      ],
+      [
+        266682,
+        0,
+        "rc5",
+        1,
+        266682
+      ],
+      [
+        7040862,
+        0,
+        "rc5",
+        0,
+        7040862
+      ],
+      [
+        7094202,
+        0,
+        "rc5",
+        1,
+        7094202
+      ]
+    ],
+    "observation_end": 13815040
+  },
+  {
+    "case": "rc5-53340",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      26669,
+      293352,
+      "RC5 sample window"
+    ],
+    "end_cycle": 13841714,
+    "pins": [
+      "unused0",
+      "unused1",
+      "unused2",
+      "unused3",
+      "unused4",
+      "unused5",
+      "rc5",
+      "unused7"
+    ],
+    "payload": {},
+    "issued_ops": [
+      946
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "epoch": 16563869,
+    "wrap": true,
+    "words": 39,
+    "host_output": [
+      12661,
+      16012
+    ],
+    "sample_slack": 26642,
+    "transfers": [
+      [
+        1626873,
+        0,
+        "host_put",
+        12661
+      ],
+      [
+        8454393,
+        0,
+        "host_put",
+        16012
+      ]
+    ],
+    "calibration": [
+      [
+        213342,
+        0,
+        "rc5",
+        0,
+        16777211
+      ],
+      [
+        266682,
+        0,
+        "rc5",
+        1,
+        53335
+      ],
+      [
+        7040862,
+        0,
+        "rc5",
+        0,
+        6827515
+      ],
+      [
+        7094202,
+        0,
+        "rc5",
+        1,
+        6880855
+      ]
+    ],
+    "observation_end": 13815040
+  },
+  {
+    "case": "rc5-56007",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      28003,
+      300019,
+      "RC5 sample window"
+    ],
+    "end_cycle": 14525799,
+    "pins": [
+      "unused0",
+      "unused1",
+      "unused2",
+      "unused3",
+      "unused4",
+      "unused5",
+      "rc5",
+      "unused7"
+    ],
+    "payload": {},
+    "issued_ops": [
+      946
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "epoch": 0,
+    "wrap": false,
+    "words": 39,
+    "host_output": [
+      12661,
+      16012
+    ],
+    "sample_slack": 27975,
+    "transfers": [
+      [
+        1700215,
+        0,
+        "host_put",
+        12661
+      ],
+      [
+        8869111,
+        0,
+        "host_put",
+        16012
+      ]
+    ],
+    "calibration": [
+      [
+        216009,
+        0,
+        "rc5",
+        0,
+        216009
+      ],
+      [
+        272016,
+        0,
+        "rc5",
+        1,
+        272016
+      ],
+      [
+        7384905,
+        0,
+        "rc5",
+        0,
+        7384905
+      ],
+      [
+        7440912,
+        0,
+        "rc5",
+        1,
+        7440912
+      ]
+    ],
+    "observation_end": 14497792
+  },
+  {
+    "case": "rc5-56007",
+    "arch": "B",
+    "pass": true,
+    "errors": [],
+    "min_margin": [
+      28003,
+      300019,
+      "RC5 sample window"
+    ],
+    "end_cycle": 14525799,
+    "pins": [
+      "unused0",
+      "unused1",
+      "unused2",
+      "unused3",
+      "unused4",
+      "unused5",
+      "rc5",
+      "unused7"
+    ],
+    "payload": {},
+    "issued_ops": [
+      946
+    ],
+    "resources_peak": {
+      "output_queue": 0,
+      "capture_slots": 1,
+      "lanes": 0
+    },
+    "epoch": 16561202,
+    "wrap": true,
+    "words": 39,
+    "host_output": [
+      12661,
+      16012
+    ],
+    "sample_slack": 27975,
+    "transfers": [
+      [
+        1700215,
+        0,
+        "host_put",
+        12661
+      ],
+      [
+        8869111,
+        0,
+        "host_put",
+        16012
+      ]
+    ],
+    "calibration": [
+      [
+        216009,
+        0,
+        "rc5",
+        0,
+        16777211
+      ],
+      [
+        272016,
+        0,
+        "rc5",
+        1,
+        56002
+      ],
+      [
+        7384905,
+        0,
+        "rc5",
+        0,
+        7168891
+      ],
+      [
+        7440912,
+        0,
+        "rc5",
+        1,
+        7224898
+      ]
+    ],
+    "observation_end": 14497792
+  }
+]

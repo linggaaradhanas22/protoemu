@@ -6,7 +6,7 @@ from .cycle import Emit, Level, ModelError, Out, Sample
 from .encoded import FORMATS as LEGACY_FORMATS
 from .encoded import NO_PIN, REPORTS, Image, Issue, pack, unpack
 from .encoded_programs import T, i2c_code, spi_code, uart_code
-from .g4_timing import TimingProbe
+from .g4_timing import Edge, TimingProbe
 
 MASK = (1 << 24) - 1
 HALF = 1 << 23
@@ -23,6 +23,10 @@ PAD_DECODE = {code: (op, widths) for op, (code, widths) in PAD_FORMATS.items()}
 
 class SaveLevel(Level):
     """Return the stored observation timestamp at consume, not elapsed time."""
+
+
+class SaveEdge(Edge):
+    """Return the native timestamp from the context capture slot."""
 
 
 @dataclass(frozen=True)
@@ -103,9 +107,27 @@ def execute(code, pc, pins, open_drain, epoch, *, table=DECODE):
                 raise ModelError("timestamp used before save")
             stamp = yield SaveLevel(at(delay) if stamp is not None else 0, pin(index), value)
             regs[T] = regs[OFFSET_HI] = 0
-        elif op == "addoff":
+        elif op in ("edge_save", "edge_delta"):
+            index, polarity = args[:2]
+            if polarity == 3:
+                raise ModelError("invalid edge polarity")
+            if op == "edge_delta" and (stamp is None or args[2] not in (1, 2, 3, 4)):
+                raise ModelError("edge_delta needs saved time and a non-offset register pair")
+            observed = yield SaveEdge(pin(index), None if polarity == 2 else polarity)
+            if op == "edge_delta":
+                elapsed = (observed - stamp) & MASK
+                if not 0 < elapsed < HALF:
+                    raise ModelError("edge interval outside the future half range")
+                dest = args[2]
+                regs[dest], regs[dest + 1] = elapsed & 0xFFFF, elapsed >> 16
+            stamp = observed
+            regs[T] = regs[OFFSET_HI] = 0
+        elif op in ("addoff", "addoff_r"):
             change, = args
-            change -= (1 << 15) if change & (1 << 14) else 0
+            if op == "addoff_r":
+                change = regs[change]
+            else:
+                change -= (1 << 15) if change & (1 << 14) else 0
             updated = offset() + change
             if not 0 <= updated < HALF:
                 raise ModelError("timestamp offset outside the half range")
@@ -117,6 +139,17 @@ def execute(code, pc, pins, open_drain, epoch, *, table=DECODE):
             if op == "add":
                 value += regs[reg] - ((1 << 15) if value & (1 << 14) else 0)
             regs[reg] = value & 0xFFFF
+        elif op in ("shr", "xor", "ult", "mov"):
+            dest, arg = args
+            yield Issue("execute")
+            if op == "shr":
+                regs[dest] >>= arg
+            elif op == "xor":
+                regs[dest] ^= regs[arg]
+            elif op == "ult":
+                regs[dest] = int(regs[dest] < arg)
+            else:
+                regs[dest] = regs[arg]
         elif op == "out":
             mask, values, delay = args
             changes = {}
@@ -218,7 +251,7 @@ class ISAProbe(TimingProbe):
         return cls(programs, bus, owners, epoch=epoch, slots=slots, **kwargs)
 
     def _capture_result(self, capture):
-        return capture.stamp if isinstance(capture.op, SaveLevel) else capture.value
+        return capture.stamp if isinstance(capture.op, (SaveLevel, SaveEdge)) else capture.value
 
     def _issue_result(self, owner, op, t):
         return self.timer(t) if op.kind == "read_timer" else None
