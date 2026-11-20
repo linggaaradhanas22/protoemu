@@ -315,6 +315,7 @@ Lose a valid `START` reply after execution and corrupt a valid payload-write rep
 Save a timestamp before stopping. After reload, check that a timed instruction cannot use the old saved timestamp before a new capture has saved a time.
 Repeat with `edge_delta` waiting on a transition. Stop and reload. Check that the pending capture does not retire and the old timestamp cannot be used.
 Stop with a payload instruction blocked. Check that reload cannot complete the old transfer or expose stale FIFO words.
+Fault one context with a drive, capture, guard and host payload pending in the other, and with a halted context's update still queued (CHG-008). Pass if work due on the fault edge completes once, everything later is discarded, and the pads go safe on the next edge. Compare with `models/benchmarks/g4_stop.py`.
 
 ## Unit tests
 
@@ -329,6 +330,7 @@ Check mask, values and enables from each drive format. Include pad 7 in both shi
 Run `host_get` on empty ingress and `host_put` on full egress. Check that the other context can issue. Release each stall and check for one transfer without refetch. A blocked read must not change its destination. A blocked write must retain its source word.
 Check `edge_delta` across wrap and with an interval greater than 65,535 cycles. Check both destination words, timestamp replacement and offset clear. Inject an invalid saved time or destination and confirm no arm request. Reject an out-of-range interval without a partial register write. Confirm that one context cannot replace the other's timestamp.
 Arm a `fence` with `delta` = 0, 1, `2^23−1`, `2^23` and `2^24−1` (CHG-007). Pass if only 1 and `2^23−1` wait, each retires on `cycle == target`, and no case faults. Repeat across counter wrap. Stall the context after its guard opens and check it still retires. Check that both contexts classify their own targets.
+Fault an operation on edge F with the other context runnable (CHG-008). Pass if the faulting operation does not retire, nothing issues on F or later, the fault record names the context, PC and cause, and `halt` in one context does not stop the other or cancel its accepted updates.
 
 ### TEST-UNIT-002 — Registered fetch and image bounds
 - Status: planned
@@ -345,6 +347,7 @@ Include a CRC failure after tentative words reached the array. Keep `image_valid
 - Run: test_timed_drive_queue
 Fill all four slots. Enqueue out of deadline order, retire disjoint masks together, and accept into a slot on its retirement edge. Try an overlapping mask, an unowned pin, a zero deadline delta and an expired retry. Cross wrap and assert flush on a due edge. Pass if the scoreboard sees each accepted, nonflushed masked update once on its programmed edge, no rejected update reaches a pad, and merged value/OE fields match the masks.
 With one slot free, admit a full-width mask and retire its mixed values and enables as one event. Repeat with one unowned bit and check that the whole request is rejected.
+Assert a core fault on edge F with updates due on F and F + 1 (CHG-008). The update due on F must retire in full; the one due on F + 1 and all queued entries must never reach a pad.
 
 ### TEST-UNIT-004 — Context capture ownership and observation edge
 - Status: planned
@@ -354,6 +357,7 @@ With one slot free, admit a full-width mask and retire its mixed values and enab
 Arm both contexts and arrange two results on one edge. Cover a transition on the arm edge, a subsequent edge, a level already present, a timed sample across wrap, stalled consumption and an attempted overwrite. Pass if captured values and pre-edge timestamps match the observation rule, only owners consume results, reads never bypass completion, and reset or flush discards all live slots.
 Exercise falling, rising and either-edge arms. Hold a result across counter wrap before consuming it. The result must keep the original observation time, not the consume time.
 Arm a guarded level with a target equal to a later observation edge, an already-passed target, and a target across wrap (CHG-007). The first must match on the target edge, and the passed target on the first edge after arm, without a fault. Hold the level absent for more than `2^23` cycles after the guard opens (reduced width allowed), then apply it. It must match on the next observation edge. An unguarded arm must ignore the target field.
+With an observation due on the fault edge F, check it is recorded, and that `flush` on F + 1 clears both slots and guard bits and suppresses observations on that edge (CHG-008).
 
 ### TEST-UNIT-005 — Timebase, half range and wrap
 - Status: planned
@@ -372,6 +376,7 @@ With the same deltas, check the guard classification of CHG-007: only `1` throug
 Change inputs away from clock edges and check the two-flop path. Apply partial pin updates, open-drain low and release, and coincident reset or safe assertion. Pass if pad outputs change only on sampling edges, open drain never drives high, unmasked pins retain state, and reset or safe overrides any competing update. This logic test does not measure metastability or pad timing.
 Check dedicated host pin mapping and registered `MISO`/`READY`. Toggle host inputs without changing the protocol pad ownership or enables.
 Apply one update with both driven and released pads. Check that an enable of zero releases a masked pad even if its value bit is high. Also check open-drain high releases with enable set, and unmasked pads retain their state.
+Apply reset, deselect, safe and a due update on one edge in every combination. Pass if the priority is reset, deselect, safe, update (CHG-008). In `DONE`, pads must hold their last values.
 
 ### TEST-UNIT-007 — Complete image before run
 - Status: planned
@@ -381,3 +386,4 @@ Apply one update with both driven and released pads. Check that an enable of zer
 Drive valid, truncated, overlong and bad-CRC SPI frames; try invalid entry PCs and overlapping write allocations. Check little-endian word writes and `READY` for a separate reply with the first bit preloaded. Attempt start before and after commit, loading while running, and deselection or fault while work is active. Check per-context FIFO order, full and empty handling, and a clean reload after each stop path. Pass if only validated settings become active, completion precedes start, and stop clears timed work, payload and image validity as specified.
 End requests one bit early, one byte early and one bit late. Stall SCK with `CS` low. Check that no command executes before exact frame validation. Interrupt or overclock a reply to a payload read, then start a new reply frame and check bit-zero restart with exactly one FIFO pop. Reset during a request and with a pending reply in separate runs. Check that no stale reply remains and that the next request needs a fresh `CS` falling edge after synchronized `CS` high.
 Check one word per core handshake and preserve FIFO order and context isolation under stalls. Check that host `READ` and `WRITE` still use their existing framing, including empty and full replies.
+Reach `DONE` and `FAULTED` with words in both payload FIFOs (CHG-008). Pass if the host can drain egress, `START` is rejected, the `STOP` reply carries the run state and fault record, and `STOP` then clears payload and image validity.

@@ -306,3 +306,9 @@ Results: 12,520 stopped runs (every issue point in three benchmarks under both r
 AI vs human: Lingga asked Claude to continue with TASK-039. Claude chose the rules to compare, built the model, ran the sweep and drafted EVAL-012 and CHG-008, including the proposed `DONE` and `FAULTED` behavior. Lingga has not reviewed the proposal. No block, CHG or gate was approved.
 Problems: The first results file was 5.8 MB, so it now stores only summaries and failing rows. The timing benefit of the F + 1 rule is a guess; it is not measured.
 Next: TASK-040, Lingga reviews CHG-008.
+
+## 2026-11-20: Lingga + Claude (TASK-040)
+Did: Recorded approval of CHG-008. Added the fault, stop and halt ordering and the `HALTED`/`RUNNING`/`DONE`/`FAULTED` run states to BLK-CORE, BLK-HOST, BLK-DRIVE, BLK-CAPTURE, BLK-PADS, the ISA draft and the G4 review list. Added fault-edge, priority and run-state checks to TEST-UNIT-001, 003, 004, 006, 007 and TEST-INT-002. Added TASK-041.
+Results: Traceability reported no errors or warnings. Block interfaces and SPECs did not change apart from the run state and fault record in `run_status`. No model code, production RTL or registered verification tests changed.
+AI vs human: Lingga approved the ordering and both proposed choices: `DONE` holds the pads, and `DONE`/`FAULTED` keep payload FIFOs until `STOP`. Claude applied the change and reviewed the linked records. No block or gate was approved.
+Next: TASK-041, settle the two-word `edge_delta` writeback.

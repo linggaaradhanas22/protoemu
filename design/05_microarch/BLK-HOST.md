@@ -29,11 +29,22 @@ A request contains an opcode byte, a 16-bit little-endian body length, the body,
 | `BEGIN` | While halted, invalidate the old image. Accept byte fields for word count (1–128), context enable mask, two entry PCs, two output ownership masks and open-drain mask. Enabled PCs must address the declared image. Ownership masks must be disjoint; open-drain bits must belong to a write mask. |
 | `DATA` | Send exactly the declared number of 24-bit words, little-endian. Write tentative words into the halted store at consecutive indices starting from zero. A bad length, truncated load, or bad CRC leaves the image invalid. |
 | `COMMIT` | Mark a fully received, validated image complete and report completion. Do not run it. |
-| `START` | Start enabled contexts together from the committed PCs with clean execution and timed-I/O state. Preloaded payload remains in the ingress FIFOs. Reject start without a committed image. |
-| `STOP` | On the ASIC edge after the validated frame close, make the pads safe, invalidate the image and clear pending work. Acknowledge after the safe edge. |
+| `START` | Start enabled contexts together from the committed PCs with clean execution and timed-I/O state. Preloaded payload remains in the ingress FIFOs. Reject start without a committed image or outside `HALTED`. |
+| `STOP` | On the ASIC edge after the validated frame close, make the pads safe, invalidate the image and clear pending work. Acknowledge after the safe edge. The reply carries the run state and fault record latched before the stop. |
 | Payload write/read | Select the context. Writes enqueue ingress or report full without overwriting; reads dequeue egress or report empty. A full core result FIFO blocks only the reporting context. Plan to preload inputs and drain results outside timing-critical transactions. |
 
-Load commands have no effect while running. Reset makes the device safe on the first edge sampling reset low. Deselect makes it safe on the edge that sees synchronized `ena` low, if the ASIC is still clocked. Reset, stop and deselect invalidate the image and clear payload and timed work. `safe` and `flush` win over a coincident pad update. Reset and reload after reselection; require a fresh load after a global stop or fault. Core fault propagation to the safe edge still needs integration review.
+Load commands have no effect while running. Reset makes the device safe on the first edge sampling reset low. Deselect makes it safe on the edge that sees synchronized `ena` low, if the ASIC is still clocked. Reset, stop and deselect invalidate the image and clear payload and timed work. `safe` and `flush` win over a coincident pad update. Reset and reload after reselection; require a fresh load after a global stop or fault.
+
+Run states ([CHG-008](../changes/CHG-008-stop-ordering.md)):
+
+| State | Entered by | Pads | Image and payload FIFOs |
+|---|---|---|---|
+| `HALTED` | Reset, deselect, `STOP` | Safe | Invalid / cleared |
+| `RUNNING` | `START` with a committed image | Programmed | In use |
+| `DONE` | Every enabled context halted and the drive queue empty | Hold their last values | Kept for the host to drain |
+| `FAULTED` | Core fault; safe edge is the edge after detection | Safe | Kept for the host to drain and read the fault record |
+
+Leave `DONE` or `FAULTED` only with `STOP`, reset or deselect. If a fault safe edge and a `STOP` safe edge coincide, there is one safe edge and the status reports `FAULTED`. After a stop or fault the host must reset or resynchronize protocol peers: the safe edge can release a pad one cycle after its last programmed change.
 
 ## Core payload interface
 

@@ -306,8 +306,15 @@ Done when: Lingga approves the proposed fence and wait guard behavior for the dr
 Done when: propose what happens on the edge where one context faults, halts or is flushed while drives, captures, guards or payload transfers are pending. Settle the order against `safe` pad overrides. Check in the model that no operation commits twice or half-commits. Keep opcodes and production RTL unchanged.
 
 ### TASK-040 — Review the fault, stop and halt ordering
-- Status: todo
+- Status: done
 - Owner: Lingga
-- Works on: CHG-008, EVAL-012
+- Works on: CHG-008, EVAL-012, BLK-CORE, BLK-HOST, BLK-DRIVE, BLK-CAPTURE, BLK-PADS, TEST-UNIT-001, TEST-UNIT-003, TEST-UNIT-004, TEST-UNIT-006, TEST-UNIT-007, TEST-INT-002
 - Blocked by: TASK-039
 Done when: Lingga approves the proposed ordering and run states for the draft ISA, including the two listed choices, or records what to revise. After approval, apply CHG-008 to the block and test records.
+
+### TASK-041 — Settle the two-word elapsed-time writeback
+- Status: todo
+- Owner: agent
+- Works on: BLK-CORE, TEST-UNIT-001
+- Blocked by: TASK-040
+Done when: compare register-file write options for `edge_delta` (one write port over two retirement cycles against two write ports in one) by issue cost in the RC5 and overlap replays and by synthesized area. Propose one. Keep opcodes and production RTL unchanged.

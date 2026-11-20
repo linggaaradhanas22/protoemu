@@ -1,5 +1,5 @@
 # CHG-008 — Define fault, stop and halt ordering
-- Status: proposed
+- Status: done
 - Size: medium
 - Affects: BLK-CORE, BLK-HOST, BLK-DRIVE, BLK-CAPTURE, BLK-PADS, TEST-UNIT-001, TEST-UNIT-003, TEST-UNIT-004, TEST-UNIT-006, TEST-UNIT-007, TEST-INT-002
 
@@ -53,8 +53,8 @@ Choices for Lingga (the defaults are proposed above):
 
 ## Approval
 
-medium: waiting for Lingga.
+Lingga approved the ordering, the run states and both listed choices for the draft ISA on 2026-11-20. This does not change the requirements or pass G4.
 
 ## Close-out
 
-Not started.
+Updated BLK-CORE, BLK-HOST, BLK-DRIVE, BLK-CAPTURE, BLK-PADS, TEST-UNIT-001, TEST-UNIT-003, TEST-UNIT-004, TEST-UNIT-006, TEST-UNIT-007, TEST-INT-002, the ISA draft and the G4 review list. Reviewed the items below them in `trace.md`. Block interfaces and SPECs are unchanged apart from the run state and fault record carried in `run_status`, which BLK-HOST already latched. Nothing stays `suspect`. Block records remain draft and registered tests remain planned. Fault-to-pad timing and area are still not measured.
