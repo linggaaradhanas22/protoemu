@@ -156,3 +156,10 @@ Done when: Lingga approves closing G3, the gate check reports MET, the sign-off 
 - Works on: ARCH-B, DEC-001
 - Blocked by: G3
 Done when: draft block records define responsibilities and interface boundaries. Each block has a planned unit test. Record open decisions for the timed-I/O queue, capture ownership, timestamp wrap, shared issue path, loader, and pin allocation.
+
+## Repository maintenance
+
+### TASK-019 — Set up GitHub SSH in WSL
+- Status: done
+- Owner: agent
+Done when: WSL Git can reach the repository over SSH and a dry-run push succeeds without a Windows credential helper.

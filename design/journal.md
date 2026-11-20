@@ -172,3 +172,9 @@ Did: Recorded G3 sign-off for ARCH-B and set G4 as the current stage. Kept DEC-0
 Results: `check_trace.py --gate G3` reported MET with zero errors and zero warnings. No design tests ran. Final fit and routed setup and hold remain unverified.
 AI vs human: Lingga approved closing G3. OpenCode ran the gate check and updated the project records.
 Next: TASK-018, draft the hardware block boundaries and plan unit-test coverage for ARCH-B.
+
+## 2026-11-20: Lingga + OpenCode (TASK-019)
+Did: Configured this checkout to use WSL Git and SSH with a dedicated key. No global Git or SSH settings changed.
+Results: GitHub authentication, remote lookup, and a dry-run push succeeded. No remote refs changed and no design tests ran.
+AI vs human: Lingga registered the public key. OpenCode verified the account and configured the checkout.
+Next: TASK-018 remains the next design task.
