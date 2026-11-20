@@ -125,3 +125,10 @@ Done when: candidate images for 1 MHz SPI, stretched Fast-mode I2C and UART/SPI 
 - Works on: DEC-001
 - Blocked by: TASK-012, TASK-013
 Done when: the draft compares all three options using both evaluations, recommends an option, and records proposed weights and risks for Lingga to review.
+
+### TASK-015 — Score the architecture decision
+- Status: done
+- Owner: agent
+- Works on: DEC-001
+- Blocked by: TASK-014
+Done when: DEC-001 records Lingga's approved weights, the scores from both evaluations, and the six sensitivity tests. The architecture remains unselected until Lingga approves it.

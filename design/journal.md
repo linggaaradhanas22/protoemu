@@ -154,3 +154,9 @@ Did: Drafted DEC-001 around B's shared program capacity. Compared the measured c
 Results: The draft recommends B and proposes weights. It does not assign scores or change candidate or gate status. No tests ran in this task.
 AI vs human: Lingga authorized drafting the decision. OpenCode wrote the recommendation and proposed weights. Lingga has not approved the weights or selected an architecture.
 Next: Ask Lingga to confirm or revise the proposed weights before scoring the decision.
+
+## 2026-11-20: Lingga + OpenCode (TASK-015)
+Did: Scored DEC-001 from the archived EVAL-001 and EVAL-002 data. Changed each approved weight up and down by 10 percentage points, rescaling the others for each test.
+Results: B scored 4.264/5, C 2.200/5, and A 1.800/5. B ranked first in all six sensitivity tests. No architecture status changed, and no design tests ran.
+AI vs human: Lingga approved the 50% program space, 30% area, and 20% setup slack weights. OpenCode calculated and recorded the scores. Lingga has not yet approved the selection.
+Next: Ask Lingga to select ARCH-B. Leave G3 open until approval and the gate check.

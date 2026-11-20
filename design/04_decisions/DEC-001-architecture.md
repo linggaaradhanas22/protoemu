@@ -23,21 +23,33 @@ This draft recommends B. It does not select an architecture or pass G3.
 
 No candidate was ruled out by the model runs. The probe hold violations are on inputs to the first synchronizer, with zero minimum input delay and no clock-tree synthesis or hold repair. Do not mark full-fit, routed timing or the untested requirements as passing.
 
-## Step 2: Proposed weights and measured inputs
+## Step 2: Weighted scores
 
-These weights are for Lingga to approve before scoring. The suggested 1–5 rubric scales each metric between the worst and best measured candidate, with the preferred end scoring 5. If all candidates tie on a metric, score them equally. Do not use the unverified post-freeze protocol or unsupported effort estimates as scores.
+Lingga approved the weights on 2026-11-20. Each metric scores 1 at the worst measured value and 5 at the best, with linear interpolation between them. For area, use the negative of the measured value so smaller is better. For an all-candidate tie, use 3 for every candidate. Multiply each score by its weight, then sum without rounding. The unverified post-freeze protocol and unsupported effort estimates are not scored.
 
-| Metric | Proposed weight | A | B | C | Preferred direction |
+| Metric | Weight | A: value / score | B: value / score | C: value / score | Evidence |
 |---|---:|---:|---:|---:|---|
-| Free code words in the bank that runs the Fast-mode I²C image (EVAL-001) | 50% | 2 | 66 | 2 | More is better |
-| Repaired probe area (EVAL-002) | 30% | 0.406 mm² | 0.316 mm² | 0.266 mm² | Less is better |
-| Slow-corner setup slack after placement and repair (EVAL-002) | 20% | +3.339 ns | +2.934 ns | +2.289 ns | More is better |
+| Free code words in the bank running Fast-mode I²C | 50% | 2 / 1.000 | 66 / 5.000 | 2 / 1.000 | [EVAL-001 encoded results](../evals/EVAL-001/encoded/results.json), 10 µs stretch case |
+| Repaired probe area | 30% | 405,518 µm² / 1.000 | 315,550 µm² / 3.575 | 265,768 µm² / 5.000 | [EVAL-002 summary](../evals/EVAL-002/summary.json), slow placed area |
+| Slow-corner setup slack after placement and repair | 20% | +3.339 ns / 5.000 | +2.934 ns / 3.457 | +2.289 ns / 1.000 | EVAL-002 summary, slow placed setup slack |
+| **Weighted total (out of 5)** | **100%** | **1.800** | **4.264** | **2.200** | EVAL-001 and EVAL-002, as above |
 
-Code headroom indicates room to extend one measured program. It is not a direct measure of protocol coverage. A's spare engine bank and C's descriptor banks are not interchangeable with the code bank used by this I²C image. No weighted totals are assigned in this draft.
+Code headroom indicates room to extend one measured program. It is not a direct measure of protocol coverage. A's spare engine bank and C's descriptor banks are not interchangeable with the code bank used by this I²C image.
 
 ## Step 3: Sensitivity
 
-After the weights are agreed, vary each weight by ±10 percentage points in turn and rescale the other two proportionally to keep the total at 100%. Area-first priorities favor C; a hard requirement for independent issue paths would favor A. If B cannot preserve deadlines when one context is backpressured, revisit the recommendation before relying on its program-space advantage.
+Each row changes one weight by 10 percentage points and rescales the other two proportionally so the total stays at 100%. Weights and scores are displayed rounded; the calculations used unrounded values.
+
+| Weight varied | Headroom / area / setup | A | B | C |
+|---|---:|---:|---:|---:|
+| Headroom −10 pp | 40% / 36% / 24% | 1.960 | 4.117 | 2.440 |
+| Headroom +10 pp | 60% / 24% / 16% | 1.640 | 4.411 | 1.960 |
+| Area −10 pp | 57.14% / 20% / 22.86% | 1.914 | 4.362 | 1.800 |
+| Area +10 pp | 42.86% / 40% / 17.14% | 1.686 | 4.166 | 2.600 |
+| Setup −10 pp | 56.25% / 33.75% / 10% | 1.400 | 4.365 | 2.350 |
+| Setup +10 pp | 43.75% / 26.25% / 30% | 2.200 | 4.163 | 2.050 |
+
+B ranks first in every test. Its narrowest lead is 1.566 points over C when area rises to 40%. A hard requirement for independent issue paths would favor A. If B cannot preserve deadlines when one context is backpressured, revisit the recommendation before relying on its program-space advantage.
 
 ## Recommendation
 
@@ -47,4 +59,4 @@ Start from the evaluated design point: a 128×24-bit flop program store, two con
 
 Before implementation, specify what happens when the output queue fills, when a timestamp wraps, and when events in different contexts become due on the same cycle. Test that backpressure cannot lose a write or capture or make the other context miss a deadline. Separately define the RP2350 loader and pin allocation, verify reset/reload behavior, and check 60 MHz setup and hold after CTS and routing. The protocol chosen after RTL freeze remains a separate acceptance test.
 
-Approval: pending Lingga review of the decision criteria and recommendation.
+Approval: Lingga approved the score weights. Architecture selection and G3 sign-off are still pending.
