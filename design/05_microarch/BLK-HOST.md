@@ -22,7 +22,7 @@ Accept an image and configuration from the RP2350 while halted. Publish completi
 
 Use RP2350 SPI0, mode 0 at 250 kHz. SCK is idle low; bits go most-significant first, with sampling on rising SCK. The ASIC samples synchronized host inputs on its 60 MHz clock. Hold `CS` high between frames. Issue one command per request frame. When `READY` is high between frames, the next frame reads the pending reply and the loader ignores MOSI. Preload the first reply bit before the first rising SCK. Keep the pending reply until the host clocks a complete reply. EVAL-004 modeled 2 µs lead and lag guards on `CS` and a further 20 µs inter-frame budget; confirm the settings in firmware.
 
-A request contains an opcode byte, a 16-bit little-endian body length, the body, then CRC-16/CCITT-FALSE over the preceding bytes (initial `0xFFFF`; CRC bytes little-endian). Replies use the same framing with a status byte instead of the opcode. Numeric opcode and status values are still draft. Timeout, abort and retry behavior must be resolved before this block is agreed.
+A request contains an opcode byte, a 16-bit little-endian body length, the body, then CRC-16/CCITT-FALSE over the preceding bytes (initial `0xFFFF`; CRC bytes little-endian). Replies use the same framing with a status byte instead of the opcode. Numeric opcode and status values are still draft.
 
 | Command | Contract |
 |---|---|
@@ -34,6 +34,18 @@ A request contains an opcode byte, a 16-bit little-endian body length, the body,
 | Payload write/read | Select the context. Writes enqueue ingress or report full without overwriting; reads dequeue egress or report empty. A full core result FIFO blocks only the reporting context. Plan to preload inputs and drain results outside timing-critical transactions. |
 
 Load commands have no effect while running. Reset makes the device safe on the first edge sampling reset low. Deselect makes it safe on the edge that sees synchronized `ena` low, if the ASIC is still clocked. Reset, stop and deselect invalidate the image and clear payload and timed work. `safe` and `flush` win over a coincident pad update. Reset and reload after reselection; require a fresh load after a global stop or fault. Core fault propagation to the safe edge still needs integration review.
+
+## Transfer recovery
+
+Validate the request bit count, body length and CRC on synchronized `CS` rising. Do not execute a command before validation. Before frame close, only halted `DATA` may write tentative words. If SCK stalls with `CS` low, keep counters bounded and wait for frame close or reset. There is no ASIC watchdog.
+
+Reject short, overlong or malformed requests with a framed error reply. If halted, invalidate the image and abandon the load. If running, leave the running program unchanged. Keep the validated `STOP` safe-edge timing above.
+
+If a reply ends early or has extra bits, keep `READY` high and retain the same reply. A new reply frame starts from bit zero without executing the original request again. Drop the reply and clear `READY` only on an exact-length reply close, reset or deselect. After reset or reselection, observe synchronized `CS` high before accepting a new falling edge.
+
+The RP2350 uses provisional deadlines of 20 ms per request or reply frame and 5 ms for `READY` after a request closes. These deadlines do not extend the 1 s load requirement. The host checks the reply length, CRC and expected status with one `CS` assertion across the full reply. A valid error status is distinct from a transfer failure.
+
+On timeout or an invalid reply, abort the transfer, return `CS` high and SCK low, and report the command outcome as unknown. Do not resend the command automatically. Reset for at least four clock edges. Hold `CS` high for at least 2 µs after reset release and require `READY` low within 5 ms before a fresh `BEGIN`. Report recovery failure if reset cannot be clocked or `READY` stays high. Reload and commit before an explicit `START`. Do not restart protocol traffic automatically. See [CHG-002](../changes/CHG-002-loader-recovery.md) for the host sequence and test cases.
 
 ## Implementation options and budget
 

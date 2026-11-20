@@ -264,6 +264,7 @@ Drive the documented RP2350 SPI0 transactions at a 60 MHz chip clock. For each b
 In a separate trial, send only part of an image and stop before completion. Check that the host observes no successful load indication and that the image does not execute. Reset and load a full image.
 Repeat the full load and start after a cold restart that models deselection and reselection. Use two images with different pin behavior to check that the second run uses the new image.
 Pass if each full load reports success within 1 s, starts on request, and runs the expected image without relying on prior state.
+Force the request-frame, reply-ready and reply-frame timeouts from BLK-HOST in separate runs. Check that the driver aborts without automatically replaying a command. Hold `READY` high through the reset recovery deadline and check that the driver reports recovery failure. With a qualified reset, check that a fresh load works and protocol traffic resumes only on an explicit `START`.
 
 ### TEST-SYS-011 — Toolchain clean build and load
 - Status: planned
@@ -306,6 +307,7 @@ Use the BLK-PADS overlap pin map. Preload host payload, then run without host se
 - Verifies: ARCH-B, BLK-HOST, BLK-PROGRAM, BLK-PADS, BLK-CORE, BLK-DRIVE, BLK-CAPTURE
 - Run: test_load_run_stop_boundary
 Load a short program over the dedicated SPI pins, check the `READY`-gated reply, then start it. Stop with a pad update due on the edge after the validated `STOP` frame closes. Repeat around synchronized deselect, reset and core fault with a capture pending. Also try malformed and truncated reloads. Pass if partial images cannot fetch, accepted starts fetch only committed words, and safe/flush wins on each specified safe edge. A subsequent shorter image must not execute residual words or complete old operations.
+Lose a valid `START` reply after execution and corrupt a valid payload-write reply in separate runs. Check that the host does not repeat either request. Assert recovery reset with a pad update due, check safe outputs and cleared work, then reload and start explicitly.
 
 ## Unit tests
 
@@ -359,3 +361,4 @@ Check dedicated host pin mapping and registered `MISO`/`READY`. Toggle host inpu
 - Verifies: BLK-HOST
 - Run: test_loader_commit_and_start
 Drive valid, truncated, overlong and bad-CRC SPI frames; try invalid entry PCs and overlapping write allocations. Check little-endian word writes and `READY` for a separate reply with the first bit preloaded. Attempt start before and after commit, loading while running, and deselection or fault while work is active. Check per-context FIFO order, full and empty handling, and a clean reload after each stop path. Pass if only validated settings become active, completion precedes start, and stop clears timed work, payload and image validity as specified.
+End requests one bit early, one byte early and one bit late. Stall SCK with `CS` low. Check that no command executes before exact frame validation. Interrupt or overclock a reply to a payload read, then start a new reply frame and check bit-zero restart with exactly one FIFO pop. Reset during a request and with a pending reply in separate runs. Check that no stale reply remains and that the next request needs a fresh `CS` falling edge after synchronized `CS` high.

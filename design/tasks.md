@@ -201,8 +201,15 @@ Done when: Lingga approves the SPI proposal or records which option or interface
 Done when: the draft defines host timeouts and safe recovery from interrupted requests, interrupted or corrupted replies, and reset. The proposed checks cover these cases without assuming the host can safely repeat a command with side effects.
 
 ### TASK-025 — Review SPI loader recovery
-- Status: todo
+- Status: done
 - Owner: Lingga
 - Works on: CHG-002
 - Blocked by: TASK-024
 Done when: Lingga approves the recovery proposal or records what to revise.
+
+### TASK-026 — Compare ISA timestamp representations
+- Status: todo
+- Owner: agent
+- Works on: BLK-CORE, BLK-TIMER, TEST-UNIT-001, TEST-INT-001
+- Blocked by: TASK-025
+Done when: a reproducible exploration compares paired 16-bit registers with a dedicated timestamp operand. Check 24-bit wrap and report instruction count and timing impact for scheduling from an input capture.

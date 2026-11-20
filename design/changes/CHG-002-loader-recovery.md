@@ -1,5 +1,5 @@
 # CHG-002 — Define SPI loader recovery
-- Status: proposed
+- Status: done
 - Size: medium
 - Affects: BLK-HOST, BLK-PADS, TEST-UNIT-007, TEST-INT-002, TEST-SYS-010
 
@@ -55,4 +55,8 @@ This is not a hardware fail-safe for a stopped ASIC clock or an RP2350 that neve
 
 ## Impact and approval
 
-This proposal changes the recovery contract, not the pin map, architecture or requirements. It needs Lingga's approval before the block drafts and test plans adopt it. Measure real polling and abort behavior before locking the timeout values. No recovery model, RTL or firmware tests ran for this proposal.
+Lingga approved the recovery contract on 2026-11-20. The pin map, architecture and requirements are unchanged. Measure real polling and abort behavior before locking the timeout values.
+
+## Close-out
+
+Applied the approved behavior to BLK-HOST and BLK-PADS and added cases to TEST-UNIT-007, TEST-INT-002 and TEST-SYS-010. Reviewed EVAL-004, DEC-002, TEST-INT-001 and TEST-UNIT-006. The selected transport, model evidence, pad timing checks and pin map do not change. The block records remain draft. No recovery verification tests ran.

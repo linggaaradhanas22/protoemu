@@ -214,3 +214,9 @@ Did: Drafted CHG-002 for SPI timeouts, interrupted frames and corrupted replies.
 Results: The proposal keeps the approved pin map and frame format. It calls for reset and reload instead of automatically repeating an operation with unknown outcome. No recovery tests ran and no block contract changed.
 AI vs human: Lingga authorized drafting recovery. OpenCode proposed the behavior and provisional timeouts. Lingga has not approved CHG-002.
 Next: TASK-025, review CHG-002. G4 remains open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-025)
+Did: Recorded Lingga's approval of CHG-002. Updated the loader and pad drafts and added recovery cases to the verification plan.
+Results: Traceability was clean. No RTL or firmware changed and no recovery verification tests ran. The timeout values still need board measurements.
+AI vs human: Lingga approved resetting and reloading after an uncertain transfer without automatic command replay. OpenCode applied the change and reviewed affected records.
+Next: TASK-026, compare ISA timestamp representations. G4 remains open.
