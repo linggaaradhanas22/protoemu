@@ -1,5 +1,5 @@
 # CHG-012 — Least-significant-bit-first option for `shift_pin`
-- Status: proposed
+- Status: done
 - Size: medium
 - Affects: BLK-CORE, TEST-UNIT-001
 
@@ -23,8 +23,8 @@ Alternative: keep the ISA and document host bit reversal for LSB-first output.
 
 ## Approval
 
-medium: waiting for Lingga.
+Lingga approved the LSB-first `shift_pin` option on 2026-11-20.
 
 ## Close-out
 
-Not started.
+Updated the ISA draft (format and driving rules), BLK-CORE, TEST-UNIT-001 and the G4 review list. The model now decodes the order bit in `shift_pin`, and the prototype `shift_lsb` was removed. Order 0 encodes bit-identically to the old `shift_pin`, so EVAL-003 to EVAL-016 regenerate byte-identical results. All 82 Python model checks passed. Area is still not measured. Blocks remain draft and tests remain planned; nothing stays `suspect`.

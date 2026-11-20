@@ -348,8 +348,15 @@ Done when: Lingga approves the same-edge rule and depth 8 for the draft, or reco
 Done when: sweep loader SCK rate, per-frame overhead, words per transaction and FIFO depth for UART receive and transmit bursts at 38,400 to 115,200 baud. Check which SCK rates the synchronizer timing model allows, and measure the area of multi-word FIFO support. Report data for Lingga's TASK-044 decision; change no agreed record.
 
 ### TASK-046 — Review the LSB-first shift option
-- Status: todo
+- Status: done
 - Owner: Lingga
-- Works on: CHG-012, EVAL-016
+- Works on: CHG-012, EVAL-016, BLK-CORE, TEST-UNIT-001
 - Blocked by: TASK-043
 Done when: Lingga approves the LSB-first `shift_pin` option or chooses documented host bit reversal. After approval, apply CHG-012 to the ISA draft, BLK-CORE and TEST-UNIT-001.
+
+### TASK-047 — Evaluate a timeout for input waits (I2C clock stretching)
+- Status: todo
+- Owner: agent
+- Works on: EVAL-017, SPEC-I2C-003, BLK-CORE, BLK-CAPTURE
+- Blocked by: TASK-046
+Done when: run the EVAL-017 plan: model software polling, a timed wait and a per-context watchdog against all I2C cases plus stuck-SCL cases, with area for the hardware options. Recommend one option to Lingga; change no agreed record.

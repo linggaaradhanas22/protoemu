@@ -184,20 +184,17 @@ def execute(code, pc, pins, open_drain, epoch, *, table=DECODE, delta_writeback=
             yield Out(at(args[-1]), changes)
         elif op in ("shift_pin", "shift_pair"):
             reg, index = args[:2]
-            changes = pad(index, regs[reg] >> 15)
+            # CHG-012: shift_pin may carry an order bit after its offset (1 = LSB first).
+            lsb = op == "shift_pin" and len(args) == 4 and args[3]
+            delay = args[2] if op == "shift_pin" else args[-1]
+            changes = pad(index, regs[reg] & 1 if lsb else regs[reg] >> 15)
             if op == "shift_pair":
                 extra, value = args[2:4]
                 if index == extra:
                     raise ModelError("duplicate pad in shift pair")
                 changes.update(pad(extra, value))
-            yield Out(at(args[-1]), changes)
-            regs[reg] = (regs[reg] << 1) & 0xFFFF
-        elif op == "shift_lsb":
-            # TASK-043 exploration only: least-significant bit first, shift right.
-            reg, index, delay = args
-            changes = pad(index, regs[reg] & 1)
             yield Out(at(delay), changes)
-            regs[reg] >>= 1
+            regs[reg] = regs[reg] >> 1 if lsb else (regs[reg] << 1) & 0xFFFF
         elif op == "drivev":
             reg, oe, delay = args
             mask, values = regs[reg] & 0xFF, regs[reg] >> 8

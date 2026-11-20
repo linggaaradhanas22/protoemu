@@ -29,12 +29,12 @@ class SuiteTests(TestCase):
                     suite.ws_program(), suite.onewire_program()]
         used = set().union(*map(ops, programs))
         self.assertLessEqual(used, set(suite.FORMATS))
-        self.assertIn("shift_lsb", ops(suite.uart_tx_program(Fraction(520), "lsb")))
+        self.assertIn(("shift_pin", 1, 5, 0, 1), suite.uart_tx_program(Fraction(520), "lsb"))
 
     def test_monitors_reject_broken_programs(self):
         bus = Pins(suite.pins_for({5: "uart_tx"}, {"uart_tx": 1}))
         probe, *_ = suite.execute(suite.uart_tx_program(Fraction(60_000_000, 115200), "host-reversed"),
-                                  [5, *[b << 8 for b in UART_TX]], bus, 0, formats=suite.PROTO_FORMATS)
+                                  [5, *[b << 8 for b in UART_TX]], bus, 0, formats=suite.FORMATS)
         end = probe.run(100_000)
         first = next(t for t, name, _ in bus.edges if name == "uart_tx")
         self.assertTrue(uart_tx_check(bus, end, 115200, first)[0])  # Bytes not reversed.
@@ -49,8 +49,17 @@ class SuiteTests(TestCase):
 
         original = suite.ws_program
         try:
-            suite.ws_program = lambda: [("shift_pin", 1, suite.WS, 12) if line == ("shift_pin", 1, suite.WS, 18)
+            suite.ws_program = lambda: [("shift_pin", 1, suite.WS, 12, 0) if line == ("shift_pin", 1, suite.WS, 18, 0)
                                         else line for line in original()]
             self.assertFalse(suite.ws_case(0)["pass"])
         finally:
             suite.ws_program = original
+
+    def test_shift_order_bit_encoding(self):
+        """CHG-012: order 0 is bit-identical to the old shift_pin; order 1 sets bit 20 only."""
+        from .g4_isa import PAD_FORMATS, assemble
+        old, _ = assemble([("shift_pin", 3, 5, 200)], formats=PAD_FORMATS)
+        msb, _ = assemble([("shift_pin", 3, 5, 200, 0)], formats=suite.FORMATS)
+        lsb, _ = assemble([("shift_pin", 3, 5, 200, 1)], formats=suite.FORMATS)
+        self.assertEqual(old, msb)
+        self.assertEqual(int.from_bytes(lsb, "little") ^ int.from_bytes(msb, "little"), 1 << 20)

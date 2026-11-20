@@ -335,6 +335,7 @@ Arm a `fence` with `delta` = 0, 1, `2^23−1`, `2^23` and `2^24−1` (CHG-007). 
 Fault an operation on edge F with the other context runnable (CHG-008). Pass if the faulting operation does not retire, nothing issues on F or later, the fault record names the context, PC and cause, and `halt` in one context does not stop the other or cancel its accepted updates.
 On a successful `edge_delta`, check that `Rd`, `Rd+1` and the cleared offset pair all change on the retirement edge and no other register changes, for each `Rd` from R1 to R4 (CHG-009).
 Run `host_get` on an empty ingress while the host commits a word on the same edge (CHG-010). The instruction must retire on a later edge, once, with that word.
+Run `shift_pin` with order 0 and 1 (CHG-012). Check the pad bit (bit 15 or bit 0) and the shift direction. Block an LSB-first request, then admit it and check the register shifts right once. Reject a retry and check the register is unchanged.
 
 ### TEST-UNIT-002 — Registered fetch and image bounds
 - Status: planned

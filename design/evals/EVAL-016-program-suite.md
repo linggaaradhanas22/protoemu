@@ -69,6 +69,10 @@ The suite runs in about 25 s. All 81 Python model checks passed, including 3 new
 - One program runs at a time, except the overlap case. Area and timing are not measured.
 - No production RTL, agreed record or registered test changed.
 
+## Update after CHG-012
+
+Lingga approved [CHG-012](../changes/CHG-012-shift-lsb.md). The `lsb` variant now uses `shift_pin` with order bit 1 instead of the prototype `shift_lsb`. The suite regenerates byte-identical results.
+
 ## Reproduce
 
 ```bash

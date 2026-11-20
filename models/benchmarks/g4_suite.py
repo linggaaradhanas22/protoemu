@@ -4,8 +4,9 @@ Every program is written in draft-ISA operations only. Payload comes from the
 host through ``host_get`` and results go back through ``host_put``. Independent
 peers and monitors from the G3 fixtures check the pins. Guards follow CHG-007.
 
-One exploration operation, ``shift_lsb`` (prototype opcode 6), is used only by
-the ``lsb`` UART TX variant. It is not part of the draft ISA.
+``shift_pin`` has the CHG-012 order field: 0 sends bit 15 first, 1 sends bit 0
+first. The ``lsb`` UART TX variant uses order 1; ``host-reversed`` uses order 0
+with bytes bit-reversed by the host, as the draft ISA required before CHG-012.
 """
 
 import argparse
@@ -29,8 +30,8 @@ from .spi_uart import (RX as SPI_RX, TX as SPI_TX, UART_RATES, UART_RX, UART_TX,
                        uart_rx_check, uart_stimulus, uart_tx_check)
 
 FORMATS = {op: fmt for op, fmt in EDGE_FORMATS.items() if op not in ("out", "shift_out")}
-PROTO_FORMATS = dict(FORMATS, shift_lsb=(6, (3, 3, 9)))
-DECODE = {code: (op, widths) for op, (code, widths) in PROTO_FORMATS.items()}
+FORMATS["shift_pin"] = (20, (3, 3, 9, 1))  # CHG-012 order bit.
+DECODE = {code: (op, widths) for op, (code, widths) in FORMATS.items()}
 WRAP = MASK - 2000  # Epoch that wraps the timer early in each run.
 MAX_ADDOFF = (1 << 14) - 1
 
@@ -59,8 +60,8 @@ def bit_reverse(byte):
     return int(f"{byte:08b}"[::-1], 2)
 
 
-def execute(lines, ingress, bus, epoch, *, formats=FORMATS):
-    code, _ = assemble(lines, formats=formats)
+def execute(lines, ingress, bus, epoch, *, formats=None):
+    code, _ = assemble(lines, formats=formats or FORMATS)
     image = Image((code,), (0,), (b"",))
     endpoint, link = prepare(image, (tuple(ingress),), enabled=1, owner1=0)
     fetched = b"".join(endpoint.fetch(pc) for pc in range(endpoint.cfg.count))
@@ -112,7 +113,7 @@ def uart_rx_case(baud, error_pct, phase, epoch):
 # UART transmit: count + bytes from the host; start, 8 data bits LSB first, stop.
 def uart_tx_program(period, variant):
     tx, step = 5, round(period)
-    shift = ("shift_lsb", 1, tx, 0) if variant == "lsb" else ("shift_pin", 1, tx, 0)
+    shift = ("shift_pin", 1, tx, 0, int(variant == "lsb"))
     return [("host_get", 5), ("save_now",), *advance(64), "frame", ("host_get", 1),
             ("pad", tx, 0, 1, 0), *advance(step), ("set", 4, 8),
             "bit", shift, *advance(step), ("loop", 4, "bit"),
@@ -124,7 +125,7 @@ def uart_tx_case(baud, variant, epoch):
     bus = Pins(pins_for({5: "uart_tx"}, {"uart_tx": 1}))
     data = [b if variant == "lsb" else bit_reverse(b) << 8 for b in UART_TX]
     probe, *_, words = execute(uart_tx_program(period, variant), [len(data), *data], bus, epoch,
-                               formats=PROTO_FORMATS)
+                               formats=FORMATS)
     failure = run(probe, int(60 * period) + 10_000)
     edges = [t for t, name, _ in bus.edges if name == "uart_tx"]
     errors, margin = ([failure], None) if failure else uart_tx_check(bus, probe.end, baud, edges[0] if edges else None)
@@ -194,9 +195,9 @@ def i2c_program(fast, variant):
               "rise", put(SCL, 1, low), ("wait_save", SCL, 1, low), ("ret",),
               "fall", put(SCL, 0, high), *advance(high), ("ret",),
               # write5 sends the address byte from R5; write sends the next byte of TX.
-              "write5", ("set", N, 8), "w5bit", ("shift_pin", 5, SDA, setup), ("call", "rise"), ("call", "fall"),
+              "write5", ("set", N, 8), "w5bit", ("shift_pin", 5, SDA, setup, 0), ("call", "rise"), ("call", "fall"),
               ("loop", N, "w5bit"), ("jump", "ack"),
-              "write", ("set", N, 8), "wbit", ("shift_pin", TX, SDA, setup), ("call", "rise"), ("call", "fall"),
+              "write", ("set", N, 8), "wbit", ("shift_pin", TX, SDA, setup, 0), ("call", "rise"), ("call", "fall"),
               ("loop", N, "wbit"),
               "ack", put(SDA, 1, setup), ("call", "rise"), ("cap", SDA, FLAG, 0, 14), ("call", "fall"), ("ret",),
               "read", ("set", N, 8), "rbit", put(SDA, 1, setup), ("call", "rise"), ("cap", SDA, RX, 1, 14),
@@ -226,7 +227,7 @@ WS = 0
 
 def ws_program():
     return [("host_get", 5), ("save_now",), *advance(16), "word", ("host_get", 1), ("set", 4, 16),
-            "bit", ("pad", WS, 1, 1, 0), ("shift_pin", 1, WS, 18), ("pad", WS, 0, 1, 51), *advance(75),
+            "bit", ("pad", WS, 1, 1, 0), ("shift_pin", 1, WS, 18, 0), ("pad", WS, 0, 1, 51), *advance(75),
             ("loop", 4, "bit"), ("loop", 5, "word"), *advance(18_000), ("fence", 0), ("halt",)]
 
 
@@ -251,7 +252,7 @@ def onewire_program():
              *advance(4200 - 456), ("cap", WIRE, 3, 0, 456), ("jnz", 3, "absent"), *advance(30_000 - 4200 + 456),
              ("set", 1, bit_reverse(0x33) << 8), ("set", 4, 8),
              # A 0 bit holds the bus low for 65 us (minimum 60 us); a 1 bit releases it after 6 us.
-             "cmd", ("pad", WIRE, 0, 1, 0), ("shift_pin", 1, WIRE, 360), *advance(3900), ("pad", WIRE, 1, 1, 0),
+             "cmd", ("pad", WIRE, 0, 1, 0), ("shift_pin", 1, WIRE, 360, 0), *advance(3900), ("pad", WIRE, 1, 1, 0),
              *advance(300), ("loop", 4, "cmd"),
              ("set", 5, 8), "byte", ("set", 2, 0), ("set", 4, 8),
              # The cap immediate is 9 bits, so the read sample 840 cycles in is 384 + 456.

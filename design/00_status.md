@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (all programs replayed on the draft ISA, EVAL-016; CHG-012 proposed)
+**Last updated:** 2026-11-20 (CHG-012 applied; wait-timeout evaluation planned, EVAL-017)
 **Current stage:** G4 (Micro-architecture)
 
 ## Gates
@@ -36,14 +36,14 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-046 (Lingga): Review [CHG-012](changes/CHG-012-shift-lsb.md), the LSB-first `shift_pin` option. Then apply it.
+1. TASK-047: Evaluate a timeout for input waits ([EVAL-017 plan](evals/EVAL-017-wait-timeout.md)).
 2. Then G4 block review: each block with its unit test (g4-review step 2), and the full-core timing check (step 3).
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
-- **Approve [CHG-012](changes/CHG-012-shift-lsb.md)?** [EVAL-016](evals/EVAL-016-program-suite.md): all 914 baseline and non-target cases pass on the draft ISA, but UART TX needs the host to bit-reverse each byte. Proposal: bit 20 of `shift_pin` selects LSB-first (no new opcode). Alternative: document host bit reversal.
-- Waits have no timeout: an I2C target holding SCL low stalls its context until the host sends `STOP`. Document, or add a timeout later?
+- Lingga approved [CHG-012](changes/CHG-012-shift-lsb.md) (LSB-first `shift_pin`). Its area is not measured.
+- Waits have no timeout: an I2C target holding SCL low stalls its context. Lingga asked for a plan: [EVAL-017](evals/EVAL-017-wait-timeout.md) compares host stop, software polling, a timed wait and a watchdog (TASK-047).
 - Lingga approved [CHG-010](changes/CHG-010-payload-fifo.md) (no pass-through, depth 8) and the 1 MHz loader with four-word transfers ([CHG-011](changes/CHG-011-loader-rate.md), [DEC-005](04_decisions/DEC-005-loader-rate.md) replacing DEC-002). 1 MHz SPI must be checked on the board; the fallback is 500 kHz. `READN`/`WRITEN` framing area is not measured.
 - The trace checker warns that finished TASK-021 and TASK-023 point to the replaced DEC-002. Accepted as correct history; the checker is unchanged.
 - Lingga accepted [CHG-009](changes/CHG-009-delta-writeback.md) (narrow second register write port) as applied.

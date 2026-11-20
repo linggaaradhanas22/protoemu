@@ -346,3 +346,9 @@ Results: 914 of 914 cases passed, including the full UART RX baud-error and star
 AI vs human: Lingga asked Claude to close the open decisions and do TASK-043. Claude wrote the programs and the prototype, chose to sample 1-Wire presence instead of waiting, and proposed CHG-012. Lingga has not reviewed CHG-012.
 Problems: The draft ISA cannot send LSB first without host bit reversal. The first 1-Wire program waited for presence with no timeout and copied a write-0 pulse at the 60 µs minimum; both were changed (sampled presence, 65 µs pulse, worst margin 62 clocks).
 Next: TASK-046, Lingga reviews CHG-012. Then the G4 block review and full-core timing check.
+
+## 2026-11-20: Lingga + Claude (TASK-046)
+Did: Recorded Lingga's approval of CHG-012. Applied it: `shift_pin` bit 20 selects LSB-first output in the ISA draft, BLK-CORE and TEST-UNIT-001. Replaced the prototype `shift_lsb` in the model with the order bit and added an encoding check. At Lingga's request, wrote the EVAL-017 plan for a wait timeout (I2C clock stretching) and added TASK-047.
+Results: Order 0 encodes bit-identically to the old `shift_pin`. EVAL-003 through EVAL-016 regenerate byte-identical results, and all 82 Python model checks passed. Traceability reported 0 errors and the 2 accepted warnings. No production RTL changed and no registered verification tests ran.
+AI vs human: Lingga approved CHG-012 and asked for a plan for the I2C stall. Claude applied the change and wrote the plan with four options (host stop, software polling, timed wait, watchdog). Lingga has not reviewed the plan.
+Next: TASK-047, run the EVAL-017 plan, then the G4 block review.
