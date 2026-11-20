@@ -264,8 +264,15 @@ Done when: Lingga approves carrying both pad formats into the ISA draft or recor
 Done when: propose context-local instructions for reading and writing payload. Replace fixture-specific reports in a replay of concurrent UART/SPI. Check that FIFO backpressure blocks only the requesting context and that each payload operation retires once.
 
 ### TASK-034 — Review the generic host payload operations
-- Status: todo
+- Status: done
 - Owner: Lingga
 - Works on: CHG-005, EVAL-009
 - Blocked by: TASK-033
 Done when: Lingga approves the proposed draft operations or records what to revise.
+
+### TASK-035 — Prototype edge capture and elapsed-time instructions
+- Status: todo
+- Owner: agent
+- Works on: BLK-CORE, BLK-CAPTURE, BLK-TIMER, SPEC-PROG-003, TEST-UNIT-004
+- Blocked by: TASK-034
+Done when: propose how a program captures rising and falling edges and measures intervals across timer wrap. Replay a non-target input workload such as RC5 and report timing and program size. Do not freeze opcodes or change production RTL.

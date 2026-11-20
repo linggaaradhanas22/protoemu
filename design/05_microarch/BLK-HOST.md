@@ -35,6 +35,10 @@ A request contains an opcode byte, a 16-bit little-endian body length, the body,
 
 Load commands have no effect while running. Reset makes the device safe on the first edge sampling reset low. Deselect makes it safe on the edge that sees synchronized `ena` low, if the ASIC is still clocked. Reset, stop and deselect invalidate the image and clear payload and timed work. `safe` and `flush` win over a coincident pad update. Reset and reload after reselection; require a fresh load after a global stop or fault. Core fault propagation to the safe edge still needs integration review.
 
+## Core payload interface
+
+`host_get` consumes a word from the selected context's ingress FIFO. `host_put` produces a word for that context's egress FIFO. The core transfers a word only on a successful ready/valid handshake. Neither instruction addresses the other context or assigns a protocol meaning to the word. Host SPI `WRITE` and `READ` keep their existing behavior. Final depth and behavior on simultaneous host and core access to the same FIFO remain open.
+
 ## Transfer recovery
 
 Validate the request bit count, body length and CRC on synchronized `CS` rising. Do not execute a command before validation. Before frame close, only halted `DATA` may write tentative words. If SCK stalls with `CS` low, keep counters bounded and wait for frame close or reset. There is no ASIC watchdog.

@@ -1,5 +1,5 @@
 # CHG-005 — Add generic host payload operations to the ISA draft
-- Status: proposed
+- Status: done
 - Size: medium
 - Affects: BLK-CORE, BLK-HOST, TEST-UNIT-001, TEST-UNIT-007, TEST-INT-001
 
@@ -15,4 +15,8 @@ The earlier instruction model hard-coded report channels for specific protocols 
 
 ## Impact and approval
 
-The change affects programmer-visible behavior and the core/host handshake. It does not change the architecture or requirements. On approval, update the ISA and block drafts and plan empty/full, duplicate prevention, and context isolation checks. No release opcode freeze, production RTL or G4 approval follows from this proposal.
+Lingga approved the draft operations on 2026-11-20. The architecture, requirements and host framing did not change. The opcodes remain provisional. No block or gate was approved.
+
+## Close-out
+
+Updated the ISA, core and host drafts and the affected verification plans. Reviewed the linked decisions and evaluations. The selected loader, timestamp and timed pad formats are unchanged. The registered tests remain planned. FIFO depth and simultaneous host/core access remain open.

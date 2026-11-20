@@ -28,6 +28,8 @@ Use round-robin selection between runnable contexts at a free issue boundary; wa
 
 ## Implementation options and budget
 
+The draft `host_get` and `host_put` operate only on the issuing context's FIFOs. A blocked read retains its destination register. A blocked write retains the source word. On the successful handshake, retire the instruction and transfer one word. Do not advance the PC, change the destination, or modify a FIFO while blocked. The other context can issue. See [CHG-005](../changes/CHG-005-host-payload.md).
+
 [DEC-004](../04_decisions/DEC-004-hybrid-pad-isa.md) selects compact `pad`/`pad2` and vector `drivev` for the [draft ISA](isa-draft.md). Decode either format into the same absolute deadline, mask, value and output enable request. Separate `shift_pin` and `shift_pair` keep all eight pin indices usable. Change the shift source register only when its request is admitted. On block, retain the decoded request and defer the register update. On reject, leave the register unchanged.
 
 Compare saved requests with re-fetch/retry; re-fetch costs issue bandwidth and risks recomputing a relative deadline. Quantify runnable service bound, retries and actual deadline slack against EVAL-001's critical cases; round-robin is not a proof of schedulability. Planning allowance: 0.150 mm² of cell area; not measured for this block.

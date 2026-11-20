@@ -268,3 +268,9 @@ Did: Ran EVAL-009 as an exploration. Replaced benchmark reports and the fixed SP
 Results: All 96 concurrent UART/SPI model cases and 41 Python checks passed. A directed check stalled one context on empty ingress and full egress without blocking the other. The program used 37 words with 13 cycles of minimum output admission slack. No production RTL changed.
 AI vs human: Lingga authorized the prototype. OpenCode wrote and ran it. Lingga has not approved the payload operations or G4.
 Next: TASK-034, review CHG-005.
+
+## 2026-11-20: Lingga + OpenCode (TASK-034)
+Did: Recorded approval of CHG-005. Added `host_get` and `host_put` to the ISA, core and host drafts. Planned checks for stalls, context isolation and reload with a pending payload operation.
+Results: Traceability was clean and all 41 Python model checks passed. Host framing and pin mapping are unchanged. The opcodes, FIFO depth and simultaneous access rules are not frozen. No production RTL changed and no registered verification tests ran.
+AI vs human: Lingga approved the draft payload operations. OpenCode applied the change and reviewed the linked records. No block or gate was approved.
+Next: TASK-035, prototype edge capture and elapsed-time instructions. G4 remains open.

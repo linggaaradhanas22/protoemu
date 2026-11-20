@@ -26,8 +26,10 @@ Each instruction is one 24-bit word in little-endian byte order. Bits `[4:0]` ho
 | 20 | `shift_pin` | Source (3), pin (3), offset (9) |
 | 21 | `shift_pair` | Source (3), data pin (3), extra pin (3), extra value (1), offset (9) |
 | 22 | `drivev` | Source (3), output enable bits (8), offset (8) |
+| 23 | `host_get` | Destination (3) |
+| 24 | `host_put` | Source (3) |
 
-The exploration also decodes opcode 12 (`report`) with a 3-bit fixture channel and a 3-bit source. It sends data to a Python monitor. It is **not** a proposed wire or host payload encoding. The earlier five-pad `out` and sentinel-based `shift_out` (3 and 4) are superseded in this candidate. Do not assign them or any other unlisted opcode until the instruction gaps are resolved.
+Opcode 12 (`report`) belongs to the earlier benchmark decoder and is invalid in this draft. The earlier five-pad `out` and sentinel-based `shift_out` (3 and 4) are superseded. Do not assign unlisted opcodes until the instruction gaps are resolved.
 
 ## Programmer-visible behavior
 
@@ -37,11 +39,13 @@ The exploration also decodes opcode 12 (`report`) with a 3-bit fixture channel a
 - **Sampling:** `cap` observes the synchronized pin on the target cycle. Mode 0 replaces the destination with the bit. Mode 1 shifts the destination left and inserts the bit at bit 0. Mode 2 shifts right and ORs the bit into bit 7, as used for UART bytes in the probe. Mode 3 is invalid. These modes do not overwrite saved time. Mode 2 is not a general 16-bit right-insert operation.
 - **Driving:** `pad` and `pad2` carry explicit value and enable bits. `drivev` reads a mask from source bits `[7:0]` and values from `[15:8]`. Its instruction carries one enable per pad. A zero mask faults. `shift_pin` and `shift_pair` schedule the source MSB and shift the source left only after admission. They request enable for their pads. Use the explicit-enable instructions to release a push-pull pad. Open-drain mode converts high to release. A pair cannot repeat a pin. A request waiting for a queue slot retains its deadline and payload. The queue admits a vector as one event. Splitting a wide update into pairs does not guarantee admission of all pairs.
 
+- **Host payload:** `host_get Rd` pops one 16-bit word from the issuing context's ingress FIFO and writes `Rd`. `host_put Rs` appends the source word to that context's egress FIFO. Empty ingress or full egress stalls only the issuing context. Retain the destination or source word and retry without refetching. Transfer once when the instruction retires. See [CHG-005](../changes/CHG-005-host-payload.md). The opcodes shown are provisional.
+
 ## Gaps before RTL or a release encoding
 
 | Gap | Evidence needed |
 |---|---|
-| Generic payload and status | [EVAL-009](../evals/EVAL-009-host-payload.md) replays context-local FIFO operations through the host model. [CHG-005](../changes/CHG-005-host-payload.md) is pending. Final FIFO depth, same-edge host/core access and status behavior remain open. |
+| Payload FIFO and status | [EVAL-009](../evals/EVAL-009-host-payload.md) replays the approved operations through the host model. Final FIFO depth, same-edge host/core access and status behavior remain open. |
 | Edge capture and time inspection | Define an opcode or mode for edge capture, and how a program reads elapsed time or preserves an old timestamp. The tested `wait_save` waits for a level. It does not encode RC5 edge interval measurement. |
 | Arithmetic and offset register use | Check bit operations, register pressure and split offsets in real programs. The replay reserves `R0`/`R6` by convention, while the vector translator uses `R7` as scratch. The latter is not an architectural reservation. |
 | Execution corner cases | Define modular guard/fence behavior, exact fault and `safe`/`flush` ordering, and pending-operation state. Check isolated contexts and that no failed output, payload or shift operation commits twice. |
