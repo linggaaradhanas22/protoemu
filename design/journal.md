@@ -220,3 +220,9 @@ Did: Recorded Lingga's approval of CHG-002. Updated the loader and pad drafts an
 Results: Traceability was clean. No RTL or firmware changed and no recovery verification tests ran. The timeout values still need board measurements.
 AI vs human: Lingga approved resetting and reloading after an uncertain transfer without automatic command replay. OpenCode applied the change and reviewed affected records.
 Next: TASK-026, compare ISA timestamp representations. G4 remains open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-026)
+Did: Ran the EVAL-005 exploration for split and fused register pairs and a dedicated timestamp. Archived the wrap, contention and queue cases. Drafted DEC-003 and CHG-003.
+Results: The fused pair and dedicated operand used two words and admitted in 3–7 cycles without queue stalls in the representative cases. The split pair used four words and took 7–17 cycles. The probe ran 222 cases, including expected late rejections. All 29 Python checks passed. No RTL changed.
+AI vs human: Lingga authorized the comparison. OpenCode wrote the model and recommends the dedicated operand. Lingga has not approved the decision or change.
+Next: TASK-027, review DEC-003 and CHG-003. G4 remains open.

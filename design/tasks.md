@@ -208,8 +208,15 @@ Done when: the draft defines host timeouts and safe recovery from interrupted re
 Done when: Lingga approves the recovery proposal or records what to revise.
 
 ### TASK-026 — Compare ISA timestamp representations
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: BLK-CORE, BLK-TIMER, TEST-UNIT-001, TEST-INT-001
+- Works on: BLK-CORE, BLK-TIMER, TEST-UNIT-001, TEST-INT-001, EVAL-005, DEC-003, CHG-003
 - Blocked by: TASK-025
 Done when: a reproducible exploration compares paired 16-bit registers with a dedicated timestamp operand. Check 24-bit wrap and report instruction count and timing impact for scheduling from an input capture.
+
+### TASK-027 — Review the captured timestamp proposal
+- Status: todo
+- Owner: Lingga
+- Works on: DEC-003, CHG-003
+- Blocked by: TASK-026
+Done when: Lingga approves the proposed timestamp operand or records which option or behavior to revise.
