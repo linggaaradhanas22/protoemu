@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (G4 timed-I/O replay)
+**Last updated:** 2026-11-20 (G4 diagram revision)
 **Current stage:** G4 (Micro-architecture)
 
 ## Gates
@@ -37,6 +37,8 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 
 ## Next tasks
 1. TASK-021: Compare loader transports and validate the host/protocol pin split.
+
+Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
 - [EVAL-003](evals/EVAL-003-g4-timed-io.md) supports keeping four output slots and one capture slot per context. Exact ISA/timestamp representation, loader and pin split remain open. No block is agreed yet.

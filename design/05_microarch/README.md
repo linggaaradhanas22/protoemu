@@ -2,9 +2,11 @@
 
 G4 draft for review. [DEC-001](../04_decisions/DEC-001-architecture.md) chooses a shared instruction store and issue path with independent timed I/O. It does not freeze these interfaces or the ISA.
 
-[Editable draw.io overview](diagrams/arch-b_v1.drawio)
+[Editable draw.io overview](diagrams/arch-b_v2.drawio) · [Project diagram conventions](diagrams/README.md)
 
-![ARCH-B overview: one program store and issue core serve two contexts; separate timed output and input capture paths connect the core to the pad adapter.](diagrams/arch-b_v1.svg)
+![ARCH-B overview: solid data arrows and dashed control arrows connect the loader, program store, shared core, and timed I/O.](diagrams/arch-b_v2.svg)
+
+The arrows show logical paths, not physical pin assignments.
 
 ```text
 RP2350 <-> pad adapter <-> loader -> shared program store <-> shared issue core

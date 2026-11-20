@@ -190,3 +190,9 @@ Did: Built a cycle-level exploration of G4 issue, capture and timed output. Reus
 Results: Four slots passed 58/58 cases at each of two counter starts, including wrap. Three slots passed 58/58 but had up to 16 queue-blocked cycles per case. All 19 Python checks and 33 G3 encoded cases passed. No RTL tests ran.
 AI vs human: Lingga authorized the replay. OpenCode wrote and ran the probe and recommends retaining four output slots and one capture slot per context. Lingga has not agreed any block or gate.
 Next: TASK-021, compare the loader transports and validate the pin split. Final timestamp/ISA encoding and routed timing remain open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-022)
+Did: Published version 2 of the ARCH-B overview with separate data and control arrows. Kept version 1 and recorded the project diagram convention.
+Results: The validator and visual review checked the revised drawing. No hardware contracts or gate status changed.
+AI vs human: Lingga chose solid for data and dashed for control. OpenCode updated the drawing and documented the convention.
+Next: TASK-021, compare loader transports and validate the pin split.

@@ -179,3 +179,9 @@ Done when: a reproducible cycle-level replay reports issue wait, admission slack
 - Works on: BLK-HOST, BLK-PADS, BLK-PROGRAM, TEST-INT-002
 - Blocked by: TASK-018
 Done when: the transport comparison accounts for synchronized handshakes, image loading within the specified limit, concurrent pin use, host payload buffering, and stop/reload timing.
+
+### TASK-022 — Distinguish data and control in the ARCH-B diagram
+- Status: done
+- Owner: agent
+- Works on: ARCH-B
+Done when: the editable diagram and SVG distinguish solid data from dashed control, and the project records that convention for future revisions.
