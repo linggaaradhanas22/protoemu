@@ -236,8 +236,15 @@ Done when: a draft 24-bit encoding covers capture saves and timed operations, in
 Done when: compare encodings that can address all eight pads and control output enable. Check instruction count and deadline slack for the critical programs, and identify the operations that need a 60 MHz timing probe before ISA sign-off.
 
 ### TASK-030 — Probe eight-pad issue and retirement timing
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: BLK-CORE, BLK-DRIVE, BLK-PADS, SPEC-PHY-001, EVAL-007
+- Works on: BLK-CORE, BLK-DRIVE, BLK-PADS, SPEC-PHY-001, EVAL-007, EVAL-008
 - Blocked by: TASK-029
 Done when: an exploratory physical model compares the compact and vector issue paths and measures the deadline/admission and due-to-pad paths at 60 MHz. Report timing and area limits before proposing final opcodes. Do not change production RTL.
+
+### TASK-031 — Draft the ISA and block review package
+- Status: todo
+- Owner: agent
+- Works on: BLK-CORE, BLK-DRIVE, BLK-CAPTURE, BLK-TIMER, BLK-PROGRAM, EVAL-007, EVAL-008
+- Blocked by: TASK-030
+Done when: present the proposed instruction formats and block contracts for review. Record outstanding encoding, execution and timing risks. Do not change the approval status of any block.

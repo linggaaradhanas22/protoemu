@@ -1,0 +1,531 @@
+OpenROAD dcf36133a369abc8f3c5e5738cd4d82e4903c0e0
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0227] LEF file: /pdk/libs.ref/sg13cmos5l_stdcell/lef/sg13cmos5l_tech.lef, created 15 layers, 52 vias
+[INFO ODB-0227] LEF file: /pdk/libs.ref/sg13cmos5l_stdcell/lef/sg13cmos5l_stdcell.lef, created 84 library cells
+[INFO IFP-0001] Added 186 rows of 3580 site CoreSite.
+[INFO IFP-0100] Die BBox:  (  0.000  0.000 ) ( 1724.160 710.640 ) um
+[INFO IFP-0101] Core BBox: (  2.880  3.780 ) ( 1721.280 706.860 ) um
+[INFO IFP-0102] Core area:                      1208172.672 um^2
+[INFO IFP-0103] Total instances area:             45537.811 um^2
+[INFO IFP-0104] Effective utilization:                0.038
+[INFO IFP-0105] Number of instances:                   2345
+Found 0 macro blocks.
+Using 2 tracks default min distance between IO pins.
+[INFO PPL-0001] Number of available slots 5268
+[INFO PPL-0002] Number of I/O             139
+[INFO PPL-0003] Number of I/O w/sink      131
+[INFO PPL-0004] Number of I/O w/o sink    8
+[INFO PPL-0005] Slots per section         200
+[INFO PPL-0008] Successfully assigned pins to sections.
+[INFO PPL-0012] I/O nets HPWL: 50665.80 um.
+[INFO GPL-0001] ---- Initialize GPL Main Data Structures
+[INFO GPL-0002] DBU: 1000
+[INFO GPL-0003] SiteSize: (  0.480  3.780 ) um
+[INFO GPL-0004] CoreBBox: (  2.880  3.780 ) ( 1721.280 706.860 ) um
+[INFO GPL-0036] Movable instances area:      45537.811 um^2
+[INFO GPL-0037] Total instances area:        45537.811 um^2
+[INFO GPL-0035] Pin density area adjust:      3492.595 um^2
+[INFO GPL-0032] ---- Initialize Region: Top-level
+[INFO GPL-0006] Number of instances:              2345
+[INFO GPL-0007] Movable instances:                2345
+[INFO GPL-0008] Fixed instances:                     0
+[INFO GPL-0009] Dummy instances:                     0
+[INFO GPL-0010] Number of nets:                   2465
+[INFO GPL-0011] Number of pins:                   8497
+[INFO GPL-0012] Die BBox:  (  0.000  0.000 ) ( 1724.160 710.640 ) um
+[INFO GPL-0013] Core BBox: (  2.880  3.780 ) ( 1721.280 706.860 ) um
+[INFO GPL-0016] Core area:                  1208172.672 um^2
+[INFO GPL-0014] Region name: top-level.
+[INFO GPL-0015] Region area:                1208172.672 um^2
+[INFO GPL-0017] Fixed instances area:            0.000 um^2
+[INFO GPL-0018] Movable instances area:      49030.406 um^2
+[INFO GPL-0019] Utilization:                     4.058 %
+[INFO GPL-0020] Standard cells area:         49030.406 um^2
+[INFO GPL-0021] Large instances area:            0.000 um^2
+[INFO GPL-0005] ---- Execute Conjugate Gradient Initial Placement.
+[INFO GPL-0051] Source of initial instance position counters:
+	Odb location = 0	Core center = 2345	Region center = 0
+[InitialPlace]  Iter: 1 conjugate gradient residual: 0.00078694 HPWL: 138830640
+[InitialPlace]  Iter: 2 conjugate gradient residual: 0.00000032 HPWL: 31769126
+[InitialPlace]  Iter: 3 conjugate gradient residual: 0.00000009 HPWL: 31756475
+[InitialPlace]  Iter: 4 conjugate gradient residual: 0.00000010 HPWL: 31808069
+[InitialPlace]  Iter: 5 conjugate gradient residual: 0.00000009 HPWL: 31855125
+[INFO GPL-0033] ---- Initialize Nesterov Region: Top-level
+[INFO GPL-0023] Placement target density:       0.3500
+[INFO GPL-0024] Movable insts average area:     20.908 um^2
+[INFO GPL-0025] Ideal bin area:                 59.739 um^2
+[INFO GPL-0026] Ideal bin count:                 20224
+[INFO GPL-0027] Total bin area:             1208172.672 um^2
+[INFO GPL-0028] Bin count (X, Y):         128 ,     64
+[INFO GPL-0029] Bin size (W * H):      13.425 * 10.986 um
+[INFO GPL-0030] Number of bins:                   8192
+[INFO GPL-0007] ---- Execute Nesterov Global Placement.
+[INFO GPL-0031] HPWL: Half-Perimeter Wirelength
+Iteration | Overflow |     HPWL (um) |  HPWL(%) |   Penalty | Group
+---------------------------------------------------------------
+        0 |   0.9913 |  1.358149e+04 |   +0.00% |  1.57e-16 |
+       10 |   0.9837 |  1.459354e+04 |   +7.45% |  2.56e-16 |
+       20 |   0.9837 |  1.457977e+04 |   -0.09% |  4.17e-16 |
+       30 |   0.9837 |  1.458261e+04 |   +0.02% |  6.80e-16 |
+       40 |   0.9837 |  1.457347e+04 |   -0.06% |  1.11e-15 |
+       50 |   0.9837 |  1.457673e+04 |   +0.02% |  1.80e-15 |
+       60 |   0.9837 |  1.457963e+04 |   +0.02% |  2.94e-15 |
+       70 |   0.9837 |  1.458163e+04 |   +0.01% |  4.78e-15 |
+       80 |   0.9837 |  1.458439e+04 |   +0.02% |  7.79e-15 |
+       90 |   0.9837 |  1.459043e+04 |   +0.04% |  1.27e-14 |
+      100 |   0.9837 |  1.460236e+04 |   +0.08% |  2.07e-14 |
+      110 |   0.9837 |  1.463089e+04 |   +0.20% |  3.37e-14 |
+      120 |   0.9837 |  1.469888e+04 |   +0.46% |  5.49e-14 |
+      130 |   0.9836 |  1.483877e+04 |   +0.95% |  8.94e-14 |
+      140 |   0.9836 |  1.512752e+04 |   +1.95% |  1.46e-13 |
+      150 |   0.9814 |  1.562877e+04 |   +3.31% |  2.37e-13 |
+      160 |   0.9801 |  1.641197e+04 |   +5.01% |  3.86e-13 |
+      170 |   0.9749 |  1.762443e+04 |   +7.39% |  6.29e-13 |
+      180 |   0.9716 |  1.937717e+04 |   +9.94% |  1.02e-12 |
+      190 |   0.9617 |  2.165223e+04 |  +11.74% |  1.67e-12 |
+      200 |   0.9536 |  2.432202e+04 |  +12.33% |  2.72e-12 |
+      210 |   0.9451 |  2.714652e+04 |  +11.61% |  4.42e-12 |
+      220 |   0.9315 |  3.015088e+04 |  +11.07% |  7.20e-12 |
+      230 |   0.9150 |  3.330714e+04 |  +10.47% |  1.17e-11 |
+      240 |   0.8885 |  3.814357e+04 |  +14.52% |  1.91e-11 |
+      250 |   0.8601 |  4.396939e+04 |  +15.27% |  3.11e-11 |
+      260 |   0.8370 |  4.815341e+04 |   +9.52% |  5.06e-11 |
+      270 |   0.8006 |  5.248641e+04 |   +9.00% |  8.24e-11 |
+      280 |   0.7582 |  5.721653e+04 |   +9.01% |  1.34e-10 |
+      290 |   0.7193 |  6.071689e+04 |   +6.12% |  2.18e-10 |
+      300 |   0.6733 |  6.507818e+04 |   +7.18% |  3.56e-10 |
+      310 |   0.6289 |  6.922151e+04 |   +6.37% |  5.79e-10 |
+      320 |   0.5784 |  7.375592e+04 |   +6.55% |  9.43e-10 |
+      330 |   0.5295 |  7.799626e+04 |   +5.75% |  1.53e-09 |
+      340 |   0.4790 |  8.195786e+04 |   +5.08% |  2.50e-09 |
+      350 |   0.4195 |  8.462524e+04 |   +3.25% |  4.07e-09 |
+      360 |   0.3576 |  8.715940e+04 |   +2.99% |  6.63e-09 |
+      370 |   0.3180 |  8.886537e+04 |   +1.96% |  1.02e-08 |
+      380 |   0.2824 |  9.015128e+04 |   +1.45% |  1.50e-08 |
+      390 |   0.2514 |  9.171902e+04 |   +1.74% |  2.20e-08 |
+      400 |   0.2207 |  9.244140e+04 |   +0.79% |  3.25e-08 |
+      410 |   0.1899 |  9.312865e+04 |   +0.74% |  4.78e-08 |
+      420 |   0.1654 |  9.344034e+04 |   +0.33% |  7.04e-08 |
+      430 |   0.1395 |  9.368554e+04 |   +0.26% |  1.04e-07 |
+      440 |   0.1143 |  9.368509e+04 |   -0.00% |  1.53e-07 |
+      449 |   0.0982 |  9.371959e+04 |          |  2.25e-07 |
+---------------------------------------------------------------
+[INFO GPL-1001] Global placement finished at iteration 449
+[INFO GPL-1002] Placed Cell Area            49030.4059
+[INFO GPL-1003] Available Free Area         1208172.6720
+[INFO GPL-1004] Minimum Feasible Density        0.0500 (cell_area / free_area)
+[INFO GPL-1006]   Suggested Target Densities:
+[INFO GPL-1007]     - For 90% usage of free space: 0.0451
+[INFO GPL-1008]     - For 80% usage of free space: 0.0507
+[INFO GPL-1009]     - For 50% usage of free space: 0.0812
+[INFO GPL-1014] Final placement area: 49030.41 (+0.00%)
+[WARNING RSZ-0065] max wire length less than 4153u increases wire delays.
+Iteration |   Area    | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------------------
+        0 |     +0.0% |       0 |       0 |             0 |      2465
+    final |     +2.8% |       0 |     173 |            69 |         0
+---------------------------------------------------------------------
+[INFO RSZ-0034] Found 5 slew violations.
+[INFO RSZ-0035] Found 69 fanout violations.
+[INFO RSZ-0037] Found 1 long wires.
+[INFO RSZ-0038] Inserted 173 buffers in 69 nets.
+Placement Analysis
+---------------------------------
+total displacement       5703.9 u
+average displacement        2.3 u
+max displacement            9.0 u
+original HPWL          107872.2 u
+legalized HPWL         111296.8 u
+delta HPWL                    3 %
+
+Design area 46795 um^2 4% utilization.
+GROUP all_setup
+Startpoint: insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 ^ insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+   0.353    0.353 v insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D/Q (sg13cmos5l_dfrbpq_1)
+   0.217    0.570 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_and3_1_X_C_sg13cmos5l_nand3_1_C_Y_sg13cmos5l_a21oi_1_A1_A2_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_or2_1_X/X (sg13cmos5l_or2_1)
+   0.124    0.695 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_and3_1_X_C_sg13cmos5l_nand3_1_C_Y_sg13cmos5l_a21oi_1_A1_A2_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_nor2_1_A/Y (sg13cmos5l_nor2_1)
+   0.268    0.963 ^ fanout76/X (sg13cmos5l_buf_1)
+   0.303    1.266 ^ fanout75/X (sg13cmos5l_buf_1)
+   0.337    1.603 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_C1_sg13cmos5l_and2_1_X_B_sg13cmos5l_mux2_1_X/X (sg13cmos5l_mux2_1)
+   0.215    1.818 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_C1_sg13cmos5l_and2_1_X_B_sg13cmos5l_xor2_1_B/X (sg13cmos5l_xor2_1)
+   0.273    2.091 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A/X (sg13cmos5l_xor2_1)
+   0.259    2.350 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_xor2_1_B/X (sg13cmos5l_xor2_1)
+   0.283    2.633 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21o_1_B1/X (sg13cmos5l_a21o_1)
+   0.275    2.908 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor2b_1_A_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_xor2_1_B_A_sg13cmos5l_a21oi_1_Y/Y (sg13cmos5l_a21oi_1)
+   0.291    3.199 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor2b_1_A_Y_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.216    3.415 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.250    3.665 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_inv_1_A_Y_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.368    4.033 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.302    4.335 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.224    4.559 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.259    4.818 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.210    5.028 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.307    5.334 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2/Y (sg13cmos5l_o21ai_1)
+   0.255    5.590 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.250    5.839 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1/Y (sg13cmos5l_o21ai_1)
+   0.298    6.137 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.288    6.425 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1/Y (sg13cmos5l_o21ai_1)
+   0.219    6.644 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.269    6.913 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2/Y (sg13cmos5l_o21ai_1)
+   0.242    7.154 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.257    7.411 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1/Y (sg13cmos5l_o21ai_1)
+   0.478    7.889 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_xnor2_1_B/Y (sg13cmos5l_xnor2_1)
+   0.396    8.285 ^ fanout34/X (sg13cmos5l_buf_1)
+   0.189    8.474 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_xnor2_1_Y_B_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_or2_1_X/X (sg13cmos5l_or2_1)
+   0.183    8.657 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_xnor2_1_Y_B_sg13cmos5l_a21oi_1_Y/Y (sg13cmos5l_a21oi_1)
+   0.321    8.978 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_A1/Y (sg13cmos5l_a21oi_1)
+   0.208    9.186 ^ issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X_A_sg13cmos5l_nand2b_1_Y/Y (sg13cmos5l_nand2b_1)
+   0.201    9.387 ^ issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X/X (sg13cmos5l_and3_1)
+   0.237    9.625 v issue_sg13cmos5l_nand4_1_B/Y (sg13cmos5l_nand4_1)
+   0.411   10.036 ^ issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor3_1_C/Y (sg13cmos5l_nor3_1)
+   0.506   10.542 ^ fanout4/X (sg13cmos5l_buf_1)
+   0.507   11.049 ^ fanout2/X (sg13cmos5l_buf_1)
+   0.515   11.564 ^ fanout1/X (sg13cmos5l_buf_1)
+   0.368   11.932 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1/X (sg13cmos5l_mux2_1)
+   0.000   11.932 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D/D (sg13cmos5l_dfrbpq_1)
+           11.932   data arrival time
+
+  16.667   16.667   clock clk (rise edge)
+   0.000   16.667   clock network delay (ideal)
+  -0.250   16.417   clock uncertainty
+   0.000   16.417   clock reconvergence pessimism
+           16.417 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+  -0.153   16.264   library setup time
+           16.264   data required time
+-----------------------------------------------------------
+           16.264   data required time
+          -11.932   data arrival time
+-----------------------------------------------------------
+            4.332   slack (MET)
+
+
+GROUP all_hold
+Startpoint: insn_in[21] (input port clocked by clk)
+Endpoint: issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 v input external delay
+   0.007    0.007 v insn_in[21] (in)
+   0.055    0.062 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_o21ai_1_A2_B1_sg13cmos5l_nand2_1_Y/Y (sg13cmos5l_nand2_1)
+   0.058    0.120 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_o21ai_1_A2/Y (sg13cmos5l_o21ai_1)
+   0.000    0.120 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D/D (sg13cmos5l_dfrbpq_1)
+            0.120   data arrival time
+
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.250    0.250   clock uncertainty
+   0.000    0.250   clock reconvergence pessimism
+            0.250 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+  -0.020    0.230   library hold time
+            0.230   data required time
+-----------------------------------------------------------
+            0.230   data required time
+           -0.120   data arrival time
+-----------------------------------------------------------
+           -0.110   slack (VIOLATED)
+
+
+GROUP reg_setup
+Startpoint: insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 ^ insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+   0.353    0.353 v insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D/Q (sg13cmos5l_dfrbpq_1)
+   0.217    0.570 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_and3_1_X_C_sg13cmos5l_nand3_1_C_Y_sg13cmos5l_a21oi_1_A1_A2_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_or2_1_X/X (sg13cmos5l_or2_1)
+   0.124    0.695 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_and3_1_X_C_sg13cmos5l_nand3_1_C_Y_sg13cmos5l_a21oi_1_A1_A2_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_nor2_1_A/Y (sg13cmos5l_nor2_1)
+   0.268    0.963 ^ fanout76/X (sg13cmos5l_buf_1)
+   0.303    1.266 ^ fanout75/X (sg13cmos5l_buf_1)
+   0.337    1.603 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_C1_sg13cmos5l_and2_1_X_B_sg13cmos5l_mux2_1_X/X (sg13cmos5l_mux2_1)
+   0.215    1.818 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_C1_sg13cmos5l_and2_1_X_B_sg13cmos5l_xor2_1_B/X (sg13cmos5l_xor2_1)
+   0.273    2.091 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A/X (sg13cmos5l_xor2_1)
+   0.259    2.350 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_xor2_1_B/X (sg13cmos5l_xor2_1)
+   0.283    2.633 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21o_1_B1/X (sg13cmos5l_a21o_1)
+   0.275    2.908 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor2b_1_A_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_xor2_1_B_A_sg13cmos5l_a21oi_1_Y/Y (sg13cmos5l_a21oi_1)
+   0.291    3.199 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor2b_1_A_Y_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.216    3.415 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.250    3.665 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_inv_1_A_Y_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.368    4.033 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.302    4.335 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.224    4.559 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.259    4.818 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.210    5.028 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.307    5.334 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2/Y (sg13cmos5l_o21ai_1)
+   0.255    5.590 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.250    5.839 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1/Y (sg13cmos5l_o21ai_1)
+   0.298    6.137 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.288    6.425 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1/Y (sg13cmos5l_o21ai_1)
+   0.219    6.644 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.269    6.913 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2/Y (sg13cmos5l_o21ai_1)
+   0.242    7.154 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.257    7.411 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1/Y (sg13cmos5l_o21ai_1)
+   0.478    7.889 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_xnor2_1_B/Y (sg13cmos5l_xnor2_1)
+   0.396    8.285 ^ fanout34/X (sg13cmos5l_buf_1)
+   0.189    8.474 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_xnor2_1_Y_B_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_or2_1_X/X (sg13cmos5l_or2_1)
+   0.183    8.657 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_xnor2_1_Y_B_sg13cmos5l_a21oi_1_Y/Y (sg13cmos5l_a21oi_1)
+   0.321    8.978 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_A1/Y (sg13cmos5l_a21oi_1)
+   0.208    9.186 ^ issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X_A_sg13cmos5l_nand2b_1_Y/Y (sg13cmos5l_nand2b_1)
+   0.201    9.387 ^ issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X/X (sg13cmos5l_and3_1)
+   0.237    9.625 v issue_sg13cmos5l_nand4_1_B/Y (sg13cmos5l_nand4_1)
+   0.411   10.036 ^ issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor3_1_C/Y (sg13cmos5l_nor3_1)
+   0.506   10.542 ^ fanout4/X (sg13cmos5l_buf_1)
+   0.507   11.049 ^ fanout2/X (sg13cmos5l_buf_1)
+   0.515   11.564 ^ fanout1/X (sg13cmos5l_buf_1)
+   0.368   11.932 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1/X (sg13cmos5l_mux2_1)
+   0.000   11.932 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D/D (sg13cmos5l_dfrbpq_1)
+           11.932   data arrival time
+
+  16.667   16.667   clock clk (rise edge)
+   0.000   16.667   clock network delay (ideal)
+  -0.250   16.417   clock uncertainty
+   0.000   16.417   clock reconvergence pessimism
+           16.417 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+  -0.153   16.264   library setup time
+           16.264   data required time
+-----------------------------------------------------------
+           16.264   data required time
+          -11.932   data arrival time
+-----------------------------------------------------------
+            4.332   slack (MET)
+
+
+GROUP reg_hold
+Startpoint: issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+   0.316    0.316 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D/Q (sg13cmos5l_dfrbpq_1)
+   0.071    0.388 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_inv_1_Y/Y (sg13cmos5l_inv_1)
+   0.086    0.474 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_o21ai_1_A2/Y (sg13cmos5l_o21ai_1)
+   0.000    0.474 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D/D (sg13cmos5l_dfrbpq_1)
+            0.474   data arrival time
+
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.250    0.250   clock uncertainty
+   0.000    0.250   clock reconvergence pessimism
+            0.250 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+  -0.021    0.229   library hold time
+            0.229   data required time
+-----------------------------------------------------------
+            0.229   data required time
+           -0.474   data arrival time
+-----------------------------------------------------------
+            0.245   slack (MET)
+
+
+GROUP decode_to_queue
+Startpoint: insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 ^ insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+   0.353    0.353 v insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D/Q (sg13cmos5l_dfrbpq_1)
+   0.217    0.570 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_and3_1_X_C_sg13cmos5l_nand3_1_C_Y_sg13cmos5l_a21oi_1_A1_A2_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_or2_1_X/X (sg13cmos5l_or2_1)
+   0.124    0.695 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_and3_1_X_C_sg13cmos5l_nand3_1_C_Y_sg13cmos5l_a21oi_1_A1_A2_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_nor2_1_A/Y (sg13cmos5l_nor2_1)
+   0.268    0.963 ^ fanout76/X (sg13cmos5l_buf_1)
+   0.303    1.266 ^ fanout75/X (sg13cmos5l_buf_1)
+   0.337    1.603 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_C1_sg13cmos5l_and2_1_X_B_sg13cmos5l_mux2_1_X/X (sg13cmos5l_mux2_1)
+   0.215    1.818 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_C1_sg13cmos5l_and2_1_X_B_sg13cmos5l_xor2_1_B/X (sg13cmos5l_xor2_1)
+   0.273    2.091 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A/X (sg13cmos5l_xor2_1)
+   0.259    2.350 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_xor2_1_B/X (sg13cmos5l_xor2_1)
+   0.283    2.633 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21o_1_B1/X (sg13cmos5l_a21o_1)
+   0.275    2.908 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor2b_1_A_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_xor2_1_B_A_sg13cmos5l_a21oi_1_Y/Y (sg13cmos5l_a21oi_1)
+   0.291    3.199 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor2b_1_A_Y_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.216    3.415 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.250    3.665 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_inv_1_A_Y_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.368    4.033 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.302    4.335 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.224    4.559 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.259    4.818 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.210    5.028 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.307    5.334 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2/Y (sg13cmos5l_o21ai_1)
+   0.255    5.590 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.250    5.839 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1/Y (sg13cmos5l_o21ai_1)
+   0.298    6.137 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.288    6.425 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1/Y (sg13cmos5l_o21ai_1)
+   0.219    6.644 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.269    6.913 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2/Y (sg13cmos5l_o21ai_1)
+   0.242    7.154 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.257    7.411 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1/Y (sg13cmos5l_o21ai_1)
+   0.478    7.889 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_xnor2_1_B/Y (sg13cmos5l_xnor2_1)
+   0.396    8.285 ^ fanout34/X (sg13cmos5l_buf_1)
+   0.189    8.474 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_xnor2_1_Y_B_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_or2_1_X/X (sg13cmos5l_or2_1)
+   0.183    8.657 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_xnor2_1_Y_B_sg13cmos5l_a21oi_1_Y/Y (sg13cmos5l_a21oi_1)
+   0.321    8.978 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_A1/Y (sg13cmos5l_a21oi_1)
+   0.208    9.186 ^ issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X_A_sg13cmos5l_nand2b_1_Y/Y (sg13cmos5l_nand2b_1)
+   0.201    9.387 ^ issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X/X (sg13cmos5l_and3_1)
+   0.237    9.625 v issue_sg13cmos5l_nand4_1_B/Y (sg13cmos5l_nand4_1)
+   0.411   10.036 ^ issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor3_1_C/Y (sg13cmos5l_nor3_1)
+   0.506   10.542 ^ fanout4/X (sg13cmos5l_buf_1)
+   0.507   11.049 ^ fanout2/X (sg13cmos5l_buf_1)
+   0.515   11.564 ^ fanout1/X (sg13cmos5l_buf_1)
+   0.368   11.932 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1/X (sg13cmos5l_mux2_1)
+   0.000   11.932 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D/D (sg13cmos5l_dfrbpq_1)
+           11.932   data arrival time
+
+  16.667   16.667   clock clk (rise edge)
+   0.000   16.667   clock network delay (ideal)
+  -0.250   16.417   clock uncertainty
+   0.000   16.417   clock reconvergence pessimism
+           16.417 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+  -0.153   16.264   library setup time
+           16.264   data required time
+-----------------------------------------------------------
+           16.264   data required time
+          -11.932   data arrival time
+-----------------------------------------------------------
+            4.332   slack (MET)
+
+
+GROUP deadline_to_admission
+Startpoint: issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_xor2_1_B_X_sg13cmos5l_xnor2_1_B_A_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_nand3_1_Y_C_sg13cmos5l_nand3_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_xor2_1_B_X_sg13cmos5l_xnor2_1_B_A_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_nand3_1_Y_C_sg13cmos5l_nand3_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+   0.323    0.323 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_xor2_1_B_X_sg13cmos5l_xnor2_1_B_A_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_nand3_1_Y_C_sg13cmos5l_nand3_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D/Q (sg13cmos5l_dfrbpq_1)
+   0.080    0.403 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_xor2_1_B_X_sg13cmos5l_xnor2_1_B_A_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_nand3_1_Y_C_sg13cmos5l_nand3_1_Y_A_sg13cmos5l_inv_1_Y/Y (sg13cmos5l_inv_1)
+   0.250    0.652 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_xor2_1_B_X_sg13cmos5l_xnor2_1_B_A_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_nand3_1_Y_C_sg13cmos5l_nand3_1_Y_B_sg13cmos5l_a21o_1_A1/X (sg13cmos5l_a21o_1)
+   0.294    0.947 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_o21ai_1_Y/Y (sg13cmos5l_o21ai_1)
+   0.302    1.249 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A/X (sg13cmos5l_xor2_1)
+   0.259    1.508 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_xor2_1_B/X (sg13cmos5l_xor2_1)
+   0.283    1.791 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21o_1_B1/X (sg13cmos5l_a21o_1)
+   0.275    2.066 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor2b_1_A_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_xor2_1_B_A_sg13cmos5l_a21oi_1_Y/Y (sg13cmos5l_a21oi_1)
+   0.291    2.357 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor2b_1_A_Y_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.216    2.573 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.250    2.823 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_inv_1_A_Y_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.368    3.191 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_xnor2_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.302    3.493 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.224    3.717 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1/Y (sg13cmos5l_a21oi_1)
+   0.259    3.976 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1/Y (sg13cmos5l_o21ai_1)
+   0.210    4.186 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.307    4.492 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2/Y (sg13cmos5l_o21ai_1)
+   0.255    4.748 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.250    4.997 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1/Y (sg13cmos5l_o21ai_1)
+   0.298    5.295 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.288    5.583 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1/Y (sg13cmos5l_o21ai_1)
+   0.219    5.802 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.269    6.071 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2/Y (sg13cmos5l_o21ai_1)
+   0.242    6.312 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.257    6.569 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1/Y (sg13cmos5l_o21ai_1)
+   0.478    7.047 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_xnor2_1_B/Y (sg13cmos5l_xnor2_1)
+   0.396    7.443 ^ fanout34/X (sg13cmos5l_buf_1)
+   0.189    7.632 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_xnor2_1_Y_B_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_or2_1_X/X (sg13cmos5l_or2_1)
+   0.183    7.815 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_xnor2_1_Y_B_sg13cmos5l_a21oi_1_Y/Y (sg13cmos5l_a21oi_1)
+   0.321    8.136 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a21oi_1_A1/Y (sg13cmos5l_a21oi_1)
+   0.208    8.344 ^ issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X_A_sg13cmos5l_nand2b_1_Y/Y (sg13cmos5l_nand2b_1)
+   0.201    8.545 ^ issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X/X (sg13cmos5l_and3_1)
+   0.237    8.783 v issue_sg13cmos5l_nand4_1_B/Y (sg13cmos5l_nand4_1)
+   0.411    9.194 ^ issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor3_1_C/Y (sg13cmos5l_nor3_1)
+   0.506    9.700 ^ fanout4/X (sg13cmos5l_buf_1)
+   0.507   10.207 ^ fanout2/X (sg13cmos5l_buf_1)
+   0.515   10.722 ^ fanout1/X (sg13cmos5l_buf_1)
+   0.368   11.090 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1/X (sg13cmos5l_mux2_1)
+   0.000   11.090 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D/D (sg13cmos5l_dfrbpq_1)
+           11.090   data arrival time
+
+  16.667   16.667   clock clk (rise edge)
+   0.000   16.667   clock network delay (ideal)
+  -0.250   16.417   clock uncertainty
+   0.000   16.417   clock reconvergence pessimism
+           16.417 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+  -0.153   16.264   library setup time
+           16.264   data required time
+-----------------------------------------------------------
+           16.264   data required time
+          -11.090   data arrival time
+-----------------------------------------------------------
+            5.174   slack (MET)
+
+
+GROUP queue_to_pads
+Startpoint: issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X_B_sg13cmos5l_a22oi_1_Y_B1_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor3_1_B_C_sg13cmos5l_nand3_1_Y_C_sg13cmos5l_and4_1_X_A_sg13cmos5l_a22oi_1_Y_A2_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor2_1_B_A_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 ^ issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X_B_sg13cmos5l_a22oi_1_Y_B1_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor3_1_B_C_sg13cmos5l_nand3_1_Y_C_sg13cmos5l_and4_1_X_A_sg13cmos5l_a22oi_1_Y_A2_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+   0.445    0.445 ^ issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X_B_sg13cmos5l_a22oi_1_Y_B1_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor3_1_B_C_sg13cmos5l_nand3_1_Y_C_sg13cmos5l_and4_1_X_A_sg13cmos5l_a22oi_1_Y_A2_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D/Q (sg13cmos5l_dfrbpq_1)
+   0.269    0.714 v issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X_B_sg13cmos5l_a22oi_1_Y_B1_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_B_D_sg13cmos5l_a221oi_1_Y_A2_sg13cmos5l_inv_1_Y/Y (sg13cmos5l_inv_1)
+   0.385    1.099 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_D_B_sg13cmos5l_a221oi_1_Y/Y (sg13cmos5l_a221oi_1)
+   0.338    1.437 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_D/Y (sg13cmos5l_nand4_1)
+   0.361    1.797 v issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_or4_1_D/X (sg13cmos5l_or4_1)
+   0.747    2.545 ^ issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_or4_1_D_X_sg13cmos5l_nor4_1_A/Y (sg13cmos5l_nor4_1)
+   0.513    3.058 ^ fanout71/X (sg13cmos5l_buf_1)
+   0.290    3.348 ^ issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor2_1_B_A_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_B_A_sg13cmos5l_and2_1_X/X (sg13cmos5l_and2_1)
+   0.133    3.480 v issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor2_1_B_A_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_a221oi_1_Y_C1_sg13cmos5l_inv_1_Y_A_sg13cmos5l_a22oi_1_Y/Y (sg13cmos5l_a22oi_1)
+   0.067    3.547 ^ issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor2_1_B_A_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_a221oi_1_Y_C1_sg13cmos5l_inv_1_Y/Y (sg13cmos5l_inv_1)
+   0.076    3.623 v issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor2_1_B_A_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_a221oi_1_Y/Y (sg13cmos5l_a221oi_1)
+   0.145    3.768 ^ issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor2_1_B_A_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_a21oi_1_Y/Y (sg13cmos5l_a21oi_1)
+   0.078    3.846 v issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor2_1_B_A_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_a21oi_1_A2/Y (sg13cmos5l_a21oi_1)
+   0.099    3.945 ^ issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor2_1_B_A_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nor2_1_B/Y (sg13cmos5l_nor2_1)
+   0.000    3.945 ^ issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor2_1_B_A_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D/D (sg13cmos5l_dfrbpq_1)
+            3.945   data arrival time
+
+  16.667   16.667   clock clk (rise edge)
+   0.000   16.667   clock network delay (ideal)
+  -0.250   16.417   clock uncertainty
+   0.000   16.417   clock reconvergence pessimism
+           16.417 ^ issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor2_1_B_A_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D/CLK (sg13cmos5l_dfrbpq_1)
+  -0.192   16.224   library setup time
+           16.224   data required time
+-----------------------------------------------------------
+           16.224   data required time
+           -3.945   data arrival time
+-----------------------------------------------------------
+           12.280   slack (MET)

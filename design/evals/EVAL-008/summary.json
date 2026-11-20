@@ -1,0 +1,306 @@
+{
+  "die_um": [
+    0.0,
+    0.0,
+    1724.16,
+    710.64
+  ],
+  "row_core_um": [
+    2.88,
+    3.78,
+    1721.28,
+    706.86
+  ],
+  "period_ns": 16.666666666666668,
+  "tools": {
+    "yosys": "Yosys 0.71+52 (git sha1 e4a169b8f, Release, Clang /usr/bin/clang++ 21.1.8)",
+    "image": "ghcr.io/librelane/librelane:3.1.0.dev4",
+    "image_id": "sha256:af2405f5d48d8fe14d406ecce913811177a95e365e3b625859677307cace2469"
+  },
+  "def_sha256": "64b52f2150f699edc7fb500c2f486a51eca66fd91d3efb7347200bd2cf83a2ee",
+  "liberty_sha256": {
+    "sg13cmos5l_stdcell_typ_1p20V_25C.lib": "34163f3e7de9f854afac57332ba06f1739b78e7ac35660a8a5ddd39c570124ad",
+    "sg13cmos5l_stdcell_slow_1p08V_125C.lib": "3ee222c580ba33acb2131ac2bf224ff8ee9700751835b73aaec72b670bb31d3c",
+    "sg13cmos5l_stdcell_fast_1p32V_m40C.lib": "af12d75a72d19648fa690027d29843fbae550aa91f4e40dd3339c7116d6e425d"
+  },
+  "variants": {
+    "compact": {
+      "cells": 2345,
+      "mapped_area_um2": 45535.2408,
+      "sta": {
+        "slow_1p08V_125C": {
+          "placed_area_um2": 46795.0,
+          "paths": {
+            "all_setup": {
+              "slack_ns": 4.332,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "all_hold": {
+              "slack_ns": -0.11,
+              "start": "insn_in[21] (input port clocked by clk)",
+              "end": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D"
+            },
+            "reg_setup": {
+              "slack_ns": 4.332,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "reg_hold": {
+              "slack_ns": 0.245,
+              "start": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D"
+            },
+            "decode_to_queue": {
+              "slack_ns": 4.332,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "deadline_to_admission": {
+              "slack_ns": 5.174,
+              "start": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_xor2_1_B_X_sg13cmos5l_xnor2_1_B_A_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_nand3_1_Y_C_sg13cmos5l_nand3_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "queue_to_pads": {
+              "slack_ns": 12.28,
+              "start": "issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X_B_sg13cmos5l_a22oi_1_Y_B1_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor3_1_B_C_sg13cmos5l_nand3_1_Y_C_sg13cmos5l_and4_1_X_A_sg13cmos5l_a22oi_1_Y_A2_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor2_1_B_A_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D"
+            }
+          }
+        },
+        "fast_1p32V_m40C": {
+          "placed_area_um2": 46795.0,
+          "paths": {
+            "all_setup": {
+              "slack_ns": 11.338,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "all_hold": {
+              "slack_ns": -0.197,
+              "start": "insn_in[21] (input port clocked by clk)",
+              "end": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D"
+            },
+            "reg_setup": {
+              "slack_ns": 11.338,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "reg_hold": {
+              "slack_ns": -0.031,
+              "start": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nand2b_1_A_N_Y_sg13cmos5l_xnor2_1_B_Y_sg13cmos5l_or2_1_B_X_sg13cmos5l_o21ai_1_B1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A2_B1_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D"
+            },
+            "decode_to_queue": {
+              "slack_ns": 11.338,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_18_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "deadline_to_admission": {
+              "slack_ns": 11.673,
+              "start": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_or4_1_X_C_sg13cmos5l_a21oi_1_Y_A1_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_a21oi_1_B1_A2_sg13cmos5l_a21oi_1_Y_A2_sg13cmos5l_a21oi_1_Y_B1_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_a221oi_1_Y_B1_sg13cmos5l_xor2_1_A_X_sg13cmos5l_xor2_1_B_X_sg13cmos5l_xnor2_1_B_A_sg13cmos5l_o21ai_1_Y_A1_sg13cmos5l_nand3_1_Y_C_sg13cmos5l_nand3_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_B_D_sg13cmos5l_and3_1_X_C_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_and2_1_B_X_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "queue_to_pads": {
+              "slack_ns": 14.73,
+              "start": "issue_sg13cmos5l_nand4_1_B_C_sg13cmos5l_and3_1_X_B_sg13cmos5l_a22oi_1_Y_B1_sg13cmos5l_xnor2_1_Y_A_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor3_1_B_C_sg13cmos5l_nand3_1_Y_C_sg13cmos5l_and4_1_X_A_sg13cmos5l_a22oi_1_Y_A2_sg13cmos5l_nor3_1_A_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_and2_1_B_X_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor2_1_B_A_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D"
+            }
+          }
+        }
+      }
+    },
+    "vector": {
+      "cells": 2394,
+      "mapped_area_um2": 53287.038,
+      "sta": {
+        "slow_1p08V_125C": {
+          "placed_area_um2": 54938.0,
+          "paths": {
+            "all_setup": {
+              "slack_ns": 5.434,
+              "start": "offset_in_sg13cmos5l_mux2_1_A1_17_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "value_bank[3]_sg13cmos5l_mux2_1_A0_6_A1_sg13cmos5l_mux2_1_A1_2_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "all_hold": {
+              "slack_ns": -0.103,
+              "start": "issue_in (input port clocked by clk)",
+              "end": "issue_in_sg13cmos5l_and2_1_B_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "reg_setup": {
+              "slack_ns": 5.434,
+              "start": "offset_in_sg13cmos5l_mux2_1_A1_17_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "value_bank[3]_sg13cmos5l_mux2_1_A0_6_A1_sg13cmos5l_mux2_1_A1_2_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "reg_hold": {
+              "slack_ns": 0.241,
+              "start": "issue_sg13cmos5l_nand3_1_A_Y_sg13cmos5l_nor4_1_D_C_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a22oi_1_Y_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_a221oi_1_Y_C1_sg13cmos5l_nand3_1_Y_B_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_or3_1_X_C_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_B_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_xnor2_1_A_B_sg13cmos5l_xor2_1_X_B_sg13cmos5l_nor2b_1_Y_B_N_sg13cmos5l_nand3_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand3_1_A_Y_sg13cmos5l_nor4_1_D_C_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a22oi_1_Y_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_a221oi_1_Y_C1_sg13cmos5l_nand3_1_Y_B_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_or3_1_X_C_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_B_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_xnor2_1_A_B_sg13cmos5l_xor2_1_X_B_sg13cmos5l_nor2b_1_Y_B_N_sg13cmos5l_nand3_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D"
+            },
+            "decode_to_queue": {
+              "slack_ns": 5.451,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_9_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "value_bank[3]_sg13cmos5l_mux2_1_A0_6_A1_sg13cmos5l_mux2_1_A1_2_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "vector_read_to_queue": {
+              "slack_ns": 7.646,
+              "start": "rf_write_sg13cmos5l_nand3b_1_C_Y_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_mux2_1_S_12_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "oe_bank[1]_sg13cmos5l_mux2_1_A0_6_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "deadline_to_admission": {
+              "slack_ns": 5.434,
+              "start": "offset_in_sg13cmos5l_mux2_1_A1_17_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "value_bank[3]_sg13cmos5l_mux2_1_A0_6_A1_sg13cmos5l_mux2_1_A1_2_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "queue_to_pads": {
+              "slack_ns": 12.129,
+              "start": "issue_sg13cmos5l_nand3_1_A_Y_sg13cmos5l_nor4_1_D_C_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a22oi_1_Y_B1_sg13cmos5l_nor4_1_Y_D_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B2_Y_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor4_1_C_B_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a221oi_1_Y_A1_sg13cmos5l_nor3_1_B_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand3_1_A_B_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_1_X_sg13cmos5l_nor4_1_A_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D"
+            }
+          }
+        },
+        "fast_1p32V_m40C": {
+          "placed_area_um2": 54938.0,
+          "paths": {
+            "all_setup": {
+              "slack_ns": 11.45,
+              "start": "rst_n (input port clocked by clk)",
+              "end": "value_bank[3]_sg13cmos5l_mux2_1_A0_6_A1_sg13cmos5l_mux2_1_A1_2_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "all_hold": {
+              "slack_ns": -0.196,
+              "start": "issue_in (input port clocked by clk)",
+              "end": "issue_in_sg13cmos5l_and2_1_B_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "reg_setup": {
+              "slack_ns": 11.752,
+              "start": "offset_in_sg13cmos5l_mux2_1_A1_17_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "value_bank[3]_sg13cmos5l_mux2_1_A0_6_A1_sg13cmos5l_mux2_1_A1_2_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "reg_hold": {
+              "slack_ns": -0.032,
+              "start": "issue_sg13cmos5l_nand3_1_A_Y_sg13cmos5l_nor4_1_D_C_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a22oi_1_Y_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_a221oi_1_Y_C1_sg13cmos5l_nand3_1_Y_B_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_or3_1_X_C_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_B_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_xnor2_1_A_B_sg13cmos5l_xor2_1_X_B_sg13cmos5l_nor2b_1_Y_B_N_sg13cmos5l_nand3_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand3_1_A_Y_sg13cmos5l_nor4_1_D_C_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a22oi_1_Y_A2_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_a221oi_1_Y_C1_sg13cmos5l_nand3_1_Y_B_sg13cmos5l_nor3_1_Y_B_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor2_1_Y_B_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_or3_1_X_C_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_xnor2_1_Y_B_sg13cmos5l_nand2_1_B_Y_sg13cmos5l_o21ai_1_A1_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_a21oi_1_A1_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_xnor2_1_A_B_sg13cmos5l_xor2_1_X_B_sg13cmos5l_nor2b_1_Y_B_N_sg13cmos5l_nand3_1_Y_A_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D"
+            },
+            "decode_to_queue": {
+              "slack_ns": 11.761,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_9_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "value_bank[3]_sg13cmos5l_mux2_1_A0_6_A1_sg13cmos5l_mux2_1_A1_2_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "vector_read_to_queue": {
+              "slack_ns": 12.828,
+              "start": "rf_write_sg13cmos5l_nand3b_1_C_Y_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_mux2_1_S_12_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "value_bank[3]_sg13cmos5l_mux2_1_A0_6_A1_sg13cmos5l_mux2_1_A1_1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "deadline_to_admission": {
+              "slack_ns": 11.752,
+              "start": "offset_in_sg13cmos5l_mux2_1_A1_17_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "value_bank[3]_sg13cmos5l_mux2_1_A0_6_A1_sg13cmos5l_mux2_1_A1_2_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "queue_to_pads": {
+              "slack_ns": 14.672,
+              "start": "issue_sg13cmos5l_nand3_1_A_Y_sg13cmos5l_nor4_1_D_C_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a22oi_1_Y_B1_sg13cmos5l_nor4_1_Y_D_sg13cmos5l_nand4_1_Y_B_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B2_Y_sg13cmos5l_nand4_1_B_Y_sg13cmos5l_nor4_1_C_B_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a221oi_1_Y_A1_sg13cmos5l_nor3_1_B_Y_sg13cmos5l_and2_1_B_X_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand3_1_A_B_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_and2_1_B_1_X_sg13cmos5l_nor4_1_A_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D"
+            }
+          }
+        }
+      }
+    },
+    "hybrid": {
+      "cells": 2482,
+      "mapped_area_um2": 53774.091,
+      "sta": {
+        "slow_1p08V_125C": {
+          "placed_area_um2": 55542.0,
+          "paths": {
+            "all_setup": {
+              "slack_ns": 4.566,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_21_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_A2_sg13cmos5l_and4_1_X_C_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B1_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_nor4_1_A_D_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_a22oi_1_A1_Y_sg13cmos5l_nand3_1_B_Y_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_nand4_1_C_Y_sg13cmos5l_nor3_1_C_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nor4_1_C_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_and3_1_X_A_sg13cmos5l_nor4_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_inv_1_A_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "all_hold": {
+              "slack_ns": -0.114,
+              "start": "insn_in[1] (input port clocked by clk)",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_A2_sg13cmos5l_and4_1_X_C_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B1_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_nor4_1_A_D_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_a22oi_1_A1_Y_sg13cmos5l_nand3_1_B_Y_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_nand4_1_C_Y_sg13cmos5l_nor3_1_C_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nor4_1_C_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_and3_1_X_A_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor4_1_Y_B_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D"
+            },
+            "reg_setup": {
+              "slack_ns": 4.566,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_21_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_A2_sg13cmos5l_and4_1_X_C_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B1_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_nor4_1_A_D_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_a22oi_1_A1_Y_sg13cmos5l_nand3_1_B_Y_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_nand4_1_C_Y_sg13cmos5l_nor3_1_C_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nor4_1_C_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_and3_1_X_A_sg13cmos5l_nor4_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_inv_1_A_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "reg_hold": {
+              "slack_ns": 0.229,
+              "start": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_C1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_nor4_1_D_B_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_a21oi_1_A1_A2_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_C1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_nor4_1_D_B_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_a21oi_1_A1_A2_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_dfrbpq_1_D"
+            },
+            "decode_to_queue": {
+              "slack_ns": 4.566,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_21_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_A2_sg13cmos5l_and4_1_X_C_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B1_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_nor4_1_A_D_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_a22oi_1_A1_Y_sg13cmos5l_nand3_1_B_Y_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_nand4_1_C_Y_sg13cmos5l_nor3_1_C_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nor4_1_C_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_and3_1_X_A_sg13cmos5l_nor4_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_inv_1_A_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "vector_read_to_queue": {
+              "slack_ns": 9.356,
+              "start": "rf_write_sg13cmos5l_nand3_1_A_Y_sg13cmos5l_nor2_1_A_1_B_sg13cmos5l_nor2_1_B_1_Y_sg13cmos5l_mux2_1_S_14_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_A2_sg13cmos5l_and4_1_X_C_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B1_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_nor4_1_A_D_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_a22oi_1_A1_Y_sg13cmos5l_nand3_1_B_Y_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_nand4_1_C_Y_sg13cmos5l_nor3_1_C_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nor4_1_C_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_and3_1_X_A_sg13cmos5l_nor4_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a22oi_1_Y_B1_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "deadline_to_admission": {
+              "slack_ns": 5.794,
+              "start": "offset_in_sg13cmos5l_mux2_1_A1_15_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_A2_sg13cmos5l_and4_1_X_C_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B1_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_nor4_1_A_D_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_a22oi_1_A1_Y_sg13cmos5l_nand3_1_B_Y_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_nand4_1_C_Y_sg13cmos5l_nor3_1_C_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nor4_1_C_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_and3_1_X_A_sg13cmos5l_nor4_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_inv_1_A_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "queue_to_pads": {
+              "slack_ns": 12.161,
+              "start": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_C1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_nor4_1_D_B_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_a21oi_1_A1_A2_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor2_1_A_B_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_and2_1_X_B_sg13cmos5l_and2_1_X_B_sg13cmos5l_and2_1_X_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "blocked_sg13cmos5l_dfrbpq_1_Q_D_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D"
+            }
+          }
+        },
+        "fast_1p32V_m40C": {
+          "placed_area_um2": 55533.0,
+          "paths": {
+            "all_setup": {
+              "slack_ns": 11.399,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_21_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_A2_sg13cmos5l_and4_1_X_C_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B1_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_nor4_1_A_D_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_a22oi_1_A1_Y_sg13cmos5l_nand3_1_B_Y_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_nand4_1_C_Y_sg13cmos5l_nor3_1_C_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nor4_1_C_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_and3_1_X_A_sg13cmos5l_nor4_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_inv_1_A_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "all_hold": {
+              "slack_ns": -0.199,
+              "start": "insn_in[1] (input port clocked by clk)",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_A2_sg13cmos5l_and4_1_X_C_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B1_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_nor4_1_A_D_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_a22oi_1_A1_Y_sg13cmos5l_nand3_1_B_Y_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_nand4_1_C_Y_sg13cmos5l_nor3_1_C_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nor4_1_C_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_and3_1_X_A_sg13cmos5l_nor4_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_nor4_1_Y_B_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_dfrbpq_1_D"
+            },
+            "reg_setup": {
+              "slack_ns": 11.399,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_21_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_A2_sg13cmos5l_and4_1_X_C_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B1_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_nor4_1_A_D_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_a22oi_1_A1_Y_sg13cmos5l_nand3_1_B_Y_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_nand4_1_C_Y_sg13cmos5l_nor3_1_C_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nor4_1_C_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_and3_1_X_A_sg13cmos5l_nor4_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_inv_1_A_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "reg_hold": {
+              "slack_ns": -0.037,
+              "start": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_C1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_nor4_1_D_B_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_a21oi_1_A1_A2_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_C1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_nor4_1_D_B_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_a21oi_1_A1_A2_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_dfrbpq_1_D"
+            },
+            "decode_to_queue": {
+              "slack_ns": 11.399,
+              "start": "insn_in_sg13cmos5l_mux2_1_A1_21_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_A2_sg13cmos5l_and4_1_X_C_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B1_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_nor4_1_A_D_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_a22oi_1_A1_Y_sg13cmos5l_nand3_1_B_Y_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_nand4_1_C_Y_sg13cmos5l_nor3_1_C_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nor4_1_C_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_and3_1_X_A_sg13cmos5l_nor4_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_inv_1_A_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "vector_read_to_queue": {
+              "slack_ns": 13.534,
+              "start": "rf_write_sg13cmos5l_nand3_1_A_Y_sg13cmos5l_nor2_1_A_B_sg13cmos5l_nor2_1_B_1_Y_sg13cmos5l_mux2_1_S_14_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_A2_sg13cmos5l_and4_1_X_C_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B1_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_nor4_1_A_D_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_a22oi_1_A1_Y_sg13cmos5l_nand3_1_B_Y_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_nand4_1_C_Y_sg13cmos5l_nor3_1_C_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nor4_1_C_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_and3_1_X_A_sg13cmos5l_nor4_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a22oi_1_Y_B1_sg13cmos5l_a221oi_1_A2_Y_sg13cmos5l_a21oi_1_B1_Y_sg13cmos5l_mux2_1_A0_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "deadline_to_admission": {
+              "slack_ns": 11.906,
+              "start": "offset_in_sg13cmos5l_mux2_1_A1_15_X_sg13cmos5l_dfrbpq_1_D",
+              "end": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_A2_sg13cmos5l_and4_1_X_C_sg13cmos5l_nor2b_1_Y_A_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor3_1_Y_C_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_nand2_1_Y_A_sg13cmos5l_a221oi_1_B1_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_nor4_1_A_D_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_a22oi_1_A1_Y_sg13cmos5l_nand3_1_B_Y_sg13cmos5l_nor4_1_B_Y_sg13cmos5l_nand4_1_C_Y_sg13cmos5l_nor3_1_C_Y_sg13cmos5l_nand4_1_D_Y_sg13cmos5l_a221oi_1_C1_Y_sg13cmos5l_nor4_1_C_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_nand4_1_Y_A_sg13cmos5l_and3_1_X_A_sg13cmos5l_nor4_1_Y_B_sg13cmos5l_nand2_1_Y_B_sg13cmos5l_a22oi_1_Y_B2_sg13cmos5l_inv_1_A_Y_sg13cmos5l_o21ai_1_A2_Y_sg13cmos5l_mux2_1_A1_X_sg13cmos5l_dfrbpq_1_D"
+            },
+            "queue_to_pads": {
+              "slack_ns": 14.691,
+              "start": "issue_sg13cmos5l_nand4_1_A_B_sg13cmos5l_or2_1_X_A_sg13cmos5l_a221oi_1_B1_C1_sg13cmos5l_a221oi_1_Y_B2_sg13cmos5l_o21ai_1_Y_B1_sg13cmos5l_a22oi_1_A2_Y_sg13cmos5l_nand4_1_A_Y_sg13cmos5l_nor4_1_D_B_sg13cmos5l_nand4_1_Y_C_sg13cmos5l_a22oi_1_Y_A1_sg13cmos5l_a21oi_1_A1_A2_sg13cmos5l_nand4_1_Y_D_sg13cmos5l_nor2_1_A_B_sg13cmos5l_o21ai_1_Y_A2_sg13cmos5l_and2_1_X_B_sg13cmos5l_and2_1_X_B_sg13cmos5l_and2_1_X_B_sg13cmos5l_nor2_1_A_Y_sg13cmos5l_dfrbpq_1_D",
+              "end": "blocked_sg13cmos5l_dfrbpq_1_Q_D_sg13cmos5l_nor2_1_Y_A_sg13cmos5l_nand2b_1_Y_A_N_sg13cmos5l_and2_1_B_2_X_sg13cmos5l_nor4_1_D_Y_sg13cmos5l_a21oi_1_A2_Y_sg13cmos5l_nor2_1_B_Y_sg13cmos5l_dfrbpq_1_D"
+            }
+          }
+        }
+      }
+    }
+  }
+}

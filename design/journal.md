@@ -244,3 +244,9 @@ Did: Ran EVAL-007 as an exploration. Compared compact one- and two-pad instructi
 Results: Each format passed 116 modeled cases. All 38 Python checks passed. Compact I2C used 63 words with 8 cycles of minimum drive slack, versus 74 words and 6 cycles for vector. An eight-pad edge used four queue entries with compact and one with vector. No production RTL changed.
 AI vs human: Lingga authorized the comparison. OpenCode wrote and ran it and recommends compact for routine updates and a vector timing probe for wide updates. No final encoding or block was approved.
 Next: TASK-030, probe issue and retirement timing at 60 MHz. G4 remains open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-030)
+Did: Built and placed the EVAL-008 exploratory issue and pad-retirement slice for compact, vector and hybrid decoding. Simulated a directed hybrid queue and pad sequence.
+Results: Hybrid placed setup slack was +4.566 ns at the slow corner. Fast hold slack was −0.199 ns overall and −0.037 ns for internal register paths. Hybrid placed slice area was 55,542 µm². The smoke check and all 38 Python model checks passed. No production RTL changed.
+AI vs human: Lingga authorized the probe. OpenCode ran it and recommends carrying both formats into review. No final encoding or block was approved.
+Next: TASK-031, draft the ISA and block review package. Full-chip fit and routed timing remain open.
