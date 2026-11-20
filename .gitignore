@@ -15,7 +15,8 @@ test/gate_level_netlist.v
 # Python bytecode
 __pycache__/
 
-# Local project files kept out of git (Lingga, 2026-11-20)
+# Local project files kept out of git (Lingga, 2026-11-20).
+# The scripts/ tools stay tracked: everyone needs them to check and build the project.
 .gitattributes
 AGENTS.md
 SETUP.md
@@ -28,9 +29,3 @@ design/templates/
 models/README.md
 models/benchmarks/.gitkeep
 reports/README.md
-scripts/check_trace.py
-scripts/gl_sim.sh
-scripts/harden.sh
-scripts/lint.sh
-scripts/sim.sh
-scripts/synth_area.sh
