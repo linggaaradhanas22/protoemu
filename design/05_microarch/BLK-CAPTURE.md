@@ -21,6 +21,8 @@ Sample `pin_sample` as seen before the decision edge and timestamp it with the p
 
 At consume, return the original observation timestamp even if the result waited for issue. BLK-CORE can save it in the owning context's timestamp register. This does not change the slot format or ownership rules.
 
+A guarded level arm may be timed ([CHG-013](../changes/CHG-013-timed-wait.md)). The slot keeps the timeout (`Rt`). When the guard opens, it reloads its deadline register with target + `Rt × 64`. It ends the wait as expired on that edge unless the level matches on the same edge, in which case the match wins. Reset and flush clear the timed state.
+
 For `edge_save` and `edge_delta`, arm for falling, rising or either polarity. Neither instruction consumes an edge observed on the arm edge. Return the same observation timestamp and sampled level for both. The core computes intervals. The capture slot does not add a timeout, buffer extra edges, or allow one context to read the other slot.
 
 ## Implementation options and budget

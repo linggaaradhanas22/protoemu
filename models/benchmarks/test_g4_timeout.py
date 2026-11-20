@@ -20,6 +20,18 @@ class TimeoutTests(TestCase):
         self.assertTrue(row["pass"], row["errors"])
         self.assertEqual(row["other_context"], "complete")
 
+    def test_timed_wait_keeps_i2c_margins_with_spi_busy(self):
+        """CHG-013: the guarded wait_to matches wait_save timing under contention."""
+        for option in ("A", "C"):
+            with self.subTest(option=option):
+                row = t.contended_case(I2CCase("combined", True, 300), option, 403)
+                self.assertTrue(row["pass"], row["errors"])
+                self.assertGreaterEqual(row["min_margin"], 2)
+
+    def test_unguarded_wait_matches_the_old_high_level(self):
+        """EVAL-017: without a guard the wait sees SCL before the queued fall, so I2C breaks."""
+        self.assertFalse(t.regression_case(I2CCase("combined", True), "C2-nofence", LIMIT)["pass"])
+
     def test_watchdog_and_host_stop_detect_but_stop_the_other_context(self):
         for option in ("A", "D"):
             with self.subTest(option=option):

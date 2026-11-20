@@ -34,7 +34,11 @@ class SaveLevel(Level):
 
 @dataclass(frozen=True)
 class TimedLevel(SaveLevel):
-    """EVAL-017 prototype: a guarded level wait that expires ``timeout`` cycles after its guard."""
+    """CHG-013 timed level wait: expires ``timeout`` cycles after ``earliest``.
+
+    ``wait_to`` is guarded at ``earliest`` like ``wait_save``. The unguarded
+    ``wait_tou`` exists only to reproduce the rejected EVAL-017 variant.
+    """
 
     timeout: int = 0
 
@@ -122,12 +126,14 @@ def execute(code, pc, pins, open_drain, epoch, *, table=DECODE, delta_writeback=
             stamp = yield (SaveLevel(at(delay), pin(index), value) if stamp is not None
                            else SaveLevel(0, pin(index), value, guarded=False))
             regs[T] = regs[OFFSET_HI] = 0
-        elif op == "wait_to":
-            # EVAL-017 exploration only: wait_save with a timeout of R[treg] x 64 cycles.
+        elif op in ("wait_to", "wait_tou"):
+            # CHG-013 wait_to: guarded at saved + offsets like wait_save, expiring R[treg] x 64
+            # cycles after that target. wait_tou: the rejected unguarded variant (EVAL-017 only).
             index, value, delay, treg = args
             if stamp is None:
                 raise ModelError("timestamp used before save")
-            observed = yield TimedLevel(at(delay), pin(index), value, timeout=regs[treg] << 6)
+            observed = yield TimedLevel(at(delay), pin(index), value, guarded=op == "wait_to",
+                                        timeout=regs[treg] << 6)
             if observed is None:
                 regs[treg] = 0
             else:

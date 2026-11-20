@@ -3,7 +3,9 @@
 Options:
 * ``A`` host stop: the wait has no limit; the host sends STOP after its own timeout.
 * ``B`` software polling with today's ISA: sample SCL every ``interval`` cycles.
-* ``C`` timed wait (prototype ``wait_to``): wait_save that expires after R7 x 64 cycles.
+* ``C`` timed wait ``wait_to`` (CHG-013): guarded like wait_save, expiring R7 x 64
+  cycles after the guard target.
+* ``C2`` rejected variant: unguarded ``wait_tou`` with a fence to the release first.
 * ``D`` per-context watchdog: fault the chip if the I2C context issues nothing for too long.
 
 Status words from the I2C program: 0 = OK, 1 = NACK, 2 = SCL timeout.
@@ -29,7 +31,8 @@ from .i2c_fixture import I2CCase, I2CPeer, i2c_check
 from .run_encoded import words_to_bytes
 from .spi_uart import SPIPeer, spi_check
 
-FORMATS = dict(SUITE_FORMATS, wait_to=(6, (3, 1, 9, 3)))  # Prototype opcode for this study only.
+FORMATS = dict(SUITE_FORMATS, wait_to=(6, (3, 1, 9, 3)),  # CHG-013, provisional opcode 6.
+               wait_tou=(12, (3, 1, 9, 3)))  # Rejected unguarded variant, EVAL-017 only.
 DECODE = {code: (op, widths) for op, (code, widths) in FORMATS.items()}
 SCL, SDA = 6, 7
 CS, MOSI, MISO, SCLK = 0, 1, 2, 3
@@ -61,14 +64,20 @@ class TimeoutProbe(StopRule, SuiteProbe):
         return super()._runnable(owner, t)
 
     def _issue(self, owner, t):
+        op = self.tasks[owner].op
+        arming = self.captures[owner] is None and isinstance(op, TimedLevel) and self.fault is None
+        if arming and op.timeout:
+            # CHG-013: classify the expiry once at arm, like a timed sample; it must be in the future half.
+            delta = (self.timer(op.earliest) + op.timeout - self.timer(t)) & self.mask
+            if not 0 < delta < self.half:
+                return self._fault(owner, t, "wait_to expiry not in the future half")
         issued = super()._issue(owner, t)
         if issued:
             self.last_issue[owner] = t
-        capture = self.captures[owner]
-        if capture is None:
+            if arming and op.timeout:
+                self.expire[owner] = t + delta
+        if self.captures[owner] is None:
             self.expire[owner] = None
-        elif isinstance(capture.op, TimedLevel) and self.expire[owner] is None:
-            self.expire[owner] = capture.op.earliest + capture.op.timeout
         return issued
 
     def _observe(self, t, sampled, previous):
@@ -122,7 +131,7 @@ class Both(Peer):
             peer.observe(bus, at, changes)
 
 
-def i2c_program(fast, variant, option, *, interval=32, limit=60_000):
+def i2c_program(fast, variant, option, *, interval=32, limit=60_000, sample=28):
     """EVAL-016 I2C controller with the status in R5 and a timeout path for B and C."""
     low, high, hold, setup = (94, 56, 48, 20) if fast else (310, 300, 255, 20)
     restart_gap, bus_free = (48, 90) if fast else (300, 300)
@@ -141,6 +150,12 @@ def i2c_program(fast, variant, option, *, interval=32, limit=60_000):
     elif option == "C":
         rise = ["rise", put(SCL, 1, low), ("set", SCRATCH, limit // UNIT), ("wait_to", SCL, 1, low, SCRATCH),
                 ("jnz", SCRATCH, "risen"), ("jump", "timeout"), "risen", ("ret",)]
+    elif option in ("C2", "C2-nofence"):
+        # Unguarded: the program runs ahead of the pins, so the previous SCL fall may still be
+        # queued and SCL still high. C2 fences to the release first; C2-nofence shows the failure.
+        fence = [("fence", low)] if option == "C2" else []
+        rise = ["rise", put(SCL, 1, low), ("set", SCRATCH, limit // UNIT), *fence,
+                ("wait_tou", SCL, 1, low, SCRATCH), ("jnz", SCRATCH, "risen"), ("jump", "timeout"), "risen", ("ret",)]
     else:
         rise = ["rise", put(SCL, 1, low), ("wait_save", SCL, 1, low), ("ret",)]
     # 64-cycle lead: with another context issuing, 16 cycles is not enough to admit the first drive.
@@ -169,8 +184,8 @@ def i2c_program(fast, variant, option, *, interval=32, limit=60_000):
               ("call", "fall"), ("loop", N, "wsbit"), ("jump", "ack"),
               "write", ("set", N, 8), "wbit", ("shift_pin", TX, SDA, setup, 0), ("call", "rise"), ("call", "fall"),
               ("loop", N, "wbit"),
-              "ack", put(SDA, 1, setup), ("call", "rise"), ("cap", SDA, FLAG, 0, 14), ("call", "fall"), ("ret",),
-              "read", ("set", N, 8), "rbit", put(SDA, 1, setup), ("call", "rise"), ("cap", SDA, RX, 1, 14),
+              "ack", put(SDA, 1, setup), ("call", "rise"), ("cap", SDA, FLAG, 0, sample), ("call", "fall"), ("ret",),
+              "read", ("set", N, 8), "rbit", put(SDA, 1, setup), ("call", "rise"), ("cap", SDA, RX, 1, sample),
               ("call", "fall"), ("loop", N, "rbit"), ("ret",)]
     return lines
 
@@ -300,10 +315,30 @@ def stuck_case(fast, option, hold, at_rises, limit, interval=32, spi_count=6):
             "words": words}
 
 
+def contended_case(case, option, gap=400):
+    """An EVAL-016 I2C case with full timing checks while context 1 runs SPI exchanges ``gap`` cycles apart."""
+    names = {SCL: "scl", SDA: "sda", CS: "cs", MOSI: "mosi", MISO: "miso", SCLK: "sclk"}
+    bus = Pins(pins_for(names, {"scl": 1, "sda": 1, "cs": 1}), open_drain=("scl", "sda"),
+               peer=Both(I2CPeer(case), SPIPeer(0, 30)))
+    programs = [("i2c", i2c_program(case.fast, case.variant, option)), ("spi", spi_loop_program(6, gap))]
+    probe, endpoint, link, words = build(programs, [[0x964B], [0x964B] * 6], bus,
+                                         [{"scl", "sda"}, {"cs", "mosi", "sclk"}])
+    probe.run(400_000)
+    got = drain(endpoint, link, 0)
+    ok = bool(got) and got[-1] == OK
+    errors, margin = i2c_check(bus, {"i2c_ok": [ok] if got else [], "i2c_rx": words_to_bytes(got[:-1]) if ok else []},
+                               case)
+    starts = [t for t, name, v in bus.edges if name == "cs" and v == 0]
+    spi_errors, _, _ = spi_check(bus, words_to_bytes(drain(endpoint, link, 1)), 0, 30, starts)
+    errors = ([f"fault {probe.fault}"] if probe.fault else []) + errors + spi_errors
+    return {"kind": "contended", "case": case.name, "option": option, "interval": None, "gap": gap,
+            "pass": not errors, "errors": errors[:2], "min_margin": margin[0] if margin else None, "words": words}
+
+
 REGRESSION = [I2CCase(v, fast) for fast in (False, True) for v in ("separate", "combined", "nack-address", "nack-data")]
 REGRESSION += [I2CCase("combined", fast, s) for fast in (False, True) for s in (60, 300, 600)]
 LIMIT = 60_000  # 1 ms sweep limit; one run per option uses 25 ms (1.5 M cycles).
-OPTIONS = [("A", None), ("B", 16), ("B", 32), ("B", 64), ("C", None), ("D", None)]
+OPTIONS = [("A", None), ("B", 16), ("B", 32), ("B", 64), ("C", None), ("C2", None), ("D", None)]
 
 
 def main():
@@ -324,6 +359,9 @@ def main():
             rows.append({"kind": "stuck", "case": "400k-clock10-1800000clk", "option": option, "interval": interval,
                          "limit": 1_500_000, "pass": None, "errors": [str(exc)], "latency": None,
                          "other_context": None, "words": None})
+    for option in ("A", "C", "C2"):
+        rows += [contended_case(case, option) for case in REGRESSION]
+        rows += [contended_case(case, option, gap) for case in REGRESSION if case.fast for gap in range(380, 440, 3)]
     if args.out:
         args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(json.dumps({"stop_delay_cycles": stop_delay(), "rows": rows}, default=clock_json,
@@ -331,6 +369,10 @@ def main():
     for option, interval in OPTIONS:
         mine = [r for r in rows if r["option"] == option and r["interval"] == interval]
         reg = [r for r in mine if r["kind"] == "regression"]
+        cont = [r for r in mine if r["kind"] == "contended"]
+        if cont:
+            print(f"{option} with SPI busy: {sum(r['pass'] for r in cont)}/{len(cont)},"
+                  f" min I2C margin {min((r['min_margin'] for r in cont if r['min_margin'] is not None), default=None)}")
         stuck = [r for r in mine if r["kind"] == "stuck"]
         lat = [r["latency"] - r["limit"] for r in stuck if r["latency"] is not None and r["pass"]
                and r["case"].endswith(("forever", "clk")) and not r["case"].endswith("600clk")]

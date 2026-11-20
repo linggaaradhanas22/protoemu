@@ -255,6 +255,7 @@ In each injected NACK trial, require STOP and a reported failure before the cont
 - Verifies: SPEC-I2C-003
 At both rates, have the target stretch SCL during a data bit and an ACK bit. Repeat with 1 µs, 5 µs, and 10 µs holds after controller release.
 Pass if the controller waits for each delayed SCL rising edge, preserves the required high time, and finishes with the expected data and ACK sequence.
+Hold SCL low indefinitely at a data clock and at the repeated-START setup with a timeout armed (CHG-013). The controller must report a timeout within the limit, release both lines, and leave a concurrent SPI context unaffected. A 10 µs stretch must still complete normally.
 
 ### TEST-SYS-010 — RP2350 load, start, and reload
 - Status: planned
@@ -336,6 +337,7 @@ Fault an operation on edge F with the other context runnable (CHG-008). Pass if 
 On a successful `edge_delta`, check that `Rd`, `Rd+1` and the cleared offset pair all change on the retirement edge and no other register changes, for each `Rd` from R1 to R4 (CHG-009).
 Run `host_get` on an empty ingress while the host commits a word on the same edge (CHG-010). The instruction must retire on a later edge, once, with that word.
 Run `shift_pin` with order 0 and 1 (CHG-012). Check the pad bit (bit 15 or bit 0) and the shift direction. Block an LSB-first request, then admit it and check the register shifts right once. Reject a retry and check the register is unchanged.
+Run `wait_to` (CHG-013): expiry writes only `Rt` and leaves the saved time and offset; a match behaves as `wait_save`; an expiry outside the future half faults at the first execute; the other context keeps issuing during a long timed wait.
 
 ### TEST-UNIT-002 — Registered fetch and image bounds
 - Status: planned
@@ -363,6 +365,7 @@ Arm both contexts and arrange two results on one edge. Cover a transition on the
 Exercise falling, rising and either-edge arms. Hold a result across counter wrap before consuming it. The result must keep the original observation time, not the consume time.
 Arm a guarded level with a target equal to a later observation edge, an already-passed target, and a target across wrap (CHG-007). The first must match on the target edge, and the passed target on the first edge after arm, without a fault. Hold the level absent for more than `2^23` cycles after the guard opens (reduced width allowed), then apply it. It must match on the next observation edge. An unguarded arm must ignore the target field.
 With an observation due on the fault edge F, check it is recorded, and that `flush` on F + 1 clears both slots and guard bits and suppresses observations on that edge (CHG-008).
+Arm a timed guarded level (CHG-013): a match before expiry, expiry with no match, a match and expiry on the same edge (match wins), `Rt = 0` (no expiry), a guard target already passed, and expiry across wrap.
 
 ### TEST-UNIT-005 — Timebase, half range and wrap
 - Status: planned

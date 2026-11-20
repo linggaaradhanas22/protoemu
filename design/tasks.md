@@ -362,8 +362,15 @@ Done when: Lingga approves the LSB-first `shift_pin` option or chooses documente
 Done when: run the EVAL-017 plan: model software polling, a timed wait and a per-context watchdog against all I2C cases plus stuck-SCL cases, with area for the hardware options. Recommend one option to Lingga; change no agreed record.
 
 ### TASK-048 — Review the timed wait
-- Status: todo
+- Status: done
 - Owner: Lingga
-- Works on: CHG-013, EVAL-017
+- Works on: CHG-013, EVAL-017, BLK-CORE, BLK-CAPTURE, TEST-UNIT-001, TEST-UNIT-004, TEST-SYS-009
 - Blocked by: TASK-047
 Done when: Lingga approves `wait_to` (C2) or keeps host `STOP` as the only recovery. After approval, apply CHG-013 to the ISA draft, BLK-CORE, BLK-CAPTURE and the tests.
+
+### TASK-049 — Prepare the G4 block review
+- Status: todo
+- Owner: agent
+- Works on: BLK-CORE, BLK-CAPTURE, BLK-DRIVE, BLK-HOST, BLK-PADS, BLK-PROGRAM, BLK-TIMER
+- Blocked by: TASK-048
+Done when: for each block, check that its record is consistent after CHG-005 to CHG-013, lists its interface, behavior and open items, and has at least one unit TEST that covers it. Produce a short review sheet per block for Lingga (g4-review step 2). Change no agreed record.

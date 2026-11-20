@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (wait timeout evaluated, EVAL-017; CHG-013 proposed)
+**Last updated:** 2026-11-20 (guarded timed wait approved and applied, CHG-013)
 **Current stage:** G4 (Micro-architecture)
 
 ## Gates
@@ -36,14 +36,14 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-048 (Lingga): Review [CHG-013](changes/CHG-013-timed-wait.md), the timed wait `wait_to`. Then apply it.
+1. TASK-049: Prepare the G4 block review sheets (g4-review step 2).
 2. Then G4 block review: each block with its unit test (g4-review step 2), and the full-core timing check (step 3).
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
 - Lingga approved [CHG-012](changes/CHG-012-shift-lsb.md) (LSB-first `shift_pin`). Its area is not measured.
-- **Approve [CHG-013](changes/CHG-013-timed-wait.md)?** [EVAL-017](evals/EVAL-017-wait-timeout.md): an unguarded timed wait (`wait_to`) detected every stuck SCL within its limit, kept all 14 I2C cases passing and left the SPI context running. Slot area is below synthesis noise. Host STOP and a watchdog also detect it but stop the whole chip; software polling breaks I2C timing after a stretch.
+- Lingga approved the guarded timed wait [CHG-013](changes/CHG-013-timed-wait.md) after the unguarded version failed in the model (EVAL-017 corrected). It costs 5,479 µm² in the capture slots; the core-side adder operand is not measured.
 - Lingga approved [CHG-010](changes/CHG-010-payload-fifo.md) (no pass-through, depth 8) and the 1 MHz loader with four-word transfers ([CHG-011](changes/CHG-011-loader-rate.md), [DEC-005](04_decisions/DEC-005-loader-rate.md) replacing DEC-002). 1 MHz SPI must be checked on the board; the fallback is 500 kHz. `READN`/`WRITEN` framing area is not measured.
 - The trace checker warns that finished TASK-021 and TASK-023 point to the replaced DEC-002. Accepted as correct history; the checker is unchanged.
 - Lingga accepted [CHG-009](changes/CHG-009-delta-writeback.md) (narrow second register write port) as applied.
