@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (Lingga approved G1)
+**Last updated:** 2026-11-20 (TASK-005 drafts ready for review)
 **Current stage:** G2 (Specification)
 
 ## Gates
@@ -36,8 +36,8 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-005: Draft specifications and acceptance tests for the competition rules and constraints.
+1. TASK-006: Draft the UART, SPI, and I2C specifications and system tests.
 2. TASK-004: Run local hardening and gate-level simulation on the unchanged template. This can proceed in parallel with G2.
 
 ## Open questions for Lingga
-- None at G1 close.
+- Review `SPEC-RST-001`, `SPEC-RST-002`, and `SPEC-PHY-001`. Is four rising clock edges at 60 MHz an acceptable reset window? The draft uses four edges as a project choice, not a competition rule.

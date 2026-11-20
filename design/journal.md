@@ -58,3 +58,10 @@ Results: `GATE G1: MET`. All 32 requirements are agreed. The checker reported 0 
 AI vs human: Lingga approved closing G1 and requested a push. OpenCode updated the project records and ran the checker.
 Problems: None in the G1 check.
 Next: Draft the rules and constraints specification (TASK-005). The template hardening check (TASK-004) is still open.
+
+## 2026-11-20: OpenCode (TASK-005)
+Did: Drafted `SPEC-RST-001`, `SPEC-RST-002`, and `SPEC-PHY-001`. Planned seven acceptance tests and three system tests.
+Results: All ten `REQ-RULE-*` items now have a draft specification or a planned acceptance test. The trace checker reported 0 errors and 0 warnings. No design tests ran.
+AI vs human: OpenCode drafted the checks and proposed the four-edge reset window. Lingga approved the underlying requirements at G1. The specifications remain drafts.
+Problems: None in the trace check. G2 remains open pending the remaining coverage and specification review.
+Next: Draft UART, SPI, and I2C specifications and tests (TASK-006). Keep the template unchanged for TASK-004.

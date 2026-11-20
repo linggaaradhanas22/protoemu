@@ -52,7 +52,7 @@ and the runtime + any problems are noted in the journal. (Ask Lingga before inst
 ## Stage G2 — Specification (start after G1)
 
 ### TASK-005 — Spec for rules and constraints
-- Status: todo
+- Status: done
 - Owner: agent
 - Works on: REQ-RULE-002, REQ-RULE-003, REQ-RULE-004, REQ-RULE-005, REQ-RULE-006, REQ-RULE-007
 - Blocked by: G1
