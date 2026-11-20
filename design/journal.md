@@ -250,3 +250,9 @@ Did: Built and placed the EVAL-008 exploratory issue and pad-retirement slice fo
 Results: Hybrid placed setup slack was +4.566 ns at the slow corner. Fast hold slack was −0.199 ns overall and −0.037 ns for internal register paths. Hybrid placed slice area was 55,542 µm². The smoke check and all 38 Python model checks passed. No production RTL changed.
 AI vs human: Lingga authorized the probe. OpenCode ran it and recommends carrying both formats into review. No final encoding or block was approved.
 Next: TASK-031, draft the ISA and block review package. Full-chip fit and routed timing remain open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-031)
+Did: Drafted the G4 review, candidate ISA table, DEC-004 and CHG-004. Linked every block to its planned unit check and recorded the remaining ISA and timing gaps.
+Results: The draft carries compact and vector operations into review using EVAL-007 and EVAL-008 as evidence. No RTL, model or registered test changed.
+AI vs human: Lingga authorized the review package. OpenCode drafted it. No pad format, block or gate was approved in this task.
+Next: TASK-032, review DEC-004 and CHG-004. G4 remains open.

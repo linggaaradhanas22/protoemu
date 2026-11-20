@@ -2,6 +2,8 @@
 
 G4 draft for review. [DEC-001](../04_decisions/DEC-001-architecture.md) chooses a shared instruction store and issue path with independent timed I/O. It does not freeze these interfaces or the ISA.
 
+[G4 review package](g4-review.md) · [Draft ISA and open instructions](isa-draft.md)
+
 [Editable draw.io overview](diagrams/arch-b_v2.drawio) · [Project diagram conventions](diagrams/README.md)
 
 ![ARCH-B overview: solid data arrows and dashed control arrows connect the loader, program store, shared core, and timed I/O.](diagrams/arch-b_v2.svg)
@@ -30,7 +32,7 @@ The area column partitions a provisional **0.600 mm² cell-area allowance**, not
 | [Pad adapter](BLK-PADS.md) | Input synchronization, pad registers and mapping | 0.040 | `TEST-UNIT-006` |
 | [Loader](BLK-HOST.md) | Image commit, run control and host payload | 0.090 | `TEST-UNIT-007` |
 
-The [verification plan](../06_verif_plan.md) defines pass criteria. No new tests have run. In the overview all internal blocks use the same 60 MHz clock. The timebase carries cycle numbers, not a generated clock. The drawing shows its deadline path only; the endpoint tables describe all consumers, reset and status.
+The [verification plan](../06_verif_plan.md) defines pass criteria. The registered tests are still planned. In the overview all internal blocks use the same 60 MHz clock. The timebase carries cycle numbers, not a generated clock. The drawing shows its deadline path only; the endpoint tables describe all consumers, reset and status.
 
 ## Host and protocol pin split
 
@@ -40,8 +42,8 @@ The [verification plan](../06_verif_plan.md) defines pass criteria. No new tests
 
 | Decision | Evidence needed |
 |---|---|
-| Output admission, collision rules and four-slot sizing | Replay the critical EVAL-001 cases with full/retry and same-edge retirement; report admission slack and test whether a reservation is needed. |
-| Capture ownership and wrap | Compare one slot per context with shared storage. Sweep rearm boundaries, simultaneous observations, and the proposed timestamp width. |
+| Output admission, collision rules and four-slot sizing | [EVAL-003](../evals/EVAL-003-g4-timed-io.md) supports four slots without reservations for the tested workload. Check pending-operation behavior in the integrated core. |
+| Capture ownership and wrap | EVAL-003 checks simultaneous observations and wrap. Confirm rearm behavior with the proposed edge-capture encoding and non-target programs. |
 | Shared issue and ISA | [EVAL-007](../evals/EVAL-007-eight-pad-encoding.md) replays compact and vector formats for eight pads. [EVAL-008](../evals/EVAL-008-eight-pad-timing.md) checks setup and hold on a placed slice. Review the ISA and check full-core integration and routed timing separately. |
 | Host timing and payload depth | [CHG-002](../changes/CHG-002-loader-recovery.md) defines recovery. Verify the provisional timeouts on the board and check FIFO area and depth against the baseline programs. |
 
