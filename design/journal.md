@@ -232,3 +232,9 @@ Did: Recorded approval of DEC-003 and CHG-003. Updated the core, capture, drive 
 Results: The shared timer and timed-I/O interfaces are unchanged. The new test cases cover saved-time validity, context isolation, wrap and stable deadlines under retries. No RTL changed and no registered tests ran.
 AI vs human: Lingga approved one saved timestamp per context. OpenCode applied the change and reviewed the affected records.
 Next: TASK-028, prototype the instruction encoding. G4 remains open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-028)
+Did: Ran EVAL-006 as an exploration. Assembled 24-bit instruction words that use saved timestamps and replayed the existing SPI, stretched I2C and concurrent UART/SPI fixtures.
+Results: All 116 modeled cases and 33 Python checks passed. I2C used 63 words with eight cycles of minimum drive and sample slack. The overlap used 36 words with 13 cycles of minimum drive slack. The prototype does not cover all eight pads or establish physical timing. No RTL changed.
+AI vs human: Lingga authorized the prototype. OpenCode wrote and ran the exploration. No final encodings or blocks were approved.
+Next: TASK-029, compare drive encodings for eight pads. G4 remains open.

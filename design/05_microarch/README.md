@@ -42,7 +42,7 @@ The [verification plan](../06_verif_plan.md) defines pass criteria. No new tests
 |---|---|
 | Output admission, collision rules and four-slot sizing | Replay the critical EVAL-001 cases with full/retry and same-edge retirement; report admission slack and test whether a reservation is needed. |
 | Capture ownership and wrap | Compare one slot per context with shared storage. Sweep rearm boundaries, simultaneous observations, and the proposed timestamp width. |
-| Shared issue and ISA | [DEC-003](../04_decisions/DEC-003-isa-timestamps.md) selects one saved timestamp per context. Draft the encodings, including offsets, then re-encode and replay the examples. |
+| Shared issue and ISA | [EVAL-006](../evals/EVAL-006-isa-encoding.md) replays encodings that use the saved timestamp. Extend drive coverage to all eight pads and check the execute path before freezing opcodes. |
 | Host timing and payload depth | [CHG-002](../changes/CHG-002-loader-recovery.md) defines recovery. Verify the provisional timeouts on the board and check FIFO area and depth against the baseline programs. |
 
 The [G4 replay](../evals/EVAL-003-g4-timed-io.md) supports the draft timed-I/O contract on the tested cases. It does not freeze the ISA or verify RTL. Use the [G3 protocol runs](../evals/EVAL-001-protocol-comparison.md) and [physical probes](../evals/EVAL-002-area-timing.md) as baselines, not sign-off. Record decisions before agreeing the block records. Final routed setup, hold and tile fit remain open.

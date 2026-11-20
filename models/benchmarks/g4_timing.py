@@ -112,6 +112,12 @@ class TimingProbe(Machine):
             item.deadline == self.timer(op.at) and item.values.keys() & op.values.keys()
             for item in self.outputs)
 
+    def _capture_result(self, capture):
+        return capture.value
+
+    def _issue_result(self, op, t):
+        return None
+
     def _issue(self, owner, t):
         task = self.tasks[owner]
         op = task.op
@@ -119,12 +125,12 @@ class TimingProbe(Machine):
         self.continuation = None
         if capture is not None:
             self.captures[owner] = None
-            task.consume(capture.value)
+            task.consume(self._capture_result(capture))
             kind = "consume"
         elif isinstance(op, Issue):
             if t < op.at:
                 return False
-            task.consume()
+            task.consume(self._issue_result(op, t))
             if op.kind == "fetch":
                 self.continuation = owner
             kind = op.kind

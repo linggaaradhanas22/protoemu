@@ -222,8 +222,15 @@ Done when: a reproducible exploration compares paired 16-bit registers with a de
 Done when: Lingga approves the proposed timestamp operand or records which option or behavior to revise.
 
 ### TASK-028 — Prototype timestamp instruction encoding
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: DEC-003, BLK-CORE, BLK-PROGRAM, TEST-INT-001
+- Works on: DEC-003, BLK-CORE, BLK-PROGRAM, TEST-INT-001, EVAL-006
 - Blocked by: TASK-027
 Done when: a draft 24-bit encoding covers capture saves and timed operations, including a plan for offsets that do not fit one instruction. Re-encode and replay stretched I2C and concurrent UART/SPI programs. Report program size and deadline slack without changing RTL.
+
+### TASK-029 — Compare timed drive encodings for eight pads
+- Status: todo
+- Owner: agent
+- Works on: BLK-CORE, BLK-DRIVE, BLK-PADS, EVAL-006, TEST-INT-001
+- Blocked by: TASK-028
+Done when: compare encodings that can address all eight pads and control output enable. Check instruction count and deadline slack for the critical programs, and identify the operations that need a 60 MHz timing probe before ISA sign-off.
