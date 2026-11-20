@@ -23,6 +23,8 @@ On full, no write or PC advance occurs. The core retains the blocked operation a
 
 The queue receives an absolute deadline even when the core derives it from a captured timestamp. It does not add the offset, substitute the current cycle, or change the deadline on retry.
 
+One accepted request occupies one entry, regardless of how many pads its mask selects. A vector request uses one free slot and admits the full mask, values and enables together. Separate compact requests are admitted independently, even when they share a deadline. The queue handles both formats without decoding opcodes.
+
 ## Implementation options and budget
 
 Evaluate an unordered due scan against ordered insertion. A plain FIFO could hide an earlier event behind a later one; ordering alone would not solve simultaneous retirement. Test scan, merge and OE timing together. Planning allowance: 0.075 mm² of cell area; not measured for this block.

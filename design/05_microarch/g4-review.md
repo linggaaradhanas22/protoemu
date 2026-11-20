@@ -1,6 +1,6 @@
 # G4 review: instruction formats and block contracts
 
-**Decision requested now:** Approve or revise [DEC-004](../04_decisions/DEC-004-hybrid-pad-isa.md) and [CHG-004](../changes/CHG-004-hybrid-pad-isa.md). The recommendation is to use compact instructions for one or two pads and a vector instruction for a wider update. Both feed the same four-entry queue. See the [proposed instruction fields](isa-draft.md).
+**Approved for the draft:** [DEC-004](../04_decisions/DEC-004-hybrid-pad-isa.md) and [CHG-004](../changes/CHG-004-hybrid-pad-isa.md) carry both timed pad formats forward. Use compact instructions for one or two pads and a vector instruction for a wider update. Both feed the same four-entry queue. See the [draft instruction fields](isa-draft.md).
 
 This is not a request to approve G4. The blocks below remain draft. This decision does not freeze a binary interface for software or authorize production RTL.
 

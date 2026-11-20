@@ -301,6 +301,7 @@ Pass if independent fixtures check the two RGB values and latch interval, the 1-
 Replay concurrent UART RX and 1 MHz SPI, and 10 µs stretched Fast-mode I2C, with the G4 issue and pad-observation timing. Sweep relative start phase and repeat near timestamp wrap. Force queue-full, same-cycle due events, and simultaneous captures in directed cases. Pass if independent monitors match payload and pin timing, every accepted nonflushed update hits its deadline exactly once, and neither context loses its capture. Record peak queue occupancy, longest runnable-to-issue wait, and minimum slack from acceptance to deadline. In an intentional overcommit case require a reported fault and no late pad update.
 Use the BLK-PADS overlap pin map. Preload host payload, then run without host service during the transactions; check preserved result order for each context.
 Exercise capture-derived deadlines in the encoded programs near wrap. Check that an output delayed by queue pressure still targets the original observation time plus the programmed offset, or faults without a late drive.
+Mix compact and vector instructions in one loaded image. Schedule a vector that drives some pads and releases others when only one queue slot is free. Check that it occupies one slot and all selected pads update together at its deadline.
 
 ### TEST-INT-002 — Load, run and stop across the pad boundary
 - Status: planned
@@ -320,6 +321,7 @@ Save a timestamp before stopping. After reload, check that a timed instruction c
 - Run: test_issue_context_isolation
 Stub the program and timed-I/O endpoints. Check issue slots with both contexts runnable, then block one context on drive credit, result availability and payload in separate runs. Pass if the other context issues at the next free selection boundary, context state stays isolated, and the blocked instruction retires once with its saved operands. A deadline that expires while blocked must fault even if credit never returns. Also check redirect cost and non-retirement on reject.
 Save different observation times in the two contexts. Delay a consume, then check it saves the observation time, not the consume time. Check that a consume without a save preserves the saved time. Exercise carry across bit 15 and wrap across bit 23 in deadline arithmetic. After reset, start or global flush, an instruction that uses the invalid timestamp must fault without issuing a drive or sample.
+Check mask, values and enables from each drive format. Include pad 7 in both shift positions and reject duplicate pins, an empty vector mask and nonzero reserved bits. Block a shift request, then accept it and check its register shifts once. In a separate trial, reject the retry and check the register stays unchanged.
 
 ### TEST-UNIT-002 — Registered fetch and image bounds
 - Status: planned
@@ -335,6 +337,7 @@ Include a CRC failure after tentative words reached the array. Keep `image_valid
 - Verifies: BLK-DRIVE
 - Run: test_timed_drive_queue
 Fill all four slots. Enqueue out of deadline order, retire disjoint masks together, and accept into a slot on its retirement edge. Try an overlapping mask, an unowned pin, a zero deadline delta and an expired retry. Cross wrap and assert flush on a due edge. Pass if the scoreboard sees each accepted, nonflushed masked update once on its programmed edge, no rejected update reaches a pad, and merged value/OE fields match the masks.
+With one slot free, admit a full-width mask and retire its mixed values and enables as one event. Repeat with one unowned bit and check that the whole request is rejected.
 
 ### TEST-UNIT-004 — Context capture ownership and observation edge
 - Status: planned
@@ -357,6 +360,7 @@ Start from reset, run a reduced-width instance through wrap, and exercise the sh
 - Run: test_pad_sync_and_safe_drive
 Change inputs away from clock edges and check the two-flop path. Apply partial pin updates, open-drain low and release, and coincident reset or safe assertion. Pass if pad outputs change only on sampling edges, open drain never drives high, unmasked pins retain state, and reset or safe overrides any competing update. This logic test does not measure metastability or pad timing.
 Check dedicated host pin mapping and registered `MISO`/`READY`. Toggle host inputs without changing the protocol pad ownership or enables.
+Apply one update with both driven and released pads. Check that an enable of zero releases a masked pad even if its value bit is high. Also check open-drain high releases with enable set, and unmasked pads retain their state.
 
 ### TEST-UNIT-007 — Complete image before run
 - Status: planned

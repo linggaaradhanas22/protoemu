@@ -20,6 +20,8 @@ Use two flop stages on external inputs used by the design other than clock and r
 
 The RP2350 holds `CS` high during recovery reset and for at least 2 µs after release. Pass synchronized `CS` to BLK-HOST so it can qualify a new frame. Reset and deselect clear the pending host reply and `READY` through BLK-HOST. The pin allocation does not change.
 
+Apply the same registered `pad_update` for compact and vector operations. On a masked push-pull pad, a cleared enable releases the pad regardless of the value bit. On a masked open-drain pad, a high value or cleared enable releases the pad. Preserve unmasked pad state.
+
 ## Pin allocation
 
 | Tiny Tapeout resource | Use |

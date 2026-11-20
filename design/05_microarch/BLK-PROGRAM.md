@@ -21,6 +21,8 @@ Write tentative words as the halted loader receives them, with `image_valid` low
 
 ## Implementation options and budget
 
+The store transports each compact or vector instruction as one unchanged 24-bit word. Opcode and operand checks belong to BLK-CORE. Neither encoding changes fetch latency, image visibility or word capacity.
+
 Start from the evaluated flop array and registered mux. Compare mux partitioning if the 128-way read fails setup. Changing the storage technology needs an architecture decision. Planning allowance: 0.180 mm² of cell area; not measured for this block.
 
 ## Unit-test plan and RTL

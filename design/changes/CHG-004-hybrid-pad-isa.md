@@ -1,5 +1,5 @@
 # CHG-004 — Carry compact and vector pad operations into the ISA draft
-- Status: proposed
+- Status: done
 - Size: medium
 - Affects: BLK-CORE, BLK-PROGRAM, BLK-DRIVE, BLK-PADS, TEST-UNIT-001, TEST-UNIT-003, TEST-UNIT-006, TEST-INT-001
 
@@ -13,4 +13,8 @@ Carry `pad` and `pad2` for one- and two-pad updates, and `drivev` for a masked u
 
 ## Impact and approval
 
-The block widths, pin map, requirements and architecture do not change. The programmer-visible operations do change. On approval, update the block drafts and test plans to check decode, mask and enable generation, vector admission with one free slot, and no register shift before admission. Keep generic payload, edge/time access and fault timing open as listed in the [G4 review](../05_microarch/g4-review.md). Lingga must approve before applying this proposal. Approval does not agree the block records or pass G4.
+Lingga approved the change on 2026-11-20. Block widths, pin map, requirements and architecture did not change. This approval does not agree the block records or pass G4.
+
+## Close-out
+
+Updated the four block drafts and the planned decode, shift, vector admission and pad tests. Reviewed the linked decisions, evaluations and downstream test plans. The loader, timestamp and fetch contracts are unchanged. Generic payload, edge/time access and fault timing remain open in the [G4 review](../05_microarch/g4-review.md). No production RTL or project verification tests changed.

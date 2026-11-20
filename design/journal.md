@@ -256,3 +256,9 @@ Did: Drafted the G4 review, candidate ISA table, DEC-004 and CHG-004. Linked eve
 Results: The draft carries compact and vector operations into review using EVAL-007 and EVAL-008 as evidence. No RTL, model or registered test changed.
 AI vs human: Lingga authorized the review package. OpenCode drafted it. No pad format, block or gate was approved in this task.
 Next: TASK-032, review DEC-004 and CHG-004. G4 remains open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-032)
+Did: Recorded approval of DEC-004 and CHG-004. Updated the core, program store, drive and pad drafts and added decode, shift and output enable cases to the verification plan.
+Results: Traceability was clean and all 38 Python model checks passed. Block interfaces and pin mapping did not change. No production RTL changed and no registered verification tests ran.
+AI vs human: Lingga approved keeping both timed pad formats in the draft ISA. OpenCode recorded the decision and applied the change. Neither the release opcodes nor G4 were approved.
+Next: TASK-033, prototype generic host payload instructions.

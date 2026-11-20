@@ -250,8 +250,15 @@ Done when: an exploratory physical model compares the compact and vector issue p
 Done when: present the proposed instruction formats and block contracts for review. Record outstanding encoding, execution and timing risks. Do not change the approval status of any block.
 
 ### TASK-032 — Review the timed pad formats
-- Status: todo
+- Status: done
 - Owner: Lingga
 - Works on: DEC-004, CHG-004
 - Blocked by: TASK-031
 Done when: Lingga approves carrying both pad formats into the ISA draft or records what to revise. This is not G4 approval.
+
+### TASK-033 — Prototype generic host payload instructions
+- Status: todo
+- Owner: agent
+- Works on: BLK-CORE, BLK-HOST, TEST-UNIT-001, TEST-INT-001
+- Blocked by: TASK-032
+Done when: propose context-local instructions for reading and writing payload. Replace fixture-specific reports in a replay of concurrent UART/SPI. Check that FIFO backpressure blocks only the requesting context and that each payload operation retires once.

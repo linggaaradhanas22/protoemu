@@ -28,6 +28,8 @@ Use round-robin selection between runnable contexts at a free issue boundary; wa
 
 ## Implementation options and budget
 
+[DEC-004](../04_decisions/DEC-004-hybrid-pad-isa.md) selects compact `pad`/`pad2` and vector `drivev` for the [draft ISA](isa-draft.md). Decode either format into the same absolute deadline, mask, value and output enable request. Separate `shift_pin` and `shift_pair` keep all eight pin indices usable. Change the shift source register only when its request is admitted. On block, retain the decoded request and defer the register update. On reject, leave the register unchanged.
+
 Compare saved requests with re-fetch/retry; re-fetch costs issue bandwidth and risks recomputing a relative deadline. Quantify runnable service bound, retries and actual deadline slack against EVAL-001's critical cases; round-robin is not a proof of schedulability. Planning allowance: 0.150 mm² of cell area; not measured for this block.
 
 ## Unit-test plan and RTL
