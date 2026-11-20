@@ -3,8 +3,8 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (ARCH-B selected; G3 sign-off pending)
-**Current stage:** G3 (Architecture)
+**Last updated:** 2026-11-20 (Lingga approved G3)
+**Current stage:** G4 (Micro-architecture)
 
 ## Gates
 
@@ -12,8 +12,8 @@ every session. Only Lingga marks a gate ✅.
 |---|---|---|---|---|
 | G1 | Requirements agreed | ✅ Approved by Lingga | `g1-req` | `check_trace.py --gate G1` |
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
-| G3 | Architecture decided | 🔄 ARCH-B selected; checker MET; awaiting sign-off | `g3-arch` | `--gate G3` |
-| G4 | Micro-architecture agreed | ⏳ | `g4-uarch` | `--gate G4` |
+| G3 | Architecture decided | ✅ Approved by Lingga; ARCH-B selected in DEC-001 | `g3-arch` | `--gate G3` |
+| G4 | Micro-architecture agreed | 🔄 block and unit-test planning next | `g4-uarch` | `--gate G4` |
 | G5 | RTL + unit tests | ⏳ | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
 | G7 | Sign-off: precheck + write-up | ⏳ | `g7-submit` | `--gate G7` |
@@ -36,8 +36,7 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. Obtain G3 sign-off from Lingga. Then tag `g3-arch` and start G4 by defining ARCH-B's blocks, interfaces and unit tests.
+1. TASK-018: Outline ARCH-B's hardware blocks, interfaces, and unit-test coverage. Start with timed I/O and the shared issue path.
 
 ## Open questions for Lingga
-- ARCH-B is selected in DEC-001. Does Lingga approve closing G3 and opening G4?
-- All three placed probes met slow-corner setup at 60 MHz but missed input hold in the pre-CTS timing model. Routed setup and hold remain open for the selected design.
+- No approval is pending at G3 close. Final tile fit and routed 60 MHz timing remain unverified. The placed probes met slow-corner setup but missed input hold before clock-tree synthesis.

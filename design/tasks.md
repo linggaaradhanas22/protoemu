@@ -140,3 +140,19 @@ Done when: DEC-001 records Lingga's approved weights, the scores from both evalu
 - Works on: DEC-001, ARCH-B
 - Blocked by: TASK-015
 Done when: Lingga's selection is recorded in DEC-001 and the architecture options, and the G3 checker is run before asking for sign-off.
+
+### TASK-017 — Record G3 sign-off
+- Status: done
+- Owner: agent
+- Works on: DEC-001, ARCH-B
+- Blocked by: TASK-016
+Done when: Lingga approves closing G3, the gate check reports MET, the sign-off commit is tagged `g3-arch`, and the status board moves to G4.
+
+## Stage G4: Micro-architecture
+
+### TASK-018 — Outline ARCH-B blocks and unit-test coverage
+- Status: todo
+- Owner: agent
+- Works on: ARCH-B, DEC-001
+- Blocked by: G3
+Done when: draft block records define responsibilities and interface boundaries. Each block has a planned unit test. Record open decisions for the timed-I/O queue, capture ownership, timestamp wrap, shared issue path, loader, and pin allocation.

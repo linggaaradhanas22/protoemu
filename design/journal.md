@@ -166,3 +166,9 @@ Did: Recorded ARCH-B as chosen in DEC-001 and retained A and C as rejected alter
 Results: `check_trace.py --gate G3` reported MET with zero errors and zero warnings. No design tests ran; final fit and routed timing are unverified.
 AI vs human: Lingga approved selecting ARCH-B. OpenCode recorded the selection and ran the gate checker. G3 sign-off has not been requested or recorded yet.
 Next: Ask Lingga to sign off G3. After approval, tag the gate and start G4 block and unit-test planning.
+
+## 2026-11-20: Lingga + OpenCode (TASK-017, G3 sign-off)
+Did: Recorded G3 sign-off for ARCH-B and set G4 as the current stage. Kept DEC-001 and its evaluation evidence unchanged.
+Results: `check_trace.py --gate G3` reported MET with zero errors and zero warnings. No design tests ran. Final fit and routed setup and hold remain unverified.
+AI vs human: Lingga approved closing G3. OpenCode ran the gate check and updated the project records.
+Next: TASK-018, draft the hardware block boundaries and plan unit-test coverage for ARCH-B.
