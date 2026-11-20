@@ -99,15 +99,22 @@ timing numbers at 60 MHz, ready for stage G3 EVALs.
 Done when: three candidates cover all benchmark profiles and the evaluation plans define comparable evidence for protocol fit, physical risk and toolchain effort.
 
 ### TASK-011 — Build and run the shared protocol benchmark models
-- Status: todo
+- Status: done
 - Owner: agent
 - Works on: EVAL-001
 - Blocked by: TASK-010
-Done when: each candidate has reproducible per-case results, starting with SPI, I2C stretching and concurrency.
+Done when: each candidate has reproducible per-case results, starting with SPI, I2C stretching and concurrency. The exploratory models and traces are in EVAL-001; image and latency checks remain open.
 
 ### TASK-012 — Compare mapped area, timing risk and image tooling
 - Status: todo
 - Owner: agent
 - Works on: EVAL-002
-- Blocked by: TASK-011
+- Blocked by: TASK-013
 Done when: mapped size and timing evidence, input assumptions and image build steps are recorded for each viable design point.
+
+### TASK-013 — Check encodings and rerun the critical protocol cases
+- Status: todo
+- Owner: agent
+- Works on: EVAL-001, EVAL-002
+- Blocked by: TASK-011
+Done when: candidate images for 1 MHz SPI, stretched Fast-mode I2C and UART/SPI overlap can be built, their sizes can be compared to the proposed stores, and the clock-level reruns account for fetch, branch and event latency. Record any candidate needing a revised design point.

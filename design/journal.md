@@ -127,3 +127,10 @@ Results: Hardening passed in 348.85 s wall time. Gate-level `test_project` passe
 AI vs human: Lingga approved the scratch-copy metadata. OpenCode ran the flow and verified that the repository template files were unchanged.
 Problems: The wrapper excludes Git metadata that `tt_tool.py --harden` needs. Gate-level simulation also needed `PDK_ROOT` pointed at Ciel's version directory. The report documents both workarounds and the warnings.
 Next: TASK-011, shared benchmark fixtures and candidate cycle models. G3 remains open.
+
+## 2026-11-20: OpenCode (TASK-011)
+Did: Built three exploratory scheduling models, shared pin-level peers and monitors for all seven profiles, and archived the per-case results and traces under EVAL-001.
+Results: All 2,262 cases passed across the three candidates. Eight model sanity tests passed. B filled its four-entry output queue in the overlap case; C used both configurable lanes. No RTL or acceptance tests ran.
+AI vs human: Lingga authorized the benchmark work. OpenCode implemented and ran the comparison. Lingga has not selected an architecture.
+Problems: The first idle-skipping implementation skipped the cycle that made a synchronized input visible. Fixed it and checked sparse and dense traces for all three models on the stretched Fast-mode I2C case. The models do not yet measure binary image size or fetch and branch latency.
+Next: TASK-013 to encode programs and rerun the critical cases before sizing and timing probes in TASK-012.
