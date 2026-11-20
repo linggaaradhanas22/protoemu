@@ -44,3 +44,17 @@ Results: `bash scripts/check_env.sh` reported all tools and packages OK. Docker 
 AI vs human: Lingga asked for the recheck. OpenCode ran both checks. No design decisions were made.
 Problems: None in the setup checks.
 Next: Run local hardening and gate-level simulation in TASK-004.
+
+## 2026-11-20: Lingga + OpenCode (TASK-001)
+Did: Recorded approval of all 32 requirements without changing their text or priorities.
+Results: `check_trace.py --gate G1 --write-trace` reported `GATE G1: MET`, with 0 errors and 0 warnings.
+AI vs human: Lingga approved the requirements. OpenCode recorded the decisions and ran the checker.
+Problems: None.
+Next: Ask Lingga for G1 sign-off before tagging `g1-req` or moving to G2.
+
+## 2026-11-20: Lingga + OpenCode (G1 sign-off)
+Did: Recorded G1 sign-off, closed TASK-001, and set G2 as the current stage.
+Results: `GATE G1: MET`. All 32 requirements are agreed. The checker reported 0 errors and 0 warnings.
+AI vs human: Lingga approved closing G1 and requested a push. OpenCode updated the project records and ran the checker.
+Problems: None in the G1 check.
+Next: Draft the rules and constraints specification (TASK-005). The template hardening check (TASK-004) is still open.

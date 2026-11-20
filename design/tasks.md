@@ -20,7 +20,7 @@ Done when: <clear finish condition>
 ## Stage G1 — Requirements
 
 ### TASK-001 — Review and agree requirements
-- Status: todo
+- Status: done
 - Owner: Lingga
 - Works on: REQ-RULE-001, REQ-FLEX-001, REQ-PROTO-001, REQ-DEL-001, REQ-GOAL-001
 Done when: every REQ in `01_requirements.md` is `agreed` or `rejected` (decide the REQ-GOAL

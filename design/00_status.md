@@ -3,15 +3,15 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (WSL tool setup verified)
-**Current stage:** G1 — Requirements
+**Last updated:** 2026-11-20 (Lingga approved G1)
+**Current stage:** G2 (Specification)
 
 ## Gates
 
 | Gate | Name | Status | Tag | Check |
 |---|---|---|---|---|
-| G1 | Requirements agreed | 🔄 in progress | `g1-req` | `check_trace.py --gate G1` |
-| G2 | Spec agreed | ⏳ | `g2-spec` | `--gate G2` |
+| G1 | Requirements agreed | ✅ Approved by Lingga | `g1-req` | `check_trace.py --gate G1` |
+| G2 | Spec agreed | 🔄 in progress | `g2-spec` | `--gate G2` |
 | G3 | Architecture decided | ⏳ | `g3-arch` | `--gate G3` |
 | G4 | Micro-architecture agreed | ⏳ | `g4-uarch` | `--gate G4` |
 | G5 | RTL + unit tests | ⏳ | `g5-rtl` | `--gate G5` |
@@ -32,13 +32,12 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 
 | Date | Milestone |
 |---|---|
-| 2027-01-10 | RTL freeze (proposed, REQ-GOAL-005) |
+| 2027-01-10 | RTL freeze target (REQ-GOAL-005, Should) |
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-001 — Lingga reviews requirements (G1).
-2. TASK-004 — Run the template through local hardening and gate-level simulation. Docker is ready in Ubuntu (TASK-002 done).
+1. TASK-005: Draft specifications and acceptance tests for the competition rules and constraints.
+2. TASK-004: Run local hardening and gate-level simulation on the unchanged template. This can proceed in parallel with G2.
 
 ## Open questions for Lingga
-- Which `REQ-GOAL-*` proposals do you want to keep, and with which priority?
-- How ambitious on stretch protocols (USB-LS / Ethernet / CAN): target, or only "could"?
+- None at G1 close.
