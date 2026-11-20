@@ -37,3 +37,10 @@ Results: SymbiYosys v0.71-7-gb21f778 passed a small Z3 proof. The RTL template p
 AI vs human: Lingga approved installing the remaining tools. OpenCode installed and checked them. No design decisions were made.
 Problems: The suite's `vvp` wrapper overrides the Python home. `env.sh` now prefers system Icarus for cocotb when both system binaries are present.
 Next: Lingga completes Docker Desktop's first-run setup. Then verify `docker run --rm hello-world` from Ubuntu to finish TASK-002 before starting TASK-004.
+
+## 2026-11-20 — OpenCode — TASK-002
+Did: Rechecked the WSL setup from Ubuntu.
+Results: `bash scripts/check_env.sh` reported all tools and packages OK. Docker 29.9.3 pulled and ran `hello-world` from Ubuntu. TASK-002 is done.
+AI vs human: Lingga asked for the recheck. OpenCode ran both checks. No design decisions were made.
+Problems: None in the setup checks.
+Next: Run local hardening and gate-level simulation in TASK-004.

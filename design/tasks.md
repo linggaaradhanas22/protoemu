@@ -27,10 +27,9 @@ Done when: every REQ in `01_requirements.md` is `agreed` or `rejected` (decide t
 proposals and stretch-protocol priorities), `check_trace.py --gate G1` says MET, tag `g1-req`.
 
 ### TASK-002 — Set up the WSL tool environment
-- Status: blocked
+- Status: done
 - Owner: Lingga
 - Works on: REQ-RULE-001
-- Blocked by: Docker Desktop first-run setup (Lingga)
 Done when: `bash scripts/check_env.sh` shows OK for every tool except possibly librelane
 (installed later by `harden.sh --setup`).
 

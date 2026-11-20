@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-20 (tools installed; Docker first-run setup pending)
+**Last updated:** 2026-11-20 (WSL tool setup verified)
 **Current stage:** G1 — Requirements
 
 ## Gates
@@ -37,8 +37,7 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 
 ## Next tasks
 1. TASK-001 — Lingga reviews requirements (G1).
-2. TASK-002 — Finish Docker Desktop's first-run setup, then verify Docker from Ubuntu. SymbiYosys and LibreLane are installed.
-3. TASK-004 — Prove the hardening flow once Docker is available.
+2. TASK-004 — Run the template through local hardening and gate-level simulation. Docker is ready in Ubuntu (TASK-002 done).
 
 ## Open questions for Lingga
 - Which `REQ-GOAL-*` proposals do you want to keep, and with which priority?
