@@ -215,8 +215,15 @@ Done when: Lingga approves the recovery proposal or records what to revise.
 Done when: a reproducible exploration compares paired 16-bit registers with a dedicated timestamp operand. Check 24-bit wrap and report instruction count and timing impact for scheduling from an input capture.
 
 ### TASK-027 — Review the captured timestamp proposal
-- Status: todo
+- Status: done
 - Owner: Lingga
 - Works on: DEC-003, CHG-003
 - Blocked by: TASK-026
 Done when: Lingga approves the proposed timestamp operand or records which option or behavior to revise.
+
+### TASK-028 — Prototype timestamp instruction encoding
+- Status: todo
+- Owner: agent
+- Works on: DEC-003, BLK-CORE, BLK-PROGRAM, TEST-INT-001
+- Blocked by: TASK-027
+Done when: a draft 24-bit encoding covers capture saves and timed operations, including a plan for offsets that do not fit one instruction. Re-encode and replay stretched I2C and concurrent UART/SPI programs. Report program size and deadline slack without changing RTL.

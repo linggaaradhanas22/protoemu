@@ -226,3 +226,9 @@ Did: Ran the EVAL-005 exploration for split and fused register pairs and a dedic
 Results: The fused pair and dedicated operand used two words and admitted in 3–7 cycles without queue stalls in the representative cases. The split pair used four words and took 7–17 cycles. The probe ran 222 cases, including expected late rejections. All 29 Python checks passed. No RTL changed.
 AI vs human: Lingga authorized the comparison. OpenCode wrote the model and recommends the dedicated operand. Lingga has not approved the decision or change.
 Next: TASK-027, review DEC-003 and CHG-003. G4 remains open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-027)
+Did: Recorded approval of DEC-003 and CHG-003. Updated the core, capture, drive and timer drafts and the affected test plans.
+Results: The shared timer and timed-I/O interfaces are unchanged. The new test cases cover saved-time validity, context isolation, wrap and stable deadlines under retries. No RTL changed and no registered tests ran.
+AI vs human: Lingga approved one saved timestamp per context. OpenCode applied the change and reviewed the affected records.
+Next: TASK-028, prototype the instruction encoding. G4 remains open.

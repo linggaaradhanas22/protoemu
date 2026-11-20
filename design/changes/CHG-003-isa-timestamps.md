@@ -1,5 +1,5 @@
 # CHG-003 — Add a dedicated capture timestamp operand
-- Status: proposed
+- Status: done
 - Size: medium
 - Affects: BLK-CORE, BLK-CAPTURE, BLK-TIMER, BLK-DRIVE, TEST-UNIT-001, TEST-INT-001
 
@@ -16,4 +16,8 @@ The proposed 24-bit timebase does not fit in one 16-bit general register. [EVAL-
 
 ## Impact and approval
 
-Before agreeing the block records, check context isolation, use-before-capture, low-word carry, full wrap and late retry. Re-encode representative programs and test I2C stretching and UART/SPI overlap. Check area and the adder and admission path at 60 MHz. No RTL or registered project tests ran for EVAL-005. Lingga must approve before the draft block and test records adopt this proposal.
+Lingga approved DEC-003 and CHG-003 on 2026-11-20. Before agreeing the block records, re-encode representative programs and test I2C stretching and UART/SPI overlap. Check area and the adder and admission path at 60 MHz.
+
+## Close-out
+
+Updated the affected block drafts and verification plan. Reviewed EVAL-003 and EVAL-005 against the approved behavior. The earlier model results do not verify a final encoding or physical timing. The block records remain draft and the registered tests remain planned.

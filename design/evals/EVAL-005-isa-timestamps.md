@@ -32,7 +32,7 @@ The probe ran 222 cases. Every admitted request drove or sampled at its expected
 
 Start with a dedicated captured timestamp per context. It saves two general registers compared with the fused pair and has the same modeled latency. Split arithmetic costs two more program words and increases latency when the other context is busy. Keep the fused pair as an alternative if the dedicated state costs too much area or programs need more than one saved timestamp.
 
-This probe charges per-instruction slots. It does not assemble a new binary ISA, prove that every operand format fits 24 bits, or model the physical delay of the add, admission compare or queue. It does not replay full programs under a new encoding. Before freezing the ISA, check operand encoding and long delays, register pressure, and the 60 MHz execute path. See the [draft decision](../04_decisions/DEC-003-isa-timestamps.md).
+This probe charges per-instruction slots. It does not assemble a new binary ISA, prove that every operand format fits 24 bits, or model the physical delay of the add, admission compare or queue. It does not replay full programs under a new encoding. Before freezing the ISA, check operand encoding and long delays, register pressure, and the 60 MHz execute path. See the [recorded decision](../04_decisions/DEC-003-isa-timestamps.md).
 
 ## Reproduce
 

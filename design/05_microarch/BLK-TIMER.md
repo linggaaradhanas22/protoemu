@@ -17,6 +17,8 @@ All consumers use the value of `cycle` immediately **before** the sampling edge.
 
 For a new timed request, compute `(deadline - cycle) mod 2^W`. Accept only values from 1 through `2^(W-1)-1`. Zero, half range and values above half range are invalid, not a request to fire now. Software must obey the same half-range rule: a far-out absolute timestamp can alias a near-future one. Accepted requests are compared by equality, not unsigned timestamp order.
 
+The shared timebase does not change under DEC-003. BLK-CORE's saved timestamps are copies of observation times, not separate running counters. A deadline derived from one of those copies obeys the same admission rule.
+
 ## Implementation options and budget
 
 Compare 24 bits with 16 bits or a split coarse/fine counter. At 60 MHz the proposed 24-bit half range is about 140 ms; 16 bits gives about 546 µs, less than a 1-Wire reset followed by recovery. Check the carry path and fanout in the next timing probe. Planning allowance: 0.025 mm² of cell area; not measured for this block.

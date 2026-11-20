@@ -21,6 +21,8 @@ Draft contract: four unordered slots. All due slots retire on their deadline edg
 
 On full, no write or PC advance occurs. The core retains the blocked operation and can issue the other context. Revalidate at each retry: a request which reaches its deadline while blocked is rejected and faults rather than changing a pad late. When both contexts want a free slot, the shared issue rule decides who gets it. There is no per-context reservation in this draft, so it does not guarantee admission under arbitrary shared load.
 
+The queue receives an absolute deadline even when the core derives it from a captured timestamp. It does not add the offset, substitute the current cycle, or change the deadline on retry.
+
 ## Implementation options and budget
 
 Evaluate an unordered due scan against ordered insertion. A plain FIFO could hide an earlier event behind a later one; ordering alone would not solve simultaneous retirement. Test scan, merge and OE timing together. Planning allowance: 0.075 mm² of cell area; not measured for this block.

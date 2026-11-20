@@ -300,6 +300,7 @@ Pass if independent fixtures check the two RGB values and latch interval, the 1-
 - Run: test_shared_issue_deadlines
 Replay concurrent UART RX and 1 MHz SPI, and 10 µs stretched Fast-mode I2C, with the G4 issue and pad-observation timing. Sweep relative start phase and repeat near timestamp wrap. Force queue-full, same-cycle due events, and simultaneous captures in directed cases. Pass if independent monitors match payload and pin timing, every accepted nonflushed update hits its deadline exactly once, and neither context loses its capture. Record peak queue occupancy, longest runnable-to-issue wait, and minimum slack from acceptance to deadline. In an intentional overcommit case require a reported fault and no late pad update.
 Use the BLK-PADS overlap pin map. Preload host payload, then run without host service during the transactions; check preserved result order for each context.
+Exercise capture-derived deadlines in the encoded programs near wrap. Check that an output delayed by queue pressure still targets the original observation time plus the programmed offset, or faults without a late drive.
 
 ### TEST-INT-002 — Load, run and stop across the pad boundary
 - Status: planned
@@ -308,6 +309,7 @@ Use the BLK-PADS overlap pin map. Preload host payload, then run without host se
 - Run: test_load_run_stop_boundary
 Load a short program over the dedicated SPI pins, check the `READY`-gated reply, then start it. Stop with a pad update due on the edge after the validated `STOP` frame closes. Repeat around synchronized deselect, reset and core fault with a capture pending. Also try malformed and truncated reloads. Pass if partial images cannot fetch, accepted starts fetch only committed words, and safe/flush wins on each specified safe edge. A subsequent shorter image must not execute residual words or complete old operations.
 Lose a valid `START` reply after execution and corrupt a valid payload-write reply in separate runs. Check that the host does not repeat either request. Assert recovery reset with a pad update due, check safe outputs and cleared work, then reload and start explicitly.
+Save a timestamp before stopping. After reload, check that a timed instruction cannot use the old saved timestamp before a new capture has saved a time.
 
 ## Unit tests
 
@@ -317,6 +319,7 @@ Lose a valid `START` reply after execution and corrupt a valid payload-write rep
 - Verifies: BLK-CORE
 - Run: test_issue_context_isolation
 Stub the program and timed-I/O endpoints. Check issue slots with both contexts runnable, then block one context on drive credit, result availability and payload in separate runs. Pass if the other context issues at the next free selection boundary, context state stays isolated, and the blocked instruction retires once with its saved operands. A deadline that expires while blocked must fault even if credit never returns. Also check redirect cost and non-retirement on reject.
+Save different observation times in the two contexts. Delay a consume, then check it saves the observation time, not the consume time. Check that a consume without a save preserves the saved time. Exercise carry across bit 15 and wrap across bit 23 in deadline arithmetic. After reset, start or global flush, an instruction that uses the invalid timestamp must fault without issuing a drive or sample.
 
 ### TEST-UNIT-002 — Registered fetch and image bounds
 - Status: planned

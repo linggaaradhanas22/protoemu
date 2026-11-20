@@ -19,6 +19,8 @@ Draft contract: one slot per context (`EMPTY`, `ARMED`, `RESULT`). Arm only from
 
 Sample `pin_sample` as seen before the decision edge and timestamp it with the pre-edge `cycle`, not the asynchronous pad transition time. With continuously updated sample history, an edge arm considers transitions on decision edges **after** its acceptance edge. A level arm can detect a level already present on its first observation edge. Timed arms obey BLK-TIMER admission. A due sample sees the pre-edge synchronized value even if an output changes on that edge. Capture becomes readable on the next cycle; no consume/capture bypass. Both slots may finish on the same edge. Further edges while a result is held are not buffered. Reset disarms both slots; execution cannot arm before input synchronization has settled after reset.
 
+At consume, return the original observation timestamp even if the result waited for issue. BLK-CORE can save it in the owning context's timestamp register. This does not change the slot format or ownership rules.
+
 ## Implementation options and budget
 
 Evaluate fixed mailboxes against a tagged shared FIFO. Fixed ownership prevents a slow consumer from using both slots. Measure observation-to-consume latency and check whether rearm gaps lose UART/RC5 edges at the required rates. Planning allowance: 0.040 mm² of cell area; not measured for this block.
