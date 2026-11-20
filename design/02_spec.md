@@ -30,14 +30,14 @@ baud with a 60 MHz clock. Checked by system simulation: measure edge times on th
 <!-- SPEC-RST-NNN -->
 
 ### SPEC-RST-001 — Reset convergence
-- Status: draft
+- Status: agreed
 - Traces to: REQ-RULE-005
 With a 60 MHz clock, the chip shall reach a deterministic reset state by the fourth rising edge of `clk` with `rst_n` held low.
 The state before reset shall not affect pin behavior or host responses after reset under the same inputs.
 Check reset convergence in system simulation and prove independence from initial state with formal analysis.
 
 ### SPEC-RST-002 — Reload after reselection
-- Status: draft
+- Status: agreed
 - Traces to: REQ-RULE-006
 After reselection, the chip shall accept and run a new program through the documented host loader without relying on any state from before deselection.
 Check in system simulation at 60 MHz. Model the loss of state by starting a fresh DUT before the second load.
@@ -47,7 +47,7 @@ Use the same host procedure as for an initial load. See `SPEC-HOST-001` for the 
 <!-- SPEC-HOST-NNN -->
 
 ### SPEC-HOST-001 — Load and start from the RP2350
-- Status: draft
+- Status: agreed
 - Traces to: REQ-FLEX-003, REQ-RULE-006
 At a 60 MHz chip clock, the RP2350 shall be able to load and start each released UART, SPI, and I2C baseline program through the documented Tiny Tapeout pin interface. Use the same procedure after initial reset or reselection and reset.
 The host shall be able to determine that the chip accepted a complete image before issuing a start request. The chip shall not execute a partially loaded image. For each baseline image, the proposed limit is 1 s from the first load transfer to a successful load indication, using the documented RP2350 loader settings and excluding board power-up and reset.
@@ -57,20 +57,20 @@ Document the pin usage, image format, transfer timing, completion indication, an
 <!-- SPEC-PROG-NNN -->
 
 ### SPEC-PROG-001 — Build the baseline program images
-- Status: draft
+- Status: agreed
 - Traces to: REQ-FLEX-002
 From a clean checkout, the released toolchain shall build host-loadable images from source for UART transmit and receive, SPI controller, and I2C controller examples. The examples and their configurations shall exercise the baseline specs in the Protocols section.
 Document build and load commands, tool versions, and expected results. Check that every baseline image builds using the documented commands and runs through the normal loader in system simulation without preloading simulator memory.
 
 ### SPEC-PROG-002 — Protocol selected after RTL freeze
-- Status: draft
+- Status: agreed
 - Traces to: REQ-FLEX-001
 The chip shall implement one protocol selected by Lingga after an RTL revision is frozen for verification. The protocol shall be absent from the design targets and benchmark suite. It shall fit the documented pin, electrical, timing, and program resource limits of the frozen design.
 Record the frozen RTL revision, the selected transaction, expected pin behavior, and timing tolerances before writing the example. Build and load the program through the released toolchain and normal host interface.
 The emulator, not the host loader, shall perform the transaction's pin timing and protocol decisions. Configuration and application data may come from the host. No RTL, netlist, or programming model changes may be used to pass. Check in system simulation against an independent peer model or pin-trace checker.
 
 ### SPEC-PROG-003 — Non-target benchmark suite
-- Status: draft
+- Status: agreed
 - Traces to: REQ-GOAL-001
 At 60 MHz, the same RTL revision shall run three non-target benchmarks by changing the program and documented configuration only:
 
@@ -88,21 +88,21 @@ TASK-009 defines the exact variants, stimuli, and timing limits before architect
 These drafts define the baseline at a 60 MHz chip clock. Baseline SPI and I2C tests use the chip as controller. Target roles and concurrent protocols remain separate `Should` requirements.
 
 ### SPEC-UART-001 — UART transmit timing
-- Status: draft
+- Status: agreed
 - Traces to: REQ-PROTO-001
 The UART TX example shall send 8N1 frames (8 data bits, no parity, 1 stop bit) at 9600, 19200, 38400, 57600, and 115200 baud.
 The line shall idle high. Each frame shall start low, send the least significant bit first, and end with a high stop bit.
 The duration of each transmitted bit shall be within ±1% of the nominal bit period. Check frame contents and edge timing in system simulation.
 
 ### SPEC-UART-002 — UART receive tolerance
-- Status: draft
+- Status: agreed
 - Traces to: REQ-PROTO-001
 The UART RX example shall receive consecutive 8N1 frames without extra idle bits at each rate in `SPEC-UART-001`.
 It shall deliver every byte once and in order for any start-edge phase relative to `clk` and peer baud error within ±2% of nominal.
 Check in system simulation. The rate list and error limits are proposed project targets.
 
 ### SPEC-SPI-001 — SPI controller modes and clock rate
-- Status: draft
+- Status: agreed
 - Traces to: REQ-PROTO-002
 The SPI example shall exchange MSB-first bytes on MOSI and MISO at 100 kHz and 1 MHz in modes 0 through 3. These are proposed project rates.
 For modes 0 and 1, SCLK shall idle low. For modes 2 and 3, SCLK shall idle high.
@@ -111,7 +111,7 @@ Each active SCLK half-period within the transfer shall be within one `clk` perio
 Active-low chip select shall stay low across a two-byte transaction with exactly 16 sampling edges. Check both directions and pin timing in system simulation.
 
 ### SPEC-I2C-001 — I2C clock and bus timing
-- Status: draft
+- Status: agreed
 - Traces to: REQ-PROTO-003
 The I2C example shall generate Standard-mode and Fast-mode timing as the sole bus controller. The chip shall drive SDA and SCL low or release them to the external pull-ups. It shall not drive either line high.
 With no stretching and ideal pull-ups in system simulation, apply the following limits to the resolved bus signals:
@@ -130,14 +130,14 @@ With no stretching and ideal pull-ups in system simulation, apply the following 
 Source: [NXP UM10204, I2C-bus specification and user manual](https://www.nxp.com/docs/en/user-guide/UM10204.pdf), Table 11 for Standard-mode and Fast-mode. The lower bounds on bit rate are project targets. Check board rise and fall times separately against the same source before claiming electrical conformance.
 
 ### SPEC-I2C-002 — I2C transfers and ACK/NACK
-- Status: draft
+- Status: agreed
 - Traces to: REQ-PROTO-003
 At both rates, the I2C example shall perform 7-bit addressed writes and reads, including a write followed by a read with a repeated START and no intervening STOP.
 The controller shall test the target's ACK/NACK on the ninth clock after each address or written byte. On NACK it shall end the transaction with STOP and report failure without sending another byte.
 The controller shall ACK nonfinal read bytes and NACK the last byte before STOP. Check pin activity and results in system simulation.
 
 ### SPEC-I2C-003 — I2C target clock stretching
-- Status: draft
+- Status: agreed
 - Traces to: REQ-PROTO-003
 At both rates, the I2C controller shall wait for the observed SCL line to rise when the target holds it low.
 It shall complete the transaction correctly for a stretch of up to 10 µs after the controller releases SCL. The 10 µs verification limit is a proposed project target.
@@ -147,7 +147,7 @@ Stretching shall extend only the low phase. After SCL rises, the high phase shal
 <!-- SPEC-PHY-NNN -->
 
 ### SPEC-PHY-001 — Timing at 60 MHz
-- Status: draft
+- Status: agreed
 - Traces to: REQ-RULE-004
 At the board clock of 60 MHz, the routed design shall meet setup and hold timing at every corner required by the shuttle flow.
 Check `project.clock_hz` in `info.yaml` and run static timing analysis on the routed design.

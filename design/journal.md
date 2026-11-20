@@ -93,3 +93,10 @@ Results: Checked timing conversions, the synthetic 1-Wire ROM CRC, RC5 frame fie
 AI vs human: Lingga asked to proceed. OpenCode chose the proposed fixture variants and documented their sources. Lingga has not yet approved the G2 specs.
 Problems: WS2812B revisions have different pulse widths. The benchmark uses the V1.0 data sheet instead of assuming one limit applies to all variants.
 Next: Lingga reviews the 13 G2 drafts. Local template hardening (TASK-004) remains open.
+
+## 2026-11-20: Lingga + OpenCode (G2 specification approval)
+Did: Recorded approval of all 13 specs without changing their wording.
+Results: The trace checker reported `GATE G2: MET`, with 0 errors and 0 warnings. No design tests ran.
+AI vs human: Lingga approved the specs. OpenCode recorded the approval and ran the checker.
+Problems: None in the trace check.
+Next: Ask Lingga to sign off on G2 before tagging `g2-spec` or starting G3.
