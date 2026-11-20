@@ -148,3 +148,9 @@ Results: Placed area was 0.406, 0.316 and 0.266 mm² for A, B and C. All passed 
 AI vs human: Lingga authorized the comparison. OpenCode built and ran the probes. No architecture or decision weights have been approved.
 Problems: Unbuffered control loads made unplaced timing much worse than placed timing. The probe does not include clock-tree synthesis, routed parasitics or the full host interface.
 Next: Ask Lingga which tradeoff should drive the draft architecture decision. Keep G3 open.
+
+## 2026-11-20: OpenCode (TASK-014)
+Did: Drafted DEC-001 around B's shared program capacity. Compared the measured code space, area and timing across EVAL-001 and EVAL-002, with the remaining validation risks listed separately.
+Results: The draft recommends B and proposes weights. It does not assign scores or change candidate or gate status. No tests ran in this task.
+AI vs human: Lingga authorized drafting the decision. OpenCode wrote the recommendation and proposed weights. Lingga has not approved the weights or selected an architecture.
+Next: Ask Lingga to confirm or revise the proposed weights before scoring the decision.

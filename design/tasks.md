@@ -118,3 +118,10 @@ Done when: mapped size and timing evidence, input assumptions and image build st
 - Works on: EVAL-001, EVAL-002
 - Blocked by: TASK-011
 Done when: candidate images for 1 MHz SPI, stretched Fast-mode I2C and UART/SPI overlap can be built, their sizes can be compared to the proposed stores, and the clock-level reruns account for fetch, branch and event latency. Record any candidate needing a revised design point.
+
+### TASK-014 — Draft the architecture decision
+- Status: done
+- Owner: agent
+- Works on: DEC-001
+- Blocked by: TASK-012, TASK-013
+Done when: the draft compares all three options using both evaluations, recommends an option, and records proposed weights and risks for Lingga to review.
