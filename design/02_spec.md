@@ -41,13 +41,46 @@ Check reset convergence in system simulation and prove independence from initial
 - Traces to: REQ-RULE-006
 After reselection, the chip shall accept and run a new program through the documented host loader without relying on any state from before deselection.
 Check in system simulation at 60 MHz. Model the loss of state by starting a fresh DUT before the second load.
-The host transfer format and timing limits belong to TASK-007.
+Use the same host procedure as for an initial load. See `SPEC-HOST-001` for the loader contract.
 
 ## Host interface and program loading
 <!-- SPEC-HOST-NNN -->
 
+### SPEC-HOST-001 — Load and start from the RP2350
+- Status: draft
+- Traces to: REQ-FLEX-003, REQ-RULE-006
+At a 60 MHz chip clock, the RP2350 shall be able to load and start each released UART, SPI, and I2C baseline program through the documented Tiny Tapeout pin interface. Use the same procedure after initial reset or reselection and reset.
+The host shall be able to determine that the chip accepted a complete image before issuing a start request. The chip shall not execute a partially loaded image. For each baseline image, the proposed limit is 1 s from the first load transfer to a successful load indication, using the documented RP2350 loader settings and excluding board power-up and reset.
+Document the pin usage, image format, transfer timing, completion indication, and start and reload sequences. This draft does not choose the transport, pin assignments, or image encoding. Check with an RP2350 host-interface model in system simulation.
+
 ## Programmability
 <!-- SPEC-PROG-NNN -->
+
+### SPEC-PROG-001 — Build the baseline program images
+- Status: draft
+- Traces to: REQ-FLEX-002
+From a clean checkout, the released toolchain shall build host-loadable images from source for UART transmit and receive, SPI controller, and I2C controller examples. The examples and their configurations shall exercise the baseline specs in the Protocols section.
+Document build and load commands, tool versions, and expected results. Check that every baseline image builds using the documented commands and runs through the normal loader in system simulation without preloading simulator memory.
+
+### SPEC-PROG-002 — Protocol selected after RTL freeze
+- Status: draft
+- Traces to: REQ-FLEX-001
+The chip shall implement one protocol selected by Lingga after an RTL revision is frozen for verification. The protocol shall be absent from the design targets and benchmark suite. It shall fit the documented pin, electrical, timing, and program resource limits of the frozen design.
+Record the frozen RTL revision, the selected transaction, expected pin behavior, and timing tolerances before writing the example. Build and load the program through the released toolchain and normal host interface.
+The emulator, not the host loader, shall perform the transaction's pin timing and protocol decisions. Configuration and application data may come from the host. No RTL, netlist, or programming model changes may be used to pass. Check in system simulation against an independent peer model or pin-trace checker.
+
+### SPEC-PROG-003 — Non-target benchmark suite
+- Status: draft
+- Traces to: REQ-GOAL-001
+At 60 MHz, the same RTL revision shall run three non-target benchmarks by changing the program and documented configuration only:
+
+| Benchmark | Transaction to demonstrate |
+|---|---|
+| WS2812 | Transmit two distinct RGB pixel values in one frame, then hold the data line low for the latch interval. |
+| 1-Wire | On a single-drop bus, issue a reset, detect presence, and read a complete 64-bit ROM value. |
+| RC5 infrared | Receive two RC5 frames on a demodulated input and report their expected address, command, and toggle fields. |
+
+TASK-009 defines the exact variants, stimuli, and timing limits before architecture scoring. Check the data and applicable timing against independent test fixtures in system simulation. These benchmarks are known before design and do not count as the post-freeze protocol in `SPEC-PROG-002`.
 
 ## Protocols
 <!-- SPEC-UART-NNN, SPEC-SPI-NNN, SPEC-I2C-NNN, ... -->

@@ -67,9 +67,9 @@ Done when: measurable SPECs exist for baud rates/accuracy, SPI modes/clock rates
 clock stretching and ACK handling, each with a planned system TEST.
 
 ### TASK-007 — Spec for programmability and host interface
-- Status: todo
+- Status: done
 - Owner: agent
-- Works on: REQ-FLEX-001, REQ-FLEX-002, REQ-FLEX-003, REQ-RULE-006
+- Works on: REQ-FLEX-001, REQ-FLEX-002, REQ-FLEX-003, REQ-RULE-006, REQ-GOAL-001
 - Blocked by: G1
 Done when: SPECs say how "unplanned protocol" support is judged (benchmark list), what the
 toolchain must provide, and how programs are loaded/reloaded; each has a planned TEST.

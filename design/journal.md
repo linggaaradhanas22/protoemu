@@ -72,3 +72,10 @@ Results: Checked the I2C timing values against NXP UM10204. The trace checker re
 AI vs human: Lingga asked to proceed after discussing the reset window. OpenCode kept four edges as a provisional limit and drafted the protocol targets for review. No spec was marked agreed.
 Problems: None in the trace check. G2 still needs the remaining coverage and approval of the drafts.
 Next: Draft the programmability and host interface specifications (TASK-007). Local template hardening (TASK-004) remains open.
+
+## 2026-11-20: Lingga + OpenCode (TASK-007)
+Did: Drafted `SPEC-HOST-001` and `SPEC-PROG-001` through `SPEC-PROG-003`, with four planned system tests. Linked the existing reselection draft to the loader contract.
+Results: Specified load and start behavior, baseline toolchain outputs, three non-target benchmarks, and a separate protocol selected after an RTL revision is frozen for verification. The checker reported 0 errors and 0 warnings. G2 still has 9 uncovered Must or Should requirements and 13 draft specs. No design tests ran.
+AI vs human: Lingga asked to proceed with TASK-007. OpenCode drafted the contract and proposed the 1 s load limit and the benchmark list. No spec was marked agreed.
+Problems: Pin assignments, transfer format, and exact benchmark timings remain open. The benchmark profiles belong to TASK-009.
+Next: Draft the remaining acceptance tests and review coverage (TASK-008). Local template hardening (TASK-004) remains open.

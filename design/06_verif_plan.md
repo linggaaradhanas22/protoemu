@@ -174,6 +174,41 @@ In each injected NACK trial, require STOP and a reported failure before the cont
 At both rates, have the target stretch SCL during a data bit and an ACK bit. Repeat with 1 µs, 5 µs, and 10 µs holds after controller release.
 Pass if the controller waits for each delayed SCL rising edge, preserves the required high time, and finishes with the expected data and ACK sequence.
 
+### TEST-SYS-010 — RP2350 load, start, and reload
+- Status: planned
+- Level: system
+- Verifies: SPEC-HOST-001
+- Run: test_host_load_start_reload
+Drive the documented RP2350 loader transactions at a 60 MHz chip clock. For each baseline image, measure from its first load transfer to the successful load indication. Start the image and check for its expected result.
+In a separate trial, send only part of an image and stop before completion. Check that the host observes no successful load indication and that the image does not execute. Reset and load a full image.
+Repeat the full load and start after a cold restart that models deselection and reselection. Use two images with different pin behavior to check that the second run uses the new image.
+Pass if each full load reports success within 1 s, starts on request, and runs the expected image without relying on prior state.
+
+### TEST-SYS-011 — Toolchain clean build and load
+- Status: planned
+- Level: system
+- Verifies: SPEC-PROG-001
+- Run: test_baseline_examples_from_source
+Use the documented tool versions and commands in a clean checkout. Remove any generated images before the build. Build every baseline example and load each result through the simulated host interface without preloading chip memory.
+Pass if the commands produce all expected images and those images pass the applicable UART, SPI, and I2C baseline tests.
+
+### TEST-SYS-012 — Post-freeze protocol on unchanged RTL
+- Status: planned
+- Level: system
+- Verifies: SPEC-PROG-002
+- Run: test_post_freeze_protocol
+Record the frozen RTL revision and compare the chosen transaction against the documented pin, electrical, timing, and program resource limits. Record the expected payload, pin sequence, and timing tolerances before authoring the program.
+Build and load the program through the released tools. Run it on the frozen revision against an independent peer model or pin-trace checker.
+Pass if the payload and pin timing match and the hardware and programming model remain unchanged. Check that the emulator handles protocol timing and decisions without host assistance during the transaction.
+
+### TEST-SYS-013 — Non-target program benchmarks
+- Status: planned
+- Level: system
+- Verifies: SPEC-PROG-003
+- Run: test_non_target_benchmarks
+Run the WS2812, 1-Wire, and RC5 benchmarks at 60 MHz on the same RTL revision. Load each program through the documented host interface. Use the TASK-009 profiles as the source for stimulus and limits.
+Pass if independent fixtures check the two RGB values and latch interval, the 1-Wire presence and full ROM value, and the RC5 address, command, and toggle for both frames. All three benchmarks must meet their timing limits.
+
 ## Integration tests
 
 ## Unit tests
