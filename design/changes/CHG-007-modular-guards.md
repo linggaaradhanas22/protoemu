@@ -1,5 +1,5 @@
 # CHG-007 — Define 24-bit fence and wait guard behavior
-- Status: proposed
+- Status: done
 - Size: medium
 - Affects: BLK-CORE, BLK-CAPTURE, BLK-TIMER, TEST-UNIT-001, TEST-UNIT-004, TEST-UNIT-005
 
@@ -38,8 +38,8 @@ Rejected alternatives: `compare` (stateless half-range compare) can close an ope
 
 ## Approval
 
-medium: waiting for Lingga.
+Lingga approved the `sticky` guard rule for the draft ISA on 2026-11-20. This does not change the requirements or pass G4.
 
 ## Close-out
 
-Not started.
+Updated BLK-CORE, BLK-CAPTURE, BLK-TIMER, TEST-UNIT-001, TEST-UNIT-004, TEST-UNIT-005, the ISA draft and the G4 review list. Reviewed the items below them in `trace.md`; the block interfaces and SPECs are unchanged, so nothing stays `suspect`. The draft-ISA model (`ISAProbe` and its subclasses) now uses the `sticky` rule by default. All 59 model checks passed, and EVAL-003 through EVAL-011 regenerate byte-identical results. The block records remain draft, and registered tests remain planned. Guard area is still not measured.

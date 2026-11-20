@@ -6,7 +6,7 @@ from .cycle import Emit, Level, ModelError, Out, Sample
 from .encoded import FORMATS as LEGACY_FORMATS
 from .encoded import NO_PIN, REPORTS, Image, Issue, pack, unpack
 from .encoded_programs import T, i2c_code, spi_code, uart_code
-from .g4_timing import Edge, TimingProbe
+from .g4_timing import Edge, ModularGuards, TimingProbe
 
 MASK = (1 << 24) - 1
 HALF = 1 << 23
@@ -239,7 +239,9 @@ def execute(code, pc, pins, open_drain, epoch, *, table=DECODE):
             yield Issue("fence", at(args[0]))
 
 
-class ISAProbe(TimingProbe):
+class ISAProbe(ModularGuards, TimingProbe):
+    """Draft-ISA probe. Fence and wait_save guards use the CHG-007 rule."""
+
     decode_table = DECODE
 
     def __init__(self, *args, **kwargs):

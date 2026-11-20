@@ -293,3 +293,9 @@ Results: `sticky` passed 122/122 replays with cycle traces identical to the earl
 AI vs human: Lingga asked Claude to start TASK-037. Claude chose the candidate rules, built the model, ran the replays and drafted EVAL-011 and CHG-007. Lingga has not yet reviewed the proposal. No block, CHG or gate was approved.
 Problems: The earlier model's fence and wait checks used unbounded elapsed time and would misbehave after 2^24 model cycles. Guard hardware cost is not measured.
 Next: TASK-038, Lingga reviews CHG-007.
+
+## 2026-11-20: Lingga + Claude (TASK-038)
+Did: Recorded approval of CHG-007. Added the guard rule to BLK-CORE, BLK-CAPTURE, BLK-TIMER and the ISA draft. Added boundary, wrap and late-level checks to TEST-UNIT-001, TEST-UNIT-004 and TEST-UNIT-005. Moved the guard model into `g4_timing.py` and made `sticky` the default for `ISAProbe` and its subclasses. Added TASK-039.
+Results: All 59 Python model checks passed. EVAL-003 through EVAL-011 regenerate byte-identical results. Traceability reported no errors or warnings. Block interfaces and SPECs did not change. No production RTL changed and no registered verification tests ran.
+AI vs human: Lingga approved the `sticky` guard rule for the draft ISA. Claude applied it and reviewed the linked records. No block or gate was approved.
+Next: TASK-039, specify global fault, flush and pending-operation ordering.

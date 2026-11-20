@@ -292,8 +292,15 @@ Done when: Lingga approves the proposed behavior for the draft ISA or records wh
 Done when: propose how timed waits and fences handle already-reached targets, future targets and timer wrap. Check the boundaries in the model and keep final opcodes and production RTL unchanged.
 
 ### TASK-038 — Review the modular guard rule
-- Status: todo
+- Status: done
 - Owner: Lingga
-- Works on: CHG-007, EVAL-011
+- Works on: CHG-007, EVAL-011, BLK-CORE, BLK-CAPTURE, BLK-TIMER, TEST-UNIT-001, TEST-UNIT-004, TEST-UNIT-005
 - Blocked by: TASK-037
 Done when: Lingga approves the proposed fence and wait guard behavior for the draft ISA or records what to revise. After approval, apply CHG-007 to the block, test and ISA records.
+
+### TASK-039 — Specify global fault, flush and pending-operation ordering
+- Status: todo
+- Owner: agent
+- Works on: BLK-CORE, BLK-DRIVE, BLK-CAPTURE, BLK-PADS, TEST-UNIT-001, TEST-UNIT-003, TEST-UNIT-004
+- Blocked by: TASK-038
+Done when: propose what happens on the edge where one context faults, halts or is flushed while drives, captures, guards or payload transfers are pending. Settle the order against `safe` pad overrides. Check in the model that no operation commits twice or half-commits. Keep opcodes and production RTL unchanged.

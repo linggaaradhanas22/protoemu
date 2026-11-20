@@ -155,3 +155,10 @@ class EncodedGuardTests(TestCase):
     def test_wait_save_without_saved_time_is_unguarded(self):
         machine = self.run_lines([("wait_save", 0, 1, 0), ("halt",)])
         self.assertEqual(machine.guard_log[0][2:], ("wait", None, 0))
+
+    def test_draft_isa_probes_default_to_sticky(self):
+        """CHG-007: every draft-ISA probe applies the approved guard rule."""
+        self.assertEqual(EdgeProbe.guard_policy, "sticky")
+        machine = self.run_lines([("save_now",), ("fence", 0), ("halt",)])
+        self.assertEqual(len(machine.guard_log), 1)
+        self.assertEqual(guard_class(EdgeProbe, "compare").guard_policy, "compare")

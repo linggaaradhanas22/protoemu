@@ -21,6 +21,8 @@ The shared timebase does not change under DEC-003. BLK-CORE's saved timestamps a
 
 The timebase also supplies the timestamps for `edge_delta`. The core uses `(observation − saved) mod 2^24` and accepts intervals from 1 through `2^23−1` cycles. Crossing one wrap works within that interval. The counter does not report how many wraps occurred. Software must bound the time between observations to avoid aliasing an old time.
 
+Time guards (`fence`, guarded `wait_save`) use the same `delta`, but differently ([CHG-007](../changes/CHG-007-modular-guards.md)). Classify once when the guard arms. `1` through `2^23 − 1` waits for `cycle == target`. Zero or the past half means already reached, not invalid. The consumer keeps an open bit, so a guard never depends on a continuous half-range compare that could close it again after `2^23` cycles.
+
 ## Implementation options and budget
 
 Compare 24 bits with 16 bits or a split coarse/fine counter. At 60 MHz the proposed 24-bit half range is about 140 ms; 16 bits gives about 546 µs, less than a 1-Wire reset followed by recovery. Check the carry path and fanout in the next timing probe. Planning allowance: 0.025 mm² of cell area; not measured for this block.

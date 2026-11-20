@@ -4,7 +4,8 @@ Earlier probes check a guard as ``elapsed >= target``. That needs an unbounded
 counter. Hardware only has the 24-bit ``cycle``. This module models four rules:
 
 * ``elapsed`` - the earlier model baseline (not implementable with 24 bits).
-* ``sticky``  - classify ``delta = (target - cycle) mod 2^24`` once, at arm.
+* ``sticky``  - approved in CHG-007; the ISAProbe default. Classify
+  ``delta = (target - cycle) mod 2^24`` once, at arm.
   ``1 <= delta < 2^23`` waits until ``cycle == target``; zero or the past half
   opens the guard now. The guard then stays open until the operation retires.
 * ``compare`` - no arm state: open while ``(cycle - target) mod 2^24 < 2^23``.
@@ -15,13 +16,13 @@ counter. Hardware only has the 24-bit ``cycle``. This module models four rules:
 import argparse
 import hashlib
 import json
-from dataclasses import replace
 from pathlib import Path
 
-from .cycle import Level, ModelError, clock_json
+from .cycle import clock_json
 from .g4_edges import HALF_PERIODS, EdgeProbe
 from .g4_edges import run_case as rc5_case
-from .g4_isa import HALF, ISAProbe, build
+from .g4_timing import ModularGuards
+from .g4_isa import ISAProbe, build
 from .run_compare import measure
 from .run_g4_timing import jobs
 
@@ -29,82 +30,9 @@ POLICIES = ("elapsed", "sticky", "compare", "strict")
 EPOCHS = (0, (1 << 24) - 500)
 
 
-class ModularGuards:
-    """Mixin for TimingProbe subclasses. Set ``guard_policy`` on the class."""
-
-    guard_policy = "sticky"
-    instances = None
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.armed = [None] * len(self.tasks)
-        self.compare_targets = {}
-        # (arm cycle, owner, "fence"/"wait", delta at arm or None, wait cycles)
-        self.guard_log = []
-        if self.instances is not None:
-            self.instances.append(self)
-
-    def _classify(self, owner, kind, target, t):
-        """Return the linear cycle at which the guard opens."""
-        delta = (target - self.timer(t)) & self.mask
-        future = 0 < delta < HALF
-        if self.guard_policy == "strict" and not future:
-            raise ModelError(f"context {owner}: {kind} target not in the future half at arm")
-        if self.guard_policy == "compare":
-            future = 0 < delta <= HALF
-        release = t + delta if future else t
-        self.guard_log.append((t, owner, kind, delta, release - t))
-        return release
-
-    def _instruction_ready(self, owner, op, t):
-        task = self.tasks[owner]
-        if (self.guard_policy != "elapsed" and op.kind == "fence"
-                and task.op is op and self.armed[owner] is not op):
-            # First evaluation is the execute slot: classify the target once.
-            op = replace(op, at=self._classify(owner, "fence", self.timer(op.at), t))
-            task.op = self.armed[owner] = op
-        return super()._instruction_ready(owner, op, t)
-
-    def _issue(self, owner, t):
-        task = self.tasks[owner]
-        op = task.op
-        if self.guard_policy != "elapsed" and self.captures[owner] is None and isinstance(op, Level):
-            if not getattr(op, "guarded", True):
-                self.guard_log.append((t, owner, "wait", None, 0))
-                task.op = replace(op, earliest=t)
-            elif self.guard_policy == "compare":
-                target = self.timer(op.earliest)
-                delta = (target - self.timer(t)) & self.mask
-                self.guard_log.append((t, owner, "wait", delta, delta if 0 < delta <= HALF else 0))
-                task.op = replace(op, earliest=t)
-                self.compare_targets[id(task.op)] = target
-            else:
-                task.op = replace(op, earliest=self._classify(owner, "wait", self.timer(op.earliest), t))
-        return super()._issue(owner, t)
-
-    def _open(self, op, t):
-        target = self.compare_targets.get(id(op))
-        return target is None or ((self.timer(t) - target) & self.mask) < HALF
-
-    def _level_match(self, op, t, sampled):
-        return super()._level_match(op, t, sampled) and self._open(op, t)
-
-    def _next_quiet_cycle(self, t, limit):
-        nxt = super()._next_quiet_cycle(t, limit)
-        for capture in self.captures:
-            if capture is None or capture.ready_at is not None or id(capture.op) not in self.compare_targets:
-                continue
-            target = self.compare_targets[id(capture.op)]
-            elapsed = (self.timer(t) - target) & self.mask
-            # Next change of the compare result: open at target, close at target + 2^23.
-            change = (self.mask + 1 - elapsed) if elapsed >= HALF else (HALF - elapsed)
-            nxt = min(nxt, max(t + 1, t + change))
-        return nxt
-
-
 def guard_class(base, policy):
-    return type(f"{policy.title()}{base.__name__}", (ModularGuards, base),
-                {"guard_policy": policy, "instances": []})
+    bases = (base,) if issubclass(base, ModularGuards) else (ModularGuards, base)
+    return type(f"{policy.title()}{base.__name__}", bases, {"guard_policy": policy, "instances": []})
 
 
 def digest(machine):

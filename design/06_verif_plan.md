@@ -328,6 +328,7 @@ Save different observation times in the two contexts. Delay a consume, then chec
 Check mask, values and enables from each drive format. Include pad 7 in both shift positions and reject duplicate pins, an empty vector mask and nonzero reserved bits. Block a shift request, then accept it and check its register shifts once. In a separate trial, reject the retry and check the register stays unchanged.
 Run `host_get` on empty ingress and `host_put` on full egress. Check that the other context can issue. Release each stall and check for one transfer without refetch. A blocked read must not change its destination. A blocked write must retain its source word.
 Check `edge_delta` across wrap and with an interval greater than 65,535 cycles. Check both destination words, timestamp replacement and offset clear. Inject an invalid saved time or destination and confirm no arm request. Reject an out-of-range interval without a partial register write. Confirm that one context cannot replace the other's timestamp.
+Arm a `fence` with `delta` = 0, 1, `2^23−1`, `2^23` and `2^24−1` (CHG-007). Pass if only 1 and `2^23−1` wait, each retires on `cycle == target`, and no case faults. Repeat across counter wrap. Stall the context after its guard opens and check it still retires. Check that both contexts classify their own targets.
 
 ### TEST-UNIT-002 — Registered fetch and image bounds
 - Status: planned
@@ -352,6 +353,7 @@ With one slot free, admit a full-width mask and retire its mixed values and enab
 - Run: test_capture_slot_ownership
 Arm both contexts and arrange two results on one edge. Cover a transition on the arm edge, a subsequent edge, a level already present, a timed sample across wrap, stalled consumption and an attempted overwrite. Pass if captured values and pre-edge timestamps match the observation rule, only owners consume results, reads never bypass completion, and reset or flush discards all live slots.
 Exercise falling, rising and either-edge arms. Hold a result across counter wrap before consuming it. The result must keep the original observation time, not the consume time.
+Arm a guarded level with a target equal to a later observation edge, an already-passed target, and a target across wrap (CHG-007). The first must match on the target edge, and the passed target on the first edge after arm, without a fault. Hold the level absent for more than `2^23` cycles after the guard opens (reduced width allowed), then apply it. It must match on the next observation edge. An unguarded arm must ignore the target field.
 
 ### TEST-UNIT-005 — Timebase, half range and wrap
 - Status: planned
@@ -360,6 +362,7 @@ Exercise falling, rising and either-edge arms. Hold a result across counter wrap
 - Run: test_cycle_timer_wrap
 Start from reset, run a reduced-width instance through wrap, and exercise the shared deadline rule with deltas 0, 1, half-range minus one, half range and all ones. Pass if the counter advances exactly once per cycle regardless of run state, the first active edge sees zero, and the accepted deltas are exactly the valid future half range.
 Check pre-wrap and post-wrap observations as an interval input to the core. Confirm that resetting or stalling one context does not introduce a second timebase or change the counter's cycle sequence.
+With the same deltas, check the guard classification of CHG-007: only `1` through `2^23−1` are future, while 0 and the past half are reached, not invalid.
 
 ### TEST-UNIT-006 — Pad synchronization and safe drive
 - Status: planned
