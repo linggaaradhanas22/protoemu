@@ -32,7 +32,7 @@ Both bypass variants miss slow setup by several nanoseconds. The bypass multiple
 | Pattern | Last legal edge at D−1 | Older update at D+1 with fault at D | Protocol replays |
 |---|---|---|---|
 | 2 | admitted | suppressed | 124/124 |
-| 7 | lost | no | 124/124 |
+| 7 | lost | no | 124/124 ([log](EVAL-023/v7/replay.json)) |
 | 8 | admitted | no | 124/124 ([log](EVAL-023/v8/replay.json)) |
 | 9 | admitted | no | 124/124 ([log](EVAL-023/v9/replay.json)) |
 
