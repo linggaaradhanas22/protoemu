@@ -376,11 +376,13 @@ Done when: Lingga approves `wait_to` (C2) or keeps host `STOP` as the only recov
 Done when: for each block, check that its record is consistent after CHG-005 to CHG-013, lists its interface, behavior and open items, and has at least one unit TEST that covers it. Produce a short review sheet per block for Lingga (g4-review step 2). Change no agreed record.
 
 ### TASK-050 — Review and agree the seven blocks
-- Status: todo
+- Status: done
 - Owner: Lingga
 - Works on: BLK-CORE, BLK-CAPTURE, BLK-DRIVE, BLK-HOST, BLK-PADS, BLK-PROGRAM, BLK-TIMER
 - Blocked by: TASK-049
 Done when: Lingga has read the [block review sheets](05_microarch/g4-block-review.md) and agreed each block or recorded what to change. When all seven are agreed, run the G4 gate check and ask Lingga to pass G4.
+
+Lingga approved all seven block contracts on 2026-11-22. This did not approve the G4 gate or freeze the ISA encoding.
 
 ### TASK-051 — Full-core timing probe
 - Status: todo

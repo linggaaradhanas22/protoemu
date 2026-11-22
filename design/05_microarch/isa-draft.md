@@ -1,6 +1,6 @@
 # ARCH-B instruction encoding for review
 
-This is the draft encoding for the tested subset, not a release ISA. Lingga approved carrying both timed drive formats forward in [DEC-004](../04_decisions/DEC-004-hybrid-pad-isa.md) and [CHG-004](../changes/CHG-004-hybrid-pad-isa.md). The open instructions below and all block approvals are still pending.
+This is the draft encoding for the tested subset, not a release ISA. Lingga approved carrying both timed drive formats forward in [DEC-004](../04_decisions/DEC-004-hybrid-pad-isa.md) and [CHG-004](../changes/CHG-004-hybrid-pad-isa.md). The block contracts are agreed; the encoding and other items below are not frozen.
 
 ## Traceability to the G2 specification
 

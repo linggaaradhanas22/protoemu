@@ -2,6 +2,8 @@
 
 Prepared in TASK-049 for [g4-review](g4-review.md) step 2. One sheet per block: what is settled, what this review fixed, how the unit test covers it, and what stays open. Gate G4 needs every block `agreed` and each with a unit test; the checker reports no other open point. Only Lingga agrees a block.
 
+Lingga agreed all seven block contracts in TASK-050 on 2026-11-22. The open implementation and physical checks below still apply.
+
 "Open" items are listed in two kinds. **Before RTL** items do not block agreeing the block's behavior and interfaces, but must be closed in G5. **Tracked separately** items are physical checks (g4-review step 3) that do not gate G4.
 
 For the order of events and handoffs, see the [chip sequence and block drill-downs](sequences.md).

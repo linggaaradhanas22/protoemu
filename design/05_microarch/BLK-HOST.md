@@ -1,5 +1,5 @@
 # BLK-HOST — Loader and run control
-- Status: draft
+- Status: agreed
 - Traces to: DEC-001, SPEC-HOST-001, SPEC-RST-001, SPEC-RST-002, SPEC-PROG-001
 
 ## Purpose

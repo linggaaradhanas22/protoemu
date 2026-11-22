@@ -1,5 +1,5 @@
 # BLK-DRIVE — Timed output queue
-- Status: draft
+- Status: agreed
 - Traces to: DEC-001, SPEC-UART-001, SPEC-SPI-001, SPEC-I2C-001, REQ-PROTO-004
 
 ## Purpose

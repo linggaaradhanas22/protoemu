@@ -1,5 +1,5 @@
 # BLK-CAPTURE — Context-owned input capture
-- Status: draft
+- Status: agreed
 - Traces to: DEC-001, SPEC-UART-002, SPEC-SPI-001, SPEC-I2C-003, SPEC-PROG-003, REQ-PROTO-004
 
 ## Purpose

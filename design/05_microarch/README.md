@@ -1,6 +1,6 @@
 # ARCH-B microarchitecture
 
-G4 draft for review. [DEC-001](../04_decisions/DEC-001-architecture.md) chooses a shared instruction store and issue path with independent timed I/O. It does not freeze these interfaces or the ISA.
+Lingga agreed the G4 block contracts in TASK-050. [DEC-001](../04_decisions/DEC-001-architecture.md) chooses a shared instruction store and issue path with independent timed I/O. The ISA encoding is still provisional.
 
 [G4 review package](g4-review.md) · [Draft ISA and open instructions](isa-draft.md) · [Chip and block sequences](sequences.md)
 

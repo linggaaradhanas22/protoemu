@@ -380,3 +380,10 @@ Results: All eight diagrams passed structural validation with no warnings. Check
 AI vs human: Lingga approved the documentation work and asked for chip and block levels. OpenCode chose how to split the sequence views and wrote the ISA traceability table. Lingga has not agreed the blocks.
 Problems: The first layout triggered false overlap warnings where phase bands crossed lifelines. A separate annotation layer removed those warnings. Shortened a note that ran past its band.
 Next: TASK-050, Lingga reviews and agrees the blocks; TASK-051, full-core timing probe.
+
+## 2026-11-22: Lingga + OpenCode (TASK-050)
+Did: Recorded Lingga's approval of all seven block contracts.
+Results: The seven block records are agreed. The ISA encoding and the formal G4 gate remain open.
+AI vs human: Lingga approved TASK-050 and asked OpenCode to run TASK-051. OpenCode updated the records without changing behavior or marking G4 passed.
+Problems: The full-core timing and area check is still outstanding.
+Next: Run TASK-051 and present the G4 gate check for approval.

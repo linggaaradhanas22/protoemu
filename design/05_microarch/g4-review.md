@@ -2,7 +2,7 @@
 
 **Approved for the draft:** [DEC-004](../04_decisions/DEC-004-hybrid-pad-isa.md) and [CHG-004](../changes/CHG-004-hybrid-pad-isa.md) carry both timed pad formats forward. Use compact instructions for one or two pads and a vector instruction for a wider update. Both feed the same four-entry queue. See the [draft instruction fields](isa-draft.md).
 
-This is not a request to approve G4. The blocks below remain draft. This decision does not freeze a binary interface for software or authorize production RTL.
+Lingga approved the block contracts in TASK-050 on 2026-11-22. That approval does not freeze a binary interface or pass G4.
 
 ## What the evidence supports
 

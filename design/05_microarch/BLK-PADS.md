@@ -1,5 +1,5 @@
 # BLK-PADS — Tiny Tapeout pad adapter
-- Status: draft
+- Status: agreed
 - Traces to: DEC-001, REQ-RULE-003, REQ-RULE-007, REQ-PROTO-004, SPEC-RST-001, SPEC-I2C-001
 
 ## Purpose

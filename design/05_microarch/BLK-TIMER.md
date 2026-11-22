@@ -1,5 +1,5 @@
 # BLK-TIMER — Cycle timebase
-- Status: draft
+- Status: agreed
 - Traces to: DEC-001, SPEC-PHY-001, SPEC-RST-001, SPEC-I2C-003, SPEC-PROG-003
 
 ## Purpose

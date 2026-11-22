@@ -1,5 +1,5 @@
 # BLK-CORE — Shared issue core
-- Status: draft
+- Status: agreed
 - Traces to: DEC-001, SPEC-PROG-001, SPEC-PROG-002, SPEC-PROG-003, REQ-PROTO-004
 
 ## Purpose
