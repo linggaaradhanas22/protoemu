@@ -12,6 +12,8 @@ Provide a common cycle number for scheduling output changes and timestamping inp
 
 [Editable draw.io source](diagrams/blk-timer_v1.drawio). Solid arrows carry data, dashed arrows control and status; blue blocks are clocked at 60 MHz, grey blocks are combinational, white blocks are neighbours.
 
+[Timebase sequence](sequences.md#timebase)
+
 ## Interface
 
 | Signal | Dir | Width | Meaning |

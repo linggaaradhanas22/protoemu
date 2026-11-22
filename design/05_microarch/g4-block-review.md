@@ -4,6 +4,8 @@ Prepared in TASK-049 for [g4-review](g4-review.md) step 2. One sheet per block: 
 
 "Open" items are listed in two kinds. **Before RTL** items do not block agreeing the block's behavior and interfaces, but must be closed in G5. **Tracked separately** items are physical checks (g4-review step 3) that do not gate G4.
 
+For the order of events and handoffs, see the [chip sequence and block drill-downs](sequences.md).
+
 | Block | Recommendation | Unit test | Area evidence (planning allowance) |
 |---|---|---|---|
 | [BLK-TIMER](BLK-TIMER.md) | Agree | TEST-UNIT-005 | Not measured (0.025 mm²) |

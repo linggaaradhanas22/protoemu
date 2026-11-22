@@ -388,3 +388,9 @@ Done when: Lingga has read the [block review sheets](05_microarch/g4-block-revie
 - Works on: BLK-CORE, BLK-PROGRAM, BLK-DRIVE, BLK-CAPTURE
 - Blocked by: TASK-049
 Done when: synthesize and place a probe of the core with the saved-request path, the real register file and the timed-I/O interfaces, and report setup, hold and area against 60 MHz (g4-review step 3). Tracked separately from G4 agreement.
+
+### TASK-052 — Document ISA traceability and system sequences
+- Status: done
+- Owner: agent
+- Works on: BLK-CORE, BLK-PROGRAM, BLK-DRIVE, BLK-CAPTURE, BLK-TIMER, BLK-PADS, BLK-HOST
+Done when: the ISA draft links its programming model to the relevant G2 specs, and an editable chip-level sequence links to one detailed sequence per block. Cross-link the existing block records and structural diagrams. Do not change any behavior or approval status.

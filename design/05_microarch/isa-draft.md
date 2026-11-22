@@ -2,6 +2,22 @@
 
 This is the draft encoding for the tested subset, not a release ISA. Lingga approved carrying both timed drive formats forward in [DEC-004](../04_decisions/DEC-004-hybrid-pad-isa.md) and [CHG-004](../changes/CHG-004-hybrid-pad-isa.md). The open instructions below and all block approvals are still pending.
 
+## Traceability to the G2 specification
+
+The main trace runs through [BLK-CORE](BLK-CORE.md). The G2 specs define behavior visible to the host or on the pins. The instruction names, bit fields and register layout below are ARCH-B design choices, not G2 requirements.
+
+| G2 spec | What the ISA contributes |
+|---|---|
+| [`SPEC-PROG-001`](../02_spec.md#spec-prog-001--build-the-baseline-program-images): build loadable baseline programs | A 24-bit word format for the assembler and a programming model for UART TX/RX, SPI and I2C. The released toolchain is still open. |
+| [`SPEC-PROG-002`](../02_spec.md#spec-prog-002--protocol-selected-after-rtl-freeze): support a new protocol after RTL freeze | Branches, arithmetic, timed I/O and generic host payload let the loaded program make protocol decisions. The post-freeze demonstration has not run. |
+| [`SPEC-PROG-003`](../02_spec.md#spec-prog-003--non-target-benchmark-suite): run WS2812, 1-Wire and RC5 on the same design | Timed drive and sampling cover pulse generation and 1-Wire reads. `edge_save` and `edge_delta` give the RC5 program edge times and intervals. |
+| [`SPEC-UART-001`](../02_spec.md#spec-uart-001--uart-transmit-timing) and [`002`](../02_spec.md#spec-uart-002--uart-receive-tolerance) | LSB-first `shift_pin` schedules outgoing bits. A saved observation time and `cap` let the receiver place samples relative to the start bit. |
+| [`SPEC-SPI-001`](../02_spec.md#spec-spi-001--spi-controller-modes-and-clock-rate) | `shift_pair`, timed drive and `cap` let the program coordinate data transitions and samples with the selected SPI mode. |
+| [`SPEC-I2C-001`](../02_spec.md#spec-i2c-001--i2c-clock-and-bus-timing), [`002`](../02_spec.md#spec-i2c-002--i2c-transfers-and-acknack) and [`003`](../02_spec.md#spec-i2c-003--i2c-target-clock-stretching) | Timed pad updates work with the pad adapter's open-drain mode. Sampling and branches handle ACK/NACK. Guarded waits let the program use the observed SCL rise as its timing reference. `wait_to` also lets software handle a stuck line; the spec requires bounded stretch support, not that opcode or its timeout policy. |
+| [`SPEC-HOST-001`](../02_spec.md#spec-host-001--load-and-start-from-the-rp2350): load and start complete images | The loader delivers 24-bit words to [BLK-PROGRAM](BLK-PROGRAM.md). [BLK-HOST](BLK-HOST.md) defines the SPI framing and `COMMIT`/`START` rules, which are outside the ISA. `host_get` and `host_put` move runtime payload, not program words. |
+
+[EVAL-016](../evals/EVAL-016-program-suite.md) gives model evidence for the baseline and non-target programs. It is not RTL verification. See the [system and block sequences](sequences.md) for the fetch, timed I/O and host handoffs.
+
 ## Word layout
 
 Each instruction is one 24-bit word in little-endian byte order. Bits `[4:0]` hold the opcode. In the table, the first operand starts at bit 5, and each next operand starts above the previous one. Require zero in unused upper bits. Pin indices 0 through 7 refer to `uio[0]` through `uio[7]`. A branch or call target is a word index, not a byte address.

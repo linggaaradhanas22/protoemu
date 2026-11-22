@@ -12,6 +12,8 @@ Synchronize external inputs and drive protocol pads from registers. Map logical 
 
 [Editable draw.io source](diagrams/blk-pads_v1.drawio). Solid arrows carry data, dashed arrows control and status; blue blocks are clocked at 60 MHz, grey blocks are combinational, white blocks are neighbours.
 
+[Pad adapter sequence](sequences.md#pad-adapter)
+
 ## Interface
 
 | Signal group | Dir | Width | Meaning |

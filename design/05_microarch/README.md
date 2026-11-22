@@ -2,7 +2,7 @@
 
 G4 draft for review. [DEC-001](../04_decisions/DEC-001-architecture.md) chooses a shared instruction store and issue path with independent timed I/O. It does not freeze these interfaces or the ISA.
 
-[G4 review package](g4-review.md) · [Draft ISA and open instructions](isa-draft.md)
+[G4 review package](g4-review.md) · [Draft ISA and open instructions](isa-draft.md) · [Chip and block sequences](sequences.md)
 
 [Editable draw.io overview](diagrams/arch-b_v2.drawio) · [Project diagram conventions](diagrams/README.md)
 

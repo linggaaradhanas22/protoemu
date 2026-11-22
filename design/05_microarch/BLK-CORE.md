@@ -12,6 +12,8 @@ Run two contexts through one fetch/execute path. Each context owns its PC, regis
 
 [Editable draw.io source](diagrams/blk-core_v1.drawio). Solid arrows carry data, dashed arrows control and status; blue blocks are clocked at 60 MHz, grey blocks are combinational, white blocks are neighbours. The core's pipeline timing and final opcodes are still open; the drawing may change after the full-core timing check.
 
+[Issue-core sequence](sequences.md#issue-core)
+
 ## Interface
 
 | Signal group | Dir | Width | Meaning |

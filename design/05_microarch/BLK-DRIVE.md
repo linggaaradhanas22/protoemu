@@ -12,6 +12,8 @@ Hold accepted masked pad updates until their deadlines. Retire updates without u
 
 [Editable draw.io source](diagrams/blk-drive_v1.drawio). Solid arrows carry data, dashed arrows control and status; blue blocks are clocked at 60 MHz, grey blocks are combinational, white blocks are neighbours.
 
+[Timed output sequence](sequences.md#timed-output)
+
 ## Interface
 
 | Signal group | Dir | Width | Meaning |

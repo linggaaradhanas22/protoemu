@@ -373,3 +373,10 @@ Results: Seven `blk-*_v1` diagram pairs (SVG 20–49 KB, vector text only); afte
 AI vs human: Lingga asked for the review and for diagrams if the implementations were fixed, and redirected Claude to the drawio skill. Claude judged all seven structures fixed enough to draw, marking the core's pipeline as subject to the timing check, and recommends agreeing all seven blocks. Lingga has not agreed any block yet.
 Problems: The first diagram pass had edges through blocks, crossings and labels on the enclosure; a second layout pass fixed them. The review sheet's first headings duplicated block IDs and broke the trace check; they were renamed.
 Next: TASK-050, Lingga reviews and agrees the blocks; TASK-051, full-core timing probe.
+
+## 2026-11-22: Lingga + OpenCode (TASK-052)
+Did: Added the G2 spec links to the ISA draft and distinguished required behavior from draft instruction choices. Made one editable draw.io book with a chip sequence and seven linked block sequences. Exported SVG views and linked them from the block records, G4 review sheets and micro-architecture index.
+Results: All eight diagrams passed structural validation with no warnings. Checked draft renders, all eight SVG exports, 69 Markdown links and 36 internal page targets. No RTL, model, block contract or approval status changed.
+AI vs human: Lingga approved the documentation work and asked for chip and block levels. OpenCode chose how to split the sequence views and wrote the ISA traceability table. Lingga has not agreed the blocks.
+Problems: The first layout triggered false overlap warnings where phase bands crossed lifelines. A separate annotation layer removed those warnings. Shortened a note that ran past its band.
+Next: TASK-050, Lingga reviews and agrees the blocks; TASK-051, full-core timing probe.

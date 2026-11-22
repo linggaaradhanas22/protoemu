@@ -1,0 +1,882 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="drawio">
+  <diagram id="seq-chip" name="ARCH-B | Chip sequence">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1780" pageHeight="2070" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="notes" value="Phase captions and notes" parent="0" />
+        <mxCell id="rp" value="RP2350" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#ffffff;strokeColor=#202124;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="100" height="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="pads" value="BLK-PADS" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="100" height="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="host" value="BLK-HOST" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="100" height="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="program" value="BLK-PROGRAM" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="640" y="40" width="100" height="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="core" value="BLK-CORE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="840" y="40" width="100" height="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="timer" value="BLK-TIMER" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="40" width="100" height="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="drive" value="BLK-DRIVE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="40" width="100" height="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="capture" value="BLK-CAPTURE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="40" width="100" height="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="peer" value="Protocol peer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#ffffff;strokeColor=#202124;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="40" width="100" height="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="note0" value="01   Load and commit" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="110" width="1700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="BEGIN / DATA / COMMIT bits" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.0761;entryX=0.5;entryY=0.0761;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="rp" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="Synchronized host inputs" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.1015;entryX=0.5;entryY=0.1015;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m3" value="Tentative DATA words" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.1269;entryX=0.5;entryY=0.1269;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="program">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" value="COMMIT: publish valid image" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.1523;entryX=0.5;entryY=0.1523;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="program">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m5" value="READY" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.1777;entryX=0.5;entryY=0.1777;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6" value="Registered READY" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.203;entryX=0.5;entryY=0.203;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="rp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m7" value="COMMIT reply bits" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.2284;entryX=0.5;entryY=0.2284;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m8" value="COMMIT reply on MISO" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.2538;entryX=0.5;entryY=0.2538;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="rp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note9" value="02   Start and fetch" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="570" width="1700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m10" value="START request bits" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.3096;entryX=0.5;entryY=0.3096;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="rp" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m11" value="Synchronized host inputs" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.335;entryX=0.5;entryY=0.335;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m12" value="Enable fetch" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.3604;entryX=0.5;entryY=0.3604;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="program">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m13" value="Start enabled contexts" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.3858;entryX=0.5;entryY=0.3858;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m14" value="Fetch PC" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.4112;entryX=0.5;entryY=0.4112;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="program">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m15" value="Registered instruction word" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.4365;entryX=0.5;entryY=0.4365;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="program" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note16" value="03   Timed I/O: example exchange. Issue, deadline checks and input observation can overlap." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="930" width="1700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m17" value="Pre-edge cycle" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.4924;entryX=0.5;entryY=0.4924;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="timer" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m18" value="Deadline, mask, values and enables" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.5178;entryX=0.5;entryY=0.5178;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="drive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m19" value="Arm an input observation" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.5431;entryX=0.5;entryY=0.5431;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="capture">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m20" value="Pre-edge cycle" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.5685;entryX=0.5;entryY=0.5685;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="timer" target="drive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m21" value="Due masked update" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.5939;entryX=0.5;entryY=0.5939;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="drive" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m22" value="Registered pad change" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.6193;entryX=0.5;entryY=0.6193;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="peer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m23" value="Peer response" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.6447;entryX=0.5;entryY=0.6447;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="peer" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m24" value="Synchronized pin sample" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.6701;entryX=0.5;entryY=0.6701;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="capture">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m25" value="Pre-edge cycle" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.6954;entryX=0.5;entryY=0.6954;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="timer" target="capture">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m26" value="Result and observation time on consume" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.7208;entryX=0.5;entryY=0.7208;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="capture" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note27" value="04   Read back: the host can also drain payload while running" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="1490" width="1700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m28" value="host_put: result word" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.7766;entryX=0.5;entryY=0.7766;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m29" value="DONE after all enabled contexts halt and the drive queue drains" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.802;entryX=0.5;entryY=0.802;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m30" value="READN request bits" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.8274;entryX=0.5;entryY=0.8274;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="rp" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m31" value="Synchronized host inputs" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.8528;entryX=0.5;entryY=0.8528;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m32" value="READY" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.8782;entryX=0.5;entryY=0.8782;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m33" value="Registered READY" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.9036;entryX=0.5;entryY=0.9036;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="rp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m34" value="Result reply bits" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.9289;entryX=0.5;entryY=0.9289;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m35" value="Result words on MISO" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.9543;entryX=0.5;entryY=0.9543;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="rp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject id="open-pads" label="BLK-PADS" link="data:page/id,seq-pads">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="pads">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-host" label="BLK-HOST" link="data:page/id,seq-host">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="host">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-program" label="BLK-PROGRAM" link="data:page/id,seq-program">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="program">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-core" label="BLK-CORE" link="data:page/id,seq-core">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="core">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-timer" label="BLK-TIMER" link="data:page/id,seq-timer">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="timer">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-drive" label="BLK-DRIVE" link="data:page/id,seq-drive">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="drive">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-capture" label="BLK-CAPTURE" link="data:page/id,seq-capture">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="capture">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="title" value="ARCH-B | Chip sequence" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="4" width="550" height="30" />
+        </mxCell>
+        <mxCell id="key" value="Read top to bottom. Solid: data. Dashed: control / status. Blue: ASIC blocks at 60 MHz." style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="2018" width="1700" height="26" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq-host" name="BLK-HOST | Loader and run control">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="notes" value="Phase captions and notes" parent="0" />
+        <mxCell id="rp" value="RP2350" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#ffffff;strokeColor=#202124;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="100" height="1700" as="geometry" />
+        </mxCell>
+        <mxCell id="pads" value="BLK-PADS" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="100" height="1700" as="geometry" />
+        </mxCell>
+        <mxCell id="host" value="BLK-HOST" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="100" height="1700" as="geometry" />
+        </mxCell>
+        <mxCell id="program" value="BLK-PROGRAM" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="640" y="40" width="100" height="1700" as="geometry" />
+        </mxCell>
+        <mxCell id="core" value="BLK-CORE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="840" y="40" width="100" height="1700" as="geometry" />
+        </mxCell>
+        <mxCell id="note0" value="01   Load: each command is a separate SPI request with a separate reply frame" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="110" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="BEGIN / DATA / COMMIT frame bits" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.0882;entryX=0.5;entryY=0.0882;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="rp" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="Synchronized CS, SCK and MOSI" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.1176;entryX=0.5;entryY=0.1176;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m3" value="DATA: stream tentative words while halted" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.1471;entryX=0.5;entryY=0.1471;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="program">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note4" value="At CS close: check length and CRC. A bad load leaves the image invalid." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="320" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m5" value="COMMIT: publish valid image; do not start" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.2118;entryX=0.5;entryY=0.2118;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="program">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6" value="Assert READY for the pending reply" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.2412;entryX=0.5;entryY=0.2412;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m7" value="Registered READY" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.2706;entryX=0.5;entryY=0.2706;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="rp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m8" value="Reply bits" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.3;entryX=0.5;entryY=0.3;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m9" value="Reply on MISO" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.3294;entryX=0.5;entryY=0.3294;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="rp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note10" value="02   Run: START needs a committed image and HALTED state; preloaded ingress stays" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="630" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m11" value="START frame bits" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.3941;entryX=0.5;entryY=0.3941;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="rp" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m12" value="Synchronized host inputs" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.4235;entryX=0.5;entryY=0.4235;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m13" value="Entry PCs, enables and ownership masks" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.4529;entryX=0.5;entryY=0.4529;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m14" value="Start enabled contexts together" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.4824;entryX=0.5;entryY=0.4824;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m15" value="Ingress word on host_get" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.5118;entryX=0.5;entryY=0.5118;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m16" value="Egress word on host_put" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.5412;entryX=0.5;entryY=0.5412;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note17" value="FIFOs use pre-edge counts: an enqueue into an empty FIFO cannot satisfy a same-edge read." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="990" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note18" value="03   Read results and stop" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="1050" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m19" value="READN frame bits" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.6412;entryX=0.5;entryY=0.6412;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="rp" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m20" value="Synchronized host inputs" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.6706;entryX=0.5;entryY=0.6706;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m21" value="Assert READY" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.7;entryX=0.5;entryY=0.7;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m22" value="Registered READY" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.7294;entryX=0.5;entryY=0.7294;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="rp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m23" value="READN reply bits" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.7588;entryX=0.5;entryY=0.7588;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m24" value="Up to four words on MISO" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.7882;entryX=0.5;entryY=0.7882;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="rp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note25" value="Pop READN words only on exact reply close. An interrupted reply keeps the same words." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="1410" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m26" value="STOP frame bits" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.8529;entryX=0.5;entryY=0.8529;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="rp" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m27" value="Synchronized host inputs" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.8824;entryX=0.5;entryY=0.8824;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m28" value="Safe on the edge after validated STOP close" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.9118;entryX=0.5;entryY=0.9118;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note29" value="That edge also flushes timed work and FIFOs and invalidates the image. Acknowledge after it." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="1620" width="900" height="30" as="geometry" />
+        </mxCell>
+        <UserObject id="open-pads" label="BLK-PADS" link="data:page/id,seq-pads">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="pads">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-program" label="BLK-PROGRAM" link="data:page/id,seq-program">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="program">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-core" label="BLK-CORE" link="data:page/id,seq-core">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="core">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="title" value="BLK-HOST | Loader and run control" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="4" width="550" height="30" />
+        </mxCell>
+        <UserObject id="back" label="Back to chip sequence" link="data:page/id,seq-chip">
+          <mxCell style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;fontStyle=4;" vertex="1" parent="1">
+            <mxGeometry as="geometry" x="795" y="5" width="145" height="25" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="key" value="Read top to bottom. Solid: data. Dashed: control / status. Blue: ASIC blocks at 60 MHz." style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1748" width="900" height="26" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq-program" name="BLK-PROGRAM | Shared program store">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="580" pageHeight="880" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="notes" value="Phase captions and notes" parent="0" />
+        <mxCell id="host" value="BLK-HOST" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="100" height="780" as="geometry" />
+        </mxCell>
+        <mxCell id="program" value="BLK-PROGRAM" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="100" height="780" as="geometry" />
+        </mxCell>
+        <mxCell id="core" value="BLK-CORE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="100" height="780" as="geometry" />
+        </mxCell>
+        <mxCell id="note0" value="01   Load while halted (fetch disabled)" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="110" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="BEGIN: image invalid" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.1923;entryX=0.5;entryY=0.1923;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="program">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="DATA: index and 24-bit word" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.2564;entryX=0.5;entryY=0.2564;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="program">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note3" value="Write in place. Fetch cannot see tentative words, even after bad DATA." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="270" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" value="COMMIT: image valid; fetch still disabled" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.3974;entryX=0.5;entryY=0.3974;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="program">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note5" value="02   Registered read after START" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="380" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m6" value="Running: enable fetch" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.5385;entryX=0.5;entryY=0.5385;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="program">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m7" value="Fetch PC on edge n" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.6026;entryX=0.5;entryY=0.6026;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="program">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note8" value="Check PC against the committed word count. No writes during run." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="540" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m9" value="In range: registered word for execute on n+1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.7436;entryX=0.5;entryY=0.7436;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="program" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m10" value="Otherwise: registered bounds fault (no word)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.8077;entryX=0.5;entryY=0.8077;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="program" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note11" value="Reset clears response validity and hides old words; it does not clear the array." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="700" width="500" height="30" as="geometry" />
+        </mxCell>
+        <UserObject id="open-host" label="BLK-HOST" link="data:page/id,seq-host">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="host">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-core" label="BLK-CORE" link="data:page/id,seq-core">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="core">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="title" value="BLK-PROGRAM | Shared program store" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="4" width="345" height="30" />
+        </mxCell>
+        <UserObject id="back" label="Back to chip sequence" link="data:page/id,seq-chip">
+          <mxCell style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;fontStyle=4;" vertex="1" parent="1">
+            <mxGeometry as="geometry" x="395" y="5" width="145" height="25" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="key" value="Read top to bottom. Solid: data. Dashed: control / status. Blue: ASIC blocks at 60 MHz." style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="828" width="500" height="26" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq-core" name="BLK-CORE | Shared issue core">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="1270" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="notes" value="Phase captions and notes" parent="0" />
+        <mxCell id="host" value="BLK-HOST" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="100" height="1170" as="geometry" />
+        </mxCell>
+        <mxCell id="program" value="BLK-PROGRAM" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="100" height="1170" as="geometry" />
+        </mxCell>
+        <mxCell id="core" value="BLK-CORE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="100" height="1170" as="geometry" />
+        </mxCell>
+        <mxCell id="timer" value="BLK-TIMER" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="640" y="40" width="100" height="1170" as="geometry" />
+        </mxCell>
+        <mxCell id="drive" value="BLK-DRIVE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="840" y="40" width="100" height="1170" as="geometry" />
+        </mxCell>
+        <mxCell id="note0" value="01   Fetch, then execute" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="110" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="Start enabled contexts at committed PCs" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.1282;entryX=0.5;entryY=0.1282;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note2" value="At a free issue boundary, choose a runnable context by round robin and retain its fetch tag." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="220" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m3" value="Selected context's fetch PC" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.2222;entryX=0.5;entryY=0.2222;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="program">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" value="Registered instruction word" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.265;entryX=0.5;entryY=0.265;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="program" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m5" value="Pre-edge cycle for execute" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.3077;entryX=0.5;entryY=0.3077;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="timer" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note6" value="02   Example: one timed output instruction" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="430" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m7" value="Absolute deadline and masked update" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.4017;entryX=0.5;entryY=0.4017;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="drive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m8" value="Ready, blocked or reject" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.4444;entryX=0.5;entryY=0.4444;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="drive" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note9" value="Ready: retire once. Update the shift register only on admission." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="590" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note10" value="Blocked: save decoded request and operands. The other context can issue while this one waits." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="650" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m11" value="Retry same deadline and data without refetch" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.5897;entryX=0.5;entryY=0.5897;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="drive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m12" value="Ready, still blocked or reject" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.6325;entryX=0.5;entryY=0.6325;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="drive" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note13" value="Capture and payload stalls use the same saved-operation approach." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="810" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note14" value="03   End paths (alternatives)" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="870" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note15" value="HALT ends just that context; admitted pad updates still retire." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="930" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m16" value="DONE when all enabled contexts halt and drive is empty" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.8291;entryX=0.5;entryY=0.8291;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note17" value="Fault F: do not retire the bad instruction. Accept no other issue on F. Due I/O still acts on F." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="1040" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m18" value="FAULTED and fault record; F+1 is the global safe edge" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.9231;entryX=0.5;entryY=0.9231;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject id="open-host" label="BLK-HOST" link="data:page/id,seq-host">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="host">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-program" label="BLK-PROGRAM" link="data:page/id,seq-program">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="program">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-timer" label="BLK-TIMER" link="data:page/id,seq-timer">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="timer">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-drive" label="BLK-DRIVE" link="data:page/id,seq-drive">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="drive">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="title" value="BLK-CORE | Shared issue core" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="4" width="550" height="30" />
+        </mxCell>
+        <UserObject id="back" label="Back to chip sequence" link="data:page/id,seq-chip">
+          <mxCell style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;fontStyle=4;" vertex="1" parent="1">
+            <mxGeometry as="geometry" x="795" y="5" width="145" height="25" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="key" value="Read top to bottom. Solid: data. Dashed: control / status. Blue: ASIC blocks at 60 MHz." style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1218" width="900" height="26" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq-timer" name="BLK-TIMER | Shared cycle timebase">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="notes" value="Phase captions and notes" parent="0" />
+        <mxCell id="clk" value="Board clock" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#ffffff;strokeColor=#202124;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="100" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="timer" value="BLK-TIMER" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="100" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="core" value="BLK-CORE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="100" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="drive" value="BLK-DRIVE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="640" y="40" width="100" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="capture" value="BLK-CAPTURE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="840" y="40" width="100" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="note0" value="01   Reset sets the counter to zero" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="110" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="60 MHz rising edge" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.2;entryX=0.5;entryY=0.2;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="clk" target="timer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note2" value="02   On each active edge: consumers read the same pre-edge C in parallel" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="220" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m3" value="C for issue and deadline calculation" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.3467;entryX=0.5;entryY=0.3467;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="timer" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" value="C for admission and due comparison" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.4133;entryX=0.5;entryY=0.4133;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="timer" target="drive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m5" value="C for sample comparison and observation timestamp" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.48;entryX=0.5;entryY=0.48;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="timer" target="capture">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note6" value="On that edge the counter also registers (C + 1) mod 2^24. START, HALT and fault do not rewind it." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="430" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note7" value="03   Consumers use C in two ways" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="490" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note8" value="New drive or timed sample: accept only a positive delta less than 2^23. Accepted work fires on equality." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="550" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note9" value="Guard: classify once. A future target waits for equality; zero or a past-half delta opens the guard." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="610" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note10" value="The consumer keeps the guard open. The timer sends only a number, not a trigger or a clock." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="670" width="900" height="30" as="geometry" />
+        </mxCell>
+        <UserObject id="open-core" label="BLK-CORE" link="data:page/id,seq-core">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="core">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-drive" label="BLK-DRIVE" link="data:page/id,seq-drive">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="drive">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-capture" label="BLK-CAPTURE" link="data:page/id,seq-capture">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="capture">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="title" value="BLK-TIMER | Shared cycle timebase" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="4" width="550" height="30" />
+        </mxCell>
+        <UserObject id="back" label="Back to chip sequence" link="data:page/id,seq-chip">
+          <mxCell style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;fontStyle=4;" vertex="1" parent="1">
+            <mxGeometry as="geometry" x="795" y="5" width="145" height="25" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="key" value="Read top to bottom. Solid: data. Dashed: control / status. Blue: ASIC blocks at 60 MHz." style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="798" width="900" height="26" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq-drive" name="BLK-DRIVE | Timed output queue">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="890" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="notes" value="Phase captions and notes" parent="0" />
+        <mxCell id="core" value="BLK-CORE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="100" height="790" as="geometry" />
+        </mxCell>
+        <mxCell id="timer" value="BLK-TIMER" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="100" height="790" as="geometry" />
+        </mxCell>
+        <mxCell id="drive" value="BLK-DRIVE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="100" height="790" as="geometry" />
+        </mxCell>
+        <mxCell id="pads" value="BLK-PADS" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="640" y="40" width="100" height="790" as="geometry" />
+        </mxCell>
+        <mxCell id="host" value="BLK-HOST" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="840" y="40" width="100" height="790" as="geometry" />
+        </mxCell>
+        <mxCell id="note0" value="01   Admit or block a request" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="110" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="Context, deadline, mask, values and enables" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.1899;entryX=0.5;entryY=0.1899;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="drive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="Pre-edge cycle" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.2532;entryX=0.5;entryY=0.2532;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="timer" target="drive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note3" value="Check mask, ownership, same-deadline overlap and the future half-range before reporting full." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="270" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" value="Ready: enqueue in one slot; reject: fault; neither: retry" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.3924;entryX=0.5;entryY=0.3924;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="drive" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note5" value="02   Fire on the deadline edge, regardless of core activity" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="380" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m6" value="Pre-edge cycle equals a stored deadline" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.5316;entryX=0.5;entryY=0.5316;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="timer" target="drive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note7" value="Merge disjoint due masks and retire every due slot whole. Reuse a retiring slot for a future event." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="490" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m8" value="Merged mask, values and enables on that edge" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.6709;entryX=0.5;entryY=0.6709;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="drive" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note9" value="03   Fault and flush (alternative to continuing)" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="600" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note10" value="Due updates still retire on fault edge F." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="660" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m11" value="Flush on F+1 clears remaining entries and suppresses due updates" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.8861;entryX=0.5;entryY=0.8861;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="drive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject id="open-core" label="BLK-CORE" link="data:page/id,seq-core">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="core">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-timer" label="BLK-TIMER" link="data:page/id,seq-timer">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="timer">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-pads" label="BLK-PADS" link="data:page/id,seq-pads">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="pads">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-host" label="BLK-HOST" link="data:page/id,seq-host">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="host">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="title" value="BLK-DRIVE | Timed output queue" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="4" width="550" height="30" />
+        </mxCell>
+        <UserObject id="back" label="Back to chip sequence" link="data:page/id,seq-chip">
+          <mxCell style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;fontStyle=4;" vertex="1" parent="1">
+            <mxGeometry as="geometry" x="795" y="5" width="145" height="25" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="key" value="Read top to bottom. Solid: data. Dashed: control / status. Blue: ASIC blocks at 60 MHz." style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="838" width="900" height="26" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq-capture" name="BLK-CAPTURE | Context-owned input capture">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="780" pageHeight="990" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="notes" value="Phase captions and notes" parent="0" />
+        <mxCell id="pads" value="BLK-PADS" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="100" height="890" as="geometry" />
+        </mxCell>
+        <mxCell id="timer" value="BLK-TIMER" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="100" height="890" as="geometry" />
+        </mxCell>
+        <mxCell id="capture" value="BLK-CAPTURE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="100" height="890" as="geometry" />
+        </mxCell>
+        <mxCell id="core" value="BLK-CORE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="640" y="40" width="100" height="890" as="geometry" />
+        </mxCell>
+        <mxCell id="note0" value="01   Arm the issuing context's empty slot" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="110" width="700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="Owner, pin, mode and any target or timeout" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.1685;entryX=0.5;entryY=0.1685;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="capture">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="Accept empty slot; reject occupied slot" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.2247;entryX=0.5;entryY=0.2247;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="capture" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note3" value="02   Observe before the decision edge. An edge arm ignores the arm edge itself." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="270" width="700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" value="Second-stage pin_sample" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.3483;entryX=0.5;entryY=0.3483;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="capture">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m5" value="Same pre-edge cycle" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.4045;entryX=0.5;entryY=0.4045;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="timer" target="capture">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note6" value="A sample uses deadline equality. A guarded level wait observes once its guard opens." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="430" width="700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note7" value="A timed guard sets expiry at target + Rt × 64. A matching level wins on the expiry edge." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="490" width="700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note8" value="03   Hold result until the owner consumes it" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="550" width="700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m9" value="Result-ready from the next cycle; no same-edge bypass" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.6629;entryX=0.5;entryY=0.6629;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="capture" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m10" value="Consume owning slot" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.7191;entryX=0.5;entryY=0.7191;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="core" target="capture">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m11" value="Sampled bit and original observation time" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.7753;entryX=0.5;entryY=0.7753;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="capture" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m12" value="Or expired status for a timed wait" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.8315;entryX=0.5;entryY=0.8315;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="capture" target="core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note13" value="Consume frees the slot. Flush clears both slots and suppresses observations on that edge." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="810" width="700" height="30" as="geometry" />
+        </mxCell>
+        <UserObject id="open-pads" label="BLK-PADS" link="data:page/id,seq-pads">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="pads">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-timer" label="BLK-TIMER" link="data:page/id,seq-timer">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="timer">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-core" label="BLK-CORE" link="data:page/id,seq-core">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="core">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="title" value="BLK-CAPTURE | Context-owned input capture" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="4" width="545" height="30" />
+        </mxCell>
+        <UserObject id="back" label="Back to chip sequence" link="data:page/id,seq-chip">
+          <mxCell style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;fontStyle=4;" vertex="1" parent="1">
+            <mxGeometry as="geometry" x="595" y="5" width="145" height="25" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="key" value="Read top to bottom. Solid: data. Dashed: control / status. Blue: ASIC blocks at 60 MHz." style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="938" width="700" height="26" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq-pads" name="BLK-PADS | Tiny Tapeout pad adapter">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1180" pageHeight="1140" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="notes" value="Phase captions and notes" parent="0" />
+        <mxCell id="rp" value="RP2350" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#ffffff;strokeColor=#202124;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="100" height="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="host" value="BLK-HOST" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="100" height="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="pads" value="BLK-PADS" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="100" height="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="capture" value="BLK-CAPTURE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="640" y="40" width="100" height="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="drive" value="BLK-DRIVE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="840" y="40" width="100" height="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="peer" value="Protocol peer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=40;fillColor=#ffffff;strokeColor=#202124;fontStyle=1;fontSize=12;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="40" width="100" height="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="note0" value="01   Sample external inputs continuously" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="110" width="1100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="Raw host CS, SCK and MOSI" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.1442;entryX=0.5;entryY=0.1442;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="rp" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="Raw protocol pin levels" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.1923;entryX=0.5;entryY=0.1923;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="peer" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note3" value="Pass both groups through two flop stages. Forward the second stage, not the asynchronous value." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="270" width="1100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" value="Synchronized host inputs" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.2981;entryX=0.5;entryY=0.2981;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m5" value="Synchronized pin_sample" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.3462;entryX=0.5;entryY=0.3462;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="capture">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note6" value="02   Register outputs" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="430" width="1100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m7" value="Due update: mask, values and output enables" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.4519;entryX=0.5;entryY=0.4519;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="drive" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note8" value="Keep unmasked pads unchanged. On open drain, high or disabled means release; never drive high." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="540" width="1100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m9" value="Registered protocol pad state" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.5577;entryX=0.5;entryY=0.5577;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="peer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m10" value="MISO bit" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.6058;entryX=0.5;entryY=0.6058;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m11" value="READY status" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.6538;entryX=0.5;entryY=0.6538;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m12" value="Registered MISO bit" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=0.7019;entryX=0.5;entryY=0.7019;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="rp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m13" value="Registered READY" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.75;entryX=0.5;entryY=0.75;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="pads" target="rp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note14" value="03   Resolve coincident controls on the output edge" style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#e7eff9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="850" width="1100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m15" value="Safe on STOP or fault cleanup" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;curved=0;rounded=0;exitX=0.5;exitY=0.8558;entryX=0.5;entryY=0.8558;labelBackgroundColor=#ffffff;fontFamily=Helvetica;fontColor=#202124;strokeColor=#293548;fontSize=12;spacingBottom=2;" edge="1" parent="1" source="host" target="pads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note16" value="Priority: reset, deselect, safe, then due update. DONE holds the last pad state." style="rounded=0;html=1;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#202124;fillColor=#f5f5f5;strokeColor=none;fontSize=12;" vertex="1" parent="notes">
+          <mxGeometry x="40" y="960" width="1100" height="30" as="geometry" />
+        </mxCell>
+        <UserObject id="open-host" label="BLK-HOST" link="data:page/id,seq-host">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="host">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-capture" label="BLK-CAPTURE" link="data:page/id,seq-capture">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="capture">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <UserObject id="open-drive" label="BLK-DRIVE" link="data:page/id,seq-drive">
+          <mxCell style="rounded=0;html=1;align=center;fillColor=#dae8fc;strokeColor=none;fontFamily=Helvetica;fontColor=#193c66;fontStyle=5;fontSize=12;" vertex="1" parent="drive">
+            <mxGeometry as="geometry" x="2" y="2" width="96" height="36" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="title" value="BLK-PADS | Tiny Tapeout pad adapter" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="4" width="550" height="30" />
+        </mxCell>
+        <UserObject id="back" label="Back to chip sequence" link="data:page/id,seq-chip">
+          <mxCell style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;fontStyle=4;" vertex="1" parent="1">
+            <mxGeometry as="geometry" x="995" y="5" width="145" height="25" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="key" value="Read top to bottom. Solid: data. Dashed: control / status. Blue: ASIC blocks at 60 MHz." style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#202124;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1088" width="1100" height="26" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

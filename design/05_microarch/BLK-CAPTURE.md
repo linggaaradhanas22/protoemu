@@ -12,6 +12,8 @@ Capture synchronized input levels or edges independently of the issue path. Reta
 
 [Editable draw.io source](diagrams/blk-capture_v1.drawio). Solid arrows carry data, dashed arrows control and status; blue blocks are clocked at 60 MHz, grey blocks are combinational, white blocks are neighbours.
 
+[Input capture sequence](sequences.md#input-capture)
+
 ## Interface
 
 | Signal group | Dir | Width | Meaning |
