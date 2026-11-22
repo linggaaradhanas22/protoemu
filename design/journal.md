@@ -394,3 +394,10 @@ Results: The placed probe used about 0.381 mm². At 60 MHz, slow setup missed by
 AI vs human: Lingga requested the probe. OpenCode built it and recommends isolating retry selection from validation and commit before considering more stages. Lingga has not approved a follow-up or passed G4 formally.
 Problems: The full issue and retry paths missed setup although the earlier pad slice met it. The probe excludes the host and has no CTS or routing. Python test discovery by folder failed because the tests use relative imports; loading the fully qualified test modules passed.
 Next: Ask Lingga for formal G4 approval and whether to run the follow-up probe. Do not freeze the core pipeline on this result.
+
+## 2026-11-22: Lingga + OpenCode (G4 approval)
+Did: Recorded Lingga's approval of G4 and moved the project to G5.
+Results: The G4 checker reported MET, zero errors and the two accepted historical warnings. The gate records the block contracts, not physical timing or an ISA freeze.
+AI vs human: Lingga approved G4 and authorized the timing follow-up. OpenCode recorded the approval and did not change the block contracts.
+Problems: EVAL-018 did not meet 60 MHz.
+Next: Run the exploratory follow-up without changing production RTL.
