@@ -1,0 +1,28 @@
+{
+  "mapped_sha256": "789af513dafe69ee48aa76b0853397a86063bd331f94aa0dc96ef8d660e1ca6c",
+  "script_sha256": "886808ba89cb2931befc81fb6d1375851876ff9fd076aba6f64806ff98714a8c",
+  "image": "ghcr.io/librelane/librelane:3.1.0.dev4",
+  "phases": {
+    "placed": {
+      "area_um2": 389256.0,
+      "all_setup": -4.201,
+      "reg_setup": -4.201,
+      "all_hold": -0.208,
+      "reg_hold": -0.055
+    },
+    "cts": {
+      "area_um2": 442293.0,
+      "all_setup": -4.202,
+      "reg_setup": -4.202,
+      "all_hold": -0.576,
+      "reg_hold": -0.086
+    },
+    "repaired": {
+      "area_um2": 517017.0,
+      "all_setup": 0.037,
+      "reg_setup": 0.037,
+      "all_hold": 0.08,
+      "reg_hold": 0.08
+    }
+  }
+}

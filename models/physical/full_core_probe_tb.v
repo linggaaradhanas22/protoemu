@@ -25,6 +25,7 @@ module full_core_probe_tb #(parameter OPT = 0);
 
     localparam QUEUE = 1, TIMEOUT = 2, MATCH = 3, FAULT = 4, LATE = 5, WRITEBACK = 6, BAD_HOST = 7,
                EXPIRES_DUE = 8;
+    localparam SAME_CYCLE = (OPT < 3) || (OPT == 10);
     integer run_case = 0;
     integer out0 = 0, out1 = 0, pops = 0, accepted = 0, checked = 0;
     reg did_block = 0, saved_retry = 0;
@@ -151,7 +152,7 @@ module full_core_probe_tb #(parameter OPT = 0);
             due_visible = 0;
             launch(10, 2'b11);
             wait (did_block && dut.cycle == frozen_target);
-            expect_f = other_first ? (OPT == 2 ? 24'd1 : OPT == 5 ? 24'd3 : 24'd2) :
+            expect_f = other_first ? (SAME_CYCLE ? 24'd1 : OPT == 5 ? 24'd3 : 24'd2) :
                                      (OPT == 5 ? 24'd1 : 24'd0);
             expect_visible = other_first || OPT == 5;
             @(negedge clk);
@@ -302,7 +303,7 @@ module full_core_probe_tb #(parameter OPT = 0);
         repeat (10) @(negedge clk);
         if (!faulted || fault_cause != 2 || fault_pc != 0 || dut.rf.regs[1] != 0)
             $fatal(1, "malformed host instruction did not fault without side effects");
-        if (OPT == 2 || OPT == 5 || OPT >= 7) begin
+        if (OPT == 2 || OPT == 5 || OPT >= 7 || OPT == 10) begin
             expiry_overlap(0);
             expiry_overlap(1);
             last_legal_retry;

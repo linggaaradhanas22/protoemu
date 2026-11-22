@@ -1,0 +1,1586 @@
+[
+  {
+    "case": "i2c-400k-separate",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 8813,
+    "margin": [
+      3,
+      362,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-separate",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 9976,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 8723,
+    "margin": [
+      3,
+      362,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 9976,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-address",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 1645,
+    "margin": [
+      3,
+      362,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-address",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 9976,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-data",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 3022,
+    "margin": [
+      3,
+      362,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-data",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 9976,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-60clk",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 8841,
+    "margin": [
+      2,
+      1798,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-60clk",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 9976,
+    "margin": [
+      2,
+      1800,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-300clk",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 9321,
+    "margin": [
+      2,
+      2038,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-300clk",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 9976,
+    "margin": [
+      2,
+      2040,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-600clk",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 9921,
+    "margin": [
+      2,
+      2338,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-600clk",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 9976,
+    "margin": [
+      2,
+      2340,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-separate",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 8813,
+    "margin": [
+      3,
+      362,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-separate",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 9976,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 8723,
+    "margin": [
+      3,
+      362,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 9976,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-address",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 1645,
+    "margin": [
+      3,
+      362,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-address",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 9976,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-data",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 3022,
+    "margin": [
+      3,
+      362,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-data",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 9976,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-60clk",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 8841,
+    "margin": [
+      2,
+      1798,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-60clk",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 9976,
+    "margin": [
+      2,
+      1800,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-300clk",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 9321,
+    "margin": [
+      2,
+      2038,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-300clk",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 9976,
+    "margin": [
+      2,
+      2040,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-600clk",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 9921,
+    "margin": [
+      2,
+      2338,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-600clk",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 9976,
+    "margin": [
+      2,
+      2340,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": 0,
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/16",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/8",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "3/16",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/4",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "5/16",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "3/8",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "7/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/2",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "9/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "5/8",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "11/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "3/4",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "13/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "7/8",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "15/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": 0,
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/16",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/8",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "3/16",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/4",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "5/16",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "3/8",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "7/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/2",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "9/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "5/8",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "11/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "3/4",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "13/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "7/8",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "15/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": 0,
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/16",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/8",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "3/16",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/4",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "5/16",
+    "epoch": 0,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "3/8",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "7/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/2",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "9/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "5/8",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "11/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "3/4",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "13/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "7/8",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "15/16",
+    "epoch": 0,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": 0,
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/16",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/8",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "3/16",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/4",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "5/16",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "3/8",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "7/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/2",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "9/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "5/8",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "11/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "3/4",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "13/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "7/8",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "15/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      432,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": 0,
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/16",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/8",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "3/16",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/4",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "5/16",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "3/8",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "7/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/2",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "9/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "5/8",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "11/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "3/4",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "13/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "7/8",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "15/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      436,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": 0,
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/16",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/8",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "3/16",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/4",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "5/16",
+    "epoch": 16776716,
+    "end_cycle": 15378,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "3/8",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "7/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/2",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "9/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "5/8",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "11/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "3/4",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "13/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "7/8",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "15/16",
+    "epoch": 16776716,
+    "end_cycle": 15379,
+    "margin": [
+      1,
+      440,
+      "SPI half-period"
+    ],
+    "errors": []
+  }
+]

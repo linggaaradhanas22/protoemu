@@ -32,7 +32,8 @@ def endpoints(module):
                if cell["type"].startswith("sg13cmos5l_df") and "Q" in cell["connections"]}
 
     def pins(pattern, pin):
-        names = {drivers[bit] for name, spec in module["netnames"].items() if re.fullmatch(pattern, name)
+        names = {drivers[bit] for name, spec in module["netnames"].items()
+                 if re.fullmatch(pattern, name[4:] if name.startswith("dut.") else name)
                  for bit in spec["bits"] if bit in drivers}
         if not names:
             raise ValueError(f"no register for {pattern}")
@@ -66,7 +67,9 @@ def main():
     parser.add_argument("--pdk", required=True, type=Path)
     parser.add_argument("--def", dest="tile_def", required=True, type=Path)
     parser.add_argument("--image", default=IMAGE)
-    parser.add_argument("--opt", type=int, choices=range(10), default=0)
+    parser.add_argument("--opt", type=int, choices=range(11), default=0)
+    parser.add_argument("--host-reg", action="store_true",
+                        help="map the registered-host wrapper as top instead of the bare core")
     parser.add_argument("--work", default=Path("test/sim_build/EVAL-018"), type=Path)
     parser.add_argument("--out", default=Path("design/evals/EVAL-018"), type=Path)
     args = parser.parse_args()
@@ -74,26 +77,27 @@ def main():
     args.work.mkdir(parents=True, exist_ok=True)
     args.out.mkdir(parents=True, exist_ok=True)
     die, core = geometry(args.tile_def)
+    top = "full_core_host" if args.host_reg else "full_core_probe"
     lib_dir = args.pdk / "libs.ref/sg13cmos5l_stdcell/lib"
     libs = {c: lib_dir / f"sg13cmos5l_stdcell_{c}.lib" for c in CORNERS}
     lib = libs[CORNERS[0]]
     excluded = (args.pdk / "libs.tech/librelane/sg13cmos5l_stdcell/synth_exclude.cells").read_text().split()
     dont = " ".join(f"-dont_use {c}" for c in excluded)
-    sources = " ".join(f"models/physical/{f}" for f in SOURCES)
-    opt = f"chparam -set OPT {args.opt} full_core_probe; " if args.opt else ""
-    rename = "rename -top full_core_probe; " if args.opt else ""
-    run_log(["yosys", "-p", f"read_verilog {sources}; {opt}synth -top full_core_probe -flatten -noabc; "
+    sources = " ".join(f"models/physical/{f}" for f in (*SOURCES, "full_core_host.v"))
+    opt = f"chparam -set OPT {args.opt} {top}; " if args.opt else ""
+    rename = f"rename -top {top}; " if args.opt else ""
+    run_log(["yosys", "-p", f"read_verilog {sources}; {opt}synth -top {top} -flatten -noabc; "
              f'{rename}dfflibmap -liberty "{lib}" {dont}; abc -liberty "{lib}" {dont}; clean; autoname; '
              f'tee -o "{args.work}/stat.json" stat -json -liberty "{lib}"; '
              f'write_json "{args.work}/mapped.json"; write_verilog -noattr -noexpr "{args.work}/mapped.v"'],
             args.work / "map.log")
-    module = json.loads((args.work / "mapped.json").read_text())["modules"]["full_core_probe"]
+    module = json.loads((args.work / "mapped.json").read_text())["modules"][top]
     (args.work / "endpoints.tcl").write_text(endpoints(module))
-    stats = json.loads((args.work / "stat.json").read_text())["modules"]["\\full_core_probe"]
+    stats = json.loads((args.work / "stat.json").read_text())["modules"][f"\\{top}"]
 
     def place(corner):
         env = {"PROBE_PDK": "/pdk", "PROBE_CORNER": corner, "PROBE_DIE": " ".join(map(str, die)),
-               "PROBE_CORE": " ".join(map(str, core))}
+               "PROBE_CORE": " ".join(map(str, core)), "PROBE_TOP": top}
         cmd = ["docker", "run", "--rm", "--pull", "never", "--network", "none", "--entrypoint", "openroad",
                "-v", f"{args.pdk}:/pdk:ro", "-v", f"{args.work}:/work:ro",
                "-v", f"{HERE / 'full_core_sta.tcl'}:/probe.tcl:ro"]
@@ -108,8 +112,9 @@ def main():
              "image_id": subprocess.check_output(["docker", "image", "inspect", "--format", "{{.Id}}",
                                                   args.image], text=True).strip()}
     hashes = {f: hashlib.sha256((HERE / f).read_bytes()).hexdigest()
-              for f in (*SOURCES, "full_core_sta.tcl", "run_full_core_probe.py")}
-    summary = {"opt": args.opt, "period_ns": 50 / 3, "die_um": die, "row_core_um": core, "tools": tools,
+              for f in (*SOURCES, "full_core_host.v", "full_core_sta.tcl", "run_full_core_probe.py")}
+    summary = {"opt": args.opt, "host_reg": args.host_reg, "top": top,
+               "period_ns": 50 / 3, "die_um": die, "row_core_um": core, "tools": tools,
                "source_sha256": hashes, "def_sha256": hashlib.sha256(args.tile_def.read_bytes()).hexdigest(),
                "liberty_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in libs.values()},
                "cells": stats["num_cells"], "mapped_area_um2": stats["area"], "sta": sta}

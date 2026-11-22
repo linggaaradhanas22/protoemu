@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-22 (all four G4 decisions approved)
+**Last updated:** 2026-11-22 (agreed schedule placed and repaired)
 **Current stage:** G4 (micro-architecture review)
 
 ## Gates
@@ -45,7 +45,7 @@ Use the [project diagram convention](05_microarch/diagrams/README.md): solid for
 - **Formal G4 approval:** The four [decision recommendations](05_microarch/g4-decision-review.md) are approved. The gate row is still open because only Lingga passes a gate.
 - **Provisional encodings:** The ISA map and host numeric values stay provisional into G5 by decision 2 and decision 4. Freeze them when the RTL decoder and assembler exist.
 - **Capture timeout storage:** Keep storing `Rt`. Revisit only after a placed capture-block comparison.
-- **60 MHz closure:** TASK-055's separate writeback candidate passed 124/124 probe RTL replays with no new issue cycle. After clock-tree synthesis and repair it has +0.040 ns setup, +0.081 ns internal hold and −0.014 ns overall hold. Check the real host boundary and routed margin before sign-off.
+- **60 MHz margin:** [EVAL-025](evals/EVAL-025-agreed-schedule-timing.md) places the agreed schedule with the faster writeback. After clock-tree synthesis and repair, setup is −0.023 ns bare and +0.037 ns with a registered host boundary, and hold passes. That is 23 to 37 ps, too little for routing. The limiter is the run-control and payload-eligibility cloud, not the writeback or timed I/O. Optimize that cloud in G5 and check the routed design.
 - Lingga approved [CHG-012](changes/CHG-012-shift-lsb.md) (LSB-first `shift_pin`). Its area is not measured.
 - Lingga approved the guarded timed wait [CHG-013](changes/CHG-013-timed-wait.md) after the unguarded version failed in the model (EVAL-017 corrected). It costs 5,479 µm² in the capture slots; the core-side adder operand is not measured.
 - Lingga approved [CHG-010](changes/CHG-010-payload-fifo.md) (no pass-through, depth 8) and the 1 MHz loader with four-word transfers ([CHG-011](changes/CHG-011-loader-rate.md), [DEC-005](04_decisions/DEC-005-loader-rate.md) replacing DEC-002). 1 MHz SPI must be checked on the board; the fallback is 500 kHz. `READN`/`WRITEN` framing area is not measured.

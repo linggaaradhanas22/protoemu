@@ -3,7 +3,11 @@ read_lef $cells/lef/sg13cmos5l_tech.lef
 read_lef $cells/lef/sg13cmos5l_stdcell.lef
 read_liberty $cells/lib/sg13cmos5l_stdcell_$::env(PROBE_CORNER).lib
 read_verilog /work/mapped.v
-link_design full_core_probe
+if {[info exists ::env(PROBE_TOP)]} {
+    link_design $::env(PROBE_TOP)
+} else {
+    link_design full_core_probe
+}
 
 set period [expr {50.0 / 3}]
 create_clock -name clk -period $period [get_ports clk]

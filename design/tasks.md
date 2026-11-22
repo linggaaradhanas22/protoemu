@@ -452,3 +452,12 @@ Done when: compare retry policies that preserve the last legal edge, compare gua
 Done when: the four decision records carry Lingga's approval and the trace checker reports no new error.
 
 Lingga approved all four [G4 decision recommendations](05_microarch/g4-decision-review.md) on 2026-11-22. CHG-014 is rejected. No block contract changed.
+
+### TASK-059 — Place the agreed schedule with and without a host boundary
+- Status: done
+- Owner: agent
+- Works on: BLK-CORE, BLK-DRIVE, BLK-CAPTURE, BLK-PADS, SPEC-PHY-001
+- Blocked by: TASK-058
+Done when: place the same-cycle retry with the separate writeback, run clock-tree synthesis and repair, and repeat with registered host configuration. Report setup, hold and area, and keep production RTL unchanged.
+
+[EVAL-025](evals/EVAL-025-agreed-schedule-timing.md) records the runs. After repair the agreed schedule is within 23 to 37 ps of 60 MHz setup and passes hold. That is not closure margin.

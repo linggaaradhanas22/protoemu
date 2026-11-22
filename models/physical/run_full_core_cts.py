@@ -16,13 +16,16 @@ def main():
     parser.add_argument('--work', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--image', default=IMAGE)
+    parser.add_argument('--top', default='full_core_probe',
+                        help='mapped top module, full_core_host for the registered-host wrapper')
     parser.add_argument('--from-log', action='store_true', help='summarize a completed cts.txt without rerunning OpenROAD')
     args = parser.parse_args()
     die, core = geometry(args.tile_def)
     script = HERE / 'full_core_cts.tcl'
     work = args.work.resolve()
     args.out.mkdir(parents=True, exist_ok=True)
-    env = {'PROBE_PDK': '/pdk', 'PROBE_DIE': ' '.join(map(str, die)), 'PROBE_CORE': ' '.join(map(str, core))}
+    env = {'PROBE_PDK': '/pdk', 'PROBE_DIE': ' '.join(map(str, die)),
+           'PROBE_CORE': ' '.join(map(str, core)), 'PROBE_TOP': args.top}
     cmd = ['docker', 'run', '--rm', '--pull', 'never', '--network', 'none', '--entrypoint', 'openroad',
            '-v', f'{args.pdk.resolve()}:/pdk:ro', '-v', f'{work}:/work:ro', '-v', f'{script}:/probe.tcl:ro']
     for key, value in env.items():

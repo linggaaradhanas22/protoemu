@@ -450,3 +450,10 @@ Results: No block contract, ISA field, timeout interface or production RTL chang
 AI vs human: Lingga approved all recommendations. OpenCode recorded them and did not mark G4 itself.
 Problems: The micro-architecture gate still needs Lingga's explicit approval before RTL starts.
 Next: Ask for formal G4 approval, then tag the gate and start G5.
+
+## 2026-11-22: Lingga + OpenCode (TASK-059, EVAL-025 exploration)
+Did: Placed the agreed same-cycle retry with the faster separate writeback, then ran clock-tree synthesis and setup/hold repair on it and on a registered-host version. Replayed the 124 protocol cases and the directed retry checks on the core.
+Results: After repair, setup is -0.023 ns bare and +0.037 ns with the registered host boundary; hold passes at +0.080 ns. Repaired cell area is 511,920 to 517,017 um2. The critical path is the run-control and payload-eligibility cloud, not the writeback. Replay passed 124/124 and the directed checks passed. All 89 Python model tests passed separately.
+AI vs human: Lingga asked for the two decisive experiments before deciding. OpenCode ran them and does not claim timing closure; 23 to 37 ps is not routing margin.
+Problems: The registered host run initially failed endpoint extraction because flattening prefixes inner names with `dut.`; the extractor now ignores that prefix. The bare repair ends 23 ps short, so the result is at the edge, not closed.
+Next: Ask for formal G4 approval, then optimize the run-control cloud in G5 and check the integrated routed design.

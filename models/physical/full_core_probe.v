@@ -81,15 +81,16 @@ module full_core_probe #(parameter OPT = 0) (
     endgenerate
 
     wire select_ctx = runnable[1] && (!runnable[0] || rr_next);
-    wire ctx = fetch_live ? fetch_ctx : (OPT >= 3 && !bypass_drive ? retry_ctx : select_ctx);
-    wire boundary = go && !fetch_live && !(OPT >= 3 && retry_live) && !redirect && |runnable;
+    wire same_cycle = OPT < 3 || OPT == 10;
+    wire ctx = fetch_live ? fetch_ctx : ((!same_cycle && !bypass_drive) ? retry_ctx : select_ctx);
+    wire boundary = go && !fetch_live && !(!same_cycle && retry_live) && !redirect && |runnable;
     wire fetch = boundary && wait_kind[select_ctx] == P_NONE;
     wire select_retry = boundary && wait_kind[select_ctx] != P_NONE;
     wire expired_on_select = (OPT == 7 || OPT == 8) && select_retry && wait_kind[select_ctx] == P_DRIVE &&
                              !saved_future[select_ctx];
     wire bypass_drive = select_retry && wait_kind[select_ctx] == P_DRIVE &&
                         (OPT == 9 || (OPT == 8 && saved_last[select_ctx]));
-    wire retry = OPT >= 3 ? ((go && retry_live) || bypass_drive) : select_retry;
+    wire retry = same_cycle ? select_retry : ((go && retry_live) || bypass_drive);
     wire prepare_timing = OPT == 4 && go && fetch_live && !timing_live;
     wire execute = go && fetch_live && (OPT != 4 || timing_live);
     wire [7:0] cur_pc = pc[ctx];
@@ -229,7 +230,7 @@ module full_core_probe #(parameter OPT = 0) (
          ((op == ADDOFF || op == ADDOFF_R) && bumped_offset[23])) ? 3'd4 : 3'd0;
 
     wire drive_valid = (execute && !decode_fault && drives) || (retry && wait_kind[ctx] == P_DRIVE);
-    wire route_ctx = OPT >= 3 && !bypass_drive ? retry_ctx : select_ctx;
+    wire route_ctx = !same_cycle && !bypass_drive ? retry_ctx : select_ctx;
     wire [2:0] route = {retry && route_ctx, retry && !route_ctx, execute};
     wire [23:0] drive_at = OPT ? (({24{route[0]}} & deadline) | ({24{route[1]}} & wait_at[0]) |
                                  ({24{route[2]}} & wait_at[1])) : (retry ? wait_at[ctx] : deadline);

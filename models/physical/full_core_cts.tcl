@@ -5,7 +5,11 @@ define_corners slow fast
 read_liberty -corner slow $cells/lib/sg13cmos5l_stdcell_slow_1p08V_125C.lib
 read_liberty -corner fast $cells/lib/sg13cmos5l_stdcell_fast_1p32V_m40C.lib
 read_verilog /work/mapped.v
-link_design full_core_probe
+if {[info exists ::env(PROBE_TOP)]} {
+    link_design $::env(PROBE_TOP)
+} else {
+    link_design full_core_probe
+}
 
 set period [expr {50.0 / 3}]
 create_clock -name clk -period $period [get_ports clk]

@@ -1,0 +1,5 @@
+EXPIRY opt=10 other_ready=D+1 fault=D+0 safe=D+1 old_pad_at_D_plus_1=0 host_pops=0
+EXPIRY opt=10 other_ready=D+0 fault=D+1 safe=D+2 old_pad_at_D_plus_1=1 host_pops=1
+LAST_LEGAL opt=10 credit=D-1 admitted=1 fault_at_D=0
+PASS: saved retry, added writeback and malformed-host checks, guarded waits, F/F+1
+models/physical/full_core_probe_tb.v:312: $finish called at 7720000 (1ps)
