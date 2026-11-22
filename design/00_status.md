@@ -3,8 +3,8 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-22 (writeback and clock-tree experiments complete)
-**Current stage:** G5 (RTL + unit tests)
+**Last updated:** 2026-11-22 (Lingga reopened G4)
+**Current stage:** G4 (micro-architecture review)
 
 ## Gates
 
@@ -13,8 +13,8 @@ every session. Only Lingga marks a gate ✅.
 | G1 | Requirements agreed | ✅ Approved by Lingga | `g1-req` | `check_trace.py --gate G1` |
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
 | G3 | Architecture decided | ✅ Approved by Lingga; ARCH-B selected in DEC-001 | `g3-arch` | `--gate G3` |
-| G4 | Micro-architecture agreed | ✅ Approved by Lingga; physical timing remains open | `g4-uarch` | `--gate G4` |
-| G5 | RTL + unit tests | ⏳ | `g5-rtl` | `--gate G5` |
+| G4 | Micro-architecture agreed | 🔄 Approval withdrawn by Lingga. Design decisions are under review. | `g4-uarch` (prior approval) | `--gate G4` |
+| G5 | RTL + unit tests | ⏳ On hold pending G4 reapproval | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
 | G7 | Sign-off: precheck + write-up | ⏳ | `g7-submit` | `--gate G7` |
 
@@ -36,11 +36,14 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. Review [EVAL-021](evals/EVAL-021-fresh-writeback-timing.md). Decide whether to use separate writeback with registered retry as the G5 implementation starting point. The second runnable context test passed; review the one-cycle change to expired-retry detection before adopting the schedule. Keep the ISA encoding provisional.
+1. Review the open decisions in the [block review sheets](05_microarch/g4-block-review.md) and [EVAL-021](evals/EVAL-021-fresh-writeback-timing.md). Record which decisions must close before G4 and which checks can wait for implementation.
+2. Update affected block descriptions and sequence diagrams after Lingga decides. Rerun the gate check and request explicit reapproval before starting production RTL.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
+- **Core schedule:** Decide whether to adopt separate writeback with registered retry. The staged retry can detect an expired request one cycle later. The pads still go safe one cycle after detection.
+- **G4 reapproval:** The checker still reports `MET` because the seven block records remain agreed. This does not restore approval. The `g4-uarch` tag records the prior approval only.
 - **60 MHz closure:** TASK-055's separate writeback candidate passed 124/124 probe RTL replays with no new issue cycle. After clock-tree synthesis and repair it has +0.040 ns setup, +0.081 ns internal hold and −0.014 ns overall hold. Check the real host boundary and routed margin before sign-off.
 - Lingga approved [CHG-012](changes/CHG-012-shift-lsb.md) (LSB-first `shift_pin`). Its area is not measured.
 - Lingga approved the guarded timed wait [CHG-013](changes/CHG-013-timed-wait.md) after the unguarded version failed in the model (EVAL-017 corrected). It costs 5,479 µm² in the capture slots; the core-side adder operand is not measured.

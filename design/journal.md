@@ -422,3 +422,10 @@ Results: Both variants passed 124/124 RTL protocol replays. Directed tests and a
 AI vs human: Lingga authorized the experiments. OpenCode recommends separate writeback as the next implementation candidate. No production RTL, contract or gate changed.
 Problems: The shell timed out while OpenROAD was still repairing hold. Captured the completed container log and parsed all three phases. The near-zero setup margin and the hold miss leave routed timing open.
 Next: Review the one-cycle change to expired-retry detection before adopting the schedule. The directed test confirms no issue or payload transfer from the other runnable context on the fault edge. Check timing and area with the real host and routed design.
+
+## 2026-11-22: Lingga + OpenCode (G4 reopened)
+Did: Marked G4 as reopened in the status board and put G5 on hold.
+Results: The seven block records, production RTL and `g4-uarch` tag did not change. The tag records the prior approval. The checker still reports `MET` for the existing block records, not human approval.
+AI vs human: Lingga withdrew gate approval pending a decision review. OpenCode recorded that decision. No individual block approval was withdrawn.
+Problems: The core retry schedule and its expired-request fault edge need a decision. Review the other open block decisions before reapproval.
+Next: Record the remaining decisions and update the affected records after review. Ask Lingga to reapprove G4 before starting production RTL.
