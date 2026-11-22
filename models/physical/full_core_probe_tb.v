@@ -1,5 +1,5 @@
 `timescale 1ns/1ps
-module full_core_probe_tb;
+module full_core_probe_tb #(parameter OPT = 0);
     reg clk = 0;
     always #5 clk = !clk;
 
@@ -13,7 +13,7 @@ module full_core_probe_tb;
     wire [7:0] pad_value, pad_oe, fault_pc;
     wire done, faulted, fault_ctx;
     wire [2:0] fault_cause;
-    full_core_probe dut (
+    full_core_probe #(.OPT(OPT)) dut (
         .clk(clk), .rst_n(rst_n), .start(start), .stop(stop), .image_valid(image_valid), .load_word(load_word),
         .load_addr(load_addr), .entry0(7'd0), .entry1(entry1), .load_data(load_data), .image_count(image_count),
         .owner0(8'h01), .owner1(8'h02), .open_drain(8'd0), .raw_pins(pins), .enable_ctx(enable_ctx),
@@ -23,7 +23,7 @@ module full_core_probe_tb;
         .fault_ctx(fault_ctx), .fault_pc(fault_pc), .fault_cause(fault_cause)
     );
 
-    localparam QUEUE = 1, TIMEOUT = 2, MATCH = 3, FAULT = 4;
+    localparam QUEUE = 1, TIMEOUT = 2, MATCH = 3, FAULT = 4, LATE = 5;
     integer run_case = 0;
     integer out0 = 0, out1 = 0, pops = 0, accepted = 0, checked = 0;
     reg did_block = 0, saved_retry = 0;
@@ -84,6 +84,12 @@ module full_core_probe_tb;
     endtask
 
     always @(posedge clk) if (run_case != 0) begin
+        if ($test$plusargs("trace") && (dut.fetch || dut.execute || dut.retry || |dut.drive.due ||
+            dut.fault_pending || done))
+            $display("TRACE case=%0d cycle=%h fetch=%b exec=%b retry=%b ctx=%b pc=%h retire=%b accept=%b cause=%h due=%h pins=%h oe=%h cap=%b pop=%b push=%b data=%h",
+                     run_case, dut.cycle, dut.fetch, dut.execute, dut.retry, dut.ctx, dut.cur_pc, dut.retire,
+                     dut.drive_accept, dut.cause, dut.drive.due, pad_value, pad_oe, dut.cap_ready,
+                     ingress_pop, egress_push, (|egress_push) ? egress_word : 16'b0);
         if (ingress_pop[1]) pops = pops + 1;
         if (egress_push[0]) begin
             out0 = out0 + 1;
@@ -94,7 +100,7 @@ module full_core_probe_tb;
             out1 = out1 + 1;
             if (egress_word !== 16'hcafe) $fatal(1, "wrong context-1 payload");
         end
-        if (run_case == QUEUE) begin
+        if (run_case == QUEUE || run_case == LATE) begin
             if (dut.execute && dut.next_wait == 1) begin
                 did_block = 1;
                 frozen_target = dut.deadline;
@@ -106,7 +112,7 @@ module full_core_probe_tb;
                     saved_retry = 1;
                 end
             end
-            if (|dut.drive.due) begin
+            if (run_case == QUEUE && |dut.drive.due) begin
                 #1;
                 if (pad_value[0] !== expected_bits[checked] || pad_oe[0] !== 1'b1)
                     $fatal(1, "wrong registered drive %0d", checked);
@@ -128,6 +134,7 @@ module full_core_probe_tb;
         load(10, 24'd56);
         load(11, 0);
         entry1 = 9;
+        dut.cycle = 24'hffffe0;
         run_case = QUEUE;
         launch(12, 2'b11);
         repeat (25) @(negedge clk);
@@ -135,6 +142,22 @@ module full_core_probe_tb;
         repeat (120) @(negedge clk);
         if (!done || faulted || !did_block || !saved_retry || accepted != 5 || checked != 5 ||
             pops != 1 || out0 != 1 || out1 != 1) $fatal(1, "saved request or context isolation failed");
+
+        reset;
+        load(0, set_word(1, 5));
+        load(1, 24'd15);
+        for (i = 0; i < 4; i = i + 1) load(7'd2 + i, shift_lsb(9'd80 + i));
+        load(6, shift_lsb(50));
+        load(7, 0);
+        run_case = LATE;
+        launch(8, 2'b01);
+        wait (dut.fault_pending);
+        @(negedge clk);
+        if (!did_block || accepted != 4 || dut.drive_credit || dut.cycle !== frozen_target + 1'b1)
+            $fatal(1, "request did not reject at its saved deadline with the queue still full");
+        @(negedge clk);
+        if (!faulted || fault_pc != 6 || fault_cause != 5 || pad_oe != 0)
+            $fatal(1, "late request changed pins or did not report a drive fault");
 
         for (i = TIMEOUT; i <= MATCH; i = i + 1) begin
             reset;
@@ -163,7 +186,7 @@ module full_core_probe_tb;
         @(negedge clk);
         if (pad_value !== 8'h00 || pad_oe !== 8'h00 || !faulted || fault_ctx || fault_pc != 2 || fault_cause != 2)
             $fatal(1, "fault safe edge F+1 or fault record failed");
-        $display("PASS: queue retry, context isolation, guarded wait match and expiry, F/F+1 ordering");
+        $display("PASS: queue retry across wrap, late rejection while full, context isolation, guarded wait and F/F+1 ordering");
         $finish;
     end
 

@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-22 (Lingga approved G4)
+**Last updated:** 2026-11-22 (G4 approved; same-cycle timing probe complete)
 **Current stage:** G5 (RTL + unit tests)
 
 ## Gates
@@ -36,12 +36,12 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. Run the approved follow-up to [EVAL-018](evals/EVAL-018-full-core-timing.md) before freezing the core pipeline. Keep the ISA encoding provisional.
+1. Review [EVAL-019](evals/EVAL-019-split-issue-timing.md). Before freezing the core pipeline, decide whether to test a registered select/commit boundary. Keep the ISA encoding provisional.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
-- **60 MHz closure:** TASK-051 found 8.939 ns of negative internal setup slack at the slow corner. Lingga approved an exploratory follow-up. G4 approval does not close timing.
+- **60 MHz closure:** TASK-053 improved slow internal setup by 2.180 ns against its rerun control without adding an issue cycle. The best variant still missed by 5.265 ns; fast internal hold missed by 0.054 ns. If a staged follow-up changes issue latency, replay Fast-mode I2C and concurrent UART/SPI before adopting it. G4 approval does not close timing.
 - Lingga approved [CHG-012](changes/CHG-012-shift-lsb.md) (LSB-first `shift_pin`). Its area is not measured.
 - Lingga approved the guarded timed wait [CHG-013](changes/CHG-013-timed-wait.md) after the unguarded version failed in the model (EVAL-017 corrected). It costs 5,479 µm² in the capture slots; the core-side adder operand is not measured.
 - Lingga approved [CHG-010](changes/CHG-010-payload-fifo.md) (no pass-through, depth 8) and the 1 MHz loader with four-word transfers ([CHG-011](changes/CHG-011-loader-rate.md), [DEC-005](04_decisions/DEC-005-loader-rate.md) replacing DEC-002). 1 MHz SPI must be checked on the board; the fallback is 500 kHz. `READN`/`WRITEN` framing area is not measured.

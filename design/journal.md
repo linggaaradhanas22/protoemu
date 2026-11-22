@@ -401,3 +401,10 @@ Results: The G4 checker reported MET, zero errors and the two accepted historica
 AI vs human: Lingga approved G4 and authorized the timing follow-up. OpenCode recorded the approval and did not change the block contracts.
 Problems: EVAL-018 did not meet 60 MHz.
 Next: Run the exploratory follow-up without changing production RTL.
+
+## 2026-11-22: Lingga + OpenCode (TASK-053, EVAL-019 exploration)
+Did: Compared a rerun control, a split saved-request validator and a split validator with carry-save deadline sums. Kept the issue schedule and production RTL unchanged.
+Results: The best variant improved slow internal setup slack from −7.445 ns to −5.265 ns and added 5,369 µm² of placed cells. It still missed 60 MHz. All variants passed the Icarus checks with identical 228-sample traces; all 89 existing Python benchmark checks passed. No registered project tests ran.
+AI vs human: Lingga authorized the follow-up. OpenCode implemented and measured the probes. Lingga has not chosen a pipeline or approved a staged probe.
+Problems: The cycle-to-register-file path still dominates slow setup. Fast hold still fails between the pin synchronizer stages. The first parameterized placement run failed because Yosys renamed the top; giving the parameterized top its original name fixed it.
+Next: Ask whether to try a registered select/commit boundary. Replay the timing-sensitive workloads if issue latency changes.

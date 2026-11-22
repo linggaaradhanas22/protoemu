@@ -1,5 +1,5 @@
 // EVAL-018: exploratory BLK-CORE with program storage, timer and timed I/O.
-module full_core_probe (
+module full_core_probe #(parameter OPT = 0) (
     input clk, rst_n, start, stop, image_valid, load_word,
     input [6:0] load_addr, entry0, entry1,
     input [23:0] load_data,
@@ -19,6 +19,21 @@ module full_core_probe (
                SHIFT_PAIR=21, DRIVEV=22, HOST_GET=23, HOST_PUT=24, EDGE_SAVE=25, EDGE_DELTA=26,
                SHR=27, ADDOFF_R=28, XOR=29, ULT=30, MOV=31;
     localparam P_NONE=0, P_DRIVE=1, P_CAP=2, P_GET=3, P_PUT=4, P_FENCE=5;
+
+    function in_future_half;
+        input [23:0] target, now;
+        begin
+            in_future_half = (target != now) &&
+                ((target[23] ^ now[23]) == (target[22:0] < now[22:0]));
+        end
+    endfunction
+
+    function [23:0] sum3;
+        input [23:0] a, b, c;
+        begin
+            sum3 = (a ^ b ^ c) + (((a & b) | (a & c) | (b & c)) << 1);
+        end
+    endfunction
 
     reg [23:0] cycle;
     reg [7:0] pin_sync0, pin_sync1;
@@ -44,14 +59,16 @@ module full_core_probe (
     wire go = rst_n && started && image_valid && !flush && !fault_latched;
     wire [1:0] runnable;
     wire [1:0] fence_hit;
+    wire [1:0] saved_future;
     genvar i;
     generate
         for (i = 0; i < 2; i = i + 1) begin : eligibility
             wire [23:0] age = wait_at[i] - cycle;
+            assign saved_future[i] = OPT ? in_future_half(wait_at[i], cycle) : (|age && !age[23]);
             assign fence_hit[i] = cycle == wait_at[i];
             assign runnable[i] = active[i] &&
                 (wait_kind[i] == P_NONE ||
-                 (wait_kind[i] == P_DRIVE && (drive_credit || age == 0 || age[23])) ||
+                 (wait_kind[i] == P_DRIVE && (drive_credit || !saved_future[i])) ||
                  (wait_kind[i] == P_CAP && cap_ready[i]) ||
                  (wait_kind[i] == P_GET && ingress_ready[i]) ||
                  (wait_kind[i] == P_PUT && egress_ready[i]) ||
@@ -73,7 +90,7 @@ module full_core_probe (
     );
 
     wire [4:0] op = insn[4:0];
-    wire [2:0] ra = retry ? wait_rd[ctx] : op == WAIT_TO ? insn[20:18] : insn[7:5];
+    wire [2:0] ra = (!OPT && retry) ? wait_rd[ctx] : op == WAIT_TO ? insn[20:18] : insn[7:5];
     wire [2:0] rb = retry ? wait_rd[ctx] : insn[10:8];
     wire [15:0] ax, bx;
     wire [22:0] offset;
@@ -102,12 +119,14 @@ module full_core_probe (
                            (op == WAIT_SAVE || op == WAIT_TO) ? insn[17:9] :
                            op == FENCE ? insn[13:5] : insn[18:10];
     wire [23:0] relative = {1'b0, offset} + {15'b0, immediate};
-    wire [23:0] deadline = saved_stamp[ctx] + relative;
+    wire [23:0] time_base = saved_stamp[OPT ? fetch_ctx : ctx];
+    wire time_valid = stamp_valid[OPT ? fetch_ctx : ctx];
+    wire [23:0] deadline = OPT >= 2 ? sum3(time_base, {1'b0, offset}, {15'b0, immediate}) : time_base + relative;
     wire [23:0] deadline_delta = deadline - cycle;
-    wire deadline_future = !deadline_delta[23] && |deadline_delta;
-    wire [23:0] expiry = deadline + {2'b0, ax, 6'b0};
+    wire deadline_future = OPT ? in_future_half(deadline, cycle) : (!deadline_delta[23] && |deadline_delta);
+    wire [23:0] expiry = OPT >= 2 ? sum3(time_base, relative, {2'b0, ax, 6'b0}) : deadline + {2'b0, ax, 6'b0};
     wire [23:0] expiry_delta = expiry - cycle;
-    wire expiry_future = !expiry_delta[23] && |expiry_delta;
+    wire expiry_future = OPT ? in_future_half(expiry, cycle) : (!expiry_delta[23] && |expiry_delta);
     wire [23:0] bumped_offset = {1'b0, offset} +
         (op == ADDOFF_R ? {8'b0, ax} : {{9{insn[19]}}, insn[19:5]});
 
@@ -152,18 +171,26 @@ module full_core_probe (
 
     wire [2:0] decode_fault = fetch_fault ? 3'd1 : malformed ? 3'd2 :
         ((op == CALL && depth[ctx] == 2) || (op == RET && depth[ctx] == 0)) ? 3'd3 :
-        (((drives || op == CAP || op == WAIT_TO || op == FENCE || op == EDGE_DELTA) && !stamp_valid[ctx]) ||
+        (((drives || op == CAP || op == WAIT_TO || op == FENCE || op == EDGE_DELTA) && !time_valid) ||
          ((drives || op == CAP || op == WAIT_TO || op == WAIT_SAVE || op == FENCE) && relative[23]) ||
-         (op == WAIT_SAVE && !stamp_valid[ctx] && (|relative)) ||
+         (op == WAIT_SAVE && !time_valid && (|relative)) ||
          (op == CAP && !deadline_future) || (op == WAIT_TO && |ax && !expiry_future) ||
          ((op == ADDOFF || op == ADDOFF_R) && bumped_offset[23])) ? 3'd4 : 3'd0;
 
     wire drive_valid = (execute && !decode_fault && drives) || (retry && wait_kind[ctx] == P_DRIVE);
-    full_core_drive drive (
+    wire [2:0] route = {retry && select_ctx, retry && !select_ctx, execute};
+    wire [23:0] drive_at = OPT ? (({24{route[0]}} & deadline) | ({24{route[1]}} & wait_at[0]) |
+                                 ({24{route[2]}} & wait_at[1])) : (retry ? wait_at[ctx] : deadline);
+    wire [7:0] drive_mask = OPT ? (({8{route[0]}} & new_mask) | ({8{route[1]}} & wait_mask[0]) |
+                                  ({8{route[2]}} & wait_mask[1])) : (retry ? wait_mask[ctx] : new_mask);
+    full_core_drive #(.SPLIT(OPT != 0)) drive (
         .clk(clk), .rst_n(rst_n), .flush(flush), .cycle(cycle),
-        .deadline(retry ? wait_at[ctx] : deadline), .mask(retry ? wait_mask[ctx] : new_mask),
+        .deadline(drive_at), .mask(drive_mask),
         .values(retry ? wait_value[ctx] : new_value), .enables(retry ? wait_oe[ctx] : new_oe),
-        .owner(ctx ? owner1 : owner0), .open_drain(open_drain), .valid(drive_valid),
+        .owner((OPT ? fetch_ctx : ctx) ? owner1 : owner0), .open_drain(open_drain), .valid(drive_valid),
+        .route(route), .future({saved_future, deadline_future}), .fresh_at(deadline),
+        .saved_at0(wait_at[0]), .saved_at1(wait_at[1]), .fresh_mask(new_mask),
+        .saved_mask0(wait_mask[0]), .saved_mask1(wait_mask[1]), .owner0(owner0), .owner1(owner1),
         .credit(drive_credit), .empty(drive_empty), .accept(drive_accept), .reject(drive_reject),
         .pad_value(pad_value), .pad_oe(pad_oe)
     );

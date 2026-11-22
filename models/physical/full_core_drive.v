@@ -1,16 +1,19 @@
 // Exploratory BLK-DRIVE queue and registered BLK-PADS output stage for EVAL-018.
-module full_core_drive (
+module full_core_drive #(parameter SPLIT = 0) (
     input clk, rst_n, flush,
     input [23:0] cycle, deadline,
     input [7:0] mask, values, enables, owner, open_drain,
     input valid,
+    input [2:0] route, future,
+    input [23:0] fresh_at, saved_at0, saved_at1,
+    input [7:0] fresh_mask, saved_mask0, saved_mask1, owner0, owner1,
     output credit, empty, accept, reject,
     output reg [7:0] pad_value, pad_oe
 );
     reg [3:0] live;
     reg [23:0] due_at [0:3];
     reg [7:0] slot_mask [0:3], slot_value [0:3], slot_oe [0:3];
-    wire [3:0] due, free_slot, conflict;
+    wire [3:0] due, free_slot, conflict, fresh_conflict, saved_conflict0, saved_conflict1;
     wire [7:0] due_mask [0:3], due_value [0:3], due_oe [0:3];
     wire [7:0] merged_mask = due_mask[0] | due_mask[1] | due_mask[2] | due_mask[3];
     wire [7:0] merged_value = due_value[0] | due_value[1] | due_value[2] | due_value[3];
@@ -19,7 +22,12 @@ module full_core_drive (
 
     assign credit = |free_slot;
     assign empty = !(|live);
-    assign reject = valid && (delta == 0 || delta[23] || !(|mask) || |(mask & ~owner) || |conflict);
+    wire [2:0] bad;
+    assign bad[0] = !future[0] || !(|fresh_mask) || |(fresh_mask & ~owner) || |fresh_conflict;
+    assign bad[1] = !future[1] || !(|saved_mask0) || |(saved_mask0 & ~owner0) || |saved_conflict0;
+    assign bad[2] = !future[2] || !(|saved_mask1) || |(saved_mask1 & ~owner1) || |saved_conflict1;
+    assign reject = valid && (SPLIT ? |(route & bad) :
+                              (delta == 0 || delta[23] || !(|mask) || |(mask & ~owner) || |conflict));
     assign accept = valid && credit && !reject && !flush;
 
     genvar i;
@@ -29,6 +37,9 @@ module full_core_drive (
             assign due[i] = live[i] && due_at[i] == cycle;
             assign free_slot[i] = !live[i] || due[i];
             assign conflict[i] = live[i] && due_at[i] == deadline && |(slot_mask[i] & mask);
+            assign fresh_conflict[i] = live[i] && due_at[i] == fresh_at && |(slot_mask[i] & fresh_mask);
+            assign saved_conflict0[i] = live[i] && due_at[i] == saved_at0 && |(slot_mask[i] & saved_mask0);
+            assign saved_conflict1[i] = live[i] && due_at[i] == saved_at1 && |(slot_mask[i] & saved_mask1);
             assign due_mask[i] = due[i] ? slot_mask[i] : 8'b0;
             assign due_value[i] = slot_value[i] & due_mask[i];
             assign due_oe[i] = slot_oe[i] & due_mask[i];

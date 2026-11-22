@@ -393,6 +393,15 @@ Done when: synthesize and place a probe of the core with the saved-request path,
 
 [EVAL-018](evals/EVAL-018-full-core-timing.md) records the completed probe. The measured baseline misses 60 MHz; no design change was applied.
 
+### TASK-053 — Compare a split issue path at 60 MHz
+- Status: done
+- Owner: agent
+- Works on: BLK-CORE, BLK-DRIVE, BLK-CAPTURE, SPEC-PHY-001
+- Blocked by: TASK-051
+Done when: compare the baseline and a version that moves validation ahead of saved-request selection without adding an issue cycle. Measure setup, hold and area with the same flow, and check that retry, capture and fault ordering still work. Do not adopt a pipeline change or modify production RTL.
+
+[EVAL-019](evals/EVAL-019-split-issue-timing.md) records the comparison. Both variants improved worst slow setup but failed 60 MHz. No production implementation was selected.
+
 ### TASK-052 — Document ISA traceability and system sequences
 - Status: done
 - Owner: agent

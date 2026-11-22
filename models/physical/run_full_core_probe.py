@@ -1,4 +1,4 @@
-"""Map the EVAL-018 core and place it at the EVAL-008 timing corners."""
+"""Map and place the exploratory core with the EVAL-008 timing assumptions."""
 
 import argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -8,7 +8,7 @@ from pathlib import Path
 import re
 import subprocess
 
-from .run_probes import CORNERS, HERE, IMAGE, ROOT, geometry, run_log
+from .run_probes import CORNERS, HERE, IMAGE, geometry, run_log
 
 
 SOURCES = (
@@ -66,6 +66,7 @@ def main():
     parser.add_argument("--pdk", required=True, type=Path)
     parser.add_argument("--def", dest="tile_def", required=True, type=Path)
     parser.add_argument("--image", default=IMAGE)
+    parser.add_argument("--opt", type=int, choices=(0, 1, 2), default=0)
     parser.add_argument("--work", default=Path("test/sim_build/EVAL-018"), type=Path)
     parser.add_argument("--out", default=Path("design/evals/EVAL-018"), type=Path)
     args = parser.parse_args()
@@ -79,8 +80,10 @@ def main():
     excluded = (args.pdk / "libs.tech/librelane/sg13cmos5l_stdcell/synth_exclude.cells").read_text().split()
     dont = " ".join(f"-dont_use {c}" for c in excluded)
     sources = " ".join(f"models/physical/{f}" for f in SOURCES)
-    run_log(["yosys", "-p", f"read_verilog {sources}; synth -top full_core_probe -flatten -noabc; "
-             f'dfflibmap -liberty "{lib}" {dont}; abc -liberty "{lib}" {dont}; clean; autoname; '
+    opt = f"chparam -set OPT {args.opt} full_core_probe; " if args.opt else ""
+    rename = "rename -top full_core_probe; " if args.opt else ""
+    run_log(["yosys", "-p", f"read_verilog {sources}; {opt}synth -top full_core_probe -flatten -noabc; "
+             f'{rename}dfflibmap -liberty "{lib}" {dont}; abc -liberty "{lib}" {dont}; clean; autoname; '
              f'tee -o "{args.work}/stat.json" stat -json -liberty "{lib}"; '
              f'write_json "{args.work}/mapped.json"; write_verilog -noattr -noexpr "{args.work}/mapped.v"'],
             args.work / "map.log")
@@ -106,7 +109,7 @@ def main():
                                                   args.image], text=True).strip()}
     hashes = {f: hashlib.sha256((HERE / f).read_bytes()).hexdigest()
               for f in (*SOURCES, "full_core_sta.tcl", "run_full_core_probe.py")}
-    summary = {"period_ns": 50 / 3, "die_um": die, "row_core_um": core, "tools": tools,
+    summary = {"opt": args.opt, "period_ns": 50 / 3, "die_um": die, "row_core_um": core, "tools": tools,
                "source_sha256": hashes, "def_sha256": hashlib.sha256(args.tile_def.read_bytes()).hexdigest(),
                "liberty_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in libs.values()},
                "cells": stats["num_cells"], "mapped_area_um2": stats["area"], "sta": sta}
