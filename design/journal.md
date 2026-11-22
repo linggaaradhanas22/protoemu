@@ -387,3 +387,10 @@ Results: The seven block records are agreed. The ISA encoding and the formal G4 
 AI vs human: Lingga approved TASK-050 and asked OpenCode to run TASK-051. OpenCode updated the records without changing behavior or marking G4 passed.
 Problems: The full-core timing and area check is still outstanding.
 Next: Run TASK-051 and present the G4 gate check for approval.
+
+## 2026-11-22: Lingga + OpenCode (TASK-051, EVAL-018 exploration)
+Did: Built a full-core placement probe in `models/physical/` with the loadable store, both contexts, real register file, saved-request retry, guarded capture and timed pad drive. Ran Icarus, Yosys and OpenROAD. No production RTL or agreed contract changed.
+Results: The placed probe used about 0.381 mm². At 60 MHz, slow setup missed by 10.226 ns overall and 8.939 ns internally. Fast hold missed by 0.198 ns overall and 0.055 ns internally. The directed probe simulation and all 89 Python model checks passed. Registered project tests did not run.
+AI vs human: Lingga requested the probe. OpenCode built it and recommends isolating retry selection from validation and commit before considering more stages. Lingga has not approved a follow-up or passed G4 formally.
+Problems: The full issue and retry paths missed setup although the earlier pad slice met it. The probe excludes the host and has no CTS or routing. Python test discovery by folder failed because the tests use relative imports; loading the fully qualified test modules passed.
+Next: Ask Lingga for formal G4 approval and whether to run the follow-up probe. Do not freeze the core pipeline on this result.

@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-22 (Lingga agreed all seven block contracts)
+**Last updated:** 2026-11-22 (seven blocks agreed; full-core probe missed 60 MHz)
 **Current stage:** G4 (Micro-architecture)
 
 ## Gates
@@ -36,22 +36,23 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-051: Full-core timing probe (g4-review step 3, tracked separately from G4).
-2. Run the G4 gate check and ask Lingga for formal G4 approval. Keep the ISA encoding provisional.
+1. Lingga: Decide whether to pass G4 for the agreed contracts. The checker does not gate on physical timing.
+2. Decide how to follow up [EVAL-018](evals/EVAL-018-full-core-timing.md) before freezing the core pipeline. Keep the ISA encoding provisional.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
 - **Pass G4?** Lingga agreed all seven [block contracts](05_microarch/g4-block-review.md) in TASK-050. Each has a planned unit test. Formal gate approval is separate.
+- **Authorize a follow-up probe?** TASK-051 placed the full-core probe. At 60 MHz, internal setup missed by 8.939 ns at the slow corner and internal hold by 0.055 ns at the fast corner. First try separating pending-context selection from request validation and commit without changing issue latency. If more stages are needed, replay protocol timing before adopting them.
 - Lingga approved [CHG-012](changes/CHG-012-shift-lsb.md) (LSB-first `shift_pin`). Its area is not measured.
 - Lingga approved the guarded timed wait [CHG-013](changes/CHG-013-timed-wait.md) after the unguarded version failed in the model (EVAL-017 corrected). It costs 5,479 µm² in the capture slots; the core-side adder operand is not measured.
 - Lingga approved [CHG-010](changes/CHG-010-payload-fifo.md) (no pass-through, depth 8) and the 1 MHz loader with four-word transfers ([CHG-011](changes/CHG-011-loader-rate.md), [DEC-005](04_decisions/DEC-005-loader-rate.md) replacing DEC-002). 1 MHz SPI must be checked on the board; the fallback is 500 kHz. `READN`/`WRITEN` framing area is not measured.
 - The trace checker warns that finished TASK-021 and TASK-023 point to the replaced DEC-002. Accepted as correct history; the checker is unchanged.
 - Lingga accepted [CHG-009](changes/CHG-009-delta-writeback.md) (narrow second register write port) as applied.
-- Lingga approved [CHG-008](changes/CHG-008-stop-ordering.md) with both proposed choices: `DONE` holds the pads, and `DONE`/`FAULTED` keep payload FIFOs until `STOP`. Fault-to-pad timing is not measured.
+- Lingga approved [CHG-008](changes/CHG-008-stop-ordering.md) with both proposed choices: `DONE` holds the pads, and `DONE`/`FAULTED` keep payload FIFOs until `STOP`. The probe's registered fault-to-pad path meets placed setup; routed timing remains open.
 - Lingga approved [CHG-007](changes/CHG-007-modular-guards.md) (24-bit guard rule). Guard area is not measured; check it in the BLK-CORE timing probe.
 - Lingga approved [CHG-002](changes/CHG-002-loader-recovery.md). Recovery cases are planned. Timeout values remain provisional, and board and firmware timing remain open.
 - Lingga approved [CHG-006](changes/CHG-006-edge-interval.md) for the draft ISA. CHG-009 settled the writeback and CHG-008 the fault behavior; final opcodes remain open.
 - Lingga approved [CHG-005](changes/CHG-005-host-payload.md) for the draft ISA; CHG-010 settled simultaneous host/core FIFO access.
 - [EVAL-003](evals/EVAL-003-g4-timed-io.md) supports keeping four output slots and one capture slot per context.
-- Final tile fit and routed 60 MHz timing remain unverified. The hybrid [timing slice](evals/EVAL-008-eight-pad-timing.md) met placed setup but missed fast hold, including on internal register paths.
+- Final tile fit and routed 60 MHz timing remain unverified. The full-core probe used about 0.381 mm² of placed cells, without the host loader and FIFOs.

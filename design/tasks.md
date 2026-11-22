@@ -385,11 +385,13 @@ Done when: Lingga has read the [block review sheets](05_microarch/g4-block-revie
 Lingga approved all seven block contracts on 2026-11-22. This did not approve the G4 gate or freeze the ISA encoding.
 
 ### TASK-051 — Full-core timing probe
-- Status: todo
+- Status: done
 - Owner: agent
 - Works on: BLK-CORE, BLK-PROGRAM, BLK-DRIVE, BLK-CAPTURE
 - Blocked by: TASK-049
 Done when: synthesize and place a probe of the core with the saved-request path, the real register file and the timed-I/O interfaces, and report setup, hold and area against 60 MHz (g4-review step 3). Tracked separately from G4 agreement.
+
+[EVAL-018](evals/EVAL-018-full-core-timing.md) records the completed probe. The measured baseline misses 60 MHz; no design change was applied.
 
 ### TASK-052 — Document ISA traceability and system sequences
 - Status: done
