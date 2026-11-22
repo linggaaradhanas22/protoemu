@@ -420,6 +420,15 @@ Done when: measure changes to the fresh instruction path against the retry-only 
 
 [EVAL-021](evals/EVAL-021-fresh-writeback-timing.md) records both candidates. Separate writeback passed 124/124 replay cases and met internal setup and hold after physical repair. Overall hold and routed timing remain open. No production implementation was selected.
 
+### TASK-056 — Measure expired-retry fault ordering
+- Status: done
+- Owner: agent
+- Works on: BLK-CORE, BLK-DRIVE, BLK-PADS, SPEC-PHY-001
+- Blocked by: TASK-055
+Done when: compare the current fault schedules and an immediate-expiry variant at a free issue boundary. Test pin effects, arbitration and timing. Record evidence and remaining G4 decisions without changing an agreed contract.
+
+[EVAL-022](evals/EVAL-022-expired-retry.md) records the timing, protocol replays and directed cases. [CHG-014](changes/CHG-014-expired-retry-selection.md) is proposed only. Both registered variants lose the final legal admission edge in one directed case.
+
 ### TASK-052 — Document ISA traceability and system sequences
 - Status: done
 - Owner: agent

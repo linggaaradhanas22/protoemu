@@ -135,7 +135,7 @@ def overlap_case(exe, epoch, offset, phase):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--opt', type=int, choices=range(2, 7), required=True)
+    parser.add_argument('--opt', type=int, choices=range(2, 8), required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--quick', action='store_true')
     args = parser.parse_args()

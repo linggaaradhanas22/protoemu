@@ -83,6 +83,8 @@ module full_core_probe #(parameter OPT = 0) (
     wire boundary = go && !fetch_live && !(OPT >= 3 && retry_live) && !redirect && |runnable;
     wire fetch = boundary && wait_kind[select_ctx] == P_NONE;
     wire select_retry = boundary && wait_kind[select_ctx] != P_NONE;
+    wire expired_on_select = OPT == 7 && select_retry && wait_kind[select_ctx] == P_DRIVE &&
+                             !saved_future[select_ctx];
     wire retry = OPT >= 3 ? (go && retry_live) : select_retry;
     wire prepare_timing = OPT == 4 && go && fetch_live && !timing_live;
     wire execute = go && fetch_live && (OPT != 4 || timing_live);
@@ -403,7 +405,7 @@ module full_core_probe #(parameter OPT = 0) (
         end else begin
             fetch_live <= fetch || prepare_timing;
             timing_live <= prepare_timing;
-            retry_live <= select_retry;
+            retry_live <= select_retry && !expired_on_select;
             if (select_retry) retry_ctx <= select_ctx;
             if (prepare_timing) begin
                 timed_relative <= relative_calc;
@@ -423,7 +425,12 @@ module full_core_probe #(parameter OPT = 0) (
             for (c = 0; c < 2; c = c + 1)
                 if (wait_kind[c] == P_FENCE && fence_hit[c]) fence_open[c] <= 1;
 
-            if (cause != 0) begin
+            if (expired_on_select) begin
+                fault_pending <= 1;
+                fault_ctx <= select_ctx;
+                fault_pc <= fetch_pc;
+                fault_cause <= 3'd5;
+            end else if (cause != 0) begin
                 fault_pending <= 1;
                 fault_ctx <= ctx;
                 fault_pc <= cur_pc;

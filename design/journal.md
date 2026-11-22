@@ -429,3 +429,10 @@ Results: The seven block records, production RTL and `g4-uarch` tag did not chan
 AI vs human: Lingga withdrew gate approval pending a decision review. OpenCode recorded that decision. No individual block approval was withdrawn.
 Problems: The core retry schedule and its expired-request fault edge need a decision. Review the other open block decisions before reapproval.
 Next: Record the remaining decisions and update the affected records after review. Ask Lingga to reapprove G4 before starting production RTL.
+
+## 2026-11-22: Lingga + OpenCode (TASK-056, EVAL-022 exploration)
+Did: Tested expired drive retries while another context becomes ready. Compared same-cycle retry, registered retry and a variant that faults on selection when it selects an already-expired drive. Added a G4 decision review and proposed CHG-014.
+Results: The extra edge can expose an older pad update before safe. Both registered variants reject a retry when credit first opens on its final legal edge. The control admits it. The new variant passed all 124 protocol replays. All 89 Python model checks passed separately.
+AI vs human: Lingga requested data before making decisions. OpenCode recommends preserving final-edge admission and has not adopted a schedule or changed a contract.
+Problems: The selection-fault variant does not recover final-edge admission. Its clock-tree probe stopped at the hold-repair buffer cap without a final timing report.
+Next: Ask Lingga whether to preserve final-edge admission. Compare options for the chosen rule and close the other G4 evidence gaps before reapproval.

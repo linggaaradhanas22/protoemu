@@ -23,10 +23,12 @@ module full_core_probe_tb #(parameter OPT = 0);
         .fault_ctx(fault_ctx), .fault_pc(fault_pc), .fault_cause(fault_cause)
     );
 
-    localparam QUEUE = 1, TIMEOUT = 2, MATCH = 3, FAULT = 4, LATE = 5, WRITEBACK = 6, BAD_HOST = 7;
+    localparam QUEUE = 1, TIMEOUT = 2, MATCH = 3, FAULT = 4, LATE = 5, WRITEBACK = 6, BAD_HOST = 7,
+               EXPIRES_DUE = 8;
     integer run_case = 0;
     integer out0 = 0, out1 = 0, pops = 0, accepted = 0, checked = 0;
     reg did_block = 0, saved_retry = 0;
+    reg due_visible;
     reg [23:0] frozen_target = 0;
     reg [4:0] expected_bits = 5'b00101;
 
@@ -106,7 +108,7 @@ module full_core_probe_tb #(parameter OPT = 0);
             out1 = out1 + 1;
             if (egress_word !== 16'hcafe) $fatal(1, "wrong context-1 payload");
         end
-        if (run_case == QUEUE || run_case == LATE) begin
+        if (run_case == QUEUE || run_case == LATE || run_case == EXPIRES_DUE) begin
             if (dut.execute && dut.next_wait == 1) begin
                 did_block = 1;
                 frozen_target = dut.deadline;
@@ -126,6 +128,76 @@ module full_core_probe_tb #(parameter OPT = 0);
             end
         end
     end
+
+    task expiry_overlap;
+        input other_first;
+        reg [23:0] expect_f;
+        reg expect_visible;
+        begin
+            reset;
+            load(0, set_word(1, 1));
+            load(1, 24'd15);
+            load(2, shift_lsb(61));
+            load(3, shift_lsb(90));
+            load(4, shift_lsb(91));
+            load(5, shift_lsb(92));
+            load(6, shift_lsb(60));
+            load(7, 0);
+            load(8, 24'd55);
+            load(9, 0);
+            entry1 = 8;
+            dut.cycle = 24'hffffdf;
+            run_case = EXPIRES_DUE;
+            due_visible = 0;
+            launch(10, 2'b11);
+            wait (did_block && dut.cycle == frozen_target);
+            expect_f = other_first ? (OPT == 2 ? 24'd1 : OPT == 7 ? 24'd2 : 24'd3) :
+                                     (OPT == 5 ? 24'd1 : 24'd0);
+            expect_visible = other_first || OPT == 5;
+            @(negedge clk);
+            if (other_first) ingress_ready = 2'b10;
+            @(negedge clk);
+            if (!other_first) ingress_ready = 2'b10;
+            @(negedge clk);
+            due_visible = pad_value[0] && pad_oe[0];
+            if (due_visible !== expect_visible) $fatal(1, "wrong D+1 pad update");
+            while (!faulted) @(negedge clk);
+            if (dut.cycle - frozen_target !== expect_f + 24'd2 || fault_pc != 6 || fault_ctx ||
+                fault_cause != 5 || pad_oe != 0 || dut.active != 0 || accepted != 4 || pops != other_first)
+                $fatal(1, "wrong expiry timing, arbitration or cleanup");
+            $display("EXPIRY opt=%0d other_ready=D+%0d fault=D+%0d safe=D+%0d old_pad_at_D_plus_1=%0d host_pops=%0d",
+                     OPT, !other_first, expect_f, expect_f + 24'd1, due_visible, pops);
+        end
+    endtask
+
+    task last_legal_retry;
+        begin
+            reset;
+            load(0, set_word(1, 1));
+            load(1, 24'd15);
+            load(2, shift_lsb(59));
+            load(3, shift_lsb(61));
+            load(4, shift_lsb(91));
+            load(5, shift_lsb(92));
+            load(6, shift_lsb(60));
+            load(7, 0);
+            dut.cycle = 24'hffffdf;
+            run_case = EXPIRES_DUE;
+            launch(8, 2'b01);
+            wait (did_block && dut.cycle == frozen_target);
+            @(negedge clk);
+            if (pad_oe[0] !== 1'b1 || pad_value[0] !== 1'b1)
+                $fatal(1, "older event did not drive on D-1");
+            @(negedge clk);
+            if (pad_oe[0] !== 1'b1 || pad_value[0] !== (OPT != 2) ||
+                dut.fault_pending !== (OPT != 2) || accepted != (OPT == 2 ? 5 : 4))
+                $fatal(1, "wrong last-legal-cycle retry outcome at D");
+            @(negedge clk);
+            if (OPT == 2 ? faulted || !pad_oe[0] : !faulted || pad_oe[0] || fault_pc != 6 || fault_cause != 5)
+                $fatal(1, "wrong cleanup for last-legal-cycle retry");
+            $display("LAST_LEGAL opt=%0d credit=D-1 admitted=%0d fault_at_D=%0d", OPT, accepted == 5, faulted);
+        end
+    endtask
 
     integer i;
     initial begin
@@ -160,8 +232,8 @@ module full_core_probe_tb #(parameter OPT = 0);
         load(10, 0);
         entry1 = 8;
         run_case = LATE;
-        launch(11, OPT >= 3 ? 2'b11 : 2'b01);
-        if (OPT >= 3) begin
+        launch(11, OPT >= 3 && OPT != 7 ? 2'b11 : 2'b01);
+        if (OPT >= 3 && OPT != 7) begin
             wait (did_block && dut.cycle == frozen_target + 24'd1);
             @(negedge clk);
             ingress_ready = 2'b10;
@@ -172,7 +244,7 @@ module full_core_probe_tb #(parameter OPT = 0);
         wait (dut.fault_pending);
         @(negedge clk);
         if (!did_block || accepted != 4 || dut.drive_credit ||
-            dut.cycle !== frozen_target + (OPT >= 3 ? 24'd2 : 24'd1))
+            dut.cycle !== frozen_target + (OPT >= 3 && OPT != 7 ? 24'd2 : 24'd1))
             $fatal(1, "wrong expired-retry edge with the queue still full");
         @(negedge clk);
         if (!faulted || fault_pc != 6 || fault_cause != 5 || pad_oe != 0 || dut.active != 0 || pops != 0)
@@ -230,6 +302,11 @@ module full_core_probe_tb #(parameter OPT = 0);
         repeat (10) @(negedge clk);
         if (!faulted || fault_cause != 2 || fault_pc != 0 || dut.rf.regs[1] != 0)
             $fatal(1, "malformed host instruction did not fault without side effects");
+        if (OPT == 2 || OPT == 5 || OPT == 7) begin
+            expiry_overlap(0);
+            expiry_overlap(1);
+            last_legal_retry;
+        end
         $display("PASS: saved retry, added writeback and malformed-host checks, guarded waits, F/F+1");
         $finish;
     end
