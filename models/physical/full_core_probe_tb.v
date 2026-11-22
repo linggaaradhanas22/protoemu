@@ -153,7 +153,8 @@ module full_core_probe_tb #(parameter OPT = 0);
         launch(8, 2'b01);
         wait (dut.fault_pending);
         @(negedge clk);
-        if (!did_block || accepted != 4 || dut.drive_credit || dut.cycle !== frozen_target + 1'b1)
+        if (!did_block || accepted != 4 || dut.drive_credit ||
+            dut.cycle !== frozen_target + (OPT >= 3 ? 24'd2 : 24'd1))
             $fatal(1, "request did not reject at its saved deadline with the queue still full");
         @(negedge clk);
         if (!faulted || fault_pc != 6 || fault_cause != 5 || pad_oe != 0)
@@ -175,7 +176,7 @@ module full_core_probe_tb #(parameter OPT = 0);
 
         reset;
         load(0, 24'd15);
-        load(1, {5'b0, 9'd4, 1'b1, 1'b1, 3'd0, 5'd18});
+        load(1, {5'b0, (OPT >= 4 ? 9'd6 : 9'd4), 1'b1, 1'b1, 3'd0, 5'd18});
         load(2, 24'd12);
         run_case = FAULT;
         launch(3, 2'b01);

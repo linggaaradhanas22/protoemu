@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-22 (G4 approved; same-cycle timing probe complete)
+**Last updated:** 2026-11-22 (registered issue timing and replay complete)
 **Current stage:** G5 (RTL + unit tests)
 
 ## Gates
@@ -36,12 +36,12 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. Review [EVAL-019](evals/EVAL-019-split-issue-timing.md). Before freezing the core pipeline, decide whether to test a registered select/commit boundary. Keep the ISA encoding provisional.
+1. Review [EVAL-020](evals/EVAL-020-staged-issue-timing.md). Decide whether to keep the registered retry boundary as a candidate and test a narrower change to the fresh instruction writeback path. Keep the ISA encoding provisional.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
-- **60 MHz closure:** TASK-053 improved slow internal setup by 2.180 ns against its rerun control without adding an issue cycle. The best variant still missed by 5.265 ns; fast internal hold missed by 0.054 ns. If a staged follow-up changes issue latency, replay Fast-mode I2C and concurrent UART/SPI before adopting it. G4 approval does not close timing.
+- **60 MHz closure:** TASK-054's registered retry boundary passed 124/124 replay cases but missed slow internal setup by 1.499 ns. Adding a stage to every fresh instruction met internal setup by 0.302 ns, but failed Fast-mode I2C under SPI contention in eight cases. Neither closed overall timing; fast internal hold also remains open.
 - Lingga approved [CHG-012](changes/CHG-012-shift-lsb.md) (LSB-first `shift_pin`). Its area is not measured.
 - Lingga approved the guarded timed wait [CHG-013](changes/CHG-013-timed-wait.md) after the unguarded version failed in the model (EVAL-017 corrected). It costs 5,479 µm² in the capture slots; the core-side adder operand is not measured.
 - Lingga approved [CHG-010](changes/CHG-010-payload-fifo.md) (no pass-through, depth 8) and the 1 MHz loader with four-word transfers ([CHG-011](changes/CHG-011-loader-rate.md), [DEC-005](04_decisions/DEC-005-loader-rate.md) replacing DEC-002). 1 MHz SPI must be checked on the board; the fallback is 500 kHz. `READN`/`WRITEN` framing area is not measured.

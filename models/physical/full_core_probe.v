@@ -39,6 +39,8 @@ module full_core_probe #(parameter OPT = 0) (
     reg [7:0] pin_sync0, pin_sync1;
     reg started, fault_pending, fault_latched, rr_next, redirect;
     reg fetch_live, fetch_ctx, fetch_fault;
+    reg retry_live, retry_ctx, timing_live;
+    reg [23:0] timed_relative, timed_deadline, timed_expiry;
     reg [1:0] active, stamp_valid, fence_open;
     reg [7:0] pc [0:1];
     reg [1:0] depth [0:1];
@@ -77,16 +79,19 @@ module full_core_probe #(parameter OPT = 0) (
     endgenerate
 
     wire select_ctx = runnable[1] && (!runnable[0] || rr_next);
-    wire ctx = fetch_live ? fetch_ctx : select_ctx;
-    wire boundary = go && !fetch_live && !redirect && |runnable;
-    wire fetch = boundary && wait_kind[ctx] == P_NONE;
-    wire retry = boundary && wait_kind[ctx] != P_NONE;
-    wire execute = go && fetch_live;
+    wire ctx = OPT >= 3 ? (fetch_live ? fetch_ctx : retry_ctx) : (fetch_live ? fetch_ctx : select_ctx);
+    wire boundary = go && !fetch_live && !(OPT >= 3 && retry_live) && !redirect && |runnable;
+    wire fetch = boundary && wait_kind[select_ctx] == P_NONE;
+    wire select_retry = boundary && wait_kind[select_ctx] != P_NONE;
+    wire retry = OPT >= 3 ? (go && retry_live) : select_retry;
+    wire prepare_timing = OPT >= 4 && go && fetch_live && !timing_live;
+    wire execute = go && fetch_live && (OPT < 4 || timing_live);
     wire [7:0] cur_pc = pc[ctx];
+    wire [7:0] fetch_pc = pc[select_ctx];
     wire [23:0] insn;
     probe_store #(.AW(7)) program_store (
-        .clk(clk), .wr(load_word && rst_n && !started && !start), .rd(fetch && cur_pc < image_count),
-        .waddr(load_addr), .raddr(cur_pc[6:0]), .wdata(load_data), .word(insn)
+        .clk(clk), .wr(load_word && rst_n && !started && !start), .rd(fetch && fetch_pc < image_count),
+        .waddr(load_addr), .raddr(fetch_pc[6:0]), .wdata(load_data), .word(insn)
     );
 
     wire [4:0] op = insn[4:0];
@@ -118,13 +123,16 @@ module full_core_probe #(parameter OPT = 0) (
                            op == SHIFT_PIN ? insn[19:11] : op == CAP ? insn[21:13] :
                            (op == WAIT_SAVE || op == WAIT_TO) ? insn[17:9] :
                            op == FENCE ? insn[13:5] : insn[18:10];
-    wire [23:0] relative = {1'b0, offset} + {15'b0, immediate};
+    wire [23:0] relative_calc = {1'b0, offset} + {15'b0, immediate};
     wire [23:0] time_base = saved_stamp[OPT ? fetch_ctx : ctx];
     wire time_valid = stamp_valid[OPT ? fetch_ctx : ctx];
-    wire [23:0] deadline = OPT >= 2 ? sum3(time_base, {1'b0, offset}, {15'b0, immediate}) : time_base + relative;
+    wire [23:0] deadline_calc = OPT >= 2 ? sum3(time_base, {1'b0, offset}, {15'b0, immediate}) : time_base + relative_calc;
+    wire [23:0] expiry_calc = OPT >= 2 ? sum3(time_base, relative_calc, {2'b0, ax, 6'b0}) : deadline_calc + {2'b0, ax, 6'b0};
+    wire [23:0] relative = OPT >= 4 ? timed_relative : relative_calc;
+    wire [23:0] deadline = OPT >= 4 ? timed_deadline : deadline_calc;
     wire [23:0] deadline_delta = deadline - cycle;
     wire deadline_future = OPT ? in_future_half(deadline, cycle) : (!deadline_delta[23] && |deadline_delta);
-    wire [23:0] expiry = OPT >= 2 ? sum3(time_base, relative, {2'b0, ax, 6'b0}) : deadline + {2'b0, ax, 6'b0};
+    wire [23:0] expiry = OPT >= 4 ? timed_expiry : expiry_calc;
     wire [23:0] expiry_delta = expiry - cycle;
     wire expiry_future = OPT ? in_future_half(expiry, cycle) : (!expiry_delta[23] && |expiry_delta);
     wire [23:0] bumped_offset = {1'b0, offset} +
@@ -178,7 +186,8 @@ module full_core_probe #(parameter OPT = 0) (
          ((op == ADDOFF || op == ADDOFF_R) && bumped_offset[23])) ? 3'd4 : 3'd0;
 
     wire drive_valid = (execute && !decode_fault && drives) || (retry && wait_kind[ctx] == P_DRIVE);
-    wire [2:0] route = {retry && select_ctx, retry && !select_ctx, execute};
+    wire route_ctx = OPT >= 3 ? retry_ctx : select_ctx;
+    wire [2:0] route = {retry && route_ctx, retry && !route_ctx, execute};
     wire [23:0] drive_at = OPT ? (({24{route[0]}} & deadline) | ({24{route[1]}} & wait_at[0]) |
                                  ({24{route[2]}} & wait_at[1])) : (retry ? wait_at[ctx] : deadline);
     wire [7:0] drive_mask = OPT ? (({8{route[0]}} & new_mask) | ({8{route[1]}} & wait_mask[0]) |
@@ -332,6 +341,9 @@ module full_core_probe #(parameter OPT = 0) (
             fetch_live <= 0;
             fetch_ctx <= 0;
             fetch_fault <= 0;
+            retry_live <= 0;
+            retry_ctx <= 0;
+            timing_live <= 0;
             redirect <= 0;
             rr_next <= 0;
             stamp_valid <= 0;
@@ -350,13 +362,21 @@ module full_core_probe #(parameter OPT = 0) (
                 wait_kind[c] <= P_NONE;
             end
         end else begin
-            fetch_live <= fetch;
+            fetch_live <= fetch || prepare_timing;
+            timing_live <= prepare_timing;
+            retry_live <= select_retry;
+            if (select_retry) retry_ctx <= select_ctx;
+            if (prepare_timing) begin
+                timed_relative <= relative_calc;
+                timed_deadline <= deadline_calc;
+                timed_expiry <= expiry_calc;
+            end
             redirect <= retire && branch;
             if (fetch) begin
-                fetch_ctx <= ctx;
-                fetch_fault <= cur_pc >= image_count;
+                fetch_ctx <= select_ctx;
+                fetch_fault <= fetch_pc >= image_count;
             end
-            if (boundary) rr_next <= !ctx;
+            if (boundary) rr_next <= !select_ctx;
             for (c = 0; c < 2; c = c + 1)
                 if (wait_kind[c] == P_FENCE && fence_hit[c]) fence_open[c] <= 1;
 

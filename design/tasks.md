@@ -402,6 +402,15 @@ Done when: compare the baseline and a version that moves validation ahead of sav
 
 [EVAL-019](evals/EVAL-019-split-issue-timing.md) records the comparison. Both variants improved worst slow setup but failed 60 MHz. No production implementation was selected.
 
+### TASK-054 — Test registered issue boundaries
+- Status: done
+- Owner: agent
+- Works on: BLK-CORE, BLK-DRIVE, BLK-CAPTURE, SPEC-PHY-001, SPEC-I2C-003
+- Blocked by: TASK-053
+Done when: place staged probes at 60 MHz, check safe-edge and deadline behavior, and replay timing-sensitive Fast-mode I2C and concurrent UART/SPI on the staged RTL. Keep production RTL and agreed contracts unchanged.
+
+[EVAL-020](evals/EVAL-020-staged-issue-timing.md) records the comparison. The retry-only variant passed 124/124 replay cases but missed setup. The deeper variant passed internal setup but failed contended I2C and shifted the UART/SPI fixture's chip-select schedule. No production pipeline was selected.
+
 ### TASK-052 — Document ISA traceability and system sequences
 - Status: done
 - Owner: agent

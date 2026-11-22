@@ -1,0 +1,1854 @@
+[
+  {
+    "case": "i2c-400k-separate",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 8819,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-separate",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 2898,
+    "margin": [
+      3,
+      367,
+      "SCL bit period"
+    ],
+    "errors": [
+      "core fault ctx=0 pc=63 cause=5 at 2898",
+      "unexpected START/STOP sequence: ['START']",
+      "expected 2 segments, got 0",
+      "I2C result mismatch: {'i2c_ok': [], 'i2c_rx': []}",
+      "SPI RX mismatch: []",
+      "at 2027: expect 32 SCLK edges, 16 samples and return to idle",
+      "at 2027: SPI pin data mismatch",
+      "at 2027: MOSI changed on the wrong clock phase",
+      "1 of 6 SPI transactions started"
+    ]
+  },
+  {
+    "case": "i2c-400k-combined",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 8729,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 2898,
+    "margin": [
+      3,
+      367,
+      "SCL bit period"
+    ],
+    "errors": [
+      "core fault ctx=0 pc=64 cause=5 at 2898",
+      "unexpected START/STOP sequence: ['START']",
+      "expected 2 segments, got 0",
+      "I2C result mismatch: {'i2c_ok': [], 'i2c_rx': []}",
+      "SPI RX mismatch: []",
+      "at 2027: expect 32 SCLK edges, 16 samples and return to idle",
+      "at 2027: SPI pin data mismatch",
+      "at 2027: MOSI changed on the wrong clock phase",
+      "1 of 6 SPI transactions started"
+    ]
+  },
+  {
+    "case": "i2c-400k-nack-address",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 1651,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-address",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 9985,
+    "margin": [
+      3,
+      367,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-data",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 3028,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-data",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 2899,
+    "margin": [
+      3,
+      367,
+      "SCL bit period"
+    ],
+    "errors": [
+      "core fault ctx=0 pc=43 cause=5 at 2899",
+      "unexpected START/STOP sequence: ['START']",
+      "expected 1 segments, got 0",
+      "I2C result mismatch: {'i2c_ok': [], 'i2c_rx': []}",
+      "SPI RX mismatch: []",
+      "at 2027: expect 32 SCLK edges, 16 samples and return to idle",
+      "at 2027: SPI pin data mismatch",
+      "at 2027: MOSI changed on the wrong clock phase",
+      "1 of 6 SPI transactions started"
+    ]
+  },
+  {
+    "case": "i2c-400k-combined-60clk",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 8847,
+    "margin": [
+      2,
+      1800,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-60clk",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 3015,
+    "margin": [
+      2,
+      1803,
+      "SCL bit period"
+    ],
+    "errors": [
+      "core fault ctx=0 pc=64 cause=5 at 3015",
+      "unexpected START/STOP sequence: ['START']",
+      "expected 2 segments, got 0",
+      "unexpected stretch positions or durations: [], [(1591, 1651), (2874, 2934)]",
+      "I2C result mismatch: {'i2c_ok': [], 'i2c_rx': []}",
+      "SPI RX mismatch: []",
+      "1 of 6 SPI transactions started"
+    ]
+  },
+  {
+    "case": "i2c-400k-combined-300clk",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 9327,
+    "margin": [
+      2,
+      2040,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-300clk",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 9985,
+    "margin": [
+      2,
+      2043,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-600clk",
+    "concurrent": false,
+    "epoch": 0,
+    "end_cycle": 9927,
+    "margin": [
+      2,
+      2340,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-600clk",
+    "concurrent": true,
+    "epoch": 0,
+    "end_cycle": 9985,
+    "margin": [
+      2,
+      2343,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-separate",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 8819,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-separate",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 2898,
+    "margin": [
+      3,
+      367,
+      "SCL bit period"
+    ],
+    "errors": [
+      "core fault ctx=0 pc=63 cause=5 at 2898",
+      "unexpected START/STOP sequence: ['START']",
+      "expected 2 segments, got 0",
+      "I2C result mismatch: {'i2c_ok': [], 'i2c_rx': []}",
+      "SPI RX mismatch: []",
+      "at 2027: expect 32 SCLK edges, 16 samples and return to idle",
+      "at 2027: SPI pin data mismatch",
+      "at 2027: MOSI changed on the wrong clock phase",
+      "1 of 6 SPI transactions started"
+    ]
+  },
+  {
+    "case": "i2c-400k-combined",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 8729,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 2898,
+    "margin": [
+      3,
+      367,
+      "SCL bit period"
+    ],
+    "errors": [
+      "core fault ctx=0 pc=64 cause=5 at 2898",
+      "unexpected START/STOP sequence: ['START']",
+      "expected 2 segments, got 0",
+      "I2C result mismatch: {'i2c_ok': [], 'i2c_rx': []}",
+      "SPI RX mismatch: []",
+      "at 2027: expect 32 SCLK edges, 16 samples and return to idle",
+      "at 2027: SPI pin data mismatch",
+      "at 2027: MOSI changed on the wrong clock phase",
+      "1 of 6 SPI transactions started"
+    ]
+  },
+  {
+    "case": "i2c-400k-nack-address",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 1651,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-address",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 9985,
+    "margin": [
+      3,
+      367,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-data",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 3028,
+    "margin": [
+      3,
+      364,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-nack-data",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 2899,
+    "margin": [
+      3,
+      367,
+      "SCL bit period"
+    ],
+    "errors": [
+      "core fault ctx=0 pc=43 cause=5 at 2899",
+      "unexpected START/STOP sequence: ['START']",
+      "expected 1 segments, got 0",
+      "I2C result mismatch: {'i2c_ok': [], 'i2c_rx': []}",
+      "SPI RX mismatch: []",
+      "at 2027: expect 32 SCLK edges, 16 samples and return to idle",
+      "at 2027: SPI pin data mismatch",
+      "at 2027: MOSI changed on the wrong clock phase",
+      "1 of 6 SPI transactions started"
+    ]
+  },
+  {
+    "case": "i2c-400k-combined-60clk",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 8847,
+    "margin": [
+      2,
+      1800,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-60clk",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 3015,
+    "margin": [
+      2,
+      1803,
+      "SCL bit period"
+    ],
+    "errors": [
+      "core fault ctx=0 pc=64 cause=5 at 3015",
+      "unexpected START/STOP sequence: ['START']",
+      "expected 2 segments, got 0",
+      "unexpected stretch positions or durations: [], [(1591, 1651), (2874, 2934)]",
+      "I2C result mismatch: {'i2c_ok': [], 'i2c_rx': []}",
+      "SPI RX mismatch: []",
+      "1 of 6 SPI transactions started"
+    ]
+  },
+  {
+    "case": "i2c-400k-combined-300clk",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 9327,
+    "margin": [
+      2,
+      2040,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-300clk",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 9985,
+    "margin": [
+      2,
+      2043,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-600clk",
+    "concurrent": false,
+    "epoch": 16775215,
+    "end_cycle": 9927,
+    "margin": [
+      2,
+      2340,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "i2c-400k-combined-600clk",
+    "concurrent": true,
+    "epoch": 16775215,
+    "end_cycle": 9985,
+    "margin": [
+      2,
+      2343,
+      "SCL bit period"
+    ],
+    "errors": []
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": 0,
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/16",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/8",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "3/16",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/4",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "5/16",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "3/8",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "7/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/2",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "9/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "5/8",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "11/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "3/4",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "13/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "7/8",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "15/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": 0,
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/16",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/8",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "3/16",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/4",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "5/16",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "3/8",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "7/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/2",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "9/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "5/8",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "11/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "3/4",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "13/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "7/8",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "15/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": 0,
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/16",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/8",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "3/16",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/4",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "5/16",
+    "epoch": 0,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "3/8",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "7/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/2",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "9/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "5/8",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "11/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "3/4",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "13/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "7/8",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "15/16",
+    "epoch": 0,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": 0,
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/16",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/8",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "3/16",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/4",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "5/16",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "3/8",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "7/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "1/2",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "9/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "5/8",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "11/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "3/4",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "13/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "7/8",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": -4,
+    "phase": "15/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      434,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": 0,
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/16",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/8",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "3/16",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/4",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "5/16",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "3/8",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "7/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "1/2",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "9/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "5/8",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "11/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "3/4",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "13/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "7/8",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 0,
+    "phase": "15/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      438,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": 0,
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/16",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/8",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "3/16",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/4",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "5/16",
+    "epoch": 16776716,
+    "end_cycle": 15383,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "3/8",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "7/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "1/2",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "9/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "5/8",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "11/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "3/4",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "13/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "7/8",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  },
+  {
+    "case": "uart-spi-overlap",
+    "offset": 4,
+    "phase": "15/16",
+    "epoch": 16776716,
+    "end_cycle": 15384,
+    "margin": [
+      1,
+      442,
+      "SPI half-period"
+    ],
+    "errors": [
+      "unexpected CS assertion/deassertion times"
+    ]
+  }
+]

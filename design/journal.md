@@ -408,3 +408,10 @@ Results: The best variant improved slow internal setup slack from −7.445 ns to
 AI vs human: Lingga authorized the follow-up. OpenCode implemented and measured the probes. Lingga has not chosen a pipeline or approved a staged probe.
 Problems: The cycle-to-register-file path still dominates slow setup. Fast hold still fails between the pin synchronizer stages. The first parameterized placement run failed because Yosys renamed the top; giving the parameterized top its original name fixed it.
 Next: Ask whether to try a registered select/commit boundary. Replay the timing-sensitive workloads if issue latency changes.
+
+## 2026-11-22: Lingga + OpenCode (TASK-054, EVAL-020 exploration)
+Did: Placed three issue variants and replayed Fast-mode I2C and concurrent UART RX/SPI on each probe RTL. Compared pin activity and payload against the existing independent monitors.
+Results: Registered retry selection passed 124/124 cases and had +9.615 ns slow setup slack from saved request to queue, but missed internal setup by 1.499 ns overall. Adding a stage to each fresh instruction met internal setup by 0.302 ns. It passed 20/124 replay cases: eight contended I2C cases faulted and 96 UART/SPI cases missed only the expected chip-select schedule. Directed smoke checks and all 89 Python benchmark tests passed. No registered project tests ran.
+AI vs human: Lingga approved the experiment. OpenCode built and measured the probes and recommends keeping the retry boundary as a candidate, not adopting the global extra stage. No production RTL or agreed contract changed.
+Problems: The first replay harness discarded pin bits because it reused an iterator for membership tests. Materializing the pin set fixed it before the archived runs. Fast internal hold and overall setup still fail on both staged variants.
+Next: Ask whether to narrow the fresh instruction-to-writeback path while keeping the tested retry boundary. Replay the timed workloads before selecting any new schedule.
