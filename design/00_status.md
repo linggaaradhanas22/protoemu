@@ -3,8 +3,8 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-22 (agreed schedule placed and repaired)
-**Current stage:** G4 (micro-architecture review)
+**Last updated:** 2026-11-22 (Lingga reapproved G4; G5 started)
+**Current stage:** G5 (RTL + unit tests)
 
 ## Gates
 
@@ -13,8 +13,8 @@ every session. Only Lingga marks a gate ✅.
 | G1 | Requirements agreed | ✅ Approved by Lingga | `g1-req` | `check_trace.py --gate G1` |
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
 | G3 | Architecture decided | ✅ Approved by Lingga; ARCH-B selected in DEC-001 | `g3-arch` | `--gate G3` |
-| G4 | Micro-architecture agreed | 🔄 Decisions approved; awaiting Lingga's formal gate approval | `g4-uarch` (prior approval) | `--gate G4` |
-| G5 | RTL + unit tests | ⏳ On hold pending G4 reapproval | `g5-rtl` | `--gate G5` |
+| G4 | Micro-architecture agreed | ✅ Reapproved by Lingga after the decision review and EVAL-025 | `g4-uarch-r2` (prior `g4-uarch`) | `--gate G4` |
+| G5 | RTL + unit tests | 🔄 Started; block RTL not written yet | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
 | G7 | Sign-off: precheck + write-up | ⏳ | `g7-submit` | `--gate G7` |
 
@@ -36,13 +36,13 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. Lingga: give formal G4 approval. The checker reports `MET` and the decision review is closed.
-2. After approval: tag the gate, start G5 RTL, and close the two provisional encodings when the decoder and assembler exist.
+1. TASK-060: implement BLK-TIMER and BLK-PROGRAM RTL with their cocotb unit tests.
+2. TASK-061: shorten the BLK-CORE run-control and payload-eligibility cloud before core RTL.
+3. Close the two provisional encodings when the RTL decoder and assembler exist.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
-- **Formal G4 approval:** The four [decision recommendations](05_microarch/g4-decision-review.md) are approved. The gate row is still open because only Lingga passes a gate.
 - **Provisional encodings:** The ISA map and host numeric values stay provisional into G5 by decision 2 and decision 4. Freeze them when the RTL decoder and assembler exist.
 - **Capture timeout storage:** Keep storing `Rt`. Revisit only after a placed capture-block comparison.
 - **60 MHz margin:** [EVAL-025](evals/EVAL-025-agreed-schedule-timing.md) places the agreed schedule with the faster writeback. After clock-tree synthesis and repair, setup is −0.023 ns bare and +0.037 ns with a registered host boundary, and hold passes. That is 23 to 37 ps, too little for routing. The limiter is the run-control and payload-eligibility cloud, not the writeback or timed I/O. Optimize that cloud in G5 and check the routed design.

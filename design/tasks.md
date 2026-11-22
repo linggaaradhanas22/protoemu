@@ -461,3 +461,17 @@ Lingga approved all four [G4 decision recommendations](05_microarch/g4-decision-
 Done when: place the same-cycle retry with the separate writeback, run clock-tree synthesis and repair, and repeat with registered host configuration. Report setup, hold and area, and keep production RTL unchanged.
 
 [EVAL-025](evals/EVAL-025-agreed-schedule-timing.md) records the runs. After repair the agreed schedule is within 23 to 37 ps of 60 MHz setup and passes hold. That is not closure margin.
+
+### TASK-060 — Implement the timebase and program store
+- Status: todo
+- Owner: agent
+- Works on: BLK-TIMER, BLK-PROGRAM
+- Blocked by: none
+Done when: `src/cycle_timer.v` and `src/program_store.v` implement the agreed blocks, lint clean, and their cocotb tests (TEST-UNIT-005, TEST-UNIT-002) pass. Record the TEST status only after the test ran.
+
+### TASK-061 — Shorten the core run-control cloud
+- Status: todo
+- Owner: agent
+- Works on: BLK-CORE, BLK-DRIVE, BLK-PADS
+- Blocked by: none
+Done when: propose and measure a partitioning of the `started`, `active`, `done` and payload-eligibility logic that keeps the agreed host-visible timing. Record the result in an EVAL and apply it only in the BLK-CORE RTL. Any change that moves a host-visible edge needs a CHG first.

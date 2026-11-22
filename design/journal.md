@@ -457,3 +457,10 @@ Results: After repair, setup is -0.023 ns bare and +0.037 ns with the registered
 AI vs human: Lingga asked for the two decisive experiments before deciding. OpenCode ran them and does not claim timing closure; 23 to 37 ps is not routing margin.
 Problems: The registered host run initially failed endpoint extraction because flattening prefixes inner names with `dut.`; the extractor now ignores that prefix. The bare repair ends 23 ps short, so the result is at the edge, not closed.
 Next: Ask for formal G4 approval, then optimize the run-control cloud in G5 and check the integrated routed design.
+
+## 2026-11-22: Lingga + OpenCode (G4 reapproved)
+Did: Recorded Lingga's reapproval of G4 and opened G5. Added TASK-060 (timebase and program store RTL) and TASK-061 (run-control cloud).
+Results: The G4 checker reports MET with 0 errors and the two accepted warnings. G4 is tagged `g4-uarch-r2`; the earlier `g4-uarch` tag stays as history. No block contract changed.
+AI vs human: Lingga approved the gate after the decision review and EVAL-025. OpenCode recorded the approval and created the follow-up tasks.
+Problems: The 60 MHz margin is 23 to 37 ps before routing, so closure is still open. The two encodings remain provisional.
+Next: TASK-060, then TASK-061, then the integrated routed timing check.
