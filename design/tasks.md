@@ -434,3 +434,12 @@ Done when: compare the current fault schedules and an immediate-expiry variant a
 - Owner: agent
 - Works on: BLK-CORE, BLK-PROGRAM, BLK-DRIVE, BLK-CAPTURE, BLK-TIMER, BLK-PADS, BLK-HOST
 Done when: the ISA draft links its programming model to the relevant G2 specs, and an editable chip-level sequence links to one detailed sequence per block. Cross-link the existing block records and structural diagrams. Do not change any behavior or approval status.
+
+### TASK-057 — Gather evidence for the reopened G4 decisions
+- Status: done
+- Owner: agent
+- Works on: BLK-CORE, BLK-DRIVE, BLK-CAPTURE, BLK-HOST, SPEC-PHY-001
+- Blocked by: TASK-056
+Done when: compare retry policies that preserve the last legal edge, compare guarded timeout storage, and check the candidate ISA and host encodings against their models. Record recommendations and limits without adopting changes.
+
+[EVAL-023](evals/EVAL-023-retry-and-timeout-alternatives.md) and [EVAL-024](evals/EVAL-024-encoding-check.md) record the evidence. [CHG-014](changes/CHG-014-expired-retry-selection.md) is rejected in favour of the existing same-cycle retry schedule.

@@ -66,7 +66,7 @@ def main():
     parser.add_argument("--pdk", required=True, type=Path)
     parser.add_argument("--def", dest="tile_def", required=True, type=Path)
     parser.add_argument("--image", default=IMAGE)
-    parser.add_argument("--opt", type=int, choices=range(8), default=0)
+    parser.add_argument("--opt", type=int, choices=range(10), default=0)
     parser.add_argument("--work", default=Path("test/sim_build/EVAL-018"), type=Path)
     parser.add_argument("--out", default=Path("design/evals/EVAL-018"), type=Path)
     args = parser.parse_args()

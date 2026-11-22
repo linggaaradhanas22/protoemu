@@ -1,0 +1,2 @@
+PASS capture: 29 directed cases and 2379 checked edges
+models/physical/capture_expiry_probe_tb.v:84: $finish called at 4758000 (1ps)

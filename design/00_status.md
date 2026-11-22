@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-22 (expired-retry evidence added)
+**Last updated:** 2026-11-22 (G4 decision evidence compiled)
 **Current stage:** G4 (micro-architecture review)
 
 ## Gates
@@ -36,13 +36,13 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. Review [CHG-014](changes/CHG-014-expired-retry-selection.md). Decide whether the final legal admission edge must remain usable for a retry. Use the [G4 decision review](05_microarch/g4-decision-review.md) for the other evidence gaps.
-2. Update affected block descriptions and sequence diagrams after Lingga decides. Rerun the gate check and request explicit reapproval before starting production RTL.
+1. Lingga: confirm the four [G4 decision recommendations](05_microarch/g4-decision-review.md). Each one has evidence now: keep same-cycle retry, keep the ISA map provisional, keep storing `Rt`, and treat the host status values as provisional.
+2. After decisions: update affected block records and sequence diagrams if needed, rerun the gate check, and request explicit G4 reapproval. Start production RTL only after that.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
-- **Core schedule:** [EVAL-022](evals/EVAL-022-expired-retry.md) shows two effects of registering retries. One extra edge can let an older pad event retire before safe. A slot that first frees one edge before the deadline can also be too late for registered retry. [CHG-014](changes/CHG-014-expired-retry-selection.md) addresses the first effect when the expired request wins selection. It does not address the second.
+- **Four G4 decisions:** The [decision review](05_microarch/g4-decision-review.md) now has evidence for each. Recommended: keep same-cycle retry (CHG-014 rejected), keep the opcode map provisional until the assembler exists, keep storing `Rt`, and keep host status values provisional. The remaining choices are when to freeze encodings and whether the capture slot should change after a placed comparison.
 - **G4 reapproval:** The checker still reports `MET` because the seven block records remain agreed. This does not restore approval. The `g4-uarch` tag records the prior approval only.
 - **60 MHz closure:** TASK-055's separate writeback candidate passed 124/124 probe RTL replays with no new issue cycle. After clock-tree synthesis and repair it has +0.040 ns setup, +0.081 ns internal hold and −0.014 ns overall hold. Check the real host boundary and routed margin before sign-off.
 - Lingga approved [CHG-012](changes/CHG-012-shift-lsb.md) (LSB-first `shift_pin`). Its area is not measured.

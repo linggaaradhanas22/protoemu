@@ -151,7 +151,7 @@ module full_core_probe_tb #(parameter OPT = 0);
             due_visible = 0;
             launch(10, 2'b11);
             wait (did_block && dut.cycle == frozen_target);
-            expect_f = other_first ? (OPT == 2 ? 24'd1 : OPT == 7 ? 24'd2 : 24'd3) :
+            expect_f = other_first ? (OPT == 2 ? 24'd1 : OPT == 5 ? 24'd3 : 24'd2) :
                                      (OPT == 5 ? 24'd1 : 24'd0);
             expect_visible = other_first || OPT == 5;
             @(negedge clk);
@@ -189,11 +189,11 @@ module full_core_probe_tb #(parameter OPT = 0);
             if (pad_oe[0] !== 1'b1 || pad_value[0] !== 1'b1)
                 $fatal(1, "older event did not drive on D-1");
             @(negedge clk);
-            if (pad_oe[0] !== 1'b1 || pad_value[0] !== (OPT != 2) ||
-                dut.fault_pending !== (OPT != 2) || accepted != (OPT == 2 ? 5 : 4))
+            if (pad_oe[0] !== 1'b1 || pad_value[0] !== (OPT == 5 || OPT == 7) ||
+                dut.fault_pending !== (OPT == 5 || OPT == 7) || accepted != ((OPT == 5 || OPT == 7) ? 4 : 5))
                 $fatal(1, "wrong last-legal-cycle retry outcome at D");
             @(negedge clk);
-            if (OPT == 2 ? faulted || !pad_oe[0] : !faulted || pad_oe[0] || fault_pc != 6 || fault_cause != 5)
+            if (OPT == 5 || OPT == 7 ? !faulted || pad_oe[0] || fault_pc != 6 || fault_cause != 5 : faulted || !pad_oe[0])
                 $fatal(1, "wrong cleanup for last-legal-cycle retry");
             $display("LAST_LEGAL opt=%0d credit=D-1 admitted=%0d fault_at_D=%0d", OPT, accepted == 5, faulted);
         end
@@ -232,8 +232,8 @@ module full_core_probe_tb #(parameter OPT = 0);
         load(10, 0);
         entry1 = 8;
         run_case = LATE;
-        launch(11, OPT >= 3 && OPT != 7 ? 2'b11 : 2'b01);
-        if (OPT >= 3 && OPT != 7) begin
+        launch(11, OPT >= 3 && OPT < 7 ? 2'b11 : 2'b01);
+        if (OPT >= 3 && OPT < 7) begin
             wait (did_block && dut.cycle == frozen_target + 24'd1);
             @(negedge clk);
             ingress_ready = 2'b10;
@@ -244,7 +244,7 @@ module full_core_probe_tb #(parameter OPT = 0);
         wait (dut.fault_pending);
         @(negedge clk);
         if (!did_block || accepted != 4 || dut.drive_credit ||
-            dut.cycle !== frozen_target + (OPT >= 3 && OPT != 7 ? 24'd2 : 24'd1))
+            dut.cycle !== frozen_target + (OPT >= 3 && OPT < 7 ? 24'd2 : 24'd1))
             $fatal(1, "wrong expired-retry edge with the queue still full");
         @(negedge clk);
         if (!faulted || fault_pc != 6 || fault_cause != 5 || pad_oe != 0 || dut.active != 0 || pops != 0)
@@ -302,7 +302,7 @@ module full_core_probe_tb #(parameter OPT = 0);
         repeat (10) @(negedge clk);
         if (!faulted || fault_cause != 2 || fault_pc != 0 || dut.rf.regs[1] != 0)
             $fatal(1, "malformed host instruction did not fault without side effects");
-        if (OPT == 2 || OPT == 5 || OPT == 7) begin
+        if (OPT == 2 || OPT == 5 || OPT >= 7) begin
             expiry_overlap(0);
             expiry_overlap(1);
             last_legal_retry;

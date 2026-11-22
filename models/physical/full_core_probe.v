@@ -62,11 +62,13 @@ module full_core_probe #(parameter OPT = 0) (
     wire [1:0] runnable;
     wire [1:0] fence_hit;
     wire [1:0] saved_future;
+    wire [1:0] saved_last;
     genvar i;
     generate
         for (i = 0; i < 2; i = i + 1) begin : eligibility
             wire [23:0] age = wait_at[i] - cycle;
             assign saved_future[i] = OPT ? in_future_half(wait_at[i], cycle) : (|age && !age[23]);
+            assign saved_last[i] = wait_at[i] == cycle + 24'd1;
             assign fence_hit[i] = cycle == wait_at[i];
             assign runnable[i] = active[i] &&
                 (wait_kind[i] == P_NONE ||
@@ -79,13 +81,15 @@ module full_core_probe #(parameter OPT = 0) (
     endgenerate
 
     wire select_ctx = runnable[1] && (!runnable[0] || rr_next);
-    wire ctx = OPT >= 3 ? (fetch_live ? fetch_ctx : retry_ctx) : (fetch_live ? fetch_ctx : select_ctx);
+    wire ctx = fetch_live ? fetch_ctx : (OPT >= 3 && !bypass_drive ? retry_ctx : select_ctx);
     wire boundary = go && !fetch_live && !(OPT >= 3 && retry_live) && !redirect && |runnable;
     wire fetch = boundary && wait_kind[select_ctx] == P_NONE;
     wire select_retry = boundary && wait_kind[select_ctx] != P_NONE;
-    wire expired_on_select = OPT == 7 && select_retry && wait_kind[select_ctx] == P_DRIVE &&
+    wire expired_on_select = (OPT == 7 || OPT == 8) && select_retry && wait_kind[select_ctx] == P_DRIVE &&
                              !saved_future[select_ctx];
-    wire retry = OPT >= 3 ? (go && retry_live) : select_retry;
+    wire bypass_drive = select_retry && wait_kind[select_ctx] == P_DRIVE &&
+                        (OPT == 9 || (OPT == 8 && saved_last[select_ctx]));
+    wire retry = OPT >= 3 ? ((go && retry_live) || bypass_drive) : select_retry;
     wire prepare_timing = OPT == 4 && go && fetch_live && !timing_live;
     wire execute = go && fetch_live && (OPT != 4 || timing_live);
     wire [7:0] cur_pc = pc[ctx];
@@ -225,7 +229,7 @@ module full_core_probe #(parameter OPT = 0) (
          ((op == ADDOFF || op == ADDOFF_R) && bumped_offset[23])) ? 3'd4 : 3'd0;
 
     wire drive_valid = (execute && !decode_fault && drives) || (retry && wait_kind[ctx] == P_DRIVE);
-    wire route_ctx = OPT >= 3 ? retry_ctx : select_ctx;
+    wire route_ctx = OPT >= 3 && !bypass_drive ? retry_ctx : select_ctx;
     wire [2:0] route = {retry && route_ctx, retry && !route_ctx, execute};
     wire [23:0] drive_at = OPT ? (({24{route[0]}} & deadline) | ({24{route[1]}} & wait_at[0]) |
                                  ({24{route[2]}} & wait_at[1])) : (retry ? wait_at[ctx] : deadline);
@@ -405,7 +409,7 @@ module full_core_probe #(parameter OPT = 0) (
         end else begin
             fetch_live <= fetch || prepare_timing;
             timing_live <= prepare_timing;
-            retry_live <= select_retry && !expired_on_select;
+            retry_live <= select_retry && !expired_on_select && !bypass_drive;
             if (select_retry) retry_ctx <= select_ctx;
             if (prepare_timing) begin
                 timed_relative <= relative_calc;

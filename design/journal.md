@@ -436,3 +436,10 @@ Results: The extra edge can expose an older pad update before safe. Both registe
 AI vs human: Lingga requested data before making decisions. OpenCode recommends preserving final-edge admission and has not adopted a schedule or changed a contract.
 Problems: The selection-fault variant does not recover final-edge admission. Its clock-tree probe stopped at the hold-repair buffer cap without a final timing report.
 Next: Ask Lingga whether to preserve final-edge admission. Compare options for the chosen rule and close the other G4 evidence gaps before reapproval.
+
+## 2026-11-22: Lingga + OpenCode (TASK-057, EVAL-023 and EVAL-024 exploration)
+Did: Tested two designs that keep the final legal retry edge. Compared retained timeout storage with a precomputed expiry in simulation and mapping. Exercised the draft instruction map and host command framing.
+Results: Both bypass variants recovered the edge but missed slow setup by 7.6 to 9.2 ns. The precomputed-expiry capture was 1,338.5 µm² smaller but used 18 more flops. The opcode map had no duplicates, and the boundary corpus round-tripped. The host commands behaved as documented, including an interrupted reply. All 89 Python model checks passed separately; no registered test ran.
+AI vs human: Lingga asked for evidence before deciding. OpenCode recommends keeping same-cycle retry, keeping both encodings provisional, and keeping stored `Rt` until the block is placed.
+Problems: The `pad` corpus first used the ISA-draft field layout, which lacks the order bit the model already has. Switched to the suite's map. One shell loop lost its variable when run through the Windows shell; moved it into a checked-in script.
+Next: Ask Lingga to confirm the four recommendations, then reapprove G4.

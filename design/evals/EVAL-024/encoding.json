@@ -1,0 +1,233 @@
+{
+  "isa": {
+    "opcodes_defined": 27,
+    "duplicate_opcodes": [],
+    "corpus": [
+      {
+        "word": "000012",
+        "op": "pad",
+        "args": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "encodes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "word": "07fff2",
+        "op": "pad",
+        "args": [
+          7,
+          1,
+          1,
+          511
+        ],
+        "encodes": [
+          7,
+          1,
+          1,
+          511
+        ]
+      },
+      {
+        "word": "ffa613",
+        "op": "pad2",
+        "args": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          511
+        ],
+        "encodes": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          511
+        ]
+      },
+      {
+        "word": "000014",
+        "op": "shift_pin",
+        "args": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "encodes": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "word": "1ffff4",
+        "op": "shift_pin",
+        "args": [
+          7,
+          7,
+          511,
+          1
+        ],
+        "encodes": [
+          7,
+          7,
+          511,
+          1
+        ]
+      },
+      {
+        "word": "004815",
+        "op": "shift_pair",
+        "args": [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        "encodes": [
+          0,
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "word": "ffff16",
+        "op": "drivev",
+        "args": [
+          0,
+          255,
+          255
+        ],
+        "encodes": [
+          0,
+          255,
+          255
+        ]
+      },
+      {
+        "word": "0000f6",
+        "op": "drivev",
+        "args": [
+          7,
+          0,
+          0
+        ],
+        "encodes": [
+          7,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "host": [
+    {
+      "command": "BEGIN",
+      "opcode": 1,
+      "request_bytes": 12,
+      "status": 0,
+      "reply_bytes": 5
+    },
+    {
+      "command": "DATA",
+      "opcode": 2,
+      "request_bytes": 8,
+      "status": 0,
+      "reply_bytes": 5
+    },
+    {
+      "command": "COMMIT",
+      "opcode": 3,
+      "request_bytes": 5,
+      "status": 1,
+      "reply_bytes": 5
+    },
+    {
+      "command": "START",
+      "opcode": 4,
+      "request_bytes": 5,
+      "status": 0,
+      "reply_bytes": 5
+    },
+    {
+      "command": "WRITE",
+      "opcode": 6,
+      "request_bytes": 8,
+      "status": 0,
+      "reply_bytes": 5
+    },
+    {
+      "command": "READ",
+      "opcode": 7,
+      "request_bytes": 6,
+      "status": 5,
+      "reply_bytes": 5
+    },
+    {
+      "command": "WRITEN",
+      "opcode": 9,
+      "request_bytes": 8,
+      "status": 0,
+      "reply_bytes": 6
+    },
+    {
+      "command": "READN",
+      "opcode": 8,
+      "request_bytes": 7,
+      "status": 5,
+      "reply_bytes": 5
+    },
+    {
+      "command": "STOP",
+      "opcode": 5,
+      "request_bytes": 5,
+      "status": 0,
+      "reply_bytes": 5
+    },
+    {
+      "command": "unknown-0",
+      "opcode": 0,
+      "request_bytes": 5,
+      "status": 2,
+      "reply_bytes": 5
+    },
+    {
+      "command": "unknown-255",
+      "opcode": 255,
+      "request_bytes": 5,
+      "status": 2,
+      "reply_bytes": 5
+    },
+    {
+      "command": "STATE",
+      "opcode": 3,
+      "request_bytes": 5,
+      "status": 2,
+      "reply_bytes": 5
+    },
+    {
+      "command": "READN interrupted reply",
+      "first_bytes": 5,
+      "restart_bytes": 5,
+      "same_reply": true,
+      "fifo_after": 2
+    }
+  ]
+}
