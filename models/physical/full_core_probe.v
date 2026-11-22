@@ -84,15 +84,31 @@ module full_core_probe #(parameter OPT = 0) (
     wire fetch = boundary && wait_kind[select_ctx] == P_NONE;
     wire select_retry = boundary && wait_kind[select_ctx] != P_NONE;
     wire retry = OPT >= 3 ? (go && retry_live) : select_retry;
-    wire prepare_timing = OPT >= 4 && go && fetch_live && !timing_live;
-    wire execute = go && fetch_live && (OPT < 4 || timing_live);
+    wire prepare_timing = OPT == 4 && go && fetch_live && !timing_live;
+    wire execute = go && fetch_live && (OPT != 4 || timing_live);
     wire [7:0] cur_pc = pc[ctx];
     wire [7:0] fetch_pc = pc[select_ctx];
     wire [23:0] insn;
-    probe_store #(.AW(7)) program_store (
+    wire [23:0] fetched_word;
+    reg [31:0] early_op;
+    reg early_malformed;
+    wire fetch_ok = fetch && fetch_pc < image_count;
+    generate if (OPT == 6) begin : fast_fetch
+        reg [23:0] mem [0:127];
+        reg [23:0] stored_word;
+        assign fetched_word = mem[fetch_pc[6:0]];
+        assign insn = stored_word;
+        always @(posedge clk) begin
+            if (load_word && rst_n && !started && !start) mem[load_addr] <= load_data;
+            if (fetch_ok) stored_word <= fetched_word;
+        end
+    end else begin : legacy_fetch
+        assign fetched_word = 24'b0;
+        probe_store #(.AW(7)) program_store (
         .clk(clk), .wr(load_word && rst_n && !started && !start), .rd(fetch && fetch_pc < image_count),
         .waddr(load_addr), .raddr(fetch_pc[6:0]), .wdata(load_data), .word(insn)
-    );
+        );
+    end endgenerate
 
     wire [4:0] op = insn[4:0];
     wire [2:0] ra = (!OPT && retry) ? wait_rd[ctx] : op == WAIT_TO ? insn[20:18] : insn[7:5];
@@ -108,9 +124,27 @@ module full_core_probe #(parameter OPT = 0) (
     reg [2:0] next_wait;
     reg [2:0] cause;
     wire [23:0] interval = cap_stamp - saved_stamp[ctx];
+    wire [31:0] op_select = OPT == 6 ? early_op : (32'b1 << op);
+    wire [15:0] input_word = ctx ? ingress_words[31:16] : ingress_words[15:0];
+    wire [15:0] fresh_alu = ({16{op_select[SET]}} & insn[23:8]) |
+                            ({16{op_select[ADD]}} & (ax + {insn[22], insn[22:8]})) |
+                            ({16{op_select[SHR]}} & (ax >> insn[11:8])) |
+                            ({16{op_select[XOR]}} & (ax ^ bx)) |
+                            ({16{op_select[MOV]}} & bx) |
+                            ({16{op_select[ULT]}} & {15'b0, ax < insn[23:8]}) |
+                            ({16{op_select[LOOP]}} & (ax - 16'd1));
+    wire static_ok = execute && !fetch_fault && !malformed;
+    wire alu_write = static_ok && (op_select[SET] || op_select[ADD] || op_select[SHR] || op_select[XOR] ||
+                                    op_select[MOV] || op_select[ULT] || op_select[LOOP]);
+    wire fresh_get = static_ok && op_select[HOST_GET] && ingress_ready[ctx];
+    wire fresh_put = static_ok && op_select[HOST_PUT] && egress_ready[ctx];
+    wire fresh_shift = drive_accept && execute && (op_select[SHIFT_PIN] || op_select[SHIFT_PAIR]);
+    wire fast_we = alu_write || fresh_get || fresh_shift || (retry && retire && write_a);
+    wire [15:0] fast_data = fresh_alu & {16{alu_write}} | input_word & {16{fresh_get}} |
+                            shifted_word & {16{fresh_shift}} | word_a & {16{retry}};
     regfile_probe #(.VARIANT(1)) rf (
-        .clk(clk), .rst_n(rst_n), .clear(flush), .ctx_a(ctx), .we_a(retire && write_a),
-        .addr_a(addr_a), .data_a(word_a), .off_we(retire && write_off), .off_data(off_data),
+        .clk(clk), .rst_n(rst_n), .clear(flush), .ctx_a(ctx), .we_a(OPT >= 5 ? fast_we : (retire && write_a)),
+        .addr_a(addr_a), .data_a(OPT >= 5 ? fast_data : word_a), .off_we(retire && write_off), .off_data(off_data),
         .delta_we(retire && write_delta), .delta_rd(addr_a[1:0] - 2'd1), .delta_hi(interval[22:16]),
         .wb_go(1'b0), .we_b(1'b0), .addr_b(3'b0), .data_b(16'b0),
         .ctx_r(ctx), .raddr_x(ra), .raddr_y(rb), .rx(ax), .ry(bx), .offset(offset), .wb_pending()
@@ -128,11 +162,11 @@ module full_core_probe #(parameter OPT = 0) (
     wire time_valid = stamp_valid[OPT ? fetch_ctx : ctx];
     wire [23:0] deadline_calc = OPT >= 2 ? sum3(time_base, {1'b0, offset}, {15'b0, immediate}) : time_base + relative_calc;
     wire [23:0] expiry_calc = OPT >= 2 ? sum3(time_base, relative_calc, {2'b0, ax, 6'b0}) : deadline_calc + {2'b0, ax, 6'b0};
-    wire [23:0] relative = OPT >= 4 ? timed_relative : relative_calc;
-    wire [23:0] deadline = OPT >= 4 ? timed_deadline : deadline_calc;
+    wire [23:0] relative = OPT == 4 ? timed_relative : relative_calc;
+    wire [23:0] deadline = OPT == 4 ? timed_deadline : deadline_calc;
     wire [23:0] deadline_delta = deadline - cycle;
     wire deadline_future = OPT ? in_future_half(deadline, cycle) : (!deadline_delta[23] && |deadline_delta);
-    wire [23:0] expiry = OPT >= 4 ? timed_expiry : expiry_calc;
+    wire [23:0] expiry = OPT == 4 ? timed_expiry : expiry_calc;
     wire [23:0] expiry_delta = expiry - cycle;
     wire expiry_future = OPT ? in_future_half(expiry, cycle) : (!expiry_delta[23] && |expiry_delta);
     wire [23:0] bumped_offset = {1'b0, offset} +
@@ -152,30 +186,33 @@ module full_core_probe #(parameter OPT = 0) (
         ((op == SHIFT_PIN || op == SHIFT_PAIR || insn[9]) ? gpio_a : 8'b0) |
         ((op == SHIFT_PAIR || insn[14]) ? gpio_b : 8'b0);
 
-    reg malformed;
-    always @* begin
-        case (op)
-            HALT, RET, SAVE_NOW: malformed = |insn[23:5];
-            ADD: malformed = insn[23];
-            CALL, JUMP: malformed = |insn[23:12];
-            LOOP, JNZ, SHR: malformed = (op == SHR ? |insn[23:12] : |insn[23:15]);
-            FENCE: malformed = |insn[23:14];
-            ADDOFF: malformed = |insn[23:20];
-            CAP: malformed = |insn[23:22] || insn[12:11] == 3;
-            WAIT_SAVE: malformed = |insn[23:18];
-            WAIT_TO: malformed = |insn[23:21];
-            PAD: malformed = |insn[23:19];
-            PAD2, SHIFT_PAIR: malformed = |(gpio_a & gpio_b);
-            SHIFT_PIN: malformed = |insn[23:21];
-            HOST_GET, HOST_PUT, ADDOFF_R: malformed = |insn[23:8];
-            EDGE_SAVE: malformed = |insn[23:10] || insn[9:8] == 3;
-            EDGE_DELTA: malformed = |insn[23:13] || insn[9:8] == 3 ||
-                                    insn[12:10] < 1 || insn[12:10] > 4;
-            XOR, MOV: malformed = |insn[23:11];
-            SET, ULT, DRIVEV: malformed = 0;
-            default: malformed = 1;
-        endcase
-    end
+    function invalid_word;
+        input [23:0] w;
+        begin
+            case (w[4:0])
+                HALT, RET, SAVE_NOW: invalid_word = |w[23:5];
+                ADD: invalid_word = w[23];
+                CALL, JUMP, SHR: invalid_word = |w[23:12];
+                LOOP, JNZ: invalid_word = |w[23:15];
+                FENCE: invalid_word = |w[23:14];
+                ADDOFF: invalid_word = |w[23:20];
+                CAP: invalid_word = |w[23:22] || w[12:11] == 3;
+                WAIT_SAVE: invalid_word = |w[23:18];
+                WAIT_TO: invalid_word = |w[23:21];
+                PAD: invalid_word = |w[23:19];
+                PAD2: invalid_word = w[7:5] == w[12:10];
+                SHIFT_PAIR: invalid_word = w[10:8] == w[13:11];
+                SHIFT_PIN: invalid_word = |w[23:21];
+                HOST_GET, HOST_PUT, ADDOFF_R: invalid_word = |w[23:8];
+                EDGE_SAVE: invalid_word = |w[23:10] || w[9:8] == 3;
+                EDGE_DELTA: invalid_word = |w[23:13] || w[9:8] == 3 || w[12:10] < 1 || w[12:10] > 4;
+                XOR, MOV: invalid_word = |w[23:11];
+                SET, ULT, DRIVEV: invalid_word = 0;
+                default: invalid_word = 1;
+            endcase
+        end
+    endfunction
+    wire malformed = OPT == 6 ? early_malformed : invalid_word(insn);
 
     wire [2:0] decode_fault = fetch_fault ? 3'd1 : malformed ? 3'd2 :
         ((op == CALL && depth[ctx] == 2) || (op == RET && depth[ctx] == 0)) ? 3'd3 :
@@ -213,8 +250,10 @@ module full_core_probe #(parameter OPT = 0) (
         .sample(cap_bit), .expired(cap_expired), .stamp(cap_stamp)
     );
 
-    wire get = retire && ((execute && op == HOST_GET) || (retry && wait_kind[ctx] == P_GET));
-    wire put_word = retire && ((execute && op == HOST_PUT) || (retry && wait_kind[ctx] == P_PUT));
+    wire get = OPT >= 5 ? fresh_get || (retry && wait_kind[ctx] == P_GET) :
+                          retire && ((execute && op == HOST_GET) || (retry && wait_kind[ctx] == P_GET));
+    wire put_word = OPT >= 5 ? fresh_put || (retry && wait_kind[ctx] == P_PUT) :
+                               retire && ((execute && op == HOST_PUT) || (retry && wait_kind[ctx] == P_PUT));
     assign ingress_pop = {get && ctx, get && !ctx};
     assign egress_push = {put_word && ctx, put_word && !ctx};
     assign egress_word = retry ? wait_word[ctx] : ax;
@@ -375,6 +414,10 @@ module full_core_probe #(parameter OPT = 0) (
             if (fetch) begin
                 fetch_ctx <= select_ctx;
                 fetch_fault <= fetch_pc >= image_count;
+                if (fetch_ok) begin
+                    early_op <= 32'b1 << fetched_word[4:0];
+                    early_malformed <= invalid_word(fetched_word);
+                end
             end
             if (boundary) rr_next <= !select_ctx;
             for (c = 0; c < 2; c = c + 1)

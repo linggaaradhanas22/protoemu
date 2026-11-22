@@ -411,6 +411,15 @@ Done when: place staged probes at 60 MHz, check safe-edge and deadline behavior,
 
 [EVAL-020](evals/EVAL-020-staged-issue-timing.md) records the comparison. The retry-only variant passed 124/124 replay cases but missed setup. The deeper variant passed internal setup but failed contended I2C and shifted the UART/SPI fixture's chip-select schedule. No production pipeline was selected.
 
+### TASK-055 — Shorten fresh writeback without adding issue cycles
+- Status: done
+- Owner: agent
+- Works on: BLK-CORE, BLK-PROGRAM, BLK-DRIVE, BLK-PADS, SPEC-PHY-001
+- Blocked by: TASK-054
+Done when: measure changes to the fresh instruction path against the retry-only control, replay the protocol cases on the leading candidate, and test clock-tree synthesis and hold repair on that candidate. Record limits without changing production RTL or contracts.
+
+[EVAL-021](evals/EVAL-021-fresh-writeback-timing.md) records both candidates. Separate writeback passed 124/124 replay cases and met internal setup and hold after physical repair. Overall hold and routed timing remain open. No production implementation was selected.
+
 ### TASK-052 — Document ISA traceability and system sequences
 - Status: done
 - Owner: agent

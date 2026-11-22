@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-22 (registered issue timing and replay complete)
+**Last updated:** 2026-11-22 (writeback and clock-tree experiments complete)
 **Current stage:** G5 (RTL + unit tests)
 
 ## Gates
@@ -36,12 +36,12 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. Review [EVAL-020](evals/EVAL-020-staged-issue-timing.md). Decide whether to keep the registered retry boundary as a candidate and test a narrower change to the fresh instruction writeback path. Keep the ISA encoding provisional.
+1. Review [EVAL-021](evals/EVAL-021-fresh-writeback-timing.md). Decide whether to use separate writeback with registered retry as the G5 implementation starting point. The second runnable context test passed; review the one-cycle change to expired-retry detection before adopting the schedule. Keep the ISA encoding provisional.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
-- **60 MHz closure:** TASK-054's registered retry boundary passed 124/124 replay cases but missed slow internal setup by 1.499 ns. Adding a stage to every fresh instruction met internal setup by 0.302 ns, but failed Fast-mode I2C under SPI contention in eight cases. Neither closed overall timing; fast internal hold also remains open.
+- **60 MHz closure:** TASK-055's separate writeback candidate passed 124/124 probe RTL replays with no new issue cycle. After clock-tree synthesis and repair it has +0.040 ns setup, +0.081 ns internal hold and −0.014 ns overall hold. Check the real host boundary and routed margin before sign-off.
 - Lingga approved [CHG-012](changes/CHG-012-shift-lsb.md) (LSB-first `shift_pin`). Its area is not measured.
 - Lingga approved the guarded timed wait [CHG-013](changes/CHG-013-timed-wait.md) after the unguarded version failed in the model (EVAL-017 corrected). It costs 5,479 µm² in the capture slots; the core-side adder operand is not measured.
 - Lingga approved [CHG-010](changes/CHG-010-payload-fifo.md) (no pass-through, depth 8) and the 1 MHz loader with four-word transfers ([CHG-011](changes/CHG-011-loader-rate.md), [DEC-005](04_decisions/DEC-005-loader-rate.md) replacing DEC-002). 1 MHz SPI must be checked on the board; the fallback is 500 kHz. `READN`/`WRITEN` framing area is not measured.
@@ -53,4 +53,4 @@ Use the [project diagram convention](05_microarch/diagrams/README.md): solid for
 - Lingga approved [CHG-006](changes/CHG-006-edge-interval.md) for the draft ISA. CHG-009 settled the writeback and CHG-008 the fault behavior; final opcodes remain open.
 - Lingga approved [CHG-005](changes/CHG-005-host-payload.md) for the draft ISA; CHG-010 settled simultaneous host/core FIFO access.
 - [EVAL-003](evals/EVAL-003-g4-timed-io.md) supports keeping four output slots and one capture slot per context.
-- Final tile fit and routed 60 MHz timing remain unverified. The full-core probe used about 0.381 mm² of placed cells, without the host loader and FIFOs.
+- Final tile fit and routed 60 MHz timing remain unverified. The repaired core probe used about 0.510 mm² of cells, without the host loader and FIFOs.

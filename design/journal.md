@@ -415,3 +415,10 @@ Results: Registered retry selection passed 124/124 cases and had +9.615 ns slow 
 AI vs human: Lingga approved the experiment. OpenCode built and measured the probes and recommends keeping the retry boundary as a candidate, not adopting the global extra stage. No production RTL or agreed contract changed.
 Problems: The first replay harness discarded pin bits because it reused an iterator for membership tests. Materializing the pin set fixed it before the archived runs. Fast internal hold and overall setup still fail on both staged variants.
 Next: Ask whether to narrow the fresh instruction-to-writeback path while keeping the tested retry boundary. Replay the timed workloads before selecting any new schedule.
+
+## 2026-11-22: Lingga + OpenCode (TASK-055, EVAL-021 exploration)
+Did: Compared separate fresh writeback with and without fetch-slot predecode. Kept the registered retry boundary and existing fresh issue schedule. Replayed both candidates and ran clock-tree synthesis and setup/hold repair on separate writeback.
+Results: Both variants passed 124/124 RTL protocol replays. Directed tests and all 89 Python benchmark tests passed. Separate writeback was the better placed candidate. After repair it had +0.040 ns setup, +0.081 ns internal hold, and −0.014 ns overall hold at a synthetic host input. The repaired probe used 0.510 mm² of cells, excluding the host. No registered tests ran.
+AI vs human: Lingga authorized the experiments. OpenCode recommends separate writeback as the next implementation candidate. No production RTL, contract or gate changed.
+Problems: The shell timed out while OpenROAD was still repairing hold. Captured the completed container log and parsed all three phases. The near-zero setup margin and the hold miss leave routed timing open.
+Next: Review the one-cycle change to expired-retry detection before adopting the schedule. The directed test confirms no issue or payload transfer from the other runnable context on the fault edge. Check timing and area with the real host and routed design.
