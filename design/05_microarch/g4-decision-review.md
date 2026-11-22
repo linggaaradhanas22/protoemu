@@ -2,6 +2,10 @@
 
 Lingga withdrew G4 approval after the first core timing experiments. The seven block agreements still stand. This page separates decisions that affect the design contract from checks that need production RTL or hardware. No recommendation here changes an agreed item.
 
+## Approval
+
+Lingga approved all four recommendations below on 2026-11-22. The block contracts therefore need no change. Micro-architecture gate approval is a separate step and is not given by this page.
+
 ## Decisions to resolve before reapproval
 
 | # | Decision | Evidence now | Recommendation | Still needs a human decision or a check |
@@ -31,3 +35,13 @@ There is no evidence that a registered retry schedule can keep the agreed fault 
 - Run the planned block and integration tests against the agreed schedules. Update any affected block record and its sequence diagram after Lingga selects a schedule.
 
 These checks remain open. A `MET` result from the trace checker does not replace Lingga's review or reapproval.
+
+## Follow-up for the production work
+
+Decisions 2 and 4 stay provisional into G5. The open follow-ups are:
+
+- Freeze the opcode map when the assembler and decoder exist, after the boundary corpus passes on the RTL decoder.
+- Freeze the host numeric values when the RTL command decoder exists, alongside the framing area measurement.
+- Revisit capture timeout storage only if a placed capture block shows the 18-flop version is clearly better.
+
+Add a directed expired-retry test to TEST-UNIT-001 so the same-cycle fault edge is verified explicitly, not only by the model.

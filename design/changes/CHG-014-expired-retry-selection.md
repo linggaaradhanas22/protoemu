@@ -28,4 +28,4 @@ The alternatives are recorded for history: registered commit detection (pattern 
 
 ## Approval
 
-Not approved. Closed as a rejected proposal for the current design. No record changes unless the retry schedule is revisited.
+Not approved for application. Lingga approved the recommendation to keep the same-cycle retry schedule on 2026-11-22. This change is closed as rejected for the current design. No record changes unless the retry schedule is revisited.

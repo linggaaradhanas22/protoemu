@@ -443,3 +443,10 @@ Results: Both bypass variants recovered the edge but missed slow setup by 7.6 to
 AI vs human: Lingga asked for evidence before deciding. OpenCode recommends keeping same-cycle retry, keeping both encodings provisional, and keeping stored `Rt` until the block is placed.
 Problems: The `pad` corpus first used the ISA-draft field layout, which lacks the order bit the model already has. Switched to the suite's map. One shell loop lost its variable when run through the Windows shell; moved it into a checked-in script.
 Next: Ask Lingga to confirm the four recommendations, then reapprove G4.
+
+## 2026-11-22: Lingga + OpenCode (TASK-058)
+Did: Recorded Lingga's approval of all four G4 decision recommendations and closed CHG-014 as rejected.
+Results: No block contract, ISA field, timeout interface or production RTL changed. Same-cycle retry, the provisional opcode map, stored `Rt` and provisional host status values stand. The trace checker reports 0 errors and the two accepted warnings.
+AI vs human: Lingga approved all recommendations. OpenCode recorded them and did not mark G4 itself.
+Problems: The micro-architecture gate still needs Lingga's explicit approval before RTL starts.
+Next: Ask for formal G4 approval, then tag the gate and start G5.

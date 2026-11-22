@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-22 (G4 decision evidence compiled)
+**Last updated:** 2026-11-22 (all four G4 decisions approved)
 **Current stage:** G4 (micro-architecture review)
 
 ## Gates
@@ -13,7 +13,7 @@ every session. Only Lingga marks a gate ✅.
 | G1 | Requirements agreed | ✅ Approved by Lingga | `g1-req` | `check_trace.py --gate G1` |
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
 | G3 | Architecture decided | ✅ Approved by Lingga; ARCH-B selected in DEC-001 | `g3-arch` | `--gate G3` |
-| G4 | Micro-architecture agreed | 🔄 Approval withdrawn by Lingga. Design decisions are under review. | `g4-uarch` (prior approval) | `--gate G4` |
+| G4 | Micro-architecture agreed | 🔄 Decisions approved; awaiting Lingga's formal gate approval | `g4-uarch` (prior approval) | `--gate G4` |
 | G5 | RTL + unit tests | ⏳ On hold pending G4 reapproval | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
 | G7 | Sign-off: precheck + write-up | ⏳ | `g7-submit` | `--gate G7` |
@@ -36,14 +36,15 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. Lingga: confirm the four [G4 decision recommendations](05_microarch/g4-decision-review.md). Each one has evidence now: keep same-cycle retry, keep the ISA map provisional, keep storing `Rt`, and treat the host status values as provisional.
-2. After decisions: update affected block records and sequence diagrams if needed, rerun the gate check, and request explicit G4 reapproval. Start production RTL only after that.
+1. Lingga: give formal G4 approval. The checker reports `MET` and the decision review is closed.
+2. After approval: tag the gate, start G5 RTL, and close the two provisional encodings when the decoder and assembler exist.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
-- **Four G4 decisions:** The [decision review](05_microarch/g4-decision-review.md) now has evidence for each. Recommended: keep same-cycle retry (CHG-014 rejected), keep the opcode map provisional until the assembler exists, keep storing `Rt`, and keep host status values provisional. The remaining choices are when to freeze encodings and whether the capture slot should change after a placed comparison.
-- **G4 reapproval:** The checker still reports `MET` because the seven block records remain agreed. This does not restore approval. The `g4-uarch` tag records the prior approval only.
+- **Formal G4 approval:** The four [decision recommendations](05_microarch/g4-decision-review.md) are approved. The gate row is still open because only Lingga passes a gate.
+- **Provisional encodings:** The ISA map and host numeric values stay provisional into G5 by decision 2 and decision 4. Freeze them when the RTL decoder and assembler exist.
+- **Capture timeout storage:** Keep storing `Rt`. Revisit only after a placed capture-block comparison.
 - **60 MHz closure:** TASK-055's separate writeback candidate passed 124/124 probe RTL replays with no new issue cycle. After clock-tree synthesis and repair it has +0.040 ns setup, +0.081 ns internal hold and −0.014 ns overall hold. Check the real host boundary and routed margin before sign-off.
 - Lingga approved [CHG-012](changes/CHG-012-shift-lsb.md) (LSB-first `shift_pin`). Its area is not measured.
 - Lingga approved the guarded timed wait [CHG-013](changes/CHG-013-timed-wait.md) after the unguarded version failed in the model (EVAL-017 corrected). It costs 5,479 µm² in the capture slots; the core-side adder operand is not measured.

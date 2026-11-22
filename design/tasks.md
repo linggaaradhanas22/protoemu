@@ -443,3 +443,12 @@ Done when: the ISA draft links its programming model to the relevant G2 specs, a
 Done when: compare retry policies that preserve the last legal edge, compare guarded timeout storage, and check the candidate ISA and host encodings against their models. Record recommendations and limits without adopting changes.
 
 [EVAL-023](evals/EVAL-023-retry-and-timeout-alternatives.md) and [EVAL-024](evals/EVAL-024-encoding-check.md) record the evidence. [CHG-014](changes/CHG-014-expired-retry-selection.md) is rejected in favour of the existing same-cycle retry schedule.
+
+### TASK-058 — Record the G4 decision approvals
+- Status: done
+- Owner: agent
+- Works on: BLK-CORE, BLK-DRIVE, BLK-CAPTURE, BLK-HOST
+- Blocked by: TASK-057
+Done when: the four decision records carry Lingga's approval and the trace checker reports no new error.
+
+Lingga approved all four [G4 decision recommendations](05_microarch/g4-decision-review.md) on 2026-11-22. CHG-014 is rejected. No block contract changed.
