@@ -3,8 +3,8 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-23 (TASK-071 complete, G5 check met)
-**Current stage:** G5 (RTL + unit tests)
+**Last updated:** 2026-11-23 (Lingga approved G5)
+**Current stage:** G6 (integration and system verification)
 
 ## Gates
 
@@ -14,8 +14,8 @@ every session. Only Lingga marks a gate ✅.
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
 | G3 | Architecture decided | ✅ Approved by Lingga; ARCH-B selected in DEC-001 | `g3-arch` | `--gate G3` |
 | G4 | Micro-architecture agreed | ✅ Reapproved by Lingga after the decision review and EVAL-025 | `g4-uarch-r2` (prior `g4-uarch`) | `--gate G4` |
-| G5 | RTL + unit tests | 🔄 7 of 7 blocks implemented, 8 of 8 unit tests passing; awaiting Lingga's approval | `g5-rtl` | `--gate G5` |
-| G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
+| G5 | RTL + unit tests | ✅ Approved by Lingga; 7 of 7 blocks implemented, 8 of 8 unit tests passing | `g5-rtl` | `--gate G5` |
+| G6 | System verified | 🔄 Open; chip integration pending | `g6-verified` | `--gate G6` |
 | G7 | Sign-off: precheck + write-up | ⏳ | `g7-submit` | `--gate G7` |
 
 What each gate needs (the checker tests these; Lingga also reviews the content):
@@ -36,9 +36,8 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. Ask Lingga to approve G5. The block-level checks pass, but the chip wrapper still uses the template.
-2. After approval, connect the blocks in the chip wrapper and run the load, run, and stop integration test.
-3. Close the two provisional encodings when the RTL decoder and assembler exist.
+1. Connect the blocks in the chip wrapper and run the load, run, and stop integration test (`TEST-INT-002`).
+2. Close the two provisional encodings when the RTL decoder and assembler exist.
 
 Use the [top-level diagram](05_microarch/README.md) to find block records by ID. The [diagram convention](05_microarch/diagrams/README.md) uses solid arrows for data and dashed arrows for control and status.
 

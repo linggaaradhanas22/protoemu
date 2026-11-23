@@ -548,3 +548,10 @@ Results: Verilator lint, Verilog-2005 elaboration, and generic Yosys synthesis p
 AI vs human: Lingga asked OpenCode to implement the loader. OpenCode kept the host encodings provisional and did not approve or tag G5.
 Problems: The loader tests stub the core and program-store boundary. The chip wrapper, board timing, and routed timing remain unverified.
 Next: Ask Lingga to approve G5 before chip integration.
+
+## 2026-11-23: Lingga + OpenCode (TASK-072, G5 sign-off)
+Did: Recorded G5 approval and opened G6. Prepared the `g5-rtl` tag for publication on `origin`.
+Results: G5 checks as met with no errors and the two known warnings. All seven blocks are implemented and all eight tracked unit tests pass.
+AI vs human: Lingga approved tagging and pushing G5. OpenCode recorded the approval and handled the git operations.
+Problems: The wrapper still uses the template. Chip integration, board timing, and routed timing remain open.
+Next: Connect the blocks in the wrapper and run TEST-INT-002.

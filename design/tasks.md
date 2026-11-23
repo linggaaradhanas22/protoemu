@@ -565,3 +565,10 @@ The four queues passed Verilator lint, Verilog-2005 elaboration, generic Yosys s
 Done when: the loader validates SPI frames, controls image commit and execution, and uses the payload FIFOs for host commands. Pass lint and TEST-UNIT-007 before chip integration.
 
 The standalone loader passed Verilator lint, Verilog-2005 elaboration, generic Yosys synthesis, and TEST-UNIT-007. The host values remain provisional. No chip wrapper changes.
+
+### TASK-072 — Record G5 sign-off
+- Status: done
+- Owner: agent
+- Works on: TASK-071, TEST-UNIT-007
+- Blocked by: none
+Lingga approved G5 and asked to publish the gate tag. The trace check reports G5 met with no errors and the two known warnings. G6 is now the current stage. The chip wrapper and encodings are unchanged.
