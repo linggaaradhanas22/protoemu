@@ -511,3 +511,12 @@ Published [revision 3](05_microarch/diagrams/arch-b_v3.svg) and its [editable so
 - Works on: EVAL-026, TASK-061, BLK-CORE, SPEC-PHY-001
 - Blocked by: none
 Both registered-host variants ran through placement, clock-tree synthesis, and repair with matching settings. Archived the reports and closed TASK-061 without a production RTL change.
+
+### TASK-066 — Implement the shared issue core
+- Status: done
+- Owner: agent
+- Works on: BLK-CORE, TEST-UNIT-001
+- Blocked by: none
+Done when: the core implements the agreed schedule and draft instruction set, passes lint and its standalone unit test, and leaves the chip wrapper and provisional encodings unchanged.
+
+The core passed Verilator lint, generic Yosys synthesis and `check -assert`, and its cocotb unit test. The EVAL-026 variant was not used. The unit test uses stubs, so it does not verify chip wiring or timing.

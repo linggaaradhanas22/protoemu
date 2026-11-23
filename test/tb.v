@@ -36,6 +36,8 @@ module tb ();
   );
 
 `ifndef GL_TEST
+  issue_core_tb core_tb ();
+
   reg timer_clk, timer_rst_n;
   wire [23:0] cycle;
   wire [3:0] short_cycle;

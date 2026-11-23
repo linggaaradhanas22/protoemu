@@ -334,7 +334,7 @@ Fault one context with a drive, capture, guard and host payload pending in the o
 ## Unit tests
 
 ### TEST-UNIT-001 — Shared issue and context isolation
-- Status: planned
+- Status: passing
 - Level: unit
 - Verifies: BLK-CORE
 - Run: test_issue_context_isolation

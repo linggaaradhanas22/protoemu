@@ -1,5 +1,5 @@
 # BLK-CORE — Shared issue core
-- Status: agreed
+- Status: implemented
 - Traces to: DEC-001, SPEC-PROG-001, SPEC-PROG-002, SPEC-PROG-003, REQ-PROTO-004
 
 ## Purpose
@@ -50,4 +50,6 @@ Saved requests are the contract ([EVAL-003](../evals/EVAL-003-g4-timed-io.md)); 
 
 ## Unit-test plan and RTL
 
-With stubbed endpoints, check independent context state, branch cost, blocked issue, retry identity, no duplicate retirement, and fault handling. Planned file: `src/issue_core.v`.
+The standalone RTL is [`src/issue_core.v`](../../src/issue_core.v). Drive `start` only after the loader admits `START`. Drive `flush` for stop or deselect. Route `fault_safe` to the timed-I/O flush and pad-safe logic for edge F+1. Drive ownership remains a check in the drive queue.
+
+The unit test uses a registered fetch stub and supplies drive credit separately from the selected request's `ready` and `reject`. It checks the fault-safe signal, not the physical pads. The chip wrapper does not yet instantiate the core.

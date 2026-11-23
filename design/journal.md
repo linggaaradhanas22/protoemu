@@ -506,3 +506,10 @@ Results: Repaired setup was −4 ps for the baseline and −19 ps for the candid
 AI vs human: Lingga started Docker Desktop and asked OpenCode to continue. OpenCode ran and recorded the comparison. No architecture decision, gate status, or production RTL changed.
 Problems: Neither probe met setup. The reported worst paths start at the cycle counter and end at the register file. These are pre-route estimates.
 Next: Recommend implementing the agreed BLK-CORE without the variant and using integrated timing to choose the next optimization.
+
+## 2026-11-23: Lingga + OpenCode (TASK-066)
+Did: Implemented BLK-CORE with the agreed round-robin schedule and draft encoding. Added TEST-UNIT-001 with stubbed fetch, timed I/O, and host FIFOs.
+Results: Verilator lint, Verilog-2005 elaboration, and generic Yosys synthesis passed. Cocotb passed all four tests. The new core test checked saved retries, timestamp arithmetic, and the F+1 safe signal.
+AI vs human: Lingga asked OpenCode to implement the agreed core. OpenCode kept the provisional encodings and did not carry forward the EVAL-026 variant.
+Problems: The chip wrapper still uses the template. The real I/O, host, and 60 MHz routed timing remain unverified.
+Next: Implement the timed output queue and its unit test.
