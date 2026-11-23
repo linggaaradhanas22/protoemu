@@ -35,4 +35,32 @@ module tb ();
       .rst_n  (rst_n)     // not reset
   );
 
+`ifndef GL_TEST
+  reg timer_clk, timer_rst_n;
+  wire [23:0] cycle;
+  wire [3:0] short_cycle;
+  cycle_timer timer (.clk(timer_clk), .rst_n(timer_rst_n), .cycle(cycle));
+  cycle_timer #(.WIDTH(4)) short_timer (
+      .clk(timer_clk), .rst_n(timer_rst_n), .cycle(short_cycle)
+  );
+
+  reg prog_clk, prog_rst_n;
+  reg prog_write_valid, load_active, image_valid, running, fetch_req_valid;
+  reg [6:0] prog_write_index, fetch_pc;
+  reg [7:0] word_count;
+  reg [23:0] prog_write_word;
+  wire fetch_rsp_valid, fetch_rsp_fault;
+  wire [23:0] fetch_instruction;
+
+  program_store store (
+      .clk(prog_clk), .rst_n(prog_rst_n),
+      .prog_write_valid(prog_write_valid), .prog_write_index(prog_write_index),
+      .prog_write_word(prog_write_word), .load_active(load_active),
+      .image_valid(image_valid), .running(running), .word_count(word_count),
+      .fetch_req_valid(fetch_req_valid), .fetch_pc(fetch_pc),
+      .fetch_rsp_valid(fetch_rsp_valid), .fetch_rsp_fault(fetch_rsp_fault),
+      .fetch_instruction(fetch_instruction)
+  );
+`endif
+
 endmodule

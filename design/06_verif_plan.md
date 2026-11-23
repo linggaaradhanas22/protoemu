@@ -340,7 +340,7 @@ Run `shift_pin` with order 0 and 1 (CHG-012). Check the pad bit (bit 15 or bit 0
 Run `wait_to` (CHG-013): expiry writes only `Rt` and leaves the saved time and offset; a match behaves as `wait_save`; an expiry outside the future half faults at the first execute; the other context keeps issuing during a long timed wait.
 
 ### TEST-UNIT-002 — Registered fetch and image bounds
-- Status: planned
+- Status: passing
 - Level: unit
 - Verifies: BLK-PROGRAM
 - Run: test_program_store_visibility
@@ -368,7 +368,7 @@ With an observation due on the fault edge F, check it is recorded, and that `flu
 Arm a timed guarded level (CHG-013): a match before expiry, expiry with no match, a match and expiry on the same edge (match wins), `Rt = 0` (no expiry), a guard target already passed, and expiry across wrap.
 
 ### TEST-UNIT-005 — Timebase, half range and wrap
-- Status: planned
+- Status: passing
 - Level: unit
 - Verifies: BLK-TIMER
 - Run: test_cycle_timer_wrap

@@ -1,5 +1,5 @@
 # BLK-PROGRAM — Shared program store
-- Status: agreed
+- Status: implemented
 - Traces to: DEC-001, SPEC-HOST-001, SPEC-RST-001, SPEC-PROG-001, SPEC-PHY-001
 
 ## Purpose

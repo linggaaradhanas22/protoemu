@@ -464,3 +464,10 @@ Results: The G4 checker reports MET with 0 errors and the two accepted warnings.
 AI vs human: Lingga approved the gate after the decision review and EVAL-025. OpenCode recorded the approval and created the follow-up tasks.
 Problems: The 60 MHz margin is 23 to 37 ps before routing, so closure is still open. The two encodings remain provisional.
 Next: TASK-060, then TASK-061, then the integrated routed timing check.
+
+## 2026-11-23: Lingga + OpenCode (TASK-060)
+Did: Implemented the 24-bit cycle timer and 128-word program store. Added TEST-UNIT-005 and TEST-UNIT-002 to the default RTL simulation.
+Results: Both modules passed Verilator lint. Cocotb passed 3 of 3 tests, including the template smoke test. The store test read all 128 words, then loaded a 1-word image and checked bounds faults.
+AI vs human: Lingga asked OpenCode to start G5 work. OpenCode implemented and tested the two agreed blocks without changing either contract.
+Problems: The tests use loader state inputs and check timer consumer rules against sampled counts in Python. They do not test the real host, core, or timed I/O. Area and routed timing remain open.
+Next: TASK-061. Measure a shorter run-control path without moving any host-visible edge.

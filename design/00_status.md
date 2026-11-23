@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-22 (Lingga reapproved G4; G5 started)
+**Last updated:** 2026-11-23 (TASK-060 complete)
 **Current stage:** G5 (RTL + unit tests)
 
 ## Gates
@@ -14,7 +14,7 @@ every session. Only Lingga marks a gate ✅.
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
 | G3 | Architecture decided | ✅ Approved by Lingga; ARCH-B selected in DEC-001 | `g3-arch` | `--gate G3` |
 | G4 | Micro-architecture agreed | ✅ Reapproved by Lingga after the decision review and EVAL-025 | `g4-uarch-r2` (prior `g4-uarch`) | `--gate G4` |
-| G5 | RTL + unit tests | 🔄 Started; block RTL not written yet | `g5-rtl` | `--gate G5` |
+| G5 | RTL + unit tests | 🔄 2 of 7 blocks implemented, 2 of 7 unit tests passing | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
 | G7 | Sign-off: precheck + write-up | ⏳ | `g7-submit` | `--gate G7` |
 
@@ -36,9 +36,8 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-060: implement BLK-TIMER and BLK-PROGRAM RTL with their cocotb unit tests.
-2. TASK-061: shorten the BLK-CORE run-control and payload-eligibility cloud before core RTL.
-3. Close the two provisional encodings when the RTL decoder and assembler exist.
+1. TASK-061: measure a shorter BLK-CORE run-control and payload-eligibility path before core RTL.
+2. Close the two provisional encodings when the RTL decoder and assembler exist.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
@@ -58,3 +57,4 @@ Use the [project diagram convention](05_microarch/diagrams/README.md): solid for
 - Lingga approved [CHG-005](changes/CHG-005-host-payload.md) for the draft ISA; CHG-010 settled simultaneous host/core FIFO access.
 - [EVAL-003](evals/EVAL-003-g4-timed-io.md) supports keeping four output slots and one capture slot per context.
 - Final tile fit and routed 60 MHz timing remain unverified. The repaired core probe used about 0.510 mm² of cells, without the host loader and FIFOs.
+- BLK-TIMER and BLK-PROGRAM pass standalone simulation. Their cell area, routed timing, and integration with the host and core remain unverified.

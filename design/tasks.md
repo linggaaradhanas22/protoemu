@@ -463,11 +463,13 @@ Done when: place the same-cycle retry with the separate writeback, run clock-tre
 [EVAL-025](evals/EVAL-025-agreed-schedule-timing.md) records the runs. After repair the agreed schedule is within 23 to 37 ps of 60 MHz setup and passes hold. That is not closure margin.
 
 ### TASK-060 — Implement the timebase and program store
-- Status: todo
+- Status: done
 - Owner: agent
 - Works on: BLK-TIMER, BLK-PROGRAM
 - Blocked by: none
 Done when: `src/cycle_timer.v` and `src/program_store.v` implement the agreed blocks, lint clean, and their cocotb tests (TEST-UNIT-005, TEST-UNIT-002) pass. Record the TEST status only after the test ran.
+
+Both modules passed Verilator lint. `bash scripts/sim.sh` passed both unit tests and the template smoke test. The unit tests instantiate the blocks directly, without the host, core, or chip wrapper.
 
 ### TASK-061 — Shorten the core run-control cloud
 - Status: todo
