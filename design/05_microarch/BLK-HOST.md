@@ -1,5 +1,5 @@
 # BLK-HOST — Loader and run control
-- Status: agreed
+- Status: implemented
 - Traces to: DEC-001, SPEC-HOST-001, SPEC-RST-001, SPEC-RST-002, SPEC-PROG-001
 
 ## Purpose
@@ -82,6 +82,10 @@ On timeout or an invalid reply, abort the transfer, return `CS` high and SCK low
 
 ## Unit-test plan and RTL
 
-Check complete vs short and malformed transactions, completion then start, write protection, warm reset, stop while work is pending and reload after selection is lost. Planned file: `src/host_loader.v`.
+[`src/host_loader.v`](../../src/host_loader.v) receives synchronized SPI signals. It streams tentative `DATA` words to BLK-PROGRAM and validates the bit count, body length, and CRC at frame close. `COMMIT` publishes a complete image. `START` issues a separate pulse. A valid `STOP` asserts `flush` and `safe` for the next edge, then prepares its reply. The adapter will register `MISO` and `READY` at the wrapper boundary.
 
-The payload queues are in [`src/host_payload.v`](../../src/host_payload.v). Staging writes a contiguous prefix into unused ingress slots without moving the committed tail. A later commit publishes the staged count. Abort discards only the tentative words. Egress peek leaves the head in place until the loader requests release. TEST-UNIT-008 tests these operations without SPI framing.
+The RTL uses the provisional command values `BEGIN` through `WRITEN` (1–9 in command-table order) and reply values `OK`, `COMPLETE`, `BAD`, `STATE`, `FULL`, `EMPTY` (0–5). The provisional `STOP` body is four bytes: run state (`HALTED`, `RUNNING`, `DONE`, `FAULTED` = 0–3), fault context, fault PC, and cause. The fault fields are zero when there is no fault. These values are not frozen.
+
+The payload queues are in [`src/host_payload.v`](../../src/host_payload.v). Staging writes a contiguous prefix into unused ingress slots without moving the committed tail. Commit publishes that prefix and can add the next word if a core pop has already freed room. A pop on the validation edge does not create space for that edge. Abort discards the tentative words. Egress peek leaves the head in place until the loader requests release.
+
+TEST-UNIT-007 drives SPI edges and checks reply bits against an independent CRC calculation. It uses the real payload queues and stubs the core status and program-store boundary. TEST-UNIT-008 tests the queues directly. Board SPI timing, chip integration, and routed timing remain open.

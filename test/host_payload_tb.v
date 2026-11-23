@@ -18,8 +18,9 @@ module host_payload_tb;
         .clk(clk), .rst_n(rst_n), .clear(clear), .ingress_pop(ingress_pop), .egress_push(egress_push),
         .egress_word(egress_word), .ingress_ready(ingress_ready), .egress_ready(egress_ready), .ingress_words(ingress_words),
         .host_ctx(host_ctx), .host_word(host_word), .host_write(host_write), .host_stage(host_stage),
-        .host_commit(host_commit), .host_abort(host_abort), .host_stage_index(host_stage_index),
-        .host_write_ready(host_write_ready), .host_stage_ready(host_stage_ready), .host_staged_count(host_staged_count),
+        .host_commit(host_commit), .host_abort(host_abort), .host_commit_word(1'b0), .host_stage_index(host_stage_index),
+        .host_write_ready(host_write_ready), .host_stage_ready(host_stage_ready), .host_ingress_free(),
+        .host_staged_count(host_staged_count),
         .host_peek(host_peek), .host_release(host_release), .host_egress_count(host_egress_count),
         .host_egress_word(host_egress_word)
     );

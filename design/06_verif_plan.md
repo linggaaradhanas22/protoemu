@@ -398,7 +398,7 @@ Apply one update with both driven and released pads. Check that an enable of zer
 Apply reset, deselect, safe and a due update on one edge in every combination. Pass if the priority is reset, deselect, safe, update (CHG-008). In `DONE`, pads must hold their last values.
 
 ### TEST-UNIT-007 — Complete image before run
-- Status: planned
+- Status: passing
 - Level: unit
 - Verifies: BLK-HOST
 - Run: test_loader_commit_and_start

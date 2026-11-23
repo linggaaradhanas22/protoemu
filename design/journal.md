@@ -541,3 +541,10 @@ Results: Verilator lint, Verilog-2005 elaboration, and generic Yosys synthesis p
 AI vs human: Lingga asked OpenCode to continue BLK-HOST. OpenCode implemented the FIFO subtask under the agreed depth and no-pass-through rule. No interface contract or gate changed.
 Problems: The FIFO test does not exercise SPI framing or CRC. BLK-HOST is not complete and the wrapper is unchanged.
 Next: TASK-071, the SPI host loader and TEST-UNIT-007.
+
+## 2026-11-23: Lingga + OpenCode (TASK-071)
+Did: Implemented SPI framing, CRC validation, image and run control, and host commands over the payload FIFOs. Added TEST-UNIT-007.
+Results: Verilator lint, Verilog-2005 elaboration, and generic Yosys synthesis passed. All nine cocotb tests passed, including the template smoke test. The G5 checker reports MET with no errors and the two known warnings.
+AI vs human: Lingga asked OpenCode to implement the loader. OpenCode kept the host encodings provisional and did not approve or tag G5.
+Problems: The loader tests stub the core and program-store boundary. The chip wrapper, board timing, and routed timing remain unverified.
+Next: Ask Lingga to approve G5 before chip integration.

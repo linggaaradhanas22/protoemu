@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-23 (TASK-070 complete)
+**Last updated:** 2026-11-23 (TASK-071 complete, G5 check met)
 **Current stage:** G5 (RTL + unit tests)
 
 ## Gates
@@ -14,7 +14,7 @@ every session. Only Lingga marks a gate ✅.
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
 | G3 | Architecture decided | ✅ Approved by Lingga; ARCH-B selected in DEC-001 | `g3-arch` | `--gate G3` |
 | G4 | Micro-architecture agreed | ✅ Reapproved by Lingga after the decision review and EVAL-025 | `g4-uarch-r2` (prior `g4-uarch`) | `--gate G4` |
-| G5 | RTL + unit tests | 🔄 6 of 7 blocks implemented, 7 of 8 unit tests passing | `g5-rtl` | `--gate G5` |
+| G5 | RTL + unit tests | 🔄 7 of 7 blocks implemented, 8 of 8 unit tests passing; awaiting Lingga's approval | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
 | G7 | Sign-off: precheck + write-up | ⏳ | `g7-submit` | `--gate G7` |
 
@@ -36,14 +36,15 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. TASK-071: implement SPI framing and loader run control (BLK-HOST) and run TEST-UNIT-007. The payload FIFOs already pass a standalone test. The chip wrapper still needs integration.
-2. Close the two provisional encodings when the RTL decoder and assembler exist.
+1. Ask Lingga to approve G5. The block-level checks pass, but the chip wrapper still uses the template.
+2. After approval, connect the blocks in the chip wrapper and run the load, run, and stop integration test.
+3. Close the two provisional encodings when the RTL decoder and assembler exist.
 
 Use the [top-level diagram](05_microarch/README.md) to find block records by ID. The [diagram convention](05_microarch/diagrams/README.md) uses solid arrows for data and dashed arrows for control and status.
 
 ## Open questions for Lingga
 - **Pin verification:** The [pin specs](02_spec.md#pins-and-electrical) are agreed. TEST-SYS-014 is planned for system simulation. TEST-ACC-004 still covers the board wiring and electrical checks.
-- **Host FIFO integration:** TEST-UNIT-008 drives the FIFO controls directly. TEST-UNIT-007 still needs to check that CRC validation publishes the writes and only a complete reply frees the `READN` words.
+- **Host integration:** TEST-UNIT-007 checks CRC-gated writes and `READN` release with the real FIFOs. Verify the top-level connections to the pad adapter, program store, and core next.
 - **Pad integration:** TEST-UNIT-006 passes with stubbed host and update inputs. Connect the adapter in the chip wrapper and check the routed synchronizer timing.
 - **Core integration:** BLK-CORE passes with stubbed ports. Verify the same-cycle retry and the F+1 pad-safe signal with real blocks before measuring integrated timing.
 - **Drive integration:** TEST-UNIT-003 checks the merged update bus and a stubbed fault-to-flush signal. Check both with the real core and pad registers in integration.

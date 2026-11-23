@@ -558,8 +558,10 @@ Done when: the four depth-eight queues implement the agreed same-edge rule and s
 The four queues passed Verilator lint, Verilog-2005 elaboration, generic Yosys synthesis, and TEST-UNIT-008. SPI framing and command dispatch remain open.
 
 ### TASK-071 — Implement the SPI host loader and run control
-- Status: todo
+- Status: done
 - Owner: agent
 - Works on: BLK-HOST, TEST-UNIT-007
 - Blocked by: none
 Done when: the loader validates SPI frames, controls image commit and execution, and uses the payload FIFOs for host commands. Pass lint and TEST-UNIT-007 before chip integration.
+
+The standalone loader passed Verilator lint, Verilog-2005 elaboration, generic Yosys synthesis, and TEST-UNIT-007. The host values remain provisional. No chip wrapper changes.

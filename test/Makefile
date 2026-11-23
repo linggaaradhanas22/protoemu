@@ -13,10 +13,10 @@ ifneq ($(GATES),yes)
 
 # RTL simulation:
 SIM_BUILD				= sim_build/rtl
-PROJECT_SOURCES += cycle_timer.v program_store.v issue_core.v timed_drive.v timed_capture.v pad_adapter.v host_payload.v
+PROJECT_SOURCES += cycle_timer.v program_store.v issue_core.v timed_drive.v timed_capture.v pad_adapter.v host_payload.v host_loader.v
 VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES))
-VERILOG_SOURCES += $(addprefix $(PWD)/,issue_core_tb.v timed_drive_tb.v timed_capture_tb.v pad_adapter_tb.v host_payload_tb.v)
-COCOTB_TEST_MODULES = test,test_blocks,test_issue_core,test_timed_drive,test_timed_capture,test_pad_adapter,test_host_payload
+VERILOG_SOURCES += $(addprefix $(PWD)/,issue_core_tb.v timed_drive_tb.v timed_capture_tb.v pad_adapter_tb.v host_payload_tb.v host_loader_tb.v)
+COCOTB_TEST_MODULES = test,test_blocks,test_issue_core,test_timed_drive,test_timed_capture,test_pad_adapter,test_host_payload,test_host_loader
 
 else
 
