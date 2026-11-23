@@ -529,3 +529,12 @@ The core passed Verilator lint, generic Yosys synthesis and `check -assert`, and
 Done when: the four-slot queue passes Verilator lint and its cocotb test. Keep the pad registers and wrapper out of this task.
 
 The queue passed Verilator lint, Verilog-2005 elaboration, Yosys synthesis and its cocotb scoreboard. The chip wrapper is unchanged.
+
+### TASK-068 — Implement context-owned input capture
+- Status: done
+- Owner: agent
+- Works on: BLK-CAPTURE, TEST-UNIT-004
+- Blocked by: none
+Done when: the two capture slots pass lint and the cocotb checks for ownership, observations, guards, timeouts and flush. Keep synchronization and chip wiring out of this task.
+
+The capture block passed Verilator lint, Verilog-2005 elaboration, Yosys synthesis and TEST-UNIT-004. The chip wrapper is unchanged.

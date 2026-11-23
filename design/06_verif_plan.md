@@ -368,7 +368,7 @@ With one slot free, admit a full-width mask and retire its mixed values and enab
 Assert a core fault on edge F with updates due on F and F + 1 (CHG-008). The update due on F must retire in full; the one due on F + 1 and all queued entries must never reach a pad.
 
 ### TEST-UNIT-004 — Context capture ownership and observation edge
-- Status: planned
+- Status: passing
 - Level: unit
 - Verifies: BLK-CAPTURE
 - Run: test_capture_slot_ownership

@@ -1,5 +1,5 @@
 # BLK-CAPTURE — Context-owned input capture
-- Status: agreed
+- Status: implemented
 - Traces to: DEC-001, SPEC-UART-002, SPEC-SPI-001, SPEC-I2C-003, SPEC-PROG-003, REQ-PROTO-004
 
 ## Purpose
@@ -39,4 +39,6 @@ Use fixed per-context slots ([EVAL-003](../evals/EVAL-003-g4-timed-io.md)); fixe
 
 ## Unit-test plan and RTL
 
-Check simultaneous capture, stable results, capture/consume ordering, wrap, arm/rearm boundaries, and reset in every slot state. Planned file: `src/timed_capture.v`.
+The standalone RTL is [`src/timed_capture.v`](../../src/timed_capture.v). It accepts synchronized `pin_sample` from BLK-PADS. Each slot stores `Rt` and reuses the deadline for expiry once the guard opens. BLK-CORE checks the expiry range before it issues a timed guard arm.
+
+The unit test checks simultaneous capture, held results, arm and consume ordering, wrap, and timeout priority. It drives synchronized samples directly and stubs the core's fault-to-flush signal.

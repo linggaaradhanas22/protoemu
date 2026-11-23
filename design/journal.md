@@ -520,3 +520,10 @@ Results: Verilator lint, Verilog-2005 elaboration, and generic Yosys synthesis p
 AI vs human: Lingga asked OpenCode to continue with the agreed queue. OpenCode implemented BLK-DRIVE without changing the schedule, pad registers, or wrapper.
 Problems: The queue test stubs the fault source. Core and pad integration, area, and routed timing remain unverified.
 Next: Implement BLK-CAPTURE and TEST-UNIT-004.
+
+## 2026-11-23: Lingga + OpenCode (TASK-068)
+Did: Implemented the two independent capture slots and added TEST-UNIT-004.
+Results: Verilator lint, Verilog-2005 elaboration, and generic Yosys synthesis passed. All six cocotb tests passed. The new test checked simultaneous observations, held timestamps across wrap, match priority on the expiry edge, and fault-to-flush ordering.
+AI vs human: Lingga asked OpenCode to continue with input capture. OpenCode implemented the agreed timeout storage and guard rules without changing the wrapper.
+Problems: The test feeds synchronized samples and stubs the fault source. Integration, area, and routed timing remain open.
+Next: Implement BLK-PADS and TEST-UNIT-006.
