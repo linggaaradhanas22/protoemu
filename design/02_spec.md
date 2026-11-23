@@ -26,7 +26,41 @@ baud with a 60 MHz clock. Checked by system simulation: measure edge times on th
 ## Pins and electrical
 <!-- SPEC-PIN-NNN -->
 
-See [CHG-015](changes/CHG-015-pin-specification.md) for the proposed external pin specs. The pin map remains in [BLK-PADS](05_microarch/BLK-PADS.md#pin-allocation) pending review.
+### SPEC-PIN-001 — Fixed host pins
+- Status: agreed
+- Traces to: REQ-RULE-003, REQ-FLEX-003
+The chip shall use these dedicated pins for the RP2350 loader. No loader signal shall use a bidirectional `uio` pad.
+
+| Signal | Tiny Tapeout pin | Direction at the chip |
+|---|---|---|
+| `CS` (active low) | `ui_in[0]` | Input |
+| `SCK` | `ui_in[1]` | Input |
+| `MOSI` | `ui_in[2]` | Input |
+| `MISO` | `uo_out[3]` | Output |
+| `READY` | `uo_out[4]` | Output |
+
+The chip shall ignore unused dedicated inputs and drive unused dedicated outputs low. Check the mapping with an RP2350 host model in system simulation.
+
+### SPEC-PIN-002 — Programmable protocol pads
+- Status: agreed
+- Traces to: REQ-RULE-003, REQ-RULE-007, REQ-FLEX-001
+The chip shall make all eight `uio` pads available to loaded programs. Pad indices 0 through 7 shall map to `uio[0]` through `uio[7]`. Programs may sample any pad. The loaded configuration assigns output ownership to at most one context per pad and selects push-pull or open-drain drive for each owned pad. Those settings shall not change during a run.
+
+A push-pull output shall drive low or high when enabled, and release when disabled. An open-drain output shall drive low only for an enabled low request. In all other cases it shall release the pad, never drive high. Check pad selection, drive values, and enables in system simulation. Check external pull-ups and 3.3 V board connections separately under `TEST-ACC-004`.
+
+### SPEC-PIN-003 — Protocol pad release and hold
+- Status: agreed
+- Traces to: REQ-RULE-005, REQ-RULE-006, REQ-FLEX-003
+The chip shall release all eight protocol pads with `uio_oe = 0` on the following edges:
+
+| Event | `clk` edge that releases the pads |
+|---|---|
+| Reset | First edge that samples `rst_n` low |
+| Deselect while still clocked | First edge that samples synchronized `ena` low |
+| Valid `STOP` request | First edge after the loader validates the frame close |
+| Core fault | First edge after fault detection |
+
+Release shall override a pad update due on the same edge. An update due on the fault-detection edge shall take effect unless another event releases the pads on that edge. On normal completion (`DONE`), the chip shall hold its last programmed pad values and enables until `STOP`, reset, or deselect. Check release edges and `DONE` hold in system simulation.
 
 ## Clock, reset and power-down
 <!-- SPEC-RST-NNN -->

@@ -295,6 +295,17 @@ Run the WS2812, 1-Wire, and RC5 benchmarks at 60 MHz on the same RTL revision. L
 Pass if independent fixtures check the two RGB values and latch interval, the 1-Wire presence and full ROM value, and the RC5 address, command, and toggle for both frames. All three benchmarks must meet their timing limits.
 Use the same RC5 program at all benchmark rates. Repeat the frame pair with the counter wrapping between the calibration edges. Check that the program reports both frames exactly once and does not require host service during capture.
 
+### TEST-SYS-014 — External pin interface
+- Status: planned
+- Level: system
+- Verifies: SPEC-PIN-001, SPEC-PIN-002, SPEC-PIN-003
+- Run: test_external_pin_interface
+Load and start over the specified dedicated pins. Check that the reply uses the specified `MISO` and `READY` pins. Check that loader traffic before `START` does not drive any `uio` pad. Toggle the unused dedicated inputs and check that they do not affect the run. Check that unused dedicated outputs stay low.
+
+Load images that move the same sample-and-drive sequence across all eight pads. Check input sampling without output ownership. Check push-pull low, high and release, and open-drain low and release. Attempt a write without output ownership. Check that it does not drive the pad. Monitor the pin values and output enables.
+
+Repeat with a pad update due on each release edge. Check that reset, synchronized deselect, `STOP`, and fault release override that update. For a fault on edge F, check an update on F and release on F + 1. Separately check that all pad values and enables hold after `DONE` until `STOP`. Compare the protocol pad trace with the reference model cycle by cycle.
+
 ## Integration tests
 
 ### TEST-INT-001 — Shared issue under timed-I/O contention

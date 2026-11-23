@@ -478,3 +478,10 @@ Results: The proposal records the fixed host pin map, programmable pad behavior,
 AI vs human: Lingga asked OpenCode to draft the missing pin spec. OpenCode assembled the draft from the agreed pin map and pad contracts. Approval is pending.
 Problems: The pin map and board behavior still need hardware verification. No new system test ran.
 Next: Ask Lingga to approve CHG-015 before adding the specs and test to the baseline.
+
+## 2026-11-23: Lingga + OpenCode (TASK-063)
+Did: Added SPEC-PIN-001 through SPEC-PIN-003, linked them from BLK-PADS, and added TEST-SYS-014 to the verification plan.
+Results: Rechecked the pad contract and its dependent test plans against the new specs. The trace checker reports no errors and the two known warnings. G5 remains the current stage.
+AI vs human: Lingga approved CHG-015. OpenCode applied the approved wording and updated the trace links. No RTL or gate status changed.
+Problems: TEST-SYS-014 remains planned. Board wiring and electrical behavior still need verification under TEST-ACC-004.
+Next: TASK-061, the run-control timing evaluation.

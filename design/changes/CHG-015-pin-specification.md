@@ -1,7 +1,7 @@
 # CHG-015 — Specify the external pin interface
-- Status: proposed
+- Status: done
 - Size: medium
-- Affects: BLK-PADS
+- Affects: SPEC-PIN-001, SPEC-PIN-002, SPEC-PIN-003, BLK-PADS, TEST-SYS-014
 
 ## Reason
 
@@ -70,4 +70,8 @@ No requirements, pin assignments, RTL, or timing rules change. No area or timing
 
 ## Approval
 
-Pending Lingga's review. The original G2 baseline stays in effect until approval.
+Lingga approved adding the three pin specs and the planned system test to the baseline on 2026-11-23.
+
+## Close-out
+
+Added the approved pin specs and the planned system test. Linked all three specs from BLK-PADS. Rechecked TEST-INT-001 for the pin map and pad updates, TEST-INT-002 for the release edges, and TEST-UNIT-006 for drive modes and release priority. These test plans still match the pad contract and remain planned. No pin assignments, RTL, or timing rules changed.
