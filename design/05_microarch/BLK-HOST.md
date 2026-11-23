@@ -83,3 +83,5 @@ On timeout or an invalid reply, abort the transfer, return `CS` high and SCK low
 ## Unit-test plan and RTL
 
 Check complete vs short and malformed transactions, completion then start, write protection, warm reset, stop while work is pending and reload after selection is lost. Planned file: `src/host_loader.v`.
+
+The payload queues are in [`src/host_payload.v`](../../src/host_payload.v). Staging writes a contiguous prefix into unused ingress slots without moving the committed tail. A later commit publishes the staged count. Abort discards only the tentative words. Egress peek leaves the head in place until the loader requests release. TEST-UNIT-008 tests these operations without SPI framing.

@@ -534,3 +534,10 @@ Results: Verilator lint, Verilog-2005 elaboration, and generic Yosys synthesis p
 AI vs human: Lingga asked OpenCode to continue with the agreed pad adapter. OpenCode implemented and tested it without changing the pin map or chip wrapper.
 Problems: The adapter still uses stubbed host and update inputs in tests. No routed timing or electrical checks ran.
 Next: Implement BLK-HOST and TEST-UNIT-007.
+
+## 2026-11-23: Lingga + OpenCode (TASK-070)
+Did: Implemented the four depth-eight payload FIFOs. Added a standalone scoreboard for staging, release, and simultaneous core and host access.
+Results: Verilator lint, Verilog-2005 elaboration, and generic Yosys synthesis passed. All eight cocotb tests passed. TEST-UNIT-008 checked transfer sizes 1 through 4 at all nine occupancies, plus 512 seeded cycles.
+AI vs human: Lingga asked OpenCode to continue BLK-HOST. OpenCode implemented the FIFO subtask under the agreed depth and no-pass-through rule. No interface contract or gate changed.
+Problems: The FIFO test does not exercise SPI framing or CRC. BLK-HOST is not complete and the wrapper is unchanged.
+Next: TASK-071, the SPI host loader and TEST-UNIT-007.

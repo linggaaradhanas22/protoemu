@@ -408,3 +408,10 @@ Check one word per core handshake and preserve FIFO order and context isolation 
 Reach `DONE` and `FAULTED` with words in both payload FIFOs (CHG-008). Pass if the host can drain egress, `START` is rejected, the `STOP` reply carries the run state and fault record, and `STOP` then clears payload and image validity.
 Push and pop one FIFO on the same edge from both sides when empty, full and in between (CHG-010). Pass if order and count match a reference queue, a full push and an empty pop wait without a pass-through, and `FULL`/`EMPTY` replies leave the queue unchanged.
 Run `READN` with counts 1–4 against 0–8 queued words and `WRITEN` with 1–4 words against 0–8 free slots (CHG-011). Interrupt a `READN` reply and restart it: it must send the same words, and only an exact-length close may free them. Corrupt a `WRITEN` CRC: no word may be committed. Check the accepted count and that the core never pops a tentative word.
+
+### TEST-UNIT-008 — Payload FIFO staging and occupancy
+- Status: passing
+- Level: unit
+- Verifies: BLK-HOST
+- Run: test_host_payload_fifos
+Drive FIFO host strobes directly and compare both contexts with a queue scoreboard. Test reads and writes of 1 to 4 words against all occupancies. Check staged writes stay hidden until commit, abort preserves committed data, peek does not remove data, and invalid release has no effect. Check simultaneous core and host transfers at empty, full, and intermediate occupancy. This test does not validate SPI framing, CRC, or replies.

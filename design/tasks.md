@@ -547,3 +547,19 @@ The capture block passed Verilator lint, Verilog-2005 elaboration, Yosys synthes
 Done when: the standalone adapter implements the agreed pin map, synchronization, and registered drive. Pass lint and TEST-UNIT-006. Leave the chip wrapper unchanged until integration.
 
 The adapter passed Verilator lint, Verilog-2005 elaboration, generic Yosys synthesis, and TEST-UNIT-006. The chip wrapper is unchanged.
+
+### TASK-070 — Implement the host payload FIFOs
+- Status: done
+- Owner: agent
+- Works on: BLK-HOST, TEST-UNIT-008
+- Blocked by: none
+Done when: the four depth-eight queues implement the agreed same-edge rule and support staged writes and peek-then-release reads. Verify the queues without SPI framing.
+
+The four queues passed Verilator lint, Verilog-2005 elaboration, generic Yosys synthesis, and TEST-UNIT-008. SPI framing and command dispatch remain open.
+
+### TASK-071 — Implement the SPI host loader and run control
+- Status: todo
+- Owner: agent
+- Works on: BLK-HOST, TEST-UNIT-007
+- Blocked by: none
+Done when: the loader validates SPI frames, controls image commit and execution, and uses the payload FIFOs for host commands. Pass lint and TEST-UNIT-007 before chip integration.
