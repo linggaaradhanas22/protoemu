@@ -1,5 +1,5 @@
 # EVAL-026 — Split core payload eligibility by context
-- Status: running
+- Status: done
 - Traces to: BLK-CORE, BLK-DRIVE, BLK-PADS, SPEC-PHY-001
 - Compares: ARCH-B
 - Model: `models/physical/full_core_probe.v`, `models/physical/full_core_host.v`
@@ -21,7 +21,7 @@ There is no new state or retry cycle. `started`, `active`, `DONE`, and fault sta
 
 [Protocol replay](EVAL-026/replay.json): Both variants passed all 124 Fast-mode I²C and UART/SPI cases. The result files matched byte for byte. This includes each case's digest of the per-cycle pad values and enables, FIFO transfers and words, `DONE`, faults, and sample observations. The replay drives the bare probe, not the registered host wrapper.
 
-## Physical results so far
+## Physical results
 
 Mapped both variants with `full_core_host` as top and the same Yosys and `sg13cmos5l` typical library.
 
@@ -30,13 +30,30 @@ Mapped both variants with `full_core_host` as top and the same Yosys and `sg13cm
 | [`OPT=10`](EVAL-026/v10h-mapping.json) | 15,985 | 365,625.792 µm² |
 | [`OPT=11`](EVAL-026/v11h-mapping.json) | 15,839 | 365,790.298 µm² |
 
-The candidate uses 146 fewer cells but 164.506 µm² more mapped area (+0.045%). The current `OPT=10` mapped netlist differs from the archived EVAL-025 netlist. Use the current baseline and candidate together for placement. The older +0.037 ns result is context, not a new measurement.
+The candidate uses 146 fewer cells but 164.506 µm² more mapped area (+0.045%). The current `OPT=10` mapped netlist differs from the archived EVAL-025 netlist. Compare the two runs below rather than subtracting the older +0.037 ns result.
 
-Docker Desktop's Linux engine was unavailable. No placement, clock-tree synthesis, or setup and hold repair ran for this evaluation. Mapped area does not show whether the rewrite improves timing. Do not adopt it in production RTL until the timing comparison runs.
+Both runs used the registered host boundary, the same 8×4 floorplan, and the same LibreLane image and repair script as EVAL-025. The clock period was 50/3 ns with 0.25 ns uncertainty. Setup is from the slow corner and hold from the fast corner. All numbers use placement-estimated parasitics, not routed extraction.
+
+| Variant | Stage | Worst setup slack | Worst hold slack | Cell area |
+|---|---|---:|---:|---:|
+| `OPT=10` | Placed | −3.671 ns | −0.208 ns | 387,960 µm² |
+| `OPT=10` | After clock tree | −3.697 ns | −0.575 ns | 440,997 µm² |
+| `OPT=10` | After repair | **−0.004 ns** | **+0.080 ns** | 516,728 µm² |
+| `OPT=11` | Placed | −5.046 ns | −0.205 ns | 388,274 µm² |
+| `OPT=11` | After clock tree | −5.078 ns | −0.573 ns | 441,311 µm² |
+| `OPT=11` | After repair | **−0.019 ns** | **+0.080 ns** | 515,687 µm² |
+
+Timing reports and provenance: `OPT=10` [CTS log](EVAL-026/v10h/cts.txt), [CTS summary](EVAL-026/v10h/cts.json), [placement summary](EVAL-026/v10h/summary.json); `OPT=11` [CTS log](EVAL-026/v11h/cts.txt), [CTS summary](EVAL-026/v11h/cts.json), [placement summary](EVAL-026/v11h/summary.json). Both mapped netlist hashes match the corresponding mapping-only runs.
+
+## Conclusion
+
+The rewrite preserved the tested cycle behavior but did not improve worst setup slack. It lost 1.375 ns at placement and 0.015 ns after repair. Repaired cell area decreased by 1,041 µm² (0.20%). Hold passed for both variants, but neither met setup at 60 MHz. In both repaired runs, the worst setup path starts at a cycle-counter bit and ends at a register-file bit. The worst path does not establish whether the FIFO-specific path improved.
+
+Keep `OPT=11` as probe evidence only. Recommend keeping the agreed schedule and measuring the integrated RTL before choosing another optimization. This probe excludes the real loader, FIFOs and pad ring. It cannot establish final tile fit or routed timing.
 
 ## Reproduce
 
-Use the probe sources in the commit that adds this record, based on `69cdd1c`. Run from the repository root in WSL.
+Use the probe sources from `bef4fa4`. Run from the repository root in WSL.
 
 ```sh
 source scripts/env.sh
@@ -54,12 +71,12 @@ diff -u <(grep '^TRACE' "$work/v10-directed.txt") <(grep '^TRACE' "$work/v11-dir
 cmp "$work/v10-replay.json" "$work/v11-replay.json"
 ```
 
-Set `pdk_dir` to the installed `ihp-sg13cmos5l` PDK directory that contains `libs.ref`. The existing runner supports `--map-only` to reproduce the area comparison without Docker. Omit that flag and run the CTS command when Docker is available. Use the same image and 8×4 DEF for both variants.
+Set `pdk_dir` to the installed `ihp-sg13cmos5l` PDK directory that contains `libs.ref`. Use the same LibreLane image and 8×4 DEF for both variants. For mapping alone without Docker, add `--map-only` to the first command and skip the second.
 
 ```sh
 tiles="$BUILD_DIR/tt/tech/ihp-sg13cmos5l/def/tt_block_8x4_pgvdd.def"
 for opt in 10 11; do
-  variant="$work/v${opt}h"
+  variant="$BUILD_DIR/test/sim_build/EVAL-026-physical/v${opt}h"
   python3 -B -m models.physical.run_full_core_probe --opt "$opt" --host-reg \
     --pdk "$pdk_dir" --def "$tiles" --work "$variant" --out "$variant"
   python3 -B -m models.physical.run_full_core_cts --top full_core_host \

@@ -472,13 +472,13 @@ Done when: `src/cycle_timer.v` and `src/program_store.v` implement the agreed bl
 Both modules passed Verilator lint. `bash scripts/sim.sh` passed both unit tests and the template smoke test. The unit tests instantiate the blocks directly, without the host, core, or chip wrapper.
 
 ### TASK-061 — Shorten the core run-control cloud
-- Status: blocked
+- Status: done
 - Owner: agent
 - Works on: BLK-CORE, BLK-DRIVE, BLK-PADS, EVAL-026
 - Blocked by: none
-Done when: propose and measure a partitioning of the `started`, `active`, `done` and payload-eligibility logic that keeps the agreed host-visible timing. Record the result in an EVAL and apply it only in the BLK-CORE RTL. Any change that moves a host-visible edge needs a CHG first.
+Done when: propose and measure a partitioning of the run-control and payload-eligibility path that keeps the agreed host-visible timing. Record the result in an EVAL. Carry the partitioning forward only if the timing comparison supports it. Any change that moves a host-visible edge needs a CHG first.
 
-[EVAL-026](evals/EVAL-026-core-payload-eligibility.md) has a simulated and mapped candidate. Docker Desktop's Linux engine must be running for the placement and clock-tree comparison. No production RTL has changed.
+[EVAL-026](evals/EVAL-026-core-payload-eligibility.md) records the candidate and TASK-065's physical comparison. The candidate did not improve worst setup slack, so it was not carried into production RTL.
 
 ### TASK-062 — Draft the external pin specification
 - Status: done
@@ -504,3 +504,10 @@ Done when: add the approved specs and planned system test, recheck the pad contr
 Done when: label each block with its record ID and exact title. Publish a new editable diagram and SVG, and update the overview links. Keep the architecture and earlier diagrams unchanged.
 
 Published [revision 3](05_microarch/diagrams/arch-b_v3.svg) and its [editable source](05_microarch/diagrams/arch-b_v3.drawio). All seven labels match their block records. The diagram geometry and wiring are unchanged.
+
+### TASK-065 — Finish the physical comparison for EVAL-026
+- Status: done
+- Owner: agent
+- Works on: EVAL-026, TASK-061, BLK-CORE, SPEC-PHY-001
+- Blocked by: none
+Both registered-host variants ran through placement, clock-tree synthesis, and repair with matching settings. Archived the reports and closed TASK-061 without a production RTL change.

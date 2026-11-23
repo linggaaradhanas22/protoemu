@@ -499,3 +499,10 @@ Results: Both variants passed the directed simulation and matched all 362 trace 
 AI vs human: Lingga approved running the probe comparison. OpenCode implemented and tested the candidate in the model only. No decision or production RTL changed.
 Problems: Docker Desktop's Linux engine was unavailable, so the OpenROAD placement and clock-tree comparison could not run. TASK-061 remains blocked.
 Next: Start Docker Desktop's Linux engine. Run both probe variants through placement and clock-tree repair with the same settings.
+
+## 2026-11-23: Lingga + OpenCode (TASK-065, EVAL-026 physical comparison)
+Did: Ran the registered-host baseline and candidate through placement, clock-tree synthesis, and repair at 60 MHz. Archived the timing reports.
+Results: Repaired setup was −4 ps for the baseline and −19 ps for the candidate. Both passed hold at +80 ps. The candidate used 1,041 µm² less cell area after repair. All three existing cocotb tests still passed.
+AI vs human: Lingga started Docker Desktop and asked OpenCode to continue. OpenCode ran and recorded the comparison. No architecture decision, gate status, or production RTL changed.
+Problems: Neither probe met setup. The reported worst paths start at the cycle counter and end at the register file. These are pre-route estimates.
+Next: Recommend implementing the agreed BLK-CORE without the variant and using integrated timing to choose the next optimization.
