@@ -492,3 +492,10 @@ Results: All seven diagram labels match the block records. Draw.io validation re
 AI vs human: Lingga asked for labels that match the block records. OpenCode updated the figure and links without changing the design.
 Problems: None. No RTL or gate status changed.
 Next: TASK-061, the run-control timing evaluation.
+
+## 2026-11-23: Lingga + OpenCode (TASK-061, EVAL-026 exploration)
+Did: Added a probe variant that qualifies FIFO transfers per context without adding a cycle. Reused the existing arbitration and run-control checks.
+Results: Both variants passed the directed simulation and matched all 362 trace records. Both passed all 124 protocol replays with matching cycle-trace digests. The candidate mapped to 365,790.298 µm², up 164.506 µm² from the current baseline. That is a mapping result, not a timing result.
+AI vs human: Lingga approved running the probe comparison. OpenCode implemented and tested the candidate in the model only. No decision or production RTL changed.
+Problems: Docker Desktop's Linux engine was unavailable, so the OpenROAD placement and clock-tree comparison could not run. TASK-061 remains blocked.
+Next: Start Docker Desktop's Linux engine. Run both probe variants through placement and clock-tree repair with the same settings.

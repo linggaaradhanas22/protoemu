@@ -67,9 +67,10 @@ def main():
     parser.add_argument("--pdk", required=True, type=Path)
     parser.add_argument("--def", dest="tile_def", required=True, type=Path)
     parser.add_argument("--image", default=IMAGE)
-    parser.add_argument("--opt", type=int, choices=range(11), default=0)
+    parser.add_argument("--opt", type=int, choices=range(12), default=0)
     parser.add_argument("--host-reg", action="store_true",
                         help="map the registered-host wrapper as top instead of the bare core")
+    parser.add_argument("--map-only", action="store_true", help="skip placement and report mapped area only")
     parser.add_argument("--work", default=Path("test/sim_build/EVAL-018"), type=Path)
     parser.add_argument("--out", default=Path("design/evals/EVAL-018"), type=Path)
     args = parser.parse_args()
@@ -94,6 +95,14 @@ def main():
     module = json.loads((args.work / "mapped.json").read_text())["modules"][top]
     (args.work / "endpoints.tcl").write_text(endpoints(module))
     stats = json.loads((args.work / "stat.json").read_text())["modules"][f"\\{top}"]
+    if args.map_only:
+        summary = {"opt": args.opt, "top": top, "cells": stats["num_cells"], "mapped_area_um2": stats["area"],
+                   "yosys": subprocess.check_output(["yosys", "-V"], text=True).strip(),
+                   "liberty_sha256": hashlib.sha256(lib.read_bytes()).hexdigest(),
+                   "mapped_sha256": hashlib.sha256((args.work / "mapped.v").read_bytes()).hexdigest()}
+        (args.out / "mapping.json").write_text(json.dumps(summary, indent=2) + "\n")
+        print(f"OPT={args.opt}: {stats['num_cells']} cells, {stats['area']:.3f} um² mapped (no placement)")
+        return
 
     def place(corner):
         env = {"PROBE_PDK": "/pdk", "PROBE_CORNER": corner, "PROBE_DIE": " ".join(map(str, die)),

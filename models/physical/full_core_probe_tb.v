@@ -7,7 +7,7 @@ module full_core_probe_tb #(parameter OPT = 0);
     reg [6:0] load_addr = 0, entry1 = 0;
     reg [23:0] load_data = 0;
     reg [7:0] image_count = 0, pins = 0;
-    reg [1:0] enable_ctx = 1, ingress_ready = 0;
+    reg [1:0] enable_ctx = 1, ingress_ready = 0, egress_ready = 2'b11;
     wire [1:0] ingress_pop, egress_push;
     wire [15:0] egress_word;
     wire [7:0] pad_value, pad_oe, fault_pc;
@@ -17,15 +17,15 @@ module full_core_probe_tb #(parameter OPT = 0);
         .clk(clk), .rst_n(rst_n), .start(start), .stop(stop), .image_valid(image_valid), .load_word(load_word),
         .load_addr(load_addr), .entry0(7'd0), .entry1(entry1), .load_data(load_data), .image_count(image_count),
         .owner0(8'h01), .owner1(8'h02), .open_drain(8'd0), .raw_pins(pins), .enable_ctx(enable_ctx),
-        .ingress_ready(ingress_ready), .egress_ready(2'b11), .ingress_words(32'hcafe_00a5),
+        .ingress_ready(ingress_ready), .egress_ready(egress_ready), .ingress_words(32'hcafe_00a5),
         .ingress_pop(ingress_pop), .egress_push(egress_push), .egress_word(egress_word),
         .pad_value(pad_value), .pad_oe(pad_oe), .done(done), .faulted(faulted),
         .fault_ctx(fault_ctx), .fault_pc(fault_pc), .fault_cause(fault_cause)
     );
 
     localparam QUEUE = 1, TIMEOUT = 2, MATCH = 3, FAULT = 4, LATE = 5, WRITEBACK = 6, BAD_HOST = 7,
-               EXPIRES_DUE = 8;
-    localparam SAME_CYCLE = (OPT < 3) || (OPT == 10);
+               EXPIRES_DUE = 8, EGRESS = 9, INGRESS = 10;
+    localparam SAME_CYCLE = (OPT < 3) || (OPT == 10) || (OPT == 11);
     integer run_case = 0;
     integer out0 = 0, out1 = 0, pops = 0, accepted = 0, checked = 0;
     reg did_block = 0, saved_retry = 0;
@@ -48,9 +48,11 @@ module full_core_probe_tb #(parameter OPT = 0);
             @(negedge clk);
             run_case = 0;
             rst_n = 0;
+            stop = 0;
             image_valid = 0;
             pins = 0;
             ingress_ready = 0;
+            egress_ready = 2'b11;
             repeat (2) @(negedge clk);
             rst_n = 1;
             out0 = 0;
@@ -102,7 +104,8 @@ module full_core_probe_tb #(parameter OPT = 0);
         if (ingress_pop[1]) pops = pops + 1;
         if (egress_push[0]) begin
             out0 = out0 + 1;
-            if (egress_word !== ((run_case == WRITEBACK || run_case == MATCH) ? 16'd1 : 16'd0))
+            if (egress_word !== (run_case == INGRESS ? 16'h00a5 :
+                                  (run_case == WRITEBACK || run_case == MATCH) ? 16'd1 : 16'd0))
                 $fatal(1, "unexpected output %h in case %0d", egress_word, run_case);
         end
         if (egress_push[1]) begin
@@ -197,6 +200,70 @@ module full_core_probe_tb #(parameter OPT = 0);
             if (OPT == 5 || OPT == 7 ? !faulted || pad_oe[0] || fault_pc != 6 || fault_cause != 5 : faulted || !pad_oe[0])
                 $fatal(1, "wrong cleanup for last-legal-cycle retry");
             $display("LAST_LEGAL opt=%0d credit=D-1 admitted=%0d fault_at_D=%0d", OPT, accepted == 5, faulted);
+        end
+    endtask
+
+    task payload_contention;
+        input stop_on_credit;
+        begin
+            reset;
+            load(0, set_word(1, 16'h0000));
+            load(1, 24'd56);
+            load(2, 0);
+            load(3, set_word(1, 16'hcafe));
+            load(4, 24'd56);
+            load(5, 0);
+            entry1 = 3;
+            egress_ready = 0;
+            run_case = EGRESS;
+            launch(6, 2'b11);
+            wait (dut.wait_kind[0] == 4 && dut.wait_kind[1] == 4);
+            @(negedge clk);
+            if (egress_push !== 0) $fatal(1, "full egress accepted payload");
+            stop = stop_on_credit;
+            egress_ready = 2'b11;
+            @(posedge clk);
+            if (stop_on_credit) begin
+                if (egress_push !== 0) $fatal(1, "egress transferred on STOP edge");
+                @(negedge clk);
+                stop = 0;
+                repeat (4) @(negedge clk);
+                if (dut.active !== 0 || done || faulted || out0 != 0 || out1 != 0)
+                    $fatal(1, "STOP did not cancel both pending puts");
+            end else begin
+                if (egress_push !== 2'b01 || egress_word !== 16'h0000)
+                    $fatal(1, "first eligible put did not commit on its selection edge");
+                @(posedge clk);
+                if (egress_push !== 2'b10 || egress_word !== 16'hcafe)
+                    $fatal(1, "second eligible put did not take the next slot");
+                repeat (8) @(negedge clk);
+                if (!done || faulted || out0 != 1 || out1 != 1)
+                    $fatal(1, "payload contention lost or duplicated a result");
+            end
+            $display("EGRESS stop_on_credit=%0d out0=%0d out1=%0d done=%b", stop_on_credit, out0, out1, done);
+        end
+    endtask
+
+    task payload_ingress_on_edge;
+        begin
+            reset;
+            load(0, 24'd55);
+            load(1, 24'd56);
+            load(2, 0);
+            run_case = INGRESS;
+            launch(3, 2'b01);
+            wait (dut.wait_kind[0] == 3);
+            @(posedge clk);
+            if (ingress_pop !== 0) $fatal(1, "empty ingress transferred on host commit edge");
+            // Stand in for the FIFO's registered count after a host write.
+            ingress_ready <= 2'b01;
+            @(posedge clk);
+            if (ingress_pop !== 2'b01 || !dut.retry)
+                $fatal(1, "pending get did not transfer on the next edge");
+            ingress_ready <= 2'b00;
+            repeat (8) @(negedge clk);
+            if (!done || faulted || out0 != 1) $fatal(1, "get did not write back once");
+            $display("INGRESS pop_on_commit=0 pop_next_edge=1 returned=%0d done=%b", out0, done);
         end
     endtask
 
@@ -303,10 +370,15 @@ module full_core_probe_tb #(parameter OPT = 0);
         repeat (10) @(negedge clk);
         if (!faulted || fault_cause != 2 || fault_pc != 0 || dut.rf.regs[1] != 0)
             $fatal(1, "malformed host instruction did not fault without side effects");
-        if (OPT == 2 || OPT == 5 || OPT >= 7 || OPT == 10) begin
+        if (OPT == 2 || OPT == 5 || OPT >= 7) begin
             expiry_overlap(0);
             expiry_overlap(1);
             last_legal_retry;
+        end
+        if (OPT == 10 || OPT == 11) begin
+            payload_contention(0);
+            payload_contention(1);
+            payload_ingress_on_edge;
         end
         $display("PASS: saved retry, added writeback and malformed-host checks, guarded waits, F/F+1");
         $finish;

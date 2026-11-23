@@ -4,6 +4,7 @@ import argparse
 from collections import deque
 from concurrent.futures import ThreadPoolExecutor
 from fractions import Fraction
+import hashlib
 import json
 from pathlib import Path
 import subprocess
@@ -38,6 +39,7 @@ def rtl(exe, code, entries, ingress, bus, owners, epoch, limit):
     result = [[], []]
     samples = []
     error = None
+    trace = hashlib.sha256()
     args = [len(words), *(*entries, 0)[:2], (1 << len(entries)) - 1,
             *(*map(mask, owners), 0)[:2], mask(bus.open_drain), pins(), epoch]
     with subprocess.Popen(['vvp', str(exe)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,
@@ -62,6 +64,7 @@ def rtl(exe, code, entries, ingress, bus, owners, epoch, limit):
                 if len(reply) != 13:
                     raise RuntimeError(f'bad probe tick at {t}: {reply}')
                 fields = [int(s, 16) for s in reply]
+                trace.update(' '.join(reply).encode('ascii') + b'\n')
                 val, oe, pop, push, word, done, faulted, ctx, pc, cause, sample, pin, bit = fields
                 if sample:
                     samples.append((t, names[pin], bit))
@@ -89,7 +92,7 @@ def rtl(exe, code, entries, ingress, bus, owners, epoch, limit):
         finally:
             proc.stdin.close()
             proc.wait(timeout=5)
-    return result, samples, t, error
+    return result, samples, t, error, trace.hexdigest()
 
 
 def i2c_case(exe, epoch, case, concurrent):
@@ -106,7 +109,7 @@ def i2c_case(exe, epoch, case, concurrent):
     else:
         code, _ = assemble(body, formats=FORMATS)
         entries, ingress, owners = (0,), ([0x964B],), ({'scl', 'sda'},)
-    got, _, end, error = rtl(exe, code, entries, ingress, bus, owners, epoch, 50_000)
+    got, _, end, error, trace = rtl(exe, code, entries, ingress, bus, owners, epoch, 50_000)
     ok = got[0][-1:] == [0]
     errors, margin = i2c_check(bus, {'i2c_ok': [ok] if got[0] else [],
                                     'i2c_rx': words_to_bytes(got[0][:-1]) if ok else []}, case)
@@ -116,7 +119,7 @@ def i2c_case(exe, epoch, case, concurrent):
         if len(starts) != 6:
             spi_errors.append(f'{len(starts)} of 6 SPI transactions started')
         errors += spi_errors
-    return dict(case=case.name, concurrent=concurrent, epoch=epoch, end_cycle=end, margin=margin,
+    return dict(case=case.name, concurrent=concurrent, epoch=epoch, end_cycle=end, margin=margin, trace_sha256=trace,
                 errors=([error] if error else []) + errors)
 
 
@@ -124,18 +127,18 @@ def overlap_case(exe, epoch, offset, phase):
     image = build(offset)
     case, bus, limit, monitor = spi_bench('B', image, 0, True, machine_factory=lambda _, __, bus: bus,
                                          uart_phase=phase, spi_offset=offset, pin_order=PIN_ORDERS['overlap'])
-    got, samples, end, error = rtl(exe, image.programs[0], image.entries, ((), (SPI_WORD, SPI_WORD)),
-                                   bus, (set(), {'cs', 'mosi', 'sclk'}), epoch, limit)
+    got, samples, end, error, trace = rtl(exe, image.programs[0], image.entries, ((), (SPI_WORD, SPI_WORD)),
+                                         bus, (set(), {'cs', 'mosi', 'sclk'}), epoch, limit)
     decoded = dict(uart_rx=[w for w in got[0] if w < 256], uart_error=[w for w in got[0] if w >= 256],
                    spi_rx_word=got[1])
     errors, margin = monitor(SimpleNamespace(bus=bus, samples=samples, report=decoded), end)
-    return dict(case=case, offset=offset, phase=phase, epoch=epoch, end_cycle=end, margin=margin,
+    return dict(case=case, offset=offset, phase=phase, epoch=epoch, end_cycle=end, margin=margin, trace_sha256=trace,
                 errors=([error] if error else []) + errors)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--opt', type=int, choices=range(2, 11), required=True)
+    parser.add_argument('--opt', type=int, choices=range(2, 12), required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--quick', action='store_true')
     args = parser.parse_args()
@@ -157,7 +160,8 @@ def main():
     print(f'OPT={args.opt}: {passed}/{len(rows)} protocol cases passed')
     for row in [r for r in rows if r['errors']][:4]:
         print(row['case'], row['errors'][:3])
+    return int(passed != len(rows))
 
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())

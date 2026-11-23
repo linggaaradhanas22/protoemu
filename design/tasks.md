@@ -472,11 +472,13 @@ Done when: `src/cycle_timer.v` and `src/program_store.v` implement the agreed bl
 Both modules passed Verilator lint. `bash scripts/sim.sh` passed both unit tests and the template smoke test. The unit tests instantiate the blocks directly, without the host, core, or chip wrapper.
 
 ### TASK-061 — Shorten the core run-control cloud
-- Status: todo
+- Status: blocked
 - Owner: agent
-- Works on: BLK-CORE, BLK-DRIVE, BLK-PADS
+- Works on: BLK-CORE, BLK-DRIVE, BLK-PADS, EVAL-026
 - Blocked by: none
 Done when: propose and measure a partitioning of the `started`, `active`, `done` and payload-eligibility logic that keeps the agreed host-visible timing. Record the result in an EVAL and apply it only in the BLK-CORE RTL. Any change that moves a host-visible edge needs a CHG first.
+
+[EVAL-026](evals/EVAL-026-core-payload-eligibility.md) has a simulated and mapped candidate. Docker Desktop's Linux engine must be running for the placement and clock-tree comparison. No production RTL has changed.
 
 ### TASK-062 — Draft the external pin specification
 - Status: done

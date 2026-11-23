@@ -1,0 +1,18 @@
+OPT=10
+EXPIRY opt=10 other_ready=D+1 fault=D+0 safe=D+1 old_pad_at_D_plus_1=0 host_pops=0
+EXPIRY opt=10 other_ready=D+0 fault=D+1 safe=D+2 old_pad_at_D_plus_1=1 host_pops=1
+LAST_LEGAL opt=10 credit=D-1 admitted=1 fault_at_D=0
+EGRESS stop_on_credit=0 out0=1 out1=1 done=1
+EGRESS stop_on_credit=1 out0=0 out1=0 done=0
+INGRESS pop_on_commit=0 pop_next_edge=1 returned=1 done=1
+PASS: saved retry, added writeback and malformed-host checks, guarded waits, F/F+1
+OPT=11
+EXPIRY opt=11 other_ready=D+1 fault=D+0 safe=D+1 old_pad_at_D_plus_1=0 host_pops=0
+EXPIRY opt=11 other_ready=D+0 fault=D+1 safe=D+2 old_pad_at_D_plus_1=1 host_pops=1
+LAST_LEGAL opt=11 credit=D-1 admitted=1 fault_at_D=0
+EGRESS stop_on_credit=0 out0=1 out1=1 done=1
+EGRESS stop_on_credit=1 out0=0 out1=0 done=0
+INGRESS pop_on_commit=0 pop_next_edge=1 returned=1 done=1
+PASS: saved retry, added writeback and malformed-host checks, guarded waits, F/F+1
+362 test/sim_build/EVAL-026/directed.trace
+3a0a7d48143d609e705569a293b34a216868554cb3c765cfeab34edbc0d7caeb  test/sim_build/EVAL-026/directed.trace

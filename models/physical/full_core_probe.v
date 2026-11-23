@@ -60,6 +60,7 @@ module full_core_probe #(parameter OPT = 0) (
     wire flush = stop || fault_pending || start;
     wire go = rst_n && started && image_valid && !flush && !fault_latched;
     wire [1:0] runnable;
+    wire [1:0] get_ready, put_ready;
     wire [1:0] fence_hit;
     wire [1:0] saved_future;
     wire [1:0] saved_last;
@@ -70,20 +71,22 @@ module full_core_probe #(parameter OPT = 0) (
             assign saved_future[i] = OPT ? in_future_half(wait_at[i], cycle) : (|age && !age[23]);
             assign saved_last[i] = wait_at[i] == cycle + 24'd1;
             assign fence_hit[i] = cycle == wait_at[i];
+            assign get_ready[i] = wait_kind[i] == P_GET && ingress_ready[i];
+            assign put_ready[i] = wait_kind[i] == P_PUT && egress_ready[i];
             assign runnable[i] = active[i] &&
                 (wait_kind[i] == P_NONE ||
                  (wait_kind[i] == P_DRIVE && (drive_credit || !saved_future[i])) ||
                  (wait_kind[i] == P_CAP && cap_ready[i]) ||
-                 (wait_kind[i] == P_GET && ingress_ready[i]) ||
-                 (wait_kind[i] == P_PUT && egress_ready[i]) ||
+                 get_ready[i] || put_ready[i] ||
                  (wait_kind[i] == P_FENCE && (fence_open[i] || fence_hit[i])));
         end
     endgenerate
 
     wire select_ctx = runnable[1] && (!runnable[0] || rr_next);
-    wire same_cycle = OPT < 3 || OPT == 10;
+    wire same_cycle = OPT < 3 || OPT == 10 || OPT == 11;
     wire ctx = fetch_live ? fetch_ctx : ((!same_cycle && !bypass_drive) ? retry_ctx : select_ctx);
-    wire boundary = go && !fetch_live && !(!same_cycle && retry_live) && !redirect && |runnable;
+    wire free_issue = go && !fetch_live && !(!same_cycle && retry_live) && !redirect;
+    wire boundary = free_issue && |runnable;
     wire fetch = boundary && wait_kind[select_ctx] == P_NONE;
     wire select_retry = boundary && wait_kind[select_ctx] != P_NONE;
     wire expired_on_select = (OPT == 7 || OPT == 8) && select_retry && wait_kind[select_ctx] == P_DRIVE &&
@@ -143,7 +146,10 @@ module full_core_probe #(parameter OPT = 0) (
     wire static_ok = execute && !fetch_fault && !malformed;
     wire alu_write = static_ok && (op_select[SET] || op_select[ADD] || op_select[SHR] || op_select[XOR] ||
                                     op_select[MOV] || op_select[ULT] || op_select[LOOP]);
-    wire fresh_get = static_ok && op_select[HOST_GET] && ingress_ready[ctx];
+    wire [1:0] fresh_grant = {2{static_ok}} & {fetch_ctx, !fetch_ctx};
+    wire [1:0] fresh_get_by_ctx = {2{op_select[HOST_GET]}} & fresh_grant & ingress_ready;
+    wire [1:0] fresh_put_by_ctx = {2{op_select[HOST_PUT]}} & fresh_grant & egress_ready;
+    wire fresh_get = OPT == 11 ? |fresh_get_by_ctx : (static_ok && op_select[HOST_GET] && ingress_ready[ctx]);
     wire fresh_put = static_ok && op_select[HOST_PUT] && egress_ready[ctx];
     wire fresh_shift = drive_accept && execute && (op_select[SHIFT_PIN] || op_select[SHIFT_PAIR]);
     wire fast_we = alu_write || fresh_get || fresh_shift || (retry && retire && write_a);
@@ -261,8 +267,10 @@ module full_core_probe #(parameter OPT = 0) (
                           retire && ((execute && op == HOST_GET) || (retry && wait_kind[ctx] == P_GET));
     wire put_word = OPT >= 5 ? fresh_put || (retry && wait_kind[ctx] == P_PUT) :
                                retire && ((execute && op == HOST_PUT) || (retry && wait_kind[ctx] == P_PUT));
-    assign ingress_pop = {get && ctx, get && !ctx};
-    assign egress_push = {put_word && ctx, put_word && !ctx};
+    // Local payload eligibility already implies runnable for an active context.
+    wire [1:0] retry_grant = {2{free_issue}} & active & {select_ctx, !select_ctx};
+    assign ingress_pop = OPT == 11 ? (fresh_get_by_ctx | (retry_grant & get_ready)) : {get && ctx, get && !ctx};
+    assign egress_push = OPT == 11 ? (fresh_put_by_ctx | (retry_grant & put_ready)) : {put_word && ctx, put_word && !ctx};
     assign egress_word = retry ? wait_word[ctx] : ax;
     assign done = go && active == 0 && drive_empty;
     assign faulted = fault_latched;
