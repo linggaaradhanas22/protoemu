@@ -1,6 +1,6 @@
 # ARCH-B sequence diagrams
 
-[Editable draw.io book](diagrams/arch-b-sequences_v1.drawio) · [Chip block diagram](diagrams/arch-b_v2.svg) · [ISA draft](isa-draft.md)
+[Editable draw.io book](diagrams/arch-b-sequences_v1.drawio) · [Chip block diagram](diagrams/arch-b_v3.svg) · [ISA draft](isa-draft.md)
 
 The block diagrams show what connects. The sequences show when each block acts and what it hands off. In draw.io, follow a linked block header to its sequence page. Each detail page links back to the chip page. The SVGs below are static views.
 

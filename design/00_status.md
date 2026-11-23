@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-23 (TASK-063 complete, pin specs agreed)
+**Last updated:** 2026-11-23 (TASK-064 complete, diagram labels match block records)
 **Current stage:** G5 (RTL + unit tests)
 
 ## Gates
@@ -39,7 +39,7 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 1. TASK-061: measure a shorter BLK-CORE run-control and payload-eligibility path before core RTL.
 2. Close the two provisional encodings when the RTL decoder and assembler exist.
 
-Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
+Use the [top-level diagram](05_microarch/README.md) to find block records by ID. The [diagram convention](05_microarch/diagrams/README.md) uses solid arrows for data and dashed arrows for control and status.
 
 ## Open questions for Lingga
 - **Pin verification:** The [pin specs](02_spec.md#pins-and-electrical) are agreed. TEST-SYS-014 is planned for system simulation. TEST-ACC-004 still covers the board wiring and electrical checks.

@@ -4,18 +4,18 @@ Lingga agreed the G4 block contracts in TASK-050. [DEC-001](../04_decisions/DEC-
 
 [G4 review package](g4-review.md) · [Draft ISA and open instructions](isa-draft.md) · [Chip and block sequences](sequences.md)
 
-[Editable draw.io overview](diagrams/arch-b_v2.drawio) · [Project diagram conventions](diagrams/README.md)
+[Editable draw.io overview](diagrams/arch-b_v3.drawio) · [Project diagram conventions](diagrams/README.md)
 
-![ARCH-B overview: solid data arrows and dashed control arrows connect the loader, program store, shared core, and timed I/O.](diagrams/arch-b_v2.svg)
+![ARCH-B top-level diagram. Each of the seven ASIC blocks is labeled with its record ID and title.](diagrams/arch-b_v3.svg)
 
-The arrows show logical paths, not physical pin assignments. Each block record has its own internal diagram in the same style; the [G4 block review sheets](g4-block-review.md) collect them.
+The arrows show logical paths, not physical pin assignments. Use the `BLK-*` IDs in the diagram to find the matching records below. Each record has its own internal diagram.
 
 ```text
-RP2350 <-> pad adapter <-> loader -> shared program store <-> shared issue core
-                           loader <------------------------> shared issue core
-protocol pads <- pad adapter <- timed output queue <- shared issue core
-protocol pads -> pad adapter -> context capture slots <-> shared issue core
-cycle timebase -> shared issue core, timed output queue and capture slots
+RP2350 <-> BLK-PADS <-> BLK-HOST -> BLK-PROGRAM <-> BLK-CORE
+                        BLK-HOST <---------------> BLK-CORE
+Protocol peers <- BLK-PADS <- BLK-DRIVE <- BLK-CORE
+Protocol peers -> BLK-PADS -> BLK-CAPTURE <-> BLK-CORE
+BLK-TIMER -> BLK-CORE, BLK-DRIVE, BLK-CAPTURE
 ```
 
 ## Blocks and unit coverage
@@ -24,15 +24,15 @@ The area column partitions a provisional **0.600 mm² cell-area allowance**, not
 
 | Block record | Boundary | Allowance (mm²) | Unit test |
 |---|---|---:|---|
-| [Core](BLK-CORE.md) | Two contexts, one fetch/execute path | 0.150 | `TEST-UNIT-001` |
-| [Program store](BLK-PROGRAM.md) | 128 × 24-bit words, registered fetch | 0.180 | `TEST-UNIT-002` |
-| [Timed output](BLK-DRIVE.md) | Four deadline slots and masked pad updates | 0.075 | `TEST-UNIT-003` |
-| [Capture](BLK-CAPTURE.md) | One arm/result slot per context | 0.040 | `TEST-UNIT-004` |
-| [Timebase](BLK-TIMER.md) | Cycle counter and deadline rule | 0.025 | `TEST-UNIT-005` |
-| [Pad adapter](BLK-PADS.md) | Input synchronization, pad registers and mapping | 0.040 | `TEST-UNIT-006` |
-| [Loader](BLK-HOST.md) | Image commit, run control and host payload | 0.090 | `TEST-UNIT-007` |
+| [BLK-CORE](BLK-CORE.md): Shared issue core | Two contexts, one fetch/execute path | 0.150 | `TEST-UNIT-001` |
+| [BLK-PROGRAM](BLK-PROGRAM.md): Shared program store | 128 × 24-bit words, registered fetch | 0.180 | `TEST-UNIT-002` |
+| [BLK-DRIVE](BLK-DRIVE.md): Timed output queue | Four deadline slots and masked pad updates | 0.075 | `TEST-UNIT-003` |
+| [BLK-CAPTURE](BLK-CAPTURE.md): Context-owned input capture | One arm/result slot per context | 0.040 | `TEST-UNIT-004` |
+| [BLK-TIMER](BLK-TIMER.md): Cycle timebase | Cycle counter and deadline rule | 0.025 | `TEST-UNIT-005` |
+| [BLK-PADS](BLK-PADS.md): Tiny Tapeout pad adapter | Input synchronization, pad registers and mapping | 0.040 | `TEST-UNIT-006` |
+| [BLK-HOST](BLK-HOST.md): Loader and run control | Image commit, run control and host payload | 0.090 | `TEST-UNIT-007` |
 
-The [verification plan](../06_verif_plan.md) defines pass criteria. The registered tests are still planned. In the overview all internal blocks use the same 60 MHz clock. The timebase carries cycle numbers, not a generated clock. The drawing shows its deadline path only; the endpoint tables describe all consumers, reset and status.
+The [verification plan](../06_verif_plan.md) lists test status and pass criteria. All internal blocks use the same 60 MHz clock. `BLK-TIMER` sends cycle numbers, not a clock. The drawing shows its deadline path only. The block records describe all consumers, reset and status.
 
 ## Host and protocol pin split
 

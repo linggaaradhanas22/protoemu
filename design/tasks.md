@@ -493,3 +493,12 @@ Done when: record the proposed pin specs and system test in a CHG for Lingga's r
 - Works on: CHG-015, SPEC-PIN-001, SPEC-PIN-002, SPEC-PIN-003, BLK-PADS, TEST-SYS-014, TEST-INT-001, TEST-INT-002, TEST-UNIT-006
 - Blocked by: none
 Done when: add the approved specs and planned system test, recheck the pad contract and dependent test plans, and regenerate the trace. No RTL changes.
+
+### TASK-064 — Match the top-level diagram to the block records
+- Status: done
+- Owner: agent
+- Works on: ARCH-B, BLK-CORE, BLK-PROGRAM, BLK-DRIVE, BLK-CAPTURE, BLK-TIMER, BLK-PADS, BLK-HOST
+- Blocked by: none
+Done when: label each block with its record ID and exact title. Publish a new editable diagram and SVG, and update the overview links. Keep the architecture and earlier diagrams unchanged.
+
+Published [revision 3](05_microarch/diagrams/arch-b_v3.svg) and its [editable source](05_microarch/diagrams/arch-b_v3.drawio). All seven labels match their block records. The diagram geometry and wiring are unchanged.

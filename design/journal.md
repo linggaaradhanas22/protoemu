@@ -485,3 +485,10 @@ Results: Rechecked the pad contract and its dependent test plans against the new
 AI vs human: Lingga approved CHG-015. OpenCode applied the approved wording and updated the trace links. No RTL or gate status changed.
 Problems: TEST-SYS-014 remains planned. Board wiring and electrical behavior still need verification under TEST-ACC-004.
 Next: TASK-061, the run-control timing evaluation.
+
+## 2026-11-23: Lingga + OpenCode (TASK-064)
+Did: Published the revision 3 Draw.io source and SVG. Used the same IDs in the overview links and the text diagram.
+Results: All seven diagram labels match the block records. Draw.io validation reported no errors or warnings. The render showed all labels without clipping. The geometry and wiring match revision 2.
+AI vs human: Lingga asked for labels that match the block records. OpenCode updated the figure and links without changing the design.
+Problems: None. No RTL or gate status changed.
+Next: TASK-061, the run-control timing evaluation.
