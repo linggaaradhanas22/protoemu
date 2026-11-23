@@ -471,3 +471,10 @@ Results: Both modules passed Verilator lint. Cocotb passed 3 of 3 tests, includi
 AI vs human: Lingga asked OpenCode to start G5 work. OpenCode implemented and tested the two agreed blocks without changing either contract.
 Problems: The tests use loader state inputs and check timer consumer rules against sampled counts in Python. They do not test the real host, core, or timed I/O. Area and routed timing remain open.
 Next: TASK-061. Measure a shorter run-control path without moving any host-visible edge.
+
+## 2026-11-23: Lingga + OpenCode (TASK-062)
+Did: Drafted three external pin specs and one system test in CHG-015. Linked the proposal from the Pins and electrical section.
+Results: The proposal records the fixed host pin map, programmable pad behavior, and release and hold rules. The agreed specs, gate statuses, and RTL are unchanged. The G2 checker reports MET with no errors and the two known warnings.
+AI vs human: Lingga asked OpenCode to draft the missing pin spec. OpenCode assembled the draft from the agreed pin map and pad contracts. Approval is pending.
+Problems: The pin map and board behavior still need hardware verification. No new system test ran.
+Next: Ask Lingga to approve CHG-015 before adding the specs and test to the baseline.

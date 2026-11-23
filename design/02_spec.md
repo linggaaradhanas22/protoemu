@@ -26,6 +26,8 @@ baud with a 60 MHz clock. Checked by system simulation: measure edge times on th
 ## Pins and electrical
 <!-- SPEC-PIN-NNN -->
 
+See [CHG-015](changes/CHG-015-pin-specification.md) for the proposed external pin specs. The pin map remains in [BLK-PADS](05_microarch/BLK-PADS.md#pin-allocation) pending review.
+
 ## Clock, reset and power-down
 <!-- SPEC-RST-NNN -->
 

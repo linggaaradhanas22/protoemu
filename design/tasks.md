@@ -477,3 +477,12 @@ Both modules passed Verilator lint. `bash scripts/sim.sh` passed both unit tests
 - Works on: BLK-CORE, BLK-DRIVE, BLK-PADS
 - Blocked by: none
 Done when: propose and measure a partitioning of the `started`, `active`, `done` and payload-eligibility logic that keeps the agreed host-visible timing. Record the result in an EVAL and apply it only in the BLK-CORE RTL. Any change that moves a host-visible edge needs a CHG first.
+
+### TASK-062 — Draft the external pin specification
+- Status: done
+- Owner: agent
+- Works on: BLK-PADS, REQ-RULE-003, REQ-RULE-007
+- Blocked by: none
+Done when: record the proposed pin specs and system test in a CHG for Lingga's review. Leave the agreed specs and RTL unchanged.
+
+[CHG-015](changes/CHG-015-pin-specification.md) contains the proposed wording and test. Approval is pending.

@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-23 (TASK-060 complete)
+**Last updated:** 2026-11-23 (TASK-062 complete, pin specs proposed)
 **Current stage:** G5 (RTL + unit tests)
 
 ## Gates
@@ -37,11 +37,13 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 
 ## Next tasks
 1. TASK-061: measure a shorter BLK-CORE run-control and payload-eligibility path before core RTL.
-2. Close the two provisional encodings when the RTL decoder and assembler exist.
+2. Add the pin specs and system test after Lingga approves CHG-015.
+3. Close the two provisional encodings when the RTL decoder and assembler exist.
 
 Use the [project diagram convention](05_microarch/diagrams/README.md): solid for data, dashed for control and status.
 
 ## Open questions for Lingga
+- **External pin spec:** Review [CHG-015](changes/CHG-015-pin-specification.md) before pad RTL. It documents the agreed map, programmable pads, and release behavior without changing the design.
 - **Provisional encodings:** The ISA map and host numeric values stay provisional into G5 by decision 2 and decision 4. Freeze them when the RTL decoder and assembler exist.
 - **Capture timeout storage:** Keep storing `Rt`. Revisit only after a placed capture-block comparison.
 - **60 MHz margin:** [EVAL-025](evals/EVAL-025-agreed-schedule-timing.md) places the agreed schedule with the faster writeback. After clock-tree synthesis and repair, setup is −0.023 ns bare and +0.037 ns with a registered host boundary, and hold passes. That is 23 to 37 ps, too little for routing. The limiter is the run-control and payload-eligibility cloud, not the writeback or timed I/O. Optimize that cloud in G5 and check the routed design.
