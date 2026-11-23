@@ -359,7 +359,7 @@ Write 1-word and 128-word images, read endpoints and reload a shorter image over
 Include a CRC failure after tentative words reached the array. Keep `image_valid` low for that trial; no fetch may return those words.
 
 ### TEST-UNIT-003 — Exact due cycles and queue backpressure
-- Status: planned
+- Status: passing
 - Level: unit
 - Verifies: BLK-DRIVE
 - Run: test_timed_drive_queue

@@ -520,3 +520,12 @@ Both registered-host variants ran through placement, clock-tree synthesis, and r
 Done when: the core implements the agreed schedule and draft instruction set, passes lint and its standalone unit test, and leaves the chip wrapper and provisional encodings unchanged.
 
 The core passed Verilator lint, generic Yosys synthesis and `check -assert`, and its cocotb unit test. The EVAL-026 variant was not used. The unit test uses stubs, so it does not verify chip wiring or timing.
+
+### TASK-067 — Implement the timed output queue
+- Status: done
+- Owner: agent
+- Works on: BLK-DRIVE, TEST-UNIT-003
+- Blocked by: none
+Done when: the four-slot queue passes Verilator lint and its cocotb test. Keep the pad registers and wrapper out of this task.
+
+The queue passed Verilator lint, Verilog-2005 elaboration, Yosys synthesis and its cocotb scoreboard. The chip wrapper is unchanged.

@@ -1,5 +1,5 @@
 # BLK-DRIVE — Timed output queue
-- Status: agreed
+- Status: implemented
 - Traces to: DEC-001, SPEC-UART-001, SPEC-SPI-001, SPEC-I2C-001, REQ-PROTO-004
 
 ## Purpose
@@ -39,4 +39,6 @@ Use unordered slots with a due scan, as replayed in [EVAL-003](../evals/EVAL-003
 
 ## Unit-test plan and RTL
 
-Check conservation of accepted events, deadline/retry races, wrap, collisions, multi-retire and full-to-accept. Planned file: `src/timed_drive.v`.
+The standalone implementation is [`src/timed_drive.v`](../../src/timed_drive.v). `drive_credit` includes slots due on the sampling edge and does not depend on the selected request. `drive_empty` reports registered occupancy, so a live final update keeps it low until retirement. BLK-PADS will register the merged update and apply the pad drive mode.
+
+TEST-UNIT-003 compares the queue against an event scoreboard. It uses a stub for the core's registered fault-to-flush signal and checks the update bus, not the physical pads.

@@ -3,7 +3,7 @@
 Progress board. Agents update "Next tasks", "Open questions" and the gate table at the end of
 every session. Only Lingga marks a gate ✅.
 
-**Last updated:** 2026-11-23 (TASK-066 complete)
+**Last updated:** 2026-11-23 (TASK-067 complete)
 **Current stage:** G5 (RTL + unit tests)
 
 ## Gates
@@ -14,7 +14,7 @@ every session. Only Lingga marks a gate ✅.
 | G2 | Spec agreed | ✅ Approved by Lingga | `g2-spec` | `--gate G2` |
 | G3 | Architecture decided | ✅ Approved by Lingga; ARCH-B selected in DEC-001 | `g3-arch` | `--gate G3` |
 | G4 | Micro-architecture agreed | ✅ Reapproved by Lingga after the decision review and EVAL-025 | `g4-uarch-r2` (prior `g4-uarch`) | `--gate G4` |
-| G5 | RTL + unit tests | 🔄 3 of 7 blocks implemented, 3 of 7 unit tests passing | `g5-rtl` | `--gate G5` |
+| G5 | RTL + unit tests | 🔄 4 of 7 blocks implemented, 4 of 7 unit tests passing | `g5-rtl` | `--gate G5` |
 | G6 | System verified | ⏳ | `g6-verified` | `--gate G6` |
 | G7 | Sign-off: precheck + write-up | ⏳ | `g7-submit` | `--gate G7` |
 
@@ -36,7 +36,7 @@ What each gate needs (the checker tests these; Lingga also reviews the content):
 | 2027-01-18 | Submission deadline (REQ-RULE-010) |
 
 ## Next tasks
-1. Implement the timed output queue (BLK-DRIVE) and TEST-UNIT-003. BLK-CAPTURE, BLK-HOST, and BLK-PADS are also open.
+1. Implement input capture (BLK-CAPTURE) and TEST-UNIT-004. BLK-HOST and BLK-PADS also remain open.
 2. Close the two provisional encodings when the RTL decoder and assembler exist.
 
 Use the [top-level diagram](05_microarch/README.md) to find block records by ID. The [diagram convention](05_microarch/diagrams/README.md) uses solid arrows for data and dashed arrows for control and status.
@@ -44,6 +44,7 @@ Use the [top-level diagram](05_microarch/README.md) to find block records by ID.
 ## Open questions for Lingga
 - **Pin verification:** The [pin specs](02_spec.md#pins-and-electrical) are agreed. TEST-SYS-014 is planned for system simulation. TEST-ACC-004 still covers the board wiring and electrical checks.
 - **Core integration:** BLK-CORE passes with stubbed ports. Verify the same-cycle retry and the F+1 pad-safe signal with real blocks before measuring integrated timing.
+- **Drive integration:** TEST-UNIT-003 checks the merged update bus and a stubbed fault-to-flush signal. Check both with the real core and pad registers in integration.
 - **Provisional encodings:** The ISA map and host numeric values stay provisional into G5 by decision 2 and decision 4. Freeze them when the RTL decoder and assembler exist.
 - **Capture timeout storage:** Keep storing `Rt`. Revisit only after a placed capture-block comparison.
 - **60 MHz margin:** In [EVAL-026](evals/EVAL-026-core-payload-eligibility.md), repaired setup slack was −0.004 ns for the baseline and −0.019 ns for the candidate. Both passed hold at +0.080 ns. The worst repaired paths run from the cycle counter to the register file. Full-chip routed timing remains open.

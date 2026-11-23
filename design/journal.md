@@ -513,3 +513,10 @@ Results: Verilator lint, Verilog-2005 elaboration, and generic Yosys synthesis p
 AI vs human: Lingga asked OpenCode to implement the agreed core. OpenCode kept the provisional encodings and did not carry forward the EVAL-026 variant.
 Problems: The chip wrapper still uses the template. The real I/O, host, and 60 MHz routed timing remain unverified.
 Next: Implement the timed output queue and its unit test.
+
+## 2026-11-23: Lingga + OpenCode (TASK-067)
+Did: Implemented the four-slot timed output queue. Added a directed and seeded randomized scoreboard for TEST-UNIT-003.
+Results: Verilator lint, Verilog-2005 elaboration, and generic Yosys synthesis passed. All five cocotb tests passed. The scoreboard checked exact deadline retirement, same-edge slot reuse, full-width updates, and fault-to-flush ordering.
+AI vs human: Lingga asked OpenCode to continue with the agreed queue. OpenCode implemented BLK-DRIVE without changing the schedule, pad registers, or wrapper.
+Problems: The queue test stubs the fault source. Core and pad integration, area, and routed timing remain unverified.
+Next: Implement BLK-CAPTURE and TEST-UNIT-004.
