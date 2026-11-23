@@ -39,6 +39,7 @@ module tb ();
   issue_core_tb core_tb ();
   timed_drive_tb drive_tb ();
   timed_capture_tb capture_tb ();
+  pad_adapter_tb pad_tb ();
 
   reg timer_clk, timer_rst_n;
   wire [23:0] cycle;

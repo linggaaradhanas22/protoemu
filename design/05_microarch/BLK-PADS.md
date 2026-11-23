@@ -1,5 +1,5 @@
 # BLK-PADS — Tiny Tapeout pad adapter
-- Status: agreed
+- Status: implemented
 - Traces to: DEC-001, REQ-RULE-003, REQ-RULE-007, REQ-PROTO-004, SPEC-RST-001, SPEC-I2C-001, SPEC-PIN-001, SPEC-PIN-002, SPEC-PIN-003
 
 ## Purpose
@@ -49,4 +49,6 @@ The RP2350 bidirectional GPIOs must not drive or pull the protocol pads when ext
 
 ## Unit-test plan and RTL
 
-Check synchronizer depth, registered outputs, open drain, independent mask bits, and reset/stop precedence. Planned file: Tiny Tapeout wrapper in `src/`, with a separate pad module only if useful.
+The standalone RTL is [`src/pad_adapter.v`](../../src/pad_adapter.v). The adapter uses the synchronized `selected` value before the sampling edge. Protocol `safe` clears only the bidirectional pads, so the host can still read status after a fault or `STOP`. The adapter has no `DONE` input. With no pending update or safety event, it holds the pad registers.
+
+TEST-UNIT-006 checks synchronization latency, host pin mapping, registered outputs, and priority with stubbed host and update inputs. The chip wrapper does not yet instantiate the adapter.

@@ -538,3 +538,12 @@ The queue passed Verilator lint, Verilog-2005 elaboration, Yosys synthesis and i
 Done when: the two capture slots pass lint and the cocotb checks for ownership, observations, guards, timeouts and flush. Keep synchronization and chip wiring out of this task.
 
 The capture block passed Verilator lint, Verilog-2005 elaboration, Yosys synthesis and TEST-UNIT-004. The chip wrapper is unchanged.
+
+### TASK-069 — Implement the Tiny Tapeout pad adapter
+- Status: done
+- Owner: agent
+- Works on: BLK-PADS, TEST-UNIT-006
+- Blocked by: none
+Done when: the standalone adapter implements the agreed pin map, synchronization, and registered drive. Pass lint and TEST-UNIT-006. Leave the chip wrapper unchanged until integration.
+
+The adapter passed Verilator lint, Verilog-2005 elaboration, generic Yosys synthesis, and TEST-UNIT-006. The chip wrapper is unchanged.

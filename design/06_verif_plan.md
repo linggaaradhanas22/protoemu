@@ -388,7 +388,7 @@ Check pre-wrap and post-wrap observations as an interval input to the core. Conf
 With the same deltas, check the guard classification of CHG-007: only `1` through `2^23−1` are future, while 0 and the past half are reached, not invalid.
 
 ### TEST-UNIT-006 — Pad synchronization and safe drive
-- Status: planned
+- Status: passing
 - Level: unit
 - Verifies: BLK-PADS
 - Run: test_pad_sync_and_safe_drive

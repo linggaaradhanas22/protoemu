@@ -527,3 +527,10 @@ Results: Verilator lint, Verilog-2005 elaboration, and generic Yosys synthesis p
 AI vs human: Lingga asked OpenCode to continue with input capture. OpenCode implemented the agreed timeout storage and guard rules without changing the wrapper.
 Problems: The test feeds synchronized samples and stubs the fault source. Integration, area, and routed timing remain open.
 Next: Implement BLK-PADS and TEST-UNIT-006.
+
+## 2026-11-23: Lingga + OpenCode (TASK-069)
+Did: Implemented the pad adapter with the agreed dedicated host pins, two-stage input synchronization, and registered protocol outputs. Added TEST-UNIT-006.
+Results: Verilator lint, Verilog-2005 elaboration, and generic Yosys synthesis passed. All seven cocotb tests passed. The new test checked mixed push-pull and open-drain updates and all 16 reset, deselect, safe, and update combinations.
+AI vs human: Lingga asked OpenCode to continue with the agreed pad adapter. OpenCode implemented and tested it without changing the pin map or chip wrapper.
+Problems: The adapter still uses stubbed host and update inputs in tests. No routed timing or electrical checks ran.
+Next: Implement BLK-HOST and TEST-UNIT-007.
